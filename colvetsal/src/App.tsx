@@ -1,16 +1,20 @@
-import { BrowserRouter, Route, Routes  } from "react-router-dom";
-import { Home, Landing } from "./elements/index";
+import { Route, Routes, useLocation } from "react-router-dom";
+import { Home, Landing, NavBar } from "./elements/index";
 import './App.css'
 
 function App() {
+
+  const location = useLocation();
+
   return (
     <>
-    <BrowserRouter>
+      {location.pathname !== '/' &&
+        <NavBar />
+      }
       <Routes>
-        <Route path='/' element={<Landing/>}/>
-        <Route path="/home" element={<Home/>}/>
+        <Route path='/' element={<Landing />} />
+        <Route path="/home" element={<Home />} />
       </Routes>
-    </BrowserRouter>
     </>
   )
 }
