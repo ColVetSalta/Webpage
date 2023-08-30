@@ -7,7 +7,11 @@ interface HomeProps {}
 const Home: React.FC <HomeProps> = ()=> {
 	return (
 	<>		
-	<Image width={'100%'} src={TopBack} alt="top background"/>
+	<Image 
+	position={'fixed'}
+	left='0'
+	width={'100%'} 
+	src={TopBack} alt="top background"/>
 	<Novedades/>
 	</>		
 	)

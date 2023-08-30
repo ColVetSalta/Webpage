@@ -1,21 +1,31 @@
-import { Card, Container, Image, Heading, Text } from '@chakra-ui/react';
+import { Card, Grid, Image, Heading, Text } from '@chakra-ui/react';
 import React from 'react';
 import novedades from '../../../Novedades.json'
 
 
 const Novedades: React.FC = () => {
-    return <Container>
+    return <Grid
+    position={'relative'}
+    top={'70dvh'}
+        templateColumns='repeat(2, 1fr)'
+        gap={1}
+        opacity={'93%'}
+    >
         {
             novedades ?
                 novedades.map((n) => {
-                    return <Card key={n.title}>
-                        <Image boxSize={'2em'} src={n.image} alt={n.alt} />
+                    return <Card 
+                    background={'darkgray'}
+                    key={n.title}>
+                        <Image 
+                        boxSize={'2em'}
+                        src={n.image} alt={n.alt} />
                         <Heading>{n.title}</Heading>
                         <Text>{n.summary}</Text>
                     </Card>
                 }) :
                 <h3>No se encontraron novedades</h3>
         }
-    </Container>
+    </Grid>
 };
 export default Novedades;

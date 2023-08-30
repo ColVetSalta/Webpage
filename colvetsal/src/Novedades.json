@@ -30,5 +30,37 @@
     "summary": "Este sería el texto corto que describe de que se trata la noticia",
     "fullText": "Aca corresponde redactar de manera más completa toda la información disponible sobre el tema. </br>Tratando de explayarse completamente. </br> Sería logico que este texto tenga marcadores html para separar parrafos, subrayar y resalrar",
     "date": "30/08/23"
+  },
+  {
+    "image": "vite.svg",
+    "alt": "Texto Alternativo a la imagen",
+    "title": "Try5",
+    "summary": "Este sería el texto corto que describe de que se trata la noticia",
+    "fullText": "Aca corresponde redactar de manera más completa toda la información disponible sobre el tema. </br>Tratando de explayarse completamente. </br> Sería logico que este texto tenga marcadores html para separar parrafos, subrayar y resalrar",
+    "date": "30/08/23"
+  },
+  {
+    "image": "vite.svg",
+    "alt": "Texto Alternativo a la imagen",
+    "title": "Try6",
+    "summary": "Este sería el texto corto que describe de que se trata la noticia",
+    "fullText": "Aca corresponde redactar de manera más completa toda la información disponible sobre el tema. </br>Tratando de explayarse completamente. </br> Sería logico que este texto tenga marcadores html para separar parrafos, subrayar y resalrar",
+    "date": "30/08/23"
+  },
+  {
+    "image": "vite.svg",
+    "alt": "Texto Alternativo a la imagen",
+    "title": "Try7",
+    "summary": "Este sería el texto corto que describe de que se trata la noticia",
+    "fullText": "Aca corresponde redactar de manera más completa toda la información disponible sobre el tema. </br>Tratando de explayarse completamente. </br> Sería logico que este texto tenga marcadores html para separar parrafos, subrayar y resalrar",
+    "date": "30/08/23"
+  },
+  {
+    "image": "vite.svg",
+    "alt": "Texto Alternativo a la imagen",
+    "title": "Try8",
+    "summary": "Este sería el texto corto que describe de que se trata la noticia",
+    "fullText": "Aca corresponde redactar de manera más completa toda la información disponible sobre el tema. </br>Tratando de explayarse completamente. </br> Sería logico que este texto tenga marcadores html para separar parrafos, subrayar y resalrar",
+    "date": "30/08/23"
   }
 ]
