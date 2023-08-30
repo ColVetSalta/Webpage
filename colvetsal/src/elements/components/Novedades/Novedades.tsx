@@ -2,13 +2,12 @@ import { Card, Grid, Image, Heading, Text } from '@chakra-ui/react';
 import React from 'react';
 import novedades from '../../../Novedades.json'
 
-
 const Novedades: React.FC = () => {
     return <Grid
     position={'relative'}
-    top={'70dvh'}
-        templateColumns='repeat(2, 1fr)'
-        gap={1}
+    top={'25dvh'}
+        templateColumns='repeat(3, 1fr)'
+        gap={2}
         opacity={'93%'}
     >
         {
