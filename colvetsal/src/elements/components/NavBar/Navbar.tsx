@@ -2,26 +2,44 @@ import React from "react";
 // import { NavLink } from 'react-router-dom';
 import ColvetLogo from '../../../assets/logo_.png'
 import n from './NavBar.module.css'
+import {
+  Flex,
+  List,
+  ListItem,
+  Image,
+  Box,
+  Text,
+} from "@chakra-ui/react";
 
 interface NavBarProps {
 
 }
-
 const NavBar: React.FC<NavBarProps> = () => {
 
   return <nav className={n.Cont}>
-    <span id={n.logotipe}>
-      <img src={ColvetLogo} className={n.logoCol} alt="ColVet" />
-      <span id={n.Title}>
-        <p>Colegio de Médicos Veterinarios</p>
-        <p>de Salta</p>
-      </span>
-    </span>
-    <ul>
-      <li>INSTITUCIONAL</li>
-      <li>CONTACTO</li>
-      <li>NOVEDADES</li>
-    </ul>
+    <Flex>
+      <Image
+        boxSize={"4em"}
+        src={ColvetLogo}
+        alt="ColVet"
+      />
+      <Box id={n.Title}>
+        <Text
+          fontSize={'8px'}
+          margin={0}
+          noOfLines={[1, 2, 3]}
+        >Colegio de Médicos Veterinarios de Salta</Text>
+      </Box>
+    </Flex>
+    <List
+      gap={'0.6em'}
+      display={"flex"}>
+      <ListItem >INICIO</ListItem>
+      <ListItem >PROFESIONALES</ListItem>
+      <ListItem >INSTITUCIONAL</ListItem>
+      <ListItem >CONTACTO</ListItem>
+      <ListItem >NOVEDADES</ListItem>
+    </List>
   </nav>;
 }
 

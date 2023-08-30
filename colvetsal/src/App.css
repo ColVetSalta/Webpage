@@ -1,7 +1,9 @@
 #root {
   width: 100dvw;
+  height: 100dvh;
   margin: 0;
   text-align: center;
+  font-size: 8px;
 }
 
 .logo {
