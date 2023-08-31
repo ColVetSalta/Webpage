@@ -13,10 +13,7 @@ import navList from "../../../Navegacion.json";
 import { Link } from "react-router-dom";
 import { type Navigation } from '../../../types';
 
-interface NavBarProps {
-
-}
-const NavBar: React.FC<NavBarProps> = () => {
+const NavBar: React.FC = () => {
   const impList: Navigation[] = navList;
   return <nav className={n.Cont}>
     <Flex>
@@ -29,7 +26,7 @@ const NavBar: React.FC<NavBarProps> = () => {
           width={'30dvw'}
           fontSize={'1.4em'}
           margin={0}
-          noOfLines={[1, 2, 3]}
+          // noOfLines={[1, 2, 3]}
         >Colegio de Médicos Veterinarios de Salta</Text>
     </Flex>
     <List
