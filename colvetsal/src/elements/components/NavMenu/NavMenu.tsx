@@ -1,8 +1,23 @@
+import { Menu, MenuButton, MenuItem, MenuList } from "@chakra-ui/react";
 import React from "react";
 
-const NavMenu: React.FC = ()=>{
-    return <div>
+type Menu = {
+    name: string,
+    items: Array<string>
+}
 
-    </div>
+const NavMenu: React.FC<Menu> = ({name, items})=>{
+    return <Menu isLazy>
+        <MenuButton>{name}</MenuButton>
+        <MenuList>
+            {items ? items.map((item)=>{
+            return <MenuItem>
+            {item}
+            </MenuItem>
+        }) : null}
+        </MenuList>
+        
+
+    </Menu>
 }
 export default NavMenu

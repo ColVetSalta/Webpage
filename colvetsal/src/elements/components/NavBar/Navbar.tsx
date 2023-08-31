@@ -10,6 +10,7 @@ import {
   Box,
   Text,
 } from "@chakra-ui/react";
+import { NavMenu } from "../..";
 
 interface NavBarProps {
 
@@ -34,10 +35,29 @@ const NavBar: React.FC<NavBarProps> = () => {
     <List
       gap={'0.6em'}
       display={"flex"}>
-      <ListItem >NOVEDADES</ListItem>
-      <ListItem >INSTITUCIONAL</ListItem>
-      <ListItem >PROFESIONALES</ListItem>
-      <ListItem >CONTACTO</ListItem>
+      <ListItem >
+        <NavMenu 
+        name='NOVEDADES' 
+        items={['RESOLUCIONES', 'NOTICIAS', 'ARTICULOS', 'CURSOS', 'EVENTOS']}
+        />
+        </ListItem>
+      <ListItem >
+        <NavMenu 
+        name='INSTITUCIONAL' 
+        items={['CONSEJO MAYOR', 'TRIBUNAL DE ÉTICA', 'MESA DIRECTIVA', 'PERSONAL', 'SUBCOMISIONES']}
+        />
+        </ListItem>
+      <ListItem >
+        <NavMenu 
+        name='MATRICULADOS' 
+        items={['ACTIVOS', 'ACCESO', 'ESPECIALIDADES', 'ACREDITACIONES']}
+        />
+        </ListItem>
+      <ListItem >
+        <NavMenu 
+        name='CONTACTO' 
+        items={[]}
+        /></ListItem>
     </List>
   </nav>;
 }
