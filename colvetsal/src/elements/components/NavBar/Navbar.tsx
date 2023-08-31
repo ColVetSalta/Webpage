@@ -34,11 +34,10 @@ const NavBar: React.FC<NavBarProps> = () => {
     <List
       gap={'0.6em'}
       display={"flex"}>
-      <ListItem >INICIO</ListItem>
-      <ListItem >PROFESIONALES</ListItem>
-      <ListItem >INSTITUCIONAL</ListItem>
-      <ListItem >CONTACTO</ListItem>
       <ListItem >NOVEDADES</ListItem>
+      <ListItem >INSTITUCIONAL</ListItem>
+      <ListItem >PROFESIONALES</ListItem>
+      <ListItem >CONTACTO</ListItem>
     </List>
   </nav>;
 }
