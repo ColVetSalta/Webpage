@@ -1,6 +1,6 @@
 import React from "react";
 import ColvetLogo from '../../../assets/logo_.png'
-import n from './NavBar.module.css'
+import nb from './NavBar.module.css'
 import {
   Flex,
   List,
@@ -15,7 +15,7 @@ import { type Navigation } from '../../../types';
 
 const NavBar: React.FC = () => {
   const impList: Navigation[] = navList;
-  return <nav className={n.Cont}>
+  return <nav className={nb.Cont}>
     <Flex>
       <Image
         boxSize={"4.2em"}
@@ -43,7 +43,7 @@ const NavBar: React.FC = () => {
           }
           else if (list.url) {
             return <ListItem>
-              <Link to={list.url} className={n.links}>{list.indexTitle}</Link>
+              <Link to={list.url} className={nb.links}>{list.indexTitle}</Link>
             </ListItem>
           } else {
             return null
