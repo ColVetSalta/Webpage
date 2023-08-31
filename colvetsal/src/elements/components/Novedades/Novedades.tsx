@@ -4,8 +4,7 @@ import novedades from '../../../Novedades.json'
 
 const Novedades: React.FC = () => {
     return <Grid
-    position={'relative'}
-    top={'25dvh'}
+    margin={'25dvh'}
         templateColumns='repeat(3, 1fr)'
         gap={2}
         opacity={'93%'}
