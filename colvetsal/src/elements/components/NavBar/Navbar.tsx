@@ -6,7 +6,6 @@ import {
   List,
   ListItem,
   Image,
-  Box,
   Text,
 } from "@chakra-ui/react";
 import { NavMenu } from "../..";
@@ -22,19 +21,16 @@ const NavBar: React.FC<NavBarProps> = () => {
   return <nav className={n.Cont}>
     <Flex>
       <Image
-        boxSize={"4em"}
+        boxSize={"4.2em"}
         src={ColvetLogo}
         alt="ColVet"
       />
-      <Box id={n.Title}>
         <Text
-          width={'20dvw'}
-          fontSize={'8px'}
+          width={'30dvw'}
+          fontSize={'1.4em'}
           margin={0}
           noOfLines={[1, 2, 3]}
-          textAlign='left'
         >Colegio de Médicos Veterinarios de Salta</Text>
-      </Box>
     </Flex>
     <List
       gap={'0.6em'}

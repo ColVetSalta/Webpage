@@ -14,7 +14,9 @@ const NavMenu: React.FC<Menu> = ({name, items})=>{
     isLazy>
         <MenuButton>{name}</MenuButton>
         <MenuList
-        bgColor={'rgb(0, 0, 0, 0.68)'}>
+        bgColor={'rgb(0, 0, 0, 0.68)'}
+        marginBlockStart={'1em'}
+        >
             {items ? items.map((item)=>{
             return <MenuItem>
             {item.subindexTitle}
