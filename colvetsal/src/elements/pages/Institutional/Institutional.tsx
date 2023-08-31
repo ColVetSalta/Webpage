@@ -4,6 +4,6 @@ import { Grid } from '@chakra-ui/react'
 
 export default function Institutional (): React.JSX.Element {
     return <Grid className={i.Cont}>
-
+<h1>Institucional</h1>
     </Grid>
 }
