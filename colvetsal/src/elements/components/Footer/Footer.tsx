@@ -12,24 +12,23 @@ import { AiFillLinkedin, AiFillFacebook, AiFillYoutube, AiFillInstagram, AiOutli
     className={f.Cont}>
       <Box>
       <Heading>CONTACTO</Heading>
-      <List textAlign={'left'}>
+      <List 
+      textAlign={'left'}
+      >
         <ListItem>
-          <ListIcon as={AiOutlineMail}/>
+          <ListIcon as={AiOutlineMail} me='1em'/>
           colvetsalta@gmail.com
         </ListItem>
         <ListItem>
-          <ListIcon as={
-            // BsPhone
-            AiOutlineMobile
-            }/>
+          <ListIcon as={AiOutlineMobile} me='1em'/>
           +54 9 387 528-9422
           </ListItem>
         <ListItem>
-          <ListIcon as={AiOutlinePhone}/>
+          <ListIcon as={AiOutlinePhone} me='1em'/>
           0387-4227751
           </ListItem>
         <ListItem>
-          <ListIcon as={AiOutlineEnvironment}/>
+          <ListIcon as={AiOutlineEnvironment} me='1em'/>
           J. M. Leguizamón 1844
           </ListItem>
       </List>
