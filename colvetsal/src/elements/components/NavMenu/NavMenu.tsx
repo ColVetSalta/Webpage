@@ -3,7 +3,10 @@ import React from "react";
 
 type Menu = {
     name: string,
-    items: Array<string>
+    items:  {
+        subindexTitle: string;
+        url: string;
+    }[]
 }
 
 const NavMenu: React.FC<Menu> = ({name, items})=>{
@@ -14,7 +17,7 @@ const NavMenu: React.FC<Menu> = ({name, items})=>{
         bgColor={'rgb(0, 0, 0, 0.68)'}>
             {items ? items.map((item)=>{
             return <MenuItem>
-            {item}
+            {item.subindexTitle}
             </MenuItem>
         }) : null}
         </MenuList>

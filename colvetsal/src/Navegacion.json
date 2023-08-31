@@ -1,0 +1,73 @@
+[
+    {
+        "indexTitle": "NOVEDADES",
+        "subindex": [
+            {
+                "subindexTitle": "RESOLUCIONES",
+                "url": "./resoluciones"
+            },
+            {
+                "subindexTitle": "NOTICIAS",
+                "url": "./noticias"
+            },
+            {
+                "subindexTitle": "ARTICULOS",
+                "url": "./articulos"
+            },
+            {
+                "subindexTitle": "CURSOS",
+                "url": "./cursos"
+            },
+            {
+                "subindexTitle": "EVENTOS",
+                "url": "./eventos"
+            }
+        ]
+    },
+    {
+        "indexTitle": "INSTITUCIONAL",
+        "subindex": [
+            {
+                "subindexTitle": "CONSEJO MAYOR",
+                "url": "./consejomayor"
+            },
+            {
+                "subindexTitle": "TRIBUNAL DE ÉTICA",
+                "url": "./tribetica"
+            },
+            {
+                "subindexTitle": "MESA DIRECTIVA",
+                "url": "./mdirectiva"
+            },
+            {
+                "subindexTitle": "SUBCOMISIONES",
+                "url": "./subcomisiones"
+            }
+        ]
+    },
+    {
+        "indexTitle": "MATRICULADOS",
+        "subindex": [
+            {
+                "subindexTitle": "ACTIVOS",
+                "url": "./activos"
+            },
+            {
+                "subindexTitle": "NOTICIAS",
+                "url": "./noticias"
+            },
+            {
+                "subindexTitle": "ACCESO",
+                "url": "./acceso"
+            },
+            {
+                "subindexTitle": "ESPECIALIDADES",
+                "url": "./especialidades"
+            },
+            {
+                "subindexTitle": "ACREDITACIONES",
+                "url": "./acreditaciones"
+            }
+        ]
+    }
+]
