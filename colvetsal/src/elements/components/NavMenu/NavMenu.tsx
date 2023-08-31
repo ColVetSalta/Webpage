@@ -7,11 +7,18 @@ type Menu = {
 }
 
 const NavMenu: React.FC<Menu> = ({name, items})=>{
-    return <Menu isLazy>
-        <MenuButton>{name}</MenuButton>
-        <MenuList>
+    return <Menu 
+    isLazy>
+        <MenuButton
+        bgColor={'inherit'}
+        color={'inherit'}
+
+        >{name}</MenuButton>
+        <MenuList
+        bgColor={'gainsboro'}>
             {items ? items.map((item)=>{
-            return <MenuItem>
+            return <MenuItem
+            bgColor={'inherit'}>
             {item}
             </MenuItem>
         }) : null}

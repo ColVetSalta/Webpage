@@ -34,7 +34,9 @@ const NavBar: React.FC<NavBarProps> = () => {
     </Flex>
     <List
       gap={'0.6em'}
-      display={"flex"}>
+      display={"flex"}
+      paddingInlineStart= {'10px'}
+        >
       <ListItem >
         <NavMenu 
         name='NOVEDADES' 
