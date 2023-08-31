@@ -7,10 +7,6 @@
     padding: 2.6vh 18vw 2.5vh 17vw;
     background-color: rgb(0, 0, 0, 0.68);
 }
-.separator {
-    color: rgb(0, 255, 115) ;
-    font-weight: 100;
-}
 .text {
     font-size: 0.9rem;
     font-weight: 400;

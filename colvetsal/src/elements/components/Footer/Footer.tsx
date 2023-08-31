@@ -1,17 +1,18 @@
 import React from "react";
 import { Link as ReactLink } from 'react-router-dom';
 import f from './Footer.module.css'
-import { Container, Heading, Link, Box, List, ListItem, ListIcon } from "@chakra-ui/react";
+import { Flex, Heading, Link, Box, List, ListItem, ListIcon, Grid  } from "@chakra-ui/react";
 // import { BsLinkedin, BsFacebook, BsYoutube, BsInstagram, BsMailbox, BsTelephone, BsPhone, BsFileEarmarkCodeFill, BsMapFill, BsMap } from "react-icons/bs";
 import { AiFillLinkedin, AiFillFacebook, AiFillYoutube, AiFillInstagram, AiOutlineEnvironment, AiOutlineMobile, AiOutlinePhone, AiOutlineMail } from "react-icons/ai"
 
   const Footer: React.FC = () => {
 
-    return <Container
+    return <Flex
+    justify={'space-between'}
     className={f.Cont}>
       <Box>
       <Heading>CONTACTO</Heading>
-      <List>
+      <List textAlign={'left'}>
         <ListItem>
           <ListIcon as={AiOutlineMail}/>
           colvetsalta@gmail.com
@@ -34,14 +35,21 @@ import { AiFillLinkedin, AiFillFacebook, AiFillYoutube, AiFillInstagram, AiOutli
       </List>
       </Box>
       <Box
-    bg='whiteAlpha.300'>
+    bg='whiteAlpha.300'
+    fontSize={'1.5em'}
+    >
       <Heading>REDES</Heading>
+      <Grid
+      templateColumns='repeat(4, 1fr)'
+      templateRows='repeat(1, 1fr)'
+      gap='2'>
       <Link as={ReactLink} className={f.footLink} to='' isExternal><AiFillLinkedin /></Link>
       <Link as={ReactLink} className={f.footLink} to='' isExternal><AiFillFacebook /></Link>
       <Link as={ReactLink} className={f.footLink} to='' isExternal><AiFillYoutube /></Link>
       <Link as={ReactLink} className={f.footLink} to='' isExternal><AiFillInstagram /></Link>
+      </Grid>
       </Box>
-    </Container>;
+    </Flex>;
 }
 
 export default Footer;

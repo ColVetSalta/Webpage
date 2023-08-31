@@ -9,16 +9,11 @@ type Menu = {
 const NavMenu: React.FC<Menu> = ({name, items})=>{
     return <Menu 
     isLazy>
-        <MenuButton
-        bgColor={'inherit'}
-        color={'inherit'}
-
-        >{name}</MenuButton>
+        <MenuButton>{name}</MenuButton>
         <MenuList
-        bgColor={'gainsboro'}>
+        bgColor={'rgb(0, 0, 0, 0.68)'}>
             {items ? items.map((item)=>{
-            return <MenuItem
-            bgColor={'inherit'}>
+            return <MenuItem>
             {item}
             </MenuItem>
         }) : null}

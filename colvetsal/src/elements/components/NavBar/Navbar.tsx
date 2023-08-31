@@ -26,9 +26,11 @@ const NavBar: React.FC<NavBarProps> = () => {
       />
       <Box id={n.Title}>
         <Text
+        width={'20dvw'}
           fontSize={'8px'}
           margin={0}
           noOfLines={[1, 2, 3]}
+          textAlign='left'
         >Colegio de Médicos Veterinarios de Salta</Text>
       </Box>
     </Flex>
