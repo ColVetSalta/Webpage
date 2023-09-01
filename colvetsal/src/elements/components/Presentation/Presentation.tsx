@@ -11,29 +11,43 @@ type Cons = { [key: string]: Role[]; }
 
 const Presentation: React.FC<Present> = ({ motive }) => {
 
-    const m_directiva: Org = autoridades.consejomayor.MesaDirectiva;
+    const m_directiva: Org = autoridades.consejomayor.mdirectiva;
     const roles_dir = Object.keys(m_directiva);
-    const t_etica: Org = autoridades.consejomayor.TribunalDeEtica;
+    const t_etica: Org = autoridades.consejomayor.tribetica;
     const roles_etica = Object.keys(t_etica);
     const cons_zonas: Cons = autoridades.consejomayor.Consejeros;
     const zonas = Object.keys(cons_zonas);
 
-    function GridHandler() {
-        if (motive === 'consejomayor') {
-            return <Grid>
-                <GridItem>
-                    <OrgDescription
+    function ToMesaDirectiva() {
+        return <OrgDescription
                         organism='Mesa Directiva'
                         staff={m_directiva}
                         roles={roles_dir}
                     />
+    }
+    function ToTribunalEtica() {
+        return <OrgDescription
+        organism='Tribunal de Ética'
+        staff={t_etica}
+        roles={roles_etica}
+    />
+    }
+
+
+    function GridHandler() {
+        if (motive === 'mdirectiva') {
+            return ToMesaDirectiva()
+        }
+        if (motive === 'tribetica') {
+            return ToTribunalEtica()
+        }
+        if (motive === 'consejomayor') {
+            return <Grid>
+                <GridItem>
+                    {ToMesaDirectiva()}
                 </GridItem>
                 <GridItem>
-                    <OrgDescription
-                        organism='Tribunal de Ética'
-                        staff={t_etica}
-                        roles={roles_etica}
-                    />
+                    {ToTribunalEtica()}
                 </GridItem>
                 <GridItem>
                     <Heading>Consejeros</Heading>

@@ -1,6 +1,6 @@
 {
   "consejomayor": {
-    "MesaDirectiva": {
+    "mdirectiva": {
       "Presidente": {
         "nombre": "José Rolando Blanco",
         "telefono": "+54 9 387 685-4695",
@@ -37,7 +37,7 @@
         "correoElectronico": ""
       }
     },
-    "TribunalDeEtica": {
+    "tribetica": {
       "Miembro1": {
         "nombre": "Silvia Cardozo",
         "telefono": "+54 9 387 -",
