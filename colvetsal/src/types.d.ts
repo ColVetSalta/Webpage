@@ -11,3 +11,9 @@ export interface Role {
   telefono: string;
   correoElectronico: string;
 }
+export type Org = { [key: string]: Role; }
+export type ODesc = {
+    organism: string;
+    staff: Org;
+    roles: string[];
+}
