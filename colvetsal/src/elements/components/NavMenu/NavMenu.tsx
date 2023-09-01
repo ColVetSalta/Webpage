@@ -1,5 +1,6 @@
 import { Menu, MenuButton, MenuItem, MenuList } from "@chakra-ui/react";
 import React from "react";
+import { Link } from "react-router-dom";
 
 type Menu = {
     name: string,
@@ -18,7 +19,7 @@ const NavMenu: React.FC<Menu> = ({name, items})=>{
         marginBlockStart={'1em'}
         >
             {items ? items.map((item)=>{
-            return <MenuItem>
+            return <MenuItem as={Link} to={name.toLowerCase()+item.url}>
             {item.subindexTitle}
             </MenuItem>
         }) : null}
