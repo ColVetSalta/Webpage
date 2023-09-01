@@ -3,6 +3,7 @@ import p from './Presentation.module.css'
 import { Grid, GridItem, Heading } from '@chakra-ui/react'
 import autoridades from '../../../Autoridedes.json'
 import { type Role } from '../../../types'
+import { RoleData } from '../..'
 
 type Present = { motive: string | undefined; }
 type Org = { [key: string]: Role; }
@@ -26,12 +27,12 @@ const Presentation: React.FC<Present> = ({ motive }) => {
                     <Heading>Mesa Directiva</Heading>
                     {
                         roles_dir ? roles_dir.map((r) => {
-                            return <div>
-                                <h4>{r}</h4>
-                                <h5>{m_directiva[r].nombre}</h5>
-                                <h6>Telefono: {m_directiva[r].telefono}</h6>
-                                <h6>e-mail: {m_directiva[r].correoElectronico}</h6>
-                            </div>
+                            return <RoleData 
+                                title = {r}
+                                name={ m_directiva[r].nombre}
+                                tel= {m_directiva[r].telefono}
+                                email= {m_directiva[r].correoElectronico}
+                            />
                         }) :
                             null
                     }
@@ -40,12 +41,12 @@ const Presentation: React.FC<Present> = ({ motive }) => {
                     <Heading>Tribunal de Ética</Heading>
                     {
                         roles_etica ? roles_etica.map((r) => {
-                            return <div>
-                                <h4>{r}</h4>
-                                <h5>{t_etica[r].nombre}</h5>
-                                <h6>Telefono: {t_etica[r].telefono}</h6>
-                                <h6>e-mail: {t_etica[r].correoElectronico}</h6>
-                            </div>
+                            return  <RoleData 
+                                title= {r}
+                                name={t_etica[r].nombre}
+                                tel={t_etica[r].telefono}
+                                email={t_etica[r].correoElectronico}
+                            />
                         }) :
                             null
                     }
@@ -55,12 +56,12 @@ const Presentation: React.FC<Present> = ({ motive }) => {
                     {
                         zonas ? zonas.map((r) => {
                             return cons_zonas[r].map((z) => {
-                                return <div>
-                                    <h4>{r}</h4>
-                                    <h5>{z.nombre}</h5>
-                                    <h6>Telefono: {z.telefono}</h6>
-                                    <h6>e-mail: {z.correoElectronico}</h6>
-                                </div>
+                                return  <RoleData
+                                title={r}
+                                name={z.nombre} 
+                                tel={z.telefono}
+                                email={z.correoElectronico}
+                                />
                             })
                         }) :
                             null
