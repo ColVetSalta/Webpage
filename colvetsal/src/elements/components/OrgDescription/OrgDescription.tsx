@@ -7,9 +7,9 @@ const OrgDescription: React.FC<ODesc> = ( { organism, staff, roles } ) => {
     return <div>
         <Heading>{organism}</Heading>
                     {
-                        roles ? roles.map((r) => {
+                        roles ? roles.map((r) => {                            
                             return <RoleData 
-                                title = {r}
+                                title = {isNaN(Number(r)) ? r : null }
                                 name={ staff[r].nombre}
                                 tel= {staff[r].telefono}
                                 email= {staff[r].correoElectronico}
