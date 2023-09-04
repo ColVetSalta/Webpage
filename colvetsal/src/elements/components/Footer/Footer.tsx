@@ -2,7 +2,6 @@ import React from "react";
 import { Link as ReactLink } from 'react-router-dom';
 import f from './Footer.module.css'
 import { Flex, Heading, Link, Box, List, ListItem, ListIcon, Grid  } from "@chakra-ui/react";
-// import { BsLinkedin, BsFacebook, BsYoutube, BsInstagram, BsMailbox, BsTelephone, BsPhone, BsFileEarmarkCodeFill, BsMapFill, BsMap } from "react-icons/bs";
 import { AiFillLinkedin, AiFillFacebook, AiFillYoutube, AiFillInstagram, AiOutlineEnvironment, AiOutlineMobile, AiOutlinePhone, AiOutlineMail } from "react-icons/ai"
 
   const Footer: React.FC = () => {

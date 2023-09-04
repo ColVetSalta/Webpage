@@ -1,13 +1,7 @@
 import React from 'react'
+import { type RData } from '../../../types'
 
-type RData = {
-    title: string | null;
-    name: string;
-    tel: string;
-    email: string;
-}
-//export default function RoleData ({ title, name, tel, email }): React.JSX.Element {
-const RoleData: React.FC<RData> = ({ title, name, tel, email }) => {
+export default function RoleData ({ title, name, tel, email }: RData): React.JSX.Element {
     return <div>
             <h4>{title}</h4>
             <h5>{name}</h5>
@@ -15,5 +9,3 @@ const RoleData: React.FC<RData> = ({ title, name, tel, email }) => {
             <h6>e-mail: {email}</h6>
         </div>
 }
-
-export default RoleData;

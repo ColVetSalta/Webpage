@@ -1,12 +1,9 @@
 import React from "react";
 import { Container } from '@chakra-ui/react';
 import { Novedades } from "../..";
-interface HomeProps {}
 
-const Home: React.FC <HomeProps> = ()=> {
+ export default function Home(): React.JSX.Element {
 	return <Container>		
 	<Novedades/>
 	</Container>
-};
-
-export default Home;
+}

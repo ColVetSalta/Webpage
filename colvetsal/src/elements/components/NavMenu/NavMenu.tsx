@@ -1,16 +1,9 @@
 import { Menu, MenuButton, MenuItem, MenuList } from "@chakra-ui/react";
 import React from "react";
 import { Link } from "react-router-dom";
+import { type Menutype } from '../../../types'
 
-type Menu = {
-    name: string,
-    items:  {
-        subindexTitle: string;
-        url: string;
-    }[]
-}
-
-const NavMenu: React.FC<Menu> = ({name, items})=>{
+const NavMenu: React.FC<Menutype> = ({name, items})=>{
     return <Menu 
     isLazy>
         <MenuButton>{name}</MenuButton>

@@ -2,11 +2,8 @@ import React from 'react'
 import p from './Presentation.module.css'
 import { Grid, GridItem, Heading } from '@chakra-ui/react'
 import autoridades from '../../../Autoridedes.json'
-import { type Role, Org } from '../../../types'
+import { type Org, Present, Cons } from '../../../types'
 import OrgDescription from '../OrgDescription/OrgDescription'
-
-type Present = { motive: string | undefined; }
-type Cons = { [key: string]: Role[]; }
 
 const Presentation: React.FC<Present> = ({ motive }) => {
 
