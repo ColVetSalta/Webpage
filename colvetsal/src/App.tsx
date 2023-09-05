@@ -18,6 +18,8 @@ function App() {
         <Route path="/" element={<Landing />} />
         <Route path="/home" element={<Home />} />
         <Route path="/institucional/:motive" element={<Institutional />} />
+        <Route path="/novedades/:motive" element={<Institutional />} />
+
       </Routes>
       {location.pathname !== '/' &&
         <Footer />
