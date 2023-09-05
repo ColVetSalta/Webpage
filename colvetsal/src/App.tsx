@@ -2,7 +2,6 @@ import { Route, Routes, useLocation } from "react-router-dom";
 import { Footer, NavBar } from "./elements/index";
 import './App.css'
 import React, { Suspense } from "react";
-// import Institutional from "./elements/pages/Institutional/Institutional";
 const Institutional = React.lazy(() => import('./elements/pages/Institutional/Institutional'))
 const Home = React.lazy(() => import('./elements/pages/Home/Home'))
 const Landing = React.lazy(() => import('./elements/pages/Landing/Landing'))
