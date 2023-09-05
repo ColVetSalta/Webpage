@@ -1,4 +1,5 @@
 import { Card, Grid, Image, Heading, Text } from '@chakra-ui/react';
+// import { type News} from '../../../types'
 import novedades from '../../../Novedades.json'
 
 export default function Novedades(): JSX.Element {
@@ -15,7 +16,8 @@ export default function Novedades(): JSX.Element {
                     key={n.title}>
                     <Image
                         boxSize={'2em'}
-                        src={n.image} alt={n.alt} />
+                        src={n.image || 'noticia.png'} 
+                        alt={n.alt} />
                     <Heading>{n.title}</Heading>
                     <Text>{n.summary}</Text>
                 </Card>;

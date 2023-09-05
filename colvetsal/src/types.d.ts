@@ -35,4 +35,13 @@ export type Menutype = {
       url: string;
   }[]
 }
+//Novedades
+export type News = {
+  image: string | null;
+  alt: string | null;
+  title: string;
+  summary: string;
+  fullText: string;
+  date: string;
+}
 
