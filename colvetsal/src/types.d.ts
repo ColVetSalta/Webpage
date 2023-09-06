@@ -13,8 +13,18 @@ export interface Role {
   telefono: string;
   correoElectronico: string;
 }
-export type Cons = { [key: string]: Role[]; }
-export type Org = { [key: string]: Role; }
+export type Cons = {
+  info?: {
+    title: string
+  };
+  [key: string]: Role[]; 
+}
+export type Org = {
+  info?: {
+    title: string
+  }; 
+  [key: string]: Role; 
+}
 export type ODesc = {
     organism: string;
     staff: Org;

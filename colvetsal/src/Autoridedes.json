@@ -1,43 +1,52 @@
 {
   "consejomayor": {
+    "info": {
+      "title": "Consejo Mayor"
+    },
     "mdirectiva": {
-      "Presidente": {
+      "info": {
+        "title": "Mesa Directiva"
+      },
+      "presidente": {
         "nombre": "José Rolando Blanco",
         "telefono": "+54 9 387 685-4695",
         "correoElectronico": "kchorrosvet@gmail.com"
       },
-      "Vicepresidente": {
+      "vicepresidente": {
         "nombre": "Francisco Javier Salomón",
         "telefono": "+54 9 387 502-6390",
         "correoElectronico": "fjsaguilera@gmail.com"
       },
-      "Secretario": {
+      "secretario": {
         "nombre": "Gustavo Peretti",
         "telefono": "+54 9 387 462-8790",
         "correoElectronico": "gperettig@gmail.com"
       },
-      "Tesorera": {
+      "tesorera": {
         "nombre": "María Cecilia Vieta",
         "telefono": "+54 9 387 593-8741",
         "correoElectronico": "gustavodada@ymail.com"
       },
-      "Vocal": {
+      "vocal": {
         "nombre": "Gustavo Dada",
         "telefono": "+54 9 387 477-5553",
         "correoElectronico": "gustavodada@ymail.com"
       },
-      "VocalSuplente1": {
+      "vocalSuplente1": {
         "nombre": "Rodrigo Saavedra",
         "telefono": "+54 9 387 448-2975",
         "correoElectronico": ""
       },
-      "VocalSuplente2": {
+      "vocalSuplente2": {
         "nombre": "Agustin Abeya",
         "telefono": "+54 9 3876 41-2412",
         "correoElectronico": ""
       }
     },
     "tribetica": {
+      "info": {
+        "title": "Tribunal de Ética"
+      },
       "Miembro1": {
         "nombre": "Silvia Cardozo",
         "telefono": "+54 9 387 -",
@@ -54,15 +63,18 @@
         "correoElectronico": ""
       }
     },
-    "Consejeros": {
-      "Zona1": [
+    "consejeros": {
+      "info": {
+        "title": "Consejeros"
+      },
+      "zona1": [
         {
           "nombre": "Rodrigo Avila Segura",
           "telefono": "+54 9 387 -",
           "correoElectronico": ""
         }
       ],
-      "Zona2": [
+      "zona2": [
         {
           "nombre": "Belen Laporta",
           "telefono": "+54 9 387 -",
@@ -74,7 +86,7 @@
           "correoElectronico": ""
         }
       ],
-      "Zona3": [
+      "zona3": [
         {
           "nombre": "Cristina Rosseto",
           "telefono": "+54 9 387 -",
@@ -91,7 +103,7 @@
           "correoElectronico": ""
         }
       ],
-      "Zona4": [
+      "zona4": [
         {
           "nombre": "Valeria Elizaldes",
           "telefono": "+54 9 387 -",
@@ -123,14 +135,14 @@
           "correoElectronico": ""
         }
       ],
-      "Zona5": [
+      "zona5": [
         {
           "nombre": "Javier Lopez Lopez",
           "telefono": "+54 9 387 -",
           "correoElectronico": ""
         }
       ],
-      "Zona6": [
+      "zona6": [
         {
           "nombre": "Miguel Castiella",
           "telefono": "+54 9 387 -",

@@ -3,9 +3,11 @@ import { Heading } from '@chakra-ui/react';
 import { RoleData } from '../..';
 
 export default function OrgDescription({ organism, staff, roles }: ODesc): JSX.Element {
+
     return <div>
         <Heading>{organism}</Heading>
         {roles ? roles.map((r) => {
+            if (r === "info") return null;
             return <RoleData
                 title={isNaN(Number(r)) ? r : null}
                 name={staff[r].nombre}
