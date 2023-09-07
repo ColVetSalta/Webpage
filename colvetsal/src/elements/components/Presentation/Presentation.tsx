@@ -1,17 +1,17 @@
 import p from './Presentation.module.css'
-import { Grid, GridItem, Heading } from '@chakra-ui/react'
+// import { Grid, GridItem, Heading } from '@chakra-ui/react'
 import information from '../../../API.json'
 import { type Inst } from '../../../types'
 import OrgDescription from '../OrgDescription/OrgDescription'
 
-export default function Presentation({ motive }:{motive:string} ): JSX.Element {
-   
+export default function Presentation({ motive }: { motive: string }): JSX.Element {
+
     const ind: string = motive.split('_')[0];
-   const subind: string = motive.split('_')[1];
-   const info: Inst = information[ind][subind];
-   const divitions: string[] = Object.keys(info);
-//    console.log(info);
-   
+    const subind: string = motive.split('_')[1];
+    const info: Inst = information[ind][subind];
+    const divitions: string[] = Object.keys(info);
+    //    console.log(info);
+
 
     // const m_directiva: Org = autoridades.consejomayor.mdirectiva
     // const roles_dir = Object.keys(m_directiva)
@@ -32,26 +32,42 @@ export default function Presentation({ motive }:{motive:string} ): JSX.Element {
 
     function GridHandler(d) {
         console.log(d);
-        
-        const items = Object.keys(d)
-            return <Grid>
-                {items ? items.map((i)=>{
-        const roles = Object.keys(d[i])
-                return <GridItem key={i}>
+        const items = Object.keys(d);
+        items.splice(items.indexOf('info'),1);
+        console.log(items);
+        if(d.info.type && (d.info.type === 'card')){
+        return <div>
+            {items ? items.map((i) => {
+                const roles = Object.keys(d[i])
+                return <div key={i}>
                     {ToOrg(i, d[i], roles)}
-                </GridItem>
+                </div>
+            }) : null}
+        </div>
+        }
+        if(d.info.type && (d.info.type === 'doc')){
+            return <div>
+                {items ? items.map((i) => {
+                    const roles = Object.keys(d[i])
+                    return <div key={i}>
+                        {ToOrg(i, d[i], roles)}
+                    </div>
                 }) : null}
-            </Grid>
-        
+            </div>
+            }
     }
 
     return <div className={p.cont}>
         {/* {GridHandler()} */}
         {
-            divitions ? divitions.map((d)=>{
-                return <div>{
-                    GridHandler(info[d])
-                }</div>
+            divitions ? divitions.map((d) => {
+                console.log('First Map', d);                
+                return <div>
+                    <h3>{d}</h3>
+                    {
+                        GridHandler(info[d])
+                    }
+                </div>
             }) : null
         }
     </div>

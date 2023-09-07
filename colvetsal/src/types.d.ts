@@ -16,12 +16,14 @@ export interface Role {
 export type Cons = {
   info?: {
     title: string;
+    type?: string;
   };
   [key: string]: Role[];
 };
 export type Org = {
   info?: {
     title: string;
+    type?: string;
   };
   [key: string]: Role;
 };

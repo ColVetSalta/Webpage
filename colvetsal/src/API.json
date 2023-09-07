@@ -3,7 +3,8 @@
     "autoridades": {
       "consejomayor": {
         "info": {
-          "title": "Consejo Mayor"
+          "title": "Consejo Mayor",
+          "type": "card"
         },
         "mdirectiva": {
           "info": {
@@ -166,6 +167,10 @@
     },
     "resoluciones": {
       "mesa_directiva": {
+        "info": {
+          "title": "Mesa Directiva",
+          "type": "doc"
+        },
         "2021": {
           "01": {
             "fecha": "23-12-2021",
