@@ -45,3 +45,20 @@
         }
     }
 }
+
+{
+    "subindexTitle": "CONSEJO MAYOR",
+    "url": "consejomayor"
+},
+{
+    "subindexTitle": "TRIBUNAL DE ÉTICA",
+    "url": "tribetica"
+},
+{
+    "subindexTitle": "MESA DIRECTIVA",
+    "url": "mdirectiva"
+},
+{
+    "subindexTitle": "SUBCOMISIONES",
+    "url": "subcomisiones"
+}

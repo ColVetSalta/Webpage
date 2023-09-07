@@ -3,24 +3,20 @@
         "indexTitle": "NOVEDADES",
         "subindex": [
             {
-                "subindexTitle": "RESOLUCIONES",
-                "url": "/resoluciones"
-            },
-            {
                 "subindexTitle": "NOTICIAS",
-                "url": "/noticias"
+                "url": "noticias"
             },
             {
                 "subindexTitle": "ARTICULOS",
-                "url": "/articulos"
+                "url": "articulos"
             },
             {
                 "subindexTitle": "CURSOS",
-                "url": "/cursos"
+                "url": "cursos"
             },
             {
                 "subindexTitle": "EVENTOS",
-                "url": "/eventos"
+                "url": "eventos"
             }
         ]
     },
@@ -28,21 +24,22 @@
         "indexTitle": "INSTITUCIONAL",
         "subindex": [
             {
-                "subindexTitle": "CONSEJO MAYOR",
-                "url": "/consejomayor"
+                "subindexTitle": "NORMATIVA",
+                "url": "normativa"
             },
             {
-                "subindexTitle": "TRIBUNAL DE ÉTICA",
-                "url": "/tribetica"
+                "subindexTitle": "RESOLUCIONES",
+                "url": "resoluciones"
             },
             {
-                "subindexTitle": "MESA DIRECTIVA",
-                "url": "/mdirectiva"
+                "subindexTitle": "AUTORIDADES",
+                "url": "autoridades"
             },
             {
-                "subindexTitle": "SUBCOMISIONES",
-                "url": "/subcomisiones"
+                "subindexTitle": "HISTORIA",
+                "url": "historia"
             }
+
         ]
     },
     {
@@ -50,23 +47,23 @@
         "subindex": [
             {
                 "subindexTitle": "ACTIVOS",
-                "url": "/activos"
+                "url": "activos"
             },
             {
                 "subindexTitle": "NOTICIAS",
-                "url": "/noticias"
+                "url": "noticias"
             },
             {
                 "subindexTitle": "ACCESO",
-                "url": "/acceso"
+                "url": "acceso"
             },
             {
                 "subindexTitle": "ESPECIALIDADES",
-                "url": "/especialidades"
+                "url": "especialidades"
             },
             {
                 "subindexTitle": "ACREDITACIONES",
-                "url": "/acreditaciones"
+                "url": "acreditaciones"
             }
         ]
     }

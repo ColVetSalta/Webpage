@@ -7,6 +7,6 @@ export default function Institutional (): JSX.Element {
     const { motive } = useParams()
     return <Grid className={i.Cont}>
 <h1>Institucional</h1>
-<Presentation motive={motive}/>
+{motive && <Presentation motive={motive}/>}
     </Grid>
 }
