@@ -4,11 +4,12 @@
       "consejomayor": {
         "info": {
           "title": "Consejo Mayor",
-          "type": "card"
+          "type": "grid"
         },
         "mdirectiva": {
           "info": {
-            "title": "Mesa Directiva"
+            "title": "Mesa Directiva",
+            "type": "card"
           },
           "presidente": {
             "nombre": "José Rolando Blanco",
@@ -48,7 +49,8 @@
         },
         "tribetica": {
           "info": {
-            "title": "Tribunal de Ética"
+            "title": "Tribunal de Ética",
+            "type": "card"
           },
           "Miembro1": {
             "nombre": "Silvia Cardozo",
@@ -68,7 +70,8 @@
         },
         "consejeros": {
           "info": {
-            "title": "Consejeros"
+            "title": "Consejeros",
+            "type": "list"
           },
           "zona1": [
             {
@@ -173,6 +176,7 @@
         },
         "2021": {
           "01": {
+            "titulo": "Pago anual 2022",
             "fecha": "23-12-2021",
             "visto": "El contenido de la Ley Provincial Nº 6456 que rige la Profesión de los Médicos Veterinarios de la Provincia de Salta y",
             "considerando": "Que a efectos de permitir la normalización de las obligaciones de todos los Matriculados en el marco de un régimen de promoción para el cumplimiento de pagos en la cuota por Matrícula.- Que es función, del Colegio de Médicos Veterinarios de Salta, Ejercer el control del Ejercicio Profesional, teniendo a su cargo el gobierno de la Matrícula de acuerdo a lo previsto en la Ley Nº 6456, La Mesa Directiva",
@@ -187,6 +191,7 @@
         },
         "2022": {
           "01": {
+            "titulo": "Plan de pago",
             "fecha": "07-01-2022",
             "visto": "El elevado número de colegiados que adeudan a la Institución cuotas de matriculación",
             "considerando": "Que es propósito del Colegio de Médicos  Veterinarios de Salta y de su Comisión Directiva, generar medidas positivas que contribuyan al sostenimiento y desarrollo de la Institución; Que el Colegio debe afrontar periódicamente gastos ordinarios de administración y dirección; Que deviene imprescindible regularizar la situación de los colegiados en situación de morosidad, promoviendo un régimen estandarizado para el cumplimiento del pago de cuotas atrasadas, tendientes a evitar la suspensión de la matrícula; Que el artículo 13 del Reglamento Interno del Colegio de Médicos Veterinarios de Salta establece: “El Profesional Veterinario que no abonare la cuota de colegiación será suspendido en la matrícula, previa intimación de acuerdo a los plazos fijados por la Mesa Directiva”; Es por ello que, esta Comisión Directiva, en ejercicio de sus facultades previstas en la Ley N°6456, artículo 5 puntos VII) y XVI), y Reglamento Interno, artículo 31",
@@ -202,6 +207,7 @@
             }
           },
           "02": {
+            "titulo": "Designacion de responsables de convenios",
             "fecha": "18-01-22",
             "visto": "El contenido de la Ley Provincial Nº 6456 que rige la Profesión de los Médicos Veterinarios de la Provincia de Salta, y teniendo en cuenta las finalidades especificadas en el Art. 2º inc. b), que reza: “Propender al mejoramiento profesional, en sus aspectos científico, cultural y económico”, y siendo de fundamental importancia mantener vigente el Convenio celebrado entre Nuestra Institución y la Empresa Pre-Paga Swiss Medical, y",
             "considerando": "Que los Matriculados incurren en mora consuetudinaria, poniendo en riesgo la cobertura medica de los Profesionales que pagan al día; Que  en  algunos  casos  se  cubre  con  los  fondos  del  Colegio,  ergo  de  todos  los Matriculados, por lo expuesto, La Mesa Directiva del Colegio de Medicos Veterinarios de Salta",

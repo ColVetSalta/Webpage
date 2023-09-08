@@ -6,7 +6,7 @@ import Landing from "./pages/Landing/Landing";
 import NavMenu from "./components/NavMenu/NavMenu";
 import Presentation from './components/Presentation/Presentation';
 import Institutional from './pages/Institutional/Institutional';
-import RoleData from './components/RoleData/RoleData';
+import RoleData from './components/Presentation/RoleData';
 
 
 export { 
