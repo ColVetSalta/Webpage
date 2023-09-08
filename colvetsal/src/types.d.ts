@@ -13,26 +13,34 @@ export interface Role {
   telefono: string;
   correoElectronico: string;
 }
-export type Cons = {
-  info?: {
+
+export interface Consejeros {
+  info: {
     title: string;
-    type?: string;
+    type: string;
   };
   [key: string]: Role[];
-};
-export type Org = {
-  info?: {
+}
+export interface Organismo {
+  info: {
     title: string;
-    type?: string;
+    type: string;
   };
   [key: string]: Role;
-};
+}
+
 export type ConsMy = {
-  [key: string]: Org | Cons;
+  info: {
+    title: string;
+    type: string;
+  };
+  [key: string]: Organismo | Consejero
 };
+
+// to use in function
 export type ODesc = {
   organism: string;
-  staff: Org;
+  staff: Organismo;
   roles: string[];
 };
 export type RData = {
@@ -41,21 +49,29 @@ export type RData = {
   tel: string;
   email: string;
 };
-// export type Present = { motive: string | undefined; }
 //Resoluciones
-export type Resol = {
-  [key: number]: {
-    [key: number]: {
+export interface Resol {
+    [key: string | number]: {
       fecha: string;
       visto: string;
       resuelve: { [key: string]: string };
       firma: { [key: string]: string };
       anexo: unknown;
     };
+}
+export interface ResolAnual {
+  [key: string | number]: Resol
+  }
+export type ResolOrg = {
+  info: {
+    title: string;
+    type: string;
   };
+  [ket: string]: ResolAnual
 };
+
 export type Inst = {
-  [key: string]: ConsMy | Resol;
+  [key: string]: ConsMy | ResolOrg;
 };
 
 //NavBar
