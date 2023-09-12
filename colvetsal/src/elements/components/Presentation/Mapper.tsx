@@ -1,11 +1,10 @@
 import { type Role, ConsMy, ResolOrg } from '../../../types'
 import OrgDescription from './OrgDescription'
 
-export default function Mapper({ h }: ConsMy | ResolOrg ) {
-    console.log(h, 'parametro');
+export default function Mapper(params: { h: ConsMy | ResolOrg }) {
+    const h = params.h
     const items = Object.keys(h);
     items.splice(items.indexOf('info'), 1);
-    console.log(items, 'array de indices sin info');
     if (h.info.type && (h.info.type === 'grid')) {
         return <div>
             {items ? items.map((i) => {
@@ -19,21 +18,21 @@ export default function Mapper({ h }: ConsMy | ResolOrg ) {
                             roles={roles} />
                     </div>
                 }
-                if (h[i].info.type && (h[i].info.type === 'list')) {  
+                if (h[i].info.type && (h[i].info.type === 'list')) {
                     roles.splice(roles.indexOf('info'), 1);
                     return <div key={i}>
                         <h3>{i}</h3>
                         {roles ? roles.map((r) => {
-                            const arrstaff: Role[] = h[i][r];                              
+                            const arrstaff: Role[] = h[i][r];
                             return <div>
-                            {arrstaff.map(()=>{
-                                return <OrgDescription
-                                organism={r}
-                                staff={Object(arrstaff)}
-                                roles={Object.keys(arrstaff)} />
-                            })
-                        }
-                        </div>
+                                {arrstaff.map(() => {
+                                    return <OrgDescription
+                                        organism={r}
+                                        staff={Object(arrstaff)}
+                                        roles={Object.keys(arrstaff)} />
+                                })
+                                }
+                            </div>
                         }) :
                             null
                         }
