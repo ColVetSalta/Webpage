@@ -24,3 +24,6 @@ npm install --save pg pg-hstore # Postgres
 npm install @types/node -D 
 
 npm install dotenv
+
+npm install core
+
