@@ -1,6 +1,7 @@
 import express from 'express'
 import authorities from './routes/authorities'
 import { getAuthorities, getOneOrg } from './services/authServices'
+import { sequelize } from './db'
 
 const app = express()
 app.use(express.json())
@@ -20,6 +21,8 @@ app.get('/authorities/:org', (req, res) => {
 
 app.use('/authorities', authorities)
 
-app.listen(PORT, () => {
-  console.log(`Escuchando atte. Puerto: ${PORT}`)
+void sequelize.sync({ alter: true }).then(() => {
+  app.listen(PORT, () => {
+    console.log(`Escuchando atte. Puerto: ${PORT}`)
+  })
 })

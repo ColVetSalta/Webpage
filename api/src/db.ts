@@ -6,11 +6,8 @@ import { createRequire } from 'node:module'
 const {
   DB_USER, DB_PASSWORD, DB_HOST
 } = process.env
-const user = DB_USER as string
-const pass = DB_PASSWORD as string
-const host = DB_HOST as string
 
-const sequelize = new Sequelize(`postgres://${user}:${pass}@${host}/food`, {
+const sequelize = new Sequelize(`postgres://${DB_USER as string}:${DB_PASSWORD as string}@${DB_HOST as string}/food`, {
   logging: false, // set to console.log to see the raw SQL queries
   native: false // lets Sequelize know we can use pg-native for ~30% more speed
 })
