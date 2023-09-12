@@ -17,3 +17,10 @@ uncomment, set or check from tsconfig.json:
 
 npm install ts-node-dev -D
 ->On in package.json "dev": "ts-node-dev src/index.ts",
+
+npm install --save sequelize
+npm install --save pg pg-hstore # Postgres
+
+npm install @types/node -D 
+
+npm install dotenv
