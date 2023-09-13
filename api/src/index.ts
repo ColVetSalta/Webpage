@@ -1,5 +1,5 @@
 import express from 'express'
-import authorities from './routes/authorities'
+import authorities from './routes/matriculaRouter'
 import { getAuthorities, getOneOrg } from './services/authServices'
 import { sequelize } from './db'
 
