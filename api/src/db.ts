@@ -32,8 +32,18 @@ Object.keys(sequelize.models).forEach((modelName) => {
   const capitalizedModelName = model.name[0].toUpperCase() + model.name.slice(1)
   sequelize.models[capitalizedModelName] = model
 })
+const { Cargo, Matriculado, Organismo, Periodo, Resolucion } = sequelize.models
+
 // Aca vendrían las relaciones
-// const { Recipe, Diets } = sequelize.models as { Recipe: ModelType, Diets: ModelType };
+
+Matriculado.belongsToMany(Cargo, { through: 'periodo', foreignKey: 'mp' })
+Cargo.belongsToMany(Matriculado, { through: 'periodo', foreignKey: 'cargo_id' })
+
+Periodo.belongsToMany(Resolucion, { through: 'firmas', foreignKey: 'firma' })
+Resolucion.belongsToMany(Periodo, { through: 'firmas', foreignKey: 'resuelve' })
+
+Organismo.hasMany(Cargo, { foreignKey: 'org_id' })
+Organismo.hasMany(Resolucion, { foreignKey: 'org_id' })
 
 export default sequelize.models
 export { sequelize }
