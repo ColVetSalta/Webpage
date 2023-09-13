@@ -9,33 +9,34 @@ const {
 
 const sequelize = new Sequelize(`postgres://${DB_USER as string}:${DB_PASSWORD as string}@${DB_HOST as string}/food`, {
   logging: false, // set to console.log to see the raw SQL queries
-  native: false // lets Sequelize know we can use pg-native for ~30% more speed
+  native: false // lets Sequelize know we can use pg-native for ~30% more speed?
 })
 
 const basename = path.basename(__filename)
 
 const modelDefiners: Array< (NodeRequire | undefined)> = []
-// const modelDefiners: Array<(sequelize: Sequelize) => ModelType> = []
 
+// take all models created from directory.
 fs.readdirSync(path.join(__dirname, '/models'))
   .filter((file) => (file.indexOf('.') !== 0) && (file !== basename) && (file.slice(-3) === '.js'))
   .forEach((file) => {
     modelDefiners.push(createRequire(path.join(__dirname, '/models', file)))
   })
 
-// Inyectamos la conexion (sequelize) a todos los modelos
+// Connect Sequelize to all models.
 modelDefiners.forEach(model => (model != null) ? model(sequelize as unknown as string) : undefined)
-// Capitalizamos los nombres de los modelos ie: product => Product
 
+// First Capital letter ie: product => Product
 Object.keys(sequelize.models).forEach((modelName) => {
   const model = sequelize.models[modelName]
   const capitalizedModelName = model.name[0].toUpperCase() + model.name.slice(1)
   sequelize.models[capitalizedModelName] = model
 })
+
+// destructure elements to use easier.
 const { Cargo, Matriculado, Organismo, Periodo, Resolucion } = sequelize.models
 
-// Aca vendrían las relaciones
-
+// Model's relations:
 Matriculado.belongsToMany(Cargo, { through: 'periodo', foreignKey: 'mp' })
 Cargo.belongsToMany(Matriculado, { through: 'periodo', foreignKey: 'cargo_id' })
 
