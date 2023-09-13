@@ -1,23 +1,18 @@
 import { DataTypes } from 'sequelize'
 import { sequelize } from '../db'
 
-export const Authorities = sequelize.define('Authorities', {
+export const Periodo = sequelize.define('periodo', {
   id: {
-    type: DataTypes.STRING(4),
+    type: DataTypes.INTEGER,
     primaryKey: true
   },
-  nombre: {
+  fecha_inicio: {
     type: DataTypes.STRING,
     allowNull: false
   },
-  telefono: {
-    type: DataTypes.INTEGER,
-    allowNull: true
-  },
-  correoElectronico: {
+  fecha_final: {
     type: DataTypes.STRING,
-    allowNull: false,
-    unique: true
+    allowNull: false
   }
 }, {
   timestamps: true,
