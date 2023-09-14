@@ -1,28 +1,20 @@
 import express from 'express'
-import authorities from './routes/matriculaRouter'
-import { getAuthorities, getOneOrg } from './services/authServices'
 import { sequelize } from './db'
+import router from './routes'
 
 const app = express()
 app.use(express.json())
 
-const PORT = 3001
+const { PORT } = process.env
 
-app.get('/authorities', (_req, res) => {
-  console.log('¿quien dijo uno?' + new Date().toLocaleDateString())
-  const rta = getAuthorities()
-  res.send(rta)
-})
-app.get('/authorities/:org', (req, res) => {
-  const org = req.params.org
-  const rta = getOneOrg(org)
-  res.send(rta)
+app.get('/', (_req, res) => {
+  res.send('Base')
 })
 
-app.use('/authorities', authorities)
+app.use('/', router)
 
-void sequelize.sync({ force: true }).then(() => {
+void sequelize.sync({ alter: true }).then(() => {
   app.listen(PORT, () => {
-    console.log(`Escuchando atte. Puerto: ${PORT}`)
+    console.log(`Escuchando atte. Puerto: ${PORT as string}`)
   })
 })

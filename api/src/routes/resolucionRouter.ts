@@ -1,19 +1,21 @@
 import express from 'express'
 const resolucionRouter = express.Router()
 
-resolucionRouter.get('/', (_req, res) => {
-  res.send('Is getting')
+const ruote = '/resoluciones'
+
+resolucionRouter.get(ruote, (_req, res) => {
+  res.send('Is getting Res')
 })
 
-resolucionRouter.post('/', (_req, res) => {
-  res.send('Is posting')
+resolucionRouter.post(ruote, (_req, res) => {
+  res.send('Is posting Res')
 })
-resolucionRouter.put('/', (_req, res) => {
-  res.send('Is putting')
+resolucionRouter.put(ruote, (_req, res) => {
+  res.send('Is putting Res')
 })
 
-resolucionRouter.delete('/', (_req, res) => {
-  res.send('Is deleted')
+resolucionRouter.delete(ruote, (_req, res) => {
+  res.send('Is deleted Res')
 })
 
 export default resolucionRouter

@@ -2,18 +2,18 @@ import express from 'express'
 const matriculaRouter = express.Router()
 
 matriculaRouter.get('/', (_req, res) => {
-  res.send('Is getting')
+  res.send('Is getting Mat')
 })
 
 matriculaRouter.post('/', (_req, res) => {
-  res.send('Is posting')
+  res.send('Is posting Mat')
 })
 matriculaRouter.put('/', (_req, res) => {
-  res.send('Is putting')
+  res.send('Is putting Mat')
 })
 
 matriculaRouter.delete('/', (_req, res) => {
-  res.send('Is deleted')
+  res.send('Is deleted Mat')
 })
 
 export default matriculaRouter
