@@ -1,13 +1,12 @@
+/* eslint-disable @typescript-eslint/no-misused-promises */
 import express from 'express'
+import { getMatriculaHandler, postMatriculaHandler } from '../handlers/matriculaHandler'
 const matriculaRouter = express.Router()
 
-matriculaRouter.get('/', (_req, res) => {
-  res.send('Is getting Mat')
-})
+matriculaRouter.get('/', getMatriculaHandler)
 
-matriculaRouter.post('/', (_req, res) => {
-  res.send('Is posting Mat')
-})
+matriculaRouter.post('/', postMatriculaHandler)
+
 matriculaRouter.put('/', (_req, res) => {
   res.send('Is putting Mat')
 })
