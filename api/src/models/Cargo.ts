@@ -1,16 +1,20 @@
-import { DataTypes } from 'sequelize'
-import { sequelize } from '../db'
+import {
+  Table,
+  Model,
+  Column
+} from 'sequelize-typescript'
 
-export const Cargo = sequelize.define('cargo', {
-  id: {
-    type: DataTypes.INTEGER,
-    primaryKey: true
-  },
-  nombre: {
-    type: DataTypes.STRING,
-    allowNull: false
-  }
-}, {
+@Table({
+  tableName: 'cargo',
   timestamps: true,
   paranoid: true
 })
+export default class Cargo extends Model {
+  @Column({
+    primaryKey: true
+  })
+    id: number
+
+  @Column
+    nombre: string
+}

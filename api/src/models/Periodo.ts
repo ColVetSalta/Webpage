@@ -1,20 +1,23 @@
-import { DataTypes } from 'sequelize'
-import { sequelize } from '../db'
+import {
+  Table,
+  Model,
+  Column
+} from 'sequelize-typescript'
 
-export const Periodo = sequelize.define('periodo', {
-  id: {
-    type: DataTypes.INTEGER,
-    primaryKey: true
-  },
-  fecha_inicio: {
-    type: DataTypes.STRING,
-    allowNull: false
-  },
-  fecha_final: {
-    type: DataTypes.STRING,
-    allowNull: false
-  }
-}, {
+@Table({
+  tableName: 'periodo',
   timestamps: true,
   paranoid: true
 })
+export default class Periodo extends Model {
+  @Column({
+    primaryKey: true
+  })
+    id: number
+
+  @Column
+    fecha_inicio: string
+
+  @Column
+    fecha_final: string
+}

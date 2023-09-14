@@ -27,3 +27,7 @@ npm install dotenv
 
 npm install core
 
+npm install sequelize-typescript -D
+npm install @types/validator -D
+npm install reflect-metadata -D
+

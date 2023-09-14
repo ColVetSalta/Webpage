@@ -21,7 +21,7 @@ app.get('/authorities/:org', (req, res) => {
 
 app.use('/authorities', authorities)
 
-void sequelize.sync({ alter: true }).then(() => {
+void sequelize.sync({ force: true }).then(() => {
   app.listen(PORT, () => {
     console.log(`Escuchando atte. Puerto: ${PORT}`)
   })
