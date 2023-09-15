@@ -1,20 +1,20 @@
 /* eslint-disable @typescript-eslint/no-misused-promises */
 import express from 'express'
+import {
+  getOrganismoHandler,
+  modifyOrganismoHandler,
+  postOrganismoHandler,
+  deleteOrganismoHandler
+} from '../handlers/organismoHandler'
 const organismoRouter = express.Router()
 
-organismoRouter.get('/', (_req, res) => {
-  res.send('Is getting Org')
-})
+organismoRouter.get('/', getOrganismoHandler)
+organismoRouter.get('/:org', getOrganismoHandler)
 
-organismoRouter.post('/', (_req, res) => {
-  res.send('Is posting Org')
-})
-organismoRouter.put('/', (_req, res) => {
-  res.send('Is putting Org')
-})
+organismoRouter.post('/', postOrganismoHandler)
 
-organismoRouter.delete('/', (_req, res) => {
-  res.send('Is deleted Org')
-})
+organismoRouter.put('/', modifyOrganismoHandler)
+
+organismoRouter.delete('/', deleteOrganismoHandler)
 
 export default organismoRouter

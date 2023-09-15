@@ -1,9 +1,10 @@
+/* eslint-disable @typescript-eslint/strict-boolean-expressions */
 import { Request, Response } from 'express'
 import {
-  // editOrganismo,
-  // getOrganismo,
-  // getOrganismos,
-  // deleteOrganismo,
+  editOrgName,
+  getOrganismo,
+  getOrganismos,
+  deleteOrganismo,
   postOrganismo
 } from '../controllers/organismoController'
 
@@ -20,10 +21,16 @@ export async function postOrganismoHandler (req: Request, res: Response): Promis
     }
   }
 }
-export async function getOrganismoHandler (_req: Request, res: Response): Promise<void> {
+export async function getOrganismoHandler (req: Request, res: Response): Promise<void> {
+  const org = req.params.org
   try {
-    // const list = await getOrganismo()
-    res.status(200).json('list')
+    if (org) {
+      const organism = await getOrganismo(org)
+      res.status(200).json(organism)
+    } else {
+      const list = await getOrganismos()
+      res.status(200).json(list)
+    }
   } catch (error) {
     if (error instanceof Error) {
       res.status(404).json({ err: error.message })
@@ -32,9 +39,12 @@ export async function getOrganismoHandler (_req: Request, res: Response): Promis
     }
   }
 }
-export async function modifyOrganismoHandler (_req: Request, res: Response): Promise<void> {
+export async function modifyOrganismoHandler (req: Request, res: Response): Promise<void> {
+  const { nombre } = req.body
   try {
-    res.send('response')
+    await editOrgName(nombre)
+    const org = await getOrganismo(nombre)
+    res.send(org)
   } catch (error) {
     if (error instanceof Error) {
       res.status(404).json({ err: error.message })
@@ -43,10 +53,16 @@ export async function modifyOrganismoHandler (_req: Request, res: Response): Pro
     }
   }
 }
-export async function deleteOrganismoHandler (_req: Request, res: Response): Promise<void> {
+export async function deleteOrganismoHandler (req: Request, res: Response): Promise<void> {
+  const org = req.params.org
   try {
-    res.send('response')
+    const service = await deleteOrganismo(org)
+    res.status(200).json(service)
   } catch (error) {
-    res.send('error.message')
+    if (error instanceof Error) {
+      res.status(404).json({ err: error.message })
+    } else {
+      res.send(String(error))
+    }
   }
 }

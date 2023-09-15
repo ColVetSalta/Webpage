@@ -1,6 +1,11 @@
 /* eslint-disable @typescript-eslint/no-misused-promises */
 import express from 'express'
-import { getMatriculaHandler, modifyMatriculaHandler, postMatriculaHandler, deleteMatriculaHandler } from '../handlers/matriculaHandler'
+import {
+  getMatriculaHandler,
+  modifyMatriculaHandler,
+  postMatriculaHandler,
+  deleteMatriculaHandler
+} from '../handlers/matriculaHandler'
 const matriculaRouter = express.Router()
 
 matriculaRouter.get('/', getMatriculaHandler)

@@ -17,18 +17,18 @@ export async function getOrganismo (name: string): Promise<any> {
   })
   return org?.toJSON()
 }
-export async function editOrgName (name: string): Promise<[affectedCount: number]> {
+export async function editOrgName (nombre: string): Promise<[affectedCount: number]> {
   return await Organismo.update({
-    nombre: name
+    nombre
   }, {
     where: {
-      nombre: name
+      nombre
     }
   })
 }
 
-export async function deleteOrganismo (name: string): Promise<string> {
-  await Organismo.destroy({ where: { nombre: name } })
-    .then(() => console.log(`Organismo ${name} eliminado`))
-  return `Organismo ${name} eliminado`
+export async function deleteOrganismo (nombre: string): Promise<string> {
+  await Organismo.destroy({ where: { nombre } })
+    .then(() => console.log(`Organismo ${nombre} eliminado`))
+  return `Organismo ${nombre} eliminado`
 }
