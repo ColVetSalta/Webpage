@@ -1,3 +1,4 @@
+import { InferAttributes, InferCreationAttributes } from 'sequelize'
 import {
   Table,
   Model,
@@ -9,7 +10,7 @@ import {
   timestamps: true,
   paranoid: true
 })
-export default class Organismo extends Model {
+export default class Organismo extends Model<InferAttributes<Organismo>, InferCreationAttributes<Organismo>> {
   @Column({
     primaryKey: true
   })
