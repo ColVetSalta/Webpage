@@ -1,4 +1,4 @@
-import { InferAttributes, InferCreationAttributes } from 'sequelize'
+import { InferAttributes, InferCreationAttributes, CreationOptional } from 'sequelize'
 import {
   DataType,
   Table,
@@ -45,8 +45,8 @@ export default class Marticulado extends Model<InferAttributes<Marticulado>, Inf
   @Column({
     defaultValue: true
   })
-    active: boolean
+    active: CreationOptional<boolean>
 
   @BelongsToMany(() => Cargo, () => Periodo)
-    cargo: Cargo[]
+    cargo!: CreationOptional<Cargo[]>
 }
