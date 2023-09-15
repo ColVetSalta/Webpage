@@ -3,8 +3,11 @@ import {
   DataType,
   Table,
   Model,
-  Column
+  Column,
+  BelongsToMany
 } from 'sequelize-typescript'
+import Cargo from './Cargo'
+import Periodo from './Periodo'
 
 @Table({
   tableName: 'marticulado',
@@ -43,4 +46,7 @@ export default class Marticulado extends Model<InferAttributes<Marticulado>, Inf
     defaultValue: true
   })
     active: boolean
+
+  @BelongsToMany(() => Cargo, () => Periodo)
+    cargo: Cargo[]
 }

@@ -2,8 +2,14 @@ import { InferAttributes, InferCreationAttributes } from 'sequelize'
 import {
   Table,
   Model,
-  Column
+  Column,
+  ForeignKey,
+  BelongsToMany
 } from 'sequelize-typescript'
+import Marticulado from './Matriculado'
+import Cargo from './Cargo'
+import Resolucion from './Resolucion'
+import Firma from './Firma'
 
 @Table({
   tableName: 'periodo',
@@ -21,4 +27,15 @@ export default class Periodo extends Model<InferAttributes<Periodo>, InferCreati
 
   @Column
     fecha_final: string
+
+  @ForeignKey(() => Marticulado)
+  @Column
+    mp: number
+
+  @ForeignKey(() => Cargo)
+  @Column
+    cargoId: number
+
+  @BelongsToMany(() => Resolucion, () => Firma)
+    firma: Resolucion[]
 }

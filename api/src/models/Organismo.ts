@@ -2,8 +2,11 @@ import { InferAttributes, InferCreationAttributes } from 'sequelize'
 import {
   Table,
   Model,
-  Column
+  Column,
+  HasMany
 } from 'sequelize-typescript'
+import Cargo from './Cargo'
+import Resolucion from './Resolucion'
 
 @Table({
   tableName: 'organismo',
@@ -18,4 +21,10 @@ export default class Organismo extends Model<InferAttributes<Organismo>, InferCr
 
   @Column
     nombre: string
+
+  @HasMany(() => Cargo)
+    miembros: Cargo[]
+
+  @HasMany(() => Resolucion)
+    resoluciones: Resolucion[]
 }

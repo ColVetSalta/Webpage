@@ -2,8 +2,11 @@ import { InferAttributes, InferCreationAttributes } from 'sequelize'
 import {
   Table,
   Model,
-  Column
+  Column,
+  BelongsToMany
 } from 'sequelize-typescript'
+import Firma from './Firma'
+import Periodo from './Periodo'
 
 @Table({
   tableName: 'resolucion',
@@ -32,6 +35,6 @@ export default class Resolucion extends Model<InferAttributes<Resolucion>, Infer
   @Column
     resuelve: string
 
-  @Column
-    firma: string
+  @BelongsToMany(() => Periodo, () => Firma)
+    firmas: Periodo[]
 }
