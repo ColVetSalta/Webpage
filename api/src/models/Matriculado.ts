@@ -1,3 +1,4 @@
+import { InferAttributes, InferCreationAttributes } from 'sequelize'
 import {
   DataType,
   Table,
@@ -10,7 +11,7 @@ import {
   timestamps: true,
   paranoid: true
 })
-export default class Marticulado extends Model {
+export default class Marticulado extends Model<InferAttributes<Marticulado>, InferCreationAttributes<Marticulado>> {
   @Column({
     primaryKey: true
   })

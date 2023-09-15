@@ -1,18 +1,15 @@
 /* eslint-disable @typescript-eslint/no-misused-promises */
 import express from 'express'
-import { getMatriculaHandler, postMatriculaHandler } from '../handlers/matriculaHandler'
+import { getMatriculaHandler, modifyMatriculaHandler, postMatriculaHandler, deleteMatriculaHandler } from '../handlers/matriculaHandler'
 const matriculaRouter = express.Router()
 
 matriculaRouter.get('/', getMatriculaHandler)
+matriculaRouter.get('/:mp', getMatriculaHandler)
 
 matriculaRouter.post('/', postMatriculaHandler)
 
-matriculaRouter.put('/', (_req, res) => {
-  res.send('Is putting Mat')
-})
+matriculaRouter.put('/:mp', modifyMatriculaHandler)
 
-matriculaRouter.delete('/', (_req, res) => {
-  res.send('Is deleted Mat')
-})
+matriculaRouter.delete('/:mp', deleteMatriculaHandler)
 
 export default matriculaRouter

@@ -82,3 +82,4 @@ export interface News {
   fullText: string
   date: string
 }
+export interface datat {[key: string]: any}

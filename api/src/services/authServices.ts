@@ -2,7 +2,7 @@ import InstData from './API.json'
 import {
   // Organismo,
   Inst, Organismo
-} from './types'
+} from '../types'
 
 const authority: Inst = InstData.autoridades
 export const getAuthorities = (): Inst => authority
