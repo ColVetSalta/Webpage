@@ -38,7 +38,7 @@ export default class Resolucion extends Model<InferAttributes<Resolucion>, Infer
 
   @ForeignKey(() => Organismo)
   @Column
-    orgId: number
+    orgId: string
 
   @BelongsTo(() => Organismo)
     org: Organismo

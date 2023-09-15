@@ -14,7 +14,9 @@ import Resolucion from './Resolucion'
   paranoid: true
 })
 export default class Organismo extends Model<InferAttributes<Organismo>, InferCreationAttributes<Organismo>> {
-  @Column
+  @Column({
+    primaryKey: true
+  })
     nombre: string
 
   @HasMany(() => Cargo)
