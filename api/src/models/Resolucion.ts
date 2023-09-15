@@ -17,11 +17,6 @@ import Organismo from './Organismo'
   paranoid: true
 })
 export default class Resolucion extends Model<InferAttributes<Resolucion>, InferCreationAttributes<Resolucion>> {
-  @Column({
-    primaryKey: true
-  })
-    id: number
-
   @Column
     num: number
 

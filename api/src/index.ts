@@ -13,7 +13,7 @@ app.get('/', (_req, res) => {
 
 app.use('/', router)
 
-void sequelize.sync({ force: true }).then(() => {
+void sequelize.sync({ alter: true }).then(() => {
   app.listen(PORT, () => {
     console.log(`Escuchando atte. Puerto: ${PORT as string}`)
   })

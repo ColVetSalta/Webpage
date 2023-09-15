@@ -17,11 +17,6 @@ import Resolucion from './Resolucion'
   paranoid: true
 })
 export default class Firma extends Model<InferAttributes<Firma>, InferCreationAttributes<Firma>> {
-  @Column({
-    primaryKey: true
-  })
-    id: number
-
   @ForeignKey(() => Periodo)
   @Column
     perId: number

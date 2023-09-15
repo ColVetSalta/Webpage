@@ -17,11 +17,6 @@ import Firma from './Firma'
   paranoid: true
 })
 export default class Periodo extends Model<InferAttributes<Periodo>, InferCreationAttributes<Periodo>> {
-  @Column({
-    primaryKey: true
-  })
-    id: number
-
   @Column
     fecha_inicio: string
 

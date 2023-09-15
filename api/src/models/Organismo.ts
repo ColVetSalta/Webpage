@@ -1,4 +1,4 @@
-import { InferAttributes, InferCreationAttributes } from 'sequelize'
+import { CreationOptional, InferAttributes, InferCreationAttributes } from 'sequelize'
 import {
   Table,
   Model,
@@ -14,17 +14,12 @@ import Resolucion from './Resolucion'
   paranoid: true
 })
 export default class Organismo extends Model<InferAttributes<Organismo>, InferCreationAttributes<Organismo>> {
-  @Column({
-    primaryKey: true
-  })
-    id: number
-
   @Column
     nombre: string
 
   @HasMany(() => Cargo)
-    miembros: Cargo[]
+    miembros: CreationOptional<Cargo[]>
 
   @HasMany(() => Resolucion)
-    resoluciones: Resolucion[]
+    resoluciones: CreationOptional<Resolucion[]>
 }

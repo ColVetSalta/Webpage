@@ -17,11 +17,6 @@ import Organismo from './Organismo'
   paranoid: true
 })
 export default class Cargo extends Model<InferAttributes<Cargo>, InferCreationAttributes<Cargo>> {
-  @Column({
-    primaryKey: true
-  })
-    id: number
-
   @Column
     nombre: string
 
