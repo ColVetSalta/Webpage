@@ -2,9 +2,12 @@ import { InferAttributes, InferCreationAttributes } from 'sequelize'
 import {
   Table,
   Model,
-  Column
+  Column,
+  ForeignKey
 //   BelongsToMany
 } from 'sequelize-typescript'
+import Periodo from './Periodo'
+import Resolucion from './Resolucion'
 // import Marticulado from './Matriculado'
 // import Periodo from './Periodo'
 
@@ -18,4 +21,12 @@ export default class Firma extends Model<InferAttributes<Firma>, InferCreationAt
     primaryKey: true
   })
     id: number
+
+  @ForeignKey(() => Periodo)
+  @Column
+    perId: number
+
+  @ForeignKey(() => Resolucion)
+  @Column
+    resId: number
 }

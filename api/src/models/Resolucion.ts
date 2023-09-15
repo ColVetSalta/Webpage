@@ -3,10 +3,13 @@ import {
   Table,
   Model,
   Column,
-  BelongsToMany
+  BelongsToMany,
+  ForeignKey,
+  BelongsTo
 } from 'sequelize-typescript'
 import Firma from './Firma'
 import Periodo from './Periodo'
+import Organismo from './Organismo'
 
 @Table({
   tableName: 'resolucion',
@@ -19,7 +22,10 @@ export default class Resolucion extends Model<InferAttributes<Resolucion>, Infer
   })
     id: number
 
-  @Column({ primaryKey: true })
+  @Column
+    num: number
+
+  @Column
     year: number
 
   // id_org: {...}. me falta averiguar como declarar el ID de Organizacion como una PK siendo una FK.
@@ -34,6 +40,13 @@ export default class Resolucion extends Model<InferAttributes<Resolucion>, Infer
 
   @Column
     resuelve: string
+
+  @ForeignKey(() => Organismo)
+  @Column
+    orgId: number
+
+  @BelongsTo(() => Organismo)
+    org: Organismo
 
   @BelongsToMany(() => Periodo, () => Firma)
     firmas: Periodo[]

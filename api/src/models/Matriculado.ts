@@ -43,6 +43,7 @@ export default class Marticulado extends Model<InferAttributes<Marticulado>, Inf
     direccion: string
 
   @Column({
+    type: DataType.BOOLEAN,
     defaultValue: true
   })
     active: CreationOptional<boolean>

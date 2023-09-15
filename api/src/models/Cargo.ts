@@ -4,7 +4,8 @@ import {
   Model,
   Column,
   BelongsToMany,
-  BelongsTo
+  BelongsTo,
+  ForeignKey
 } from 'sequelize-typescript'
 import Marticulado from './Matriculado'
 import Periodo from './Periodo'
@@ -23,6 +24,10 @@ export default class Cargo extends Model<InferAttributes<Cargo>, InferCreationAt
 
   @Column
     nombre: string
+
+  @ForeignKey(() => Organismo)
+  @Column
+    orgId: number
 
   @BelongsTo(() => Organismo)
     org: Organismo

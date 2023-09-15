@@ -17,7 +17,7 @@ export default class Organismo extends Model<InferAttributes<Organismo>, InferCr
   @Column({
     primaryKey: true
   })
-    id: string
+    id: number
 
   @Column
     nombre: string
