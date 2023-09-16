@@ -1,14 +1,13 @@
 import Cargo from '../models/Cargo'
+// import Organismo from '../models/Organismo'
 
 export async function postCargo ({
   nombre,
-  orgId,
-  org
-}: Cargo): Promise<any> {
+  orgid
+}: Pick<Cargo, 'nombre' | 'orgid' >): Promise<Cargo> {
   return await Cargo.create({
     nombre,
-    orgId,
-    org
+    orgid
   })
 }
 export async function getCargos (): Promise<Cargo[]> {
@@ -23,7 +22,7 @@ export async function getCargo (id: number): Promise<any> {
 export async function editCargo (data: Cargo): Promise<[affectedCount: number]> {
   return await Cargo.update({
     nombre: data.nombre,
-    orgId: data.orgId
+    orgid: data.orgid
   },
   {
     where: {

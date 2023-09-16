@@ -59,6 +59,25 @@ export async function modifyMatriculaHandler (req: Request, res: Response): Prom
     }
   }
 }
+// export async function newCargotoMatriculaHandler (req: Request, res: Response): Promise<void> {
+//   const { nombre, orgid } = req.body
+//   const mp = req.params.mp
+//   try {
+//     const matriculado = await getMatriculado(Number(mp))
+//     Object.keys(matriculado).forEach((att) => {
+//       Object.keys(data).includes(att) && (matriculado[att] = data[att])
+//     })
+//     await editMatriculado(matriculado)
+//     const modify = await getMatriculado(Number(mp))
+//     res.status(200).json(modify)
+//   } catch (error) {
+//     if (error instanceof Error) {
+//       res.status(404).json({ err: error.message })
+//     } else {
+//       res.send(String(error))
+//     }
+//   }
+// }
 
 // Un matriculado no se puede eliminar, el modelo es paranoid: true.
 // Se considera esta función para la cancelacion de matrícula:

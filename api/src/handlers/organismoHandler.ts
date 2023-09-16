@@ -5,7 +5,8 @@ import {
   getOrganismo,
   getOrganismos,
   deleteOrganismo,
-  postOrganismo
+  postOrganismo,
+  addCargoToOrg
 } from '../controllers/organismoController'
 
 export async function postOrganismoHandler (req: Request, res: Response): Promise<void> {
@@ -40,10 +41,17 @@ export async function getOrganismoHandler (req: Request, res: Response): Promise
   }
 }
 export async function modifyOrganismoHandler (req: Request, res: Response): Promise<void> {
-  const { nombre } = req.body
+  const { nombre, cargo } = req.body
+  let orgid = String(req.query.orgid)
   try {
-    await editOrgName(nombre)
-    const org = await getOrganismo(nombre)
+    if (cargo) {
+      await addCargoToOrg({ cargo, orgid })
+    }
+    if (nombre) {
+      await editOrgName({ orgid, nombre })
+      orgid = nombre
+    }
+    const org = await getOrganismo(orgid)
     res.send(org)
   } catch (error) {
     if (error instanceof Error) {

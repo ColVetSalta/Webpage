@@ -3,12 +3,14 @@
 import Periodo from '../models/Periodo'
 
 export async function postPeriodo ({
+  id,
   fecha_inicio,
   fecha_final,
   mp,
   cargoId
 }: Periodo): Promise<any> {
   return await Periodo.create({
+    id,
     fecha_inicio,
     fecha_final,
     mp,
