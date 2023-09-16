@@ -10,11 +10,11 @@ import Cargo from './Cargo'
 import Periodo from './Periodo'
 
 @Table({
-  tableName: 'marticulado',
+  tableName: 'matriculado',
   timestamps: true,
   paranoid: true
 })
-export default class Marticulado extends Model<InferAttributes<Marticulado>, InferCreationAttributes<Marticulado>> {
+export default class Matriculado extends Model<InferAttributes<Matriculado>, InferCreationAttributes<Matriculado>> {
   @Column({
     primaryKey: true
   })

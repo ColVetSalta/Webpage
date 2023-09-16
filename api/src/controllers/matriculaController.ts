@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-import Marticulado from '../models/Matriculado'
+import Matriculado from '../models/Matriculado'
 import { datat } from '../types'
 
-export async function postMatriculado (data: Marticulado): Promise<Marticulado> {
-  return await Marticulado.create({
+export async function postMatriculado (data: Matriculado): Promise<Matriculado> {
+  return await Matriculado.create({
     mp: data.mp,
     nombre: data.nombre,
     apellido: data.apellido,
@@ -13,17 +13,17 @@ export async function postMatriculado (data: Marticulado): Promise<Marticulado> 
     direccion: data.direccion
   })
 }
-export async function getMatriculados (): Promise<Marticulado[]> {
-  return await Marticulado.findAll()
+export async function getMatriculados (): Promise<Matriculado[]> {
+  return await Matriculado.findAll()
 }
 export async function getMatriculado (mp: number): Promise<any> {
-  const mat = await Marticulado.findOne({
+  const mat = await Matriculado.findOne({
     where: { mp }
   })
   return mat?.toJSON()
 }
-export async function editMatriculado (data: Marticulado | datat): Promise<[affectedCount: number]> {
-  return await Marticulado.update({
+export async function editMatriculado (data: Matriculado | datat): Promise<[affectedCount: number]> {
+  return await Matriculado.update({
     nombre: data.nombre,
     apellido: data.apellido,
     telefono: data.telefono,
@@ -38,7 +38,7 @@ export async function editMatriculado (data: Marticulado | datat): Promise<[affe
   })
 }
 export async function deleteMatriculado (mp: number): Promise<string> {
-  await Marticulado.destroy({ where: { mp } })
+  await Matriculado.destroy({ where: { mp } })
     .then(() => console.log(`Matricula ${mp} cancelada`))
   return `Matricula ${mp} cancelada`
 }

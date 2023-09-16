@@ -1,20 +1,20 @@
 /* eslint-disable @typescript-eslint/no-misused-promises */
 import express from 'express'
+import {
+  postResolucionHandler,
+  getResolucionHandler,
+  modifyResolucionHandler,
+  deleteResolucionHandler
+} from '../handlers/resolucionHandler'
 const resolucionRouter = express.Router()
 
-resolucionRouter.get('/', (_req, res) => {
-  res.send('Is getting Res')
-})
+resolucionRouter.get('/', getResolucionHandler)
 
-resolucionRouter.post('/', (_req, res) => {
-  res.send('Is posting Res')
-})
-resolucionRouter.put('/', (_req, res) => {
-  res.send('Is putting Res')
-})
+resolucionRouter.post('/', postResolucionHandler)
 
-resolucionRouter.delete('/', (_req, res) => {
-  res.send('Is deleted Res')
-})
+resolucionRouter.put('/', modifyResolucionHandler)
+resolucionRouter.put('/:id', modifyResolucionHandler)
+
+resolucionRouter.delete('/:id', deleteResolucionHandler)
 
 export default resolucionRouter
