@@ -1,9 +1,8 @@
 import Organismo from '../models/Organismo'
 
-export async function postOrganismo (
-  nombre: string): Promise<any> {
+export async function postOrganismo (data: Organismo): Promise<any> {
   return await Organismo.create({
-    nombre
+    nombre: data.nombre
   })
 }
 export async function getOrganismos (): Promise<Organismo[]> {

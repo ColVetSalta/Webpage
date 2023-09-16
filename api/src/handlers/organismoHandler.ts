@@ -22,10 +22,10 @@ export async function postOrganismoHandler (req: Request, res: Response): Promis
   }
 }
 export async function getOrganismoHandler (req: Request, res: Response): Promise<void> {
-  const org = req.params.org
+  const org = req.query.org
   try {
     if (org) {
-      const organism = await getOrganismo(org)
+      const organism = await getOrganismo(String(org))
       res.status(200).json(organism)
     } else {
       const list = await getOrganismos()

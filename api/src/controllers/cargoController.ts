@@ -2,11 +2,13 @@ import Cargo from '../models/Cargo'
 
 export async function postCargo ({
   nombre,
-  orgId
+  orgId,
+  org
 }: Cargo): Promise<any> {
   return await Cargo.create({
     nombre,
-    orgId
+    orgId,
+    org
   })
 }
 export async function getCargos (): Promise<Cargo[]> {

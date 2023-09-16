@@ -20,10 +20,12 @@ export default class Cargo extends Model<InferAttributes<Cargo>, InferCreationAt
   @Column
     nombre: string
 
-  @BelongsTo(() => Organismo)
   @ForeignKey(() => Organismo)
   @Column
-    orgId: number
+    orgId: string
+
+  @BelongsTo(() => Organismo)
+    org: Organismo
 
   @BelongsToMany(() => Marticulado, () => Periodo)
     mp: CreationOptional<Marticulado[]>
