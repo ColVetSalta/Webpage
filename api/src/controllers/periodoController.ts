@@ -1,18 +1,22 @@
-// import Periodo from '../models/Periodo'
+/* eslint-disable @typescript-eslint/naming-convention */
 // import Cargo from '../models/Cargo'
 
-/* export async function postPeriodo ({
-fecha_inicio,
-fecha_final,
-mp,
-cargoId
+import Periodo from '../models/Periodo'
+
+export async function postPeriodo ({
+  fecha_inicio,
+  fecha_final,
+  mp,
+  cargoId
 }: Periodo): Promise<any> {
   return await Periodo.create({
-    nombre,
-    orgId
+    fecha_inicio,
+    fecha_final,
+    mp,
+    cargoId
   })
 }
-*/
+
 /* export async function getPeriodos (): Promise<Periodo[]> {
   return await Periodo.findAll()
 }
