@@ -1,4 +1,4 @@
-import { InferAttributes, InferCreationAttributes } from 'sequelize'
+import { CreationOptional, InferAttributes, InferCreationAttributes } from 'sequelize'
 import {
   Table,
   Model,
@@ -32,5 +32,5 @@ export default class Periodo extends Model<InferAttributes<Periodo>, InferCreati
     cargoId: number
 
   @BelongsToMany(() => Resolucion, () => Firma)
-    firma: Resolucion[]
+    firma: CreationOptional<Resolucion[]>
 }

@@ -1,15 +1,5 @@
 import Resolucion from '../models/Resolucion'
 
-// interface ResolucionType {
-//   id: number | undefined
-//   year: number
-//   fecha: string
-//   visto: string
-//   considerando: string
-//   resuelve: string
-//   firma: string
-// }
-
 export async function postResolucion ({
   num,
   year,

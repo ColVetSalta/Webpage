@@ -1,4 +1,4 @@
-import { InferAttributes, InferCreationAttributes } from 'sequelize'
+import { CreationOptional, InferAttributes, InferCreationAttributes } from 'sequelize'
 import {
   Table,
   Model,
@@ -20,13 +20,11 @@ export default class Cargo extends Model<InferAttributes<Cargo>, InferCreationAt
   @Column
     nombre: string
 
+  @BelongsTo(() => Organismo)
   @ForeignKey(() => Organismo)
   @Column
     orgId: number
 
-  @BelongsTo(() => Organismo)
-    org: Organismo
-
   @BelongsToMany(() => Marticulado, () => Periodo)
-    mp: Marticulado[]
+    mp: CreationOptional<Marticulado[]>
 }
