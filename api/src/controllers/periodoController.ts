@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-// import Cargo from '../models/Cargo'
 
 import Periodo from '../models/Periodo'
 
