@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable @typescript-eslint/strict-boolean-expressions */
 import { Request, Response } from 'express'
 import {
@@ -8,6 +9,8 @@ import {
   postMatriculado
 } from '../controllers/matriculaController'
 import { datat } from '../types'
+import { addCargoToMat } from '../controllers/cargoController'
+import { getOrganismo } from '../controllers/organismoController'
 
 export async function postMatriculaHandler (req: Request, res: Response): Promise<void> {
   const data = req.body
@@ -41,7 +44,7 @@ export async function getMatriculaHandler (req: Request, res: Response): Promise
   }
 }
 export async function modifyMatriculaHandler (req: Request, res: Response): Promise<void> {
-  const data: datat = req.body
+  const data: datat = req.body // falta validar datos
   const mp = req.params.mp
   try {
     const matriculado = await getMatriculado(Number(mp))
@@ -59,25 +62,21 @@ export async function modifyMatriculaHandler (req: Request, res: Response): Prom
     }
   }
 }
-// export async function newCargotoMatriculaHandler (req: Request, res: Response): Promise<void> {
-//   const { nombre, orgid } = req.body
-//   const mp = req.params.mp
-//   try {
-//     const matriculado = await getMatriculado(Number(mp))
-//     Object.keys(matriculado).forEach((att) => {
-//       Object.keys(data).includes(att) && (matriculado[att] = data[att])
-//     })
-//     await editMatriculado(matriculado)
-//     const modify = await getMatriculado(Number(mp))
-//     res.status(200).json(modify)
-//   } catch (error) {
-//     if (error instanceof Error) {
-//       res.status(404).json({ err: error.message })
-//     } else {
-//       res.send(String(error))
-//     }
-//   }
-// }
+export async function newCargoToMatriculaHandler (req: Request, res: Response): Promise<void> {
+  const { cargo, orgid, fecha_inicio, fecha_final } = req.body
+  const mp = Number(req.params.mp)
+  try {
+    await addCargoToMat({ mp, cargo, orgid, fecha_inicio, fecha_final })
+    const org = await getOrganismo(orgid)
+    res.send(org)
+  } catch (error) {
+    if (error instanceof Error) {
+      res.status(404).json({ err: error.message })
+    } else {
+      res.send(String(error))
+    }
+  }
+}
 
 // Un matriculado no se puede eliminar, el modelo es paranoid: true.
 // Se considera esta función para la cancelacion de matrícula:

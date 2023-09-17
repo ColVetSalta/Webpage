@@ -1,4 +1,7 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 import Cargo from '../models/Cargo'
+import Matriculado from '../models/Matriculado'
+import Organismo from '../models/Organismo'
 // import Organismo from '../models/Organismo'
 
 export async function postCargo ({
@@ -10,6 +13,35 @@ export async function postCargo ({
     orgid
   })
 }
+
+export async function addCargoToOrg ({ orgid, cargo }: { orgid: string, cargo: string }): Promise<any> {
+  const org = await Organismo.findByPk(orgid)
+  await org?.$add('miembros', await postCargo({ nombre: cargo, orgid }))
+  const orgAdded = await org?.$get('miembros')
+  return orgAdded
+}
+
+export async function addCargoToMat ({ mp, cargo, orgid, fecha_inicio, fecha_final }: { mp: number, cargo: string, orgid: string, fecha_inicio: string, fecha_final: string }): Promise<any> {
+  const mat = await Matriculado.findByPk(mp)
+  const car = await Cargo.findOne({
+    where: {
+      nombre: cargo,
+      orgid
+    }
+  })
+  if (car === null) throw new Error(`No se encuentra el cargo de ${cargo} para el organismo ${orgid}`)
+  if (mat === null) throw new Error(`No se encuentra disponible la matrícula N° ${mp}`)
+  await mat?.$add('cargo', car, {
+    through: {
+      fecha_inicio,
+      fecha_final
+    }
+  })
+  const matriculaAdded = await mat?.$get('cargo')
+  console.log(matriculaAdded)
+  return matriculaAdded
+}
+
 export async function getCargos (): Promise<Cargo[]> {
   return await Cargo.findAll()
 }

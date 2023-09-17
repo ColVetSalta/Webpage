@@ -4,7 +4,8 @@ import {
   Model,
   Column,
   ForeignKey,
-  BelongsToMany
+  BelongsToMany,
+  DataType
 } from 'sequelize-typescript'
 import Marticulado from './Matriculado'
 import Cargo from './Cargo'
@@ -18,9 +19,12 @@ import Firma from './Firma'
 })
 export default class Periodo extends Model<InferAttributes<Periodo>, InferCreationAttributes<Periodo>> {
   @Column({
-    primaryKey: true
+    type: DataType.INTEGER,
+    primaryKey: true,
+    autoIncrement: true,
+    unique: true
   })
-    id: number
+    id: CreationOptional<number>
 
   @Column
     fecha_inicio: string
@@ -29,11 +33,15 @@ export default class Periodo extends Model<InferAttributes<Periodo>, InferCreati
     fecha_final: string
 
   @ForeignKey(() => Marticulado)
-  @Column
+  @Column({
+    primaryKey: true
+  })
     mp: number
 
   @ForeignKey(() => Cargo)
-  @Column
+  @Column({
+    primaryKey: true
+  })
     cargoId: number
 
   @BelongsToMany(() => Resolucion, () => Firma)

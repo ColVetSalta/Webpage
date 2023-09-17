@@ -5,9 +5,9 @@ import {
   getOrganismo,
   getOrganismos,
   deleteOrganismo,
-  postOrganismo,
-  addCargoToOrg
+  postOrganismo
 } from '../controllers/organismoController'
+import { addCargoToOrg } from '../controllers/cargoController'
 
 export async function postOrganismoHandler (req: Request, res: Response): Promise<void> {
   const data = req.body
