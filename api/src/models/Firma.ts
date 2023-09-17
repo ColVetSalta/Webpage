@@ -19,9 +19,9 @@ import Resolucion from './Resolucion'
 export default class Firma extends Model<InferAttributes<Firma>, InferCreationAttributes<Firma>> {
   @ForeignKey(() => Periodo)
   @Column
-    perId: number
+    perid: number
 
   @ForeignKey(() => Resolucion)
   @Column
-    resId: number
+    resid: number
 }

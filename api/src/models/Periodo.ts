@@ -42,7 +42,7 @@ export default class Periodo extends Model<InferAttributes<Periodo>, InferCreati
   @Column({
     primaryKey: true
   })
-    cargoId: number
+    cargoid: number
 
   @BelongsToMany(() => Resolucion, () => Firma)
     firma: CreationOptional<Resolucion[]>
