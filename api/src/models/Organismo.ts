@@ -17,7 +17,7 @@ export default class Organismo extends Model<InferAttributes<Organismo>, InferCr
   @Column({
     primaryKey: true
   })
-    nombre: string
+    nombre: string // ver el tema de la mayuscula en el req.query
 
   @HasMany(() => Cargo)
     miembros: CreationOptional<Cargo[]>

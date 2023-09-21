@@ -31,3 +31,6 @@ npm install sequelize-typescript -D
 npm install @types/validator -D
 npm install reflect-metadata -D
 
+
+// como hacer objetos dinamicos en typescript
+https://askjavascript.com/how-to-dynamically-assign-properties-to-an-object-in-typescript/

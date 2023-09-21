@@ -2,7 +2,7 @@
 import Cargo from '../models/Cargo'
 import Matriculado from '../models/Matriculado'
 import Organismo from '../models/Organismo'
-// import Organismo from '../models/Organismo'
+import { format } from 'date-fns'
 
 export async function postCargo ({
   nombre,
@@ -22,6 +22,8 @@ export async function addCargoToOrg ({ orgid, cargo }: { orgid: string, cargo: s
 }
 
 export async function addCargoToMat ({ mp, cargo, orgid, fecha_inicio, fecha_final }: { mp: number, cargo: string, orgid: string, fecha_inicio: string, fecha_final: string }): Promise<any> {
+  const fechaIFormateada = format(new Date(fecha_inicio), "yyyy-MM-dd'T'HH:mm:ss.SSSxxx")
+  const fechaFFormateada = format(new Date(fecha_final), "yyyy-MM-dd'T'HH:mm:ss.SSSxxx")
   const mat = await Matriculado.findByPk(mp)
   const car = await Cargo.findOne({
     where: {
@@ -33,8 +35,8 @@ export async function addCargoToMat ({ mp, cargo, orgid, fecha_inicio, fecha_fin
   if (mat === null) throw new Error(`No se encuentra disponible la matrícula N° ${mp}`)
   await mat?.$add('cargo', car, {
     through: {
-      fecha_inicio,
-      fecha_final
+      fecha_inicio: fechaIFormateada,
+      fecha_final: fechaFFormateada
     }
   })
   const matriculaAdded = await mat?.$get('cargo')

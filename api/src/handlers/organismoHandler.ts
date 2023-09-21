@@ -23,10 +23,10 @@ export async function postOrganismoHandler (req: Request, res: Response): Promis
   }
 }
 export async function getOrganismoHandler (req: Request, res: Response): Promise<void> {
-  const org = req.query.org
+  const { org, date } = req.query
   try {
     if (org) {
-      const organism = await getOrganismo(String(org))
+      const organism = await getOrganismo(String(org), String(date))
       res.status(200).json(organism)
     } else {
       const list = await getOrganismos()
@@ -41,7 +41,7 @@ export async function getOrganismoHandler (req: Request, res: Response): Promise
   }
 }
 export async function modifyOrganismoHandler (req: Request, res: Response): Promise<void> {
-  const { nombre, cargo } = req.body
+  const { nombre, cargo, date } = req.body
   let orgid = String(req.query.orgid)
   try {
     if (cargo) {
@@ -51,7 +51,7 @@ export async function modifyOrganismoHandler (req: Request, res: Response): Prom
       await editOrgName({ orgid, nombre })
       orgid = nombre
     }
-    const org = await getOrganismo(orgid)
+    const org = await getOrganismo(orgid, date)
     res.send(org)
   } catch (error) {
     if (error instanceof Error) {

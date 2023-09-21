@@ -67,7 +67,7 @@ export async function newCargoToMatriculaHandler (req: Request, res: Response): 
   const mp = Number(req.params.mp)
   try {
     await addCargoToMat({ mp, cargo, orgid, fecha_inicio, fecha_final })
-    const org = await getOrganismo(orgid)
+    const org = await getOrganismo(orgid, String(new Date()))
     res.send(org)
   } catch (error) {
     if (error instanceof Error) {

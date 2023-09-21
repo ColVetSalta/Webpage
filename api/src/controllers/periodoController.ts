@@ -7,14 +7,14 @@ export async function postPeriodo ({
   fecha_inicio,
   fecha_final,
   mp,
-  cargoId
+  cargoid
 }: Periodo): Promise<any> {
   return await Periodo.create({
     id,
     fecha_inicio,
     fecha_final,
     mp,
-    cargoId
+    cargoid
   })
 }
 
@@ -34,7 +34,7 @@ export async function editPeriodo (data: Periodo): Promise<[affectedCount: numbe
     fecha_inicio: data.fecha_inicio,
     fecha_final: data.fecha_final,
     mp: data.mp,
-    cargoId: data.cargoId
+    cargoid: data.cargoid
   },
   {
     where: {

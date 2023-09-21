@@ -26,7 +26,12 @@ export default class Periodo extends Model<InferAttributes<Periodo>, InferCreati
   })
     id: CreationOptional<number>
 
-  @Column
+  @Column({
+    type: DataType.DATE,
+    get () {
+      return new Date(this.getDataValue('fecha_inicio'))
+    }
+  })
     fecha_inicio: string
 
   @Column

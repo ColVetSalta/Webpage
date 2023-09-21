@@ -8,7 +8,7 @@ export async function postResolucion ({
   considerando,
   resuelve,
   org,
-  orgId,
+  orgid,
   firmas
 
 }: Resolucion): Promise<any> {
@@ -20,7 +20,7 @@ export async function postResolucion ({
     considerando,
     resuelve,
     org,
-    orgId,
+    orgid,
     firmas
   })
 }
@@ -42,7 +42,7 @@ export async function editResolucion (data: Resolucion): Promise<[affectedCount:
     considerando: data.considerando,
     resuelve: data.resuelve,
     org: data.org,
-    orgId: data.orgId,
+    orgid: data.orgid,
     firmas: data.firmas
   },
   {
