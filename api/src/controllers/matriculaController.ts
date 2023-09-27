@@ -10,7 +10,8 @@ export async function postMatriculado (data: Matriculado): Promise<Matriculado> 
     telefono: data.telefono,
     correo_electronico: data.correo_electronico,
     f_nacimiento: data.f_nacimiento,
-    direccion: data.direccion
+    direccion: data.direccion,
+    f_alta: data.f_alta
   })
 }
 export async function getMatriculados (): Promise<Matriculado[]> {
@@ -29,7 +30,8 @@ export async function editMatriculado (data: Matriculado | datat): Promise<[affe
     telefono: data.telefono,
     correo_electronico: data.correo_electronico,
     f_nacimiento: data.f_nacimiento,
-    direccion: data.direccion
+    direccion: data.direccion,
+    f_alta: data.f_alta
   },
   {
     where: {
