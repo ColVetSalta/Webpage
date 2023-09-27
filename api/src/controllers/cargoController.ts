@@ -53,6 +53,13 @@ export async function getCargo (id: number): Promise<any> {
   })
   return charge?.toJSON()
 }
+
+export async function getCargoById (nombre: string, orgid: number): Promise<any> {
+  const charge = await Cargo.findOne({
+    where: { nombre, orgid }
+  })
+  return charge?.toJSON()
+}
 export async function editCargo (data: Cargo): Promise<[affectedCount: number]> {
   return await Cargo.update({
     nombre: data.nombre,
