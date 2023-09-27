@@ -34,3 +34,13 @@ npm install reflect-metadata -D
 
 // como hacer objetos dinamicos en typescript
 https://askjavascript.com/how-to-dynamically-assign-properties-to-an-object-in-typescript/
+
+1- cambiar tipo de dato date para: 
+<> nacimiento en modelo matriculado
+<> tambien se puede agregar fecha de alta (que no necesariamente es la de creacion del registro)
+<> Modelo Periodo fecha inicio y fin.
+
+2- Revisar el proceso de creacion de un pedríodo, si es afectado por un put, no se registran periodos pasados. No se esta creando uno nuevo... PUT (ORGANISMO)-HANDLER-> FINDORCREATE INSTANCE OF PERIODO
+
+3- delete de matriculado, primero hay que poner active = false.
+

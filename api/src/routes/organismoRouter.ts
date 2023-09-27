@@ -8,9 +8,9 @@ import {
 } from '../handlers/organismoHandler'
 const organismoRouter = express.Router()
 
-organismoRouter.get('/', getOrganismoHandler)
-
 organismoRouter.post('/', postOrganismoHandler)
+
+organismoRouter.get('/', getOrganismoHandler)
 
 organismoRouter.put('/', modifyOrganismoHandler)
 

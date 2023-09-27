@@ -5,7 +5,8 @@ import {
   Column,
   BelongsToMany,
   ForeignKey,
-  BelongsTo
+  BelongsTo,
+  DataType
 } from 'sequelize-typescript'
 import Firma from './Firma'
 import Periodo from './Periodo'
@@ -24,7 +25,12 @@ export default class Resolucion extends Model<InferAttributes<Resolucion>, Infer
     year: number
 
   // id_org: {...}. me falta averiguar como declarar el ID de Organizacion como una PK siendo una FK.
-  @Column
+  @Column({
+    type: DataType.DATE,
+    get () {
+      return new Date(this.getDataValue('fecha'))
+    }
+  })
     fecha: string
 
   @Column

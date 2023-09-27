@@ -34,7 +34,12 @@ export default class Periodo extends Model<InferAttributes<Periodo>, InferCreati
   })
     fecha_inicio: string
 
-  @Column
+  @Column({
+    type: DataType.DATE,
+    get () {
+      return new Date(this.getDataValue('fecha_final'))
+    }
+  })
     fecha_final: string
 
   @ForeignKey(() => Marticulado)

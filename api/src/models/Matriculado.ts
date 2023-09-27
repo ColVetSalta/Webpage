@@ -36,11 +36,24 @@ export default class Matriculado extends Model<InferAttributes<Matriculado>, Inf
   })
     correo_electronico: string
 
-  @Column
+  @Column({
+    type: DataType.DATE,
+    get () {
+      return new Date(this.getDataValue('f_nacimiento'))
+    }
+  })
     f_nacimiento: string
 
   @Column
     direccion: string
+
+  @Column({
+    type: DataType.DATE,
+    get () {
+      return new Date(this.getDataValue('f_alta'))
+    }
+  })
+    f_alta: string
 
   @Column({
     type: DataType.BOOLEAN,
