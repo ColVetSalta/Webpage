@@ -44,9 +44,9 @@ export async function modifyPeriodoHandler (req: Request, res: Response): Promis
   const data = req.body
   const id = req.params.id
   try {
-    const resolution = await getPeriodoById(Number(id))
-    Object.keys(resolution).forEach((att) => {
-      Object.keys(data).includes(att) && (resolution[att] = data[att])
+    const periodo = await getPeriodoById(Number(id))
+    Object.keys(periodo).forEach((att) => {
+      Object.keys(data).includes(att) && (periodo[att] = data[att])
     })
     await editPeriodo(data)
     const modify = await getPeriodoById(Number(id))

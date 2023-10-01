@@ -53,7 +53,7 @@ export default class Matriculado extends Model<InferAttributes<Matriculado>, Inf
       return new Date(this.getDataValue('f_alta'))
     }
   })
-    f_alta: string
+    f_alta: CreationOptional<string>
 
   @Column({
     type: DataType.BOOLEAN,

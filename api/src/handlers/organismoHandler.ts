@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/prefer-nullish-coalescing */
 /* eslint-disable @typescript-eslint/strict-boolean-expressions */
 import { Request, Response } from 'express'
 import {
@@ -24,9 +25,10 @@ export async function postOrganismoHandler (req: Request, res: Response): Promis
 }
 export async function getOrganismoHandler (req: Request, res: Response): Promise<void> {
   const { org, date } = req.query
+  const dateCurr = date || new Date()
   try {
     if (org) {
-      const organism = await getOrganismo(String(org), String(date))
+      const organism = await getOrganismo(String(org), String(dateCurr))
       res.status(200).json(organism)
     } else {
       const list = await getOrganismos()
@@ -42,7 +44,9 @@ export async function getOrganismoHandler (req: Request, res: Response): Promise
 }
 export async function modifyOrganismoHandler (req: Request, res: Response): Promise<void> {
   const { nombre, cargo, date } = req.body
-  let orgid = String(req.query.orgid)
+  // eslint-disable-next-line @typescript-eslint/naming-convention
+  const date_search = date || String(new Date())
+  let orgid = String(req.params.id)
   try {
     if (cargo) {
       await addCargoToOrg({ cargo, orgid })
@@ -51,7 +55,7 @@ export async function modifyOrganismoHandler (req: Request, res: Response): Prom
       await editOrgName({ orgid, nombre })
       orgid = nombre
     }
-    const org = await getOrganismo(orgid, date)
+    const org = await getOrganismo(orgid, date_search)
     res.send(org)
   } catch (error) {
     if (error instanceof Error) {

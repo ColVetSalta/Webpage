@@ -3,6 +3,8 @@ import Matriculado from '../models/Matriculado'
 import { datat } from '../types'
 
 export async function postMatriculado (data: Matriculado): Promise<Matriculado> {
+  // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
+  const f_alta = data.f_alta || String(new Date())
   return await Matriculado.create({
     mp: data.mp,
     nombre: data.nombre,
@@ -11,7 +13,7 @@ export async function postMatriculado (data: Matriculado): Promise<Matriculado> 
     correo_electronico: data.correo_electronico,
     f_nacimiento: data.f_nacimiento,
     direccion: data.direccion,
-    f_alta: data.f_alta
+    f_alta
   })
 }
 export async function getMatriculados (): Promise<Matriculado[]> {

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable @typescript-eslint/strict-boolean-expressions */
 import { Request, Response } from 'express'
 import {
@@ -6,6 +7,7 @@ import {
   getCargos,
   deleteCargo,
   postCargo
+  , addCargoToMat
 } from '../controllers/cargoController'
 
 export async function postCargoHandler (req: Request, res: Response): Promise<void> {
@@ -44,9 +46,9 @@ export async function modifyCargoHandler (req: Request, res: Response): Promise<
   const data = req.body
   const { nombre, orgid } = req.params
   try {
-    const resolution = await getCargoById(nombre, Number(orgid))
-    Object.keys(resolution).forEach((att) => {
-      Object.keys(data).includes(att) && (resolution[att] = data[att])
+    const cargo = await getCargoById(nombre, Number(orgid))
+    Object.keys(cargo).forEach((att) => {
+      Object.keys(data).includes(att) && (cargo[att] = data[att])
     })
     await editCargo(data)
     const modify = await getCargoById(nombre, Number(orgid))
@@ -64,6 +66,22 @@ export async function deleteCargoHandler (req: Request, res: Response): Promise<
   try {
     const Cargo = await deleteCargo(Number(id))
     res.status(200).json(Cargo)
+  } catch (error) {
+    if (error instanceof Error) {
+      res.status(404).json({ err: error.message })
+    } else {
+      res.send(String(error))
+    }
+  }
+}
+
+export async function newCargoToMatriculaHandler (req: Request, res: Response): Promise<void> {
+  const { fecha_inicio, fecha_final, mp } = req.body
+  const { cargo, orgid } = req.params
+  try {
+    await addCargoToMat({ mp, cargo, orgid, fecha_inicio, fecha_final })
+    const charge = await getCargoById(cargo, Number(orgid))
+    res.send(charge)
   } catch (error) {
     if (error instanceof Error) {
       res.status(404).json({ err: error.message })

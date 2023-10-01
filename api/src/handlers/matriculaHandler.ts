@@ -9,8 +9,6 @@ import {
   postMatriculado
 } from '../controllers/matriculaController'
 import { datat } from '../types'
-import { addCargoToMat } from '../controllers/cargoController'
-import { getOrganismo } from '../controllers/organismoController'
 
 export async function postMatriculaHandler (req: Request, res: Response): Promise<void> {
   const data = req.body
@@ -62,22 +60,6 @@ export async function modifyMatriculaHandler (req: Request, res: Response): Prom
     }
   }
 }
-export async function newCargoToMatriculaHandler (req: Request, res: Response): Promise<void> {
-  const { cargo, orgid, fecha_inicio, fecha_final } = req.body
-  const mp = Number(req.params.mp)
-  try {
-    await addCargoToMat({ mp, cargo, orgid, fecha_inicio, fecha_final })
-    const org = await getOrganismo(orgid, String(new Date()))
-    res.send(org)
-  } catch (error) {
-    if (error instanceof Error) {
-      res.status(404).json({ err: error.message })
-    } else {
-      res.send(String(error))
-    }
-  }
-}
-
 // Un matriculado no se puede eliminar, el modelo es paranoid: true.
 // Se considera esta función para la cancelacion de matrícula:
 export async function deleteMatriculaHandler (req: Request, res: Response): Promise<void> {

@@ -4,8 +4,7 @@ import {
   getMatriculaHandler,
   modifyMatriculaHandler,
   postMatriculaHandler,
-  deleteMatriculaHandler,
-  newCargoToMatriculaHandler
+  deleteMatriculaHandler
 } from '../handlers/matriculaHandler'
 const matriculaRouter = express.Router()
 
@@ -15,7 +14,6 @@ matriculaRouter.get('/:mp', getMatriculaHandler)
 matriculaRouter.post('/', postMatriculaHandler)
 
 matriculaRouter.put('/:mp', modifyMatriculaHandler)
-matriculaRouter.put('/cargo/:mp', newCargoToMatriculaHandler)
 
 matriculaRouter.delete('/:mp', deleteMatriculaHandler)
 
