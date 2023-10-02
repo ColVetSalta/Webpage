@@ -43,10 +43,8 @@ export default class Periodo extends Model<InferAttributes<Periodo>, InferCreati
     fecha_final: string
 
   @ForeignKey(() => Marticulado)
-  @Column({
-    type: DataType.INTEGER
-  })
-    mp: CreationOptional<number>
+  @Column
+    mp: number
 
   @ForeignKey(() => Cargo)
   @Column
