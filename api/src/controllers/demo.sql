@@ -22,8 +22,7 @@ Ejemplo:
  SELECT c.nombre AS cargo, m.nombre, m.apellido, p.fecha_inicio, p.fecha_final 
  FROM cargo c
  LEFT JOIN periodo p ON c.id = p.cargoid
- LEFT JOIN matriculado m
- ON p.mp = m.mp
+ LEFT JOIN matriculado m ON p.mp = m.mp
 WHERE c.orgid = 'Mesa Directiva'
 AND  m.mp IN (
    SELECT m.mp

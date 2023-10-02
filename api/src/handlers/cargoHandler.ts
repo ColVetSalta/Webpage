@@ -28,7 +28,7 @@ export async function getCargoHandler (req: Request, res: Response): Promise<voi
   const { nombre, orgid } = req.body
   try {
     if (orgid) {
-      const Cargo = await getCargoById(nombre, Number(orgid))
+      const Cargo = await getCargoById(nombre, orgid)
       res.status(200).json(Cargo)
     } else {
       const list = await getCargos()
@@ -46,12 +46,12 @@ export async function modifyCargoHandler (req: Request, res: Response): Promise<
   const data = req.body
   const { nombre, orgid } = req.params
   try {
-    const cargo = await getCargoById(nombre, Number(orgid))
+    const cargo = await getCargoById(nombre, orgid)
     Object.keys(cargo).forEach((att) => {
       Object.keys(data).includes(att) && (cargo[att] = data[att])
     })
     await editCargo(data)
-    const modify = await getCargoById(nombre, Number(orgid))
+    const modify = await getCargoById(nombre, orgid)
     res.send(modify)
   } catch (error) {
     if (error instanceof Error) {
@@ -77,11 +77,11 @@ export async function deleteCargoHandler (req: Request, res: Response): Promise<
 
 export async function newCargoToMatriculaHandler (req: Request, res: Response): Promise<void> {
   const { fecha_inicio, fecha_final, mp } = req.body
-  const { cargo, orgid } = req.params
+  const { id, charge } = req.params
   try {
-    await addCargoToMat({ mp, cargo, orgid, fecha_inicio, fecha_final })
-    const charge = await getCargoById(cargo, Number(orgid))
-    res.send(charge)
+    await addCargoToMat({ mp, cargo: charge, orgid: id, fecha_inicio, fecha_final })
+    const cargo = await getCargoById(charge, id)
+    res.send(cargo)
   } catch (error) {
     if (error instanceof Error) {
       res.status(404).json({ err: error.message })

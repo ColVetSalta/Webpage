@@ -62,5 +62,5 @@ export default class Matriculado extends Model<InferAttributes<Matriculado>, Inf
     active: CreationOptional<boolean>
 
   @BelongsToMany(() => Cargo, () => Periodo)
-    cargo!: CreationOptional<Cargo[]>
+    cargo: CreationOptional<Array<Cargo & { Periodo: Periodo }>>
 }
