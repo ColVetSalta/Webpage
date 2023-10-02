@@ -24,7 +24,7 @@ export default class Periodo extends Model<InferAttributes<Periodo>, InferCreati
     autoIncrement: true,
     unique: true
   })
-    id: CreationOptional<number>
+    id: number
 
   @Column({
     type: DataType.DATE,
@@ -44,14 +44,12 @@ export default class Periodo extends Model<InferAttributes<Periodo>, InferCreati
 
   @ForeignKey(() => Marticulado)
   @Column({
-    primaryKey: true
+    type: DataType.INTEGER
   })
-    mp: number
+    mp: CreationOptional<number>
 
   @ForeignKey(() => Cargo)
-  @Column({
-    primaryKey: true
-  })
+  @Column
     cargoid: number
 
   @BelongsToMany(() => Resolucion, () => Firma)

@@ -17,9 +17,7 @@ export async function getOrganismos (): Promise<Organismo[]> {
 }
 export async function getOrganismo (name: string, date: string): Promise<any> {
   const currentDate = format(new Date(date), "yyyy-MM-dd'T'HH:mm:ss.SSSxxx")
-  // const currentDate = new Date()
-  console.log(currentDate)
-  const org = await sequelize.query(`SELECT c.nombre AS cargo, m.mp, m.nombre, m.apellido, p.fecha_inicio, p.fecha_final FROM organismo o JOIN cargo c ON o.nombre = c.orgid JOIN periodo p ON c.id = p.cargoid JOIN matriculado m ON p.mp = m.mp WHERE o.nombre = '${name}' AND p.fecha_inicio <= '${currentDate.toString()}' AND p.fecha_final >= '${currentDate.toString()}';`, {
+  const org = await sequelize.query(`SELECT c.nombre AS cargo, m.nombre, m.apellido, p.fecha_inicio, p.fecha_final FROM cargo c LEFT JOIN periodo p ON c.id = p.cargoid LEFT JOIN matriculado m ON p.mp = m.mp WHERE c.orgid = '${name}' AND  m.mp IN ( SELECT m.mp FROM matriculado AS m JOIN periodo AS p ON  m.mp = p.mp WHERE (p.fecha_inicio <= '${currentDate.toString()}' AND p.fecha_final >= '${currentDate.toString()}')) OR p.id IS NULL ORDER BY c.nombre;`, {
     nest: true,
     model: Organismo
   })
