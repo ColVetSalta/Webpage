@@ -6,7 +6,8 @@ import {
   getMatriculado,
   getMatriculados,
   deleteMatriculado,
-  postMatriculado
+  postMatriculado,
+  reInscMatriculado
 } from '../controllers/matriculaController'
 import { datat } from '../types'
 
@@ -23,14 +24,28 @@ export async function postMatriculaHandler (req: Request, res: Response): Promis
     }
   }
 }
+export async function rePostMatriculaHandler (req: Request, res: Response): Promise<void> {
+  const mp = Number(req.params.mp)
+  try {
+    const create = await reInscMatriculado(mp)
+    res.status(201).json(create)
+  } catch (error) {
+    if (error instanceof Error) {
+      res.status(404).json({ err: error.message })
+    } else {
+      res.send(String(error))
+    }
+  }
+}
 export async function getMatriculaHandler (req: Request, res: Response): Promise<void> {
   const mp = req.params.mp
+  const { active } = req.body
   try {
     if (mp) {
       const matriculado = await getMatriculado(Number(mp))
       res.status(200).json(matriculado)
     } else {
-      const list = await getMatriculados()
+      const list = await getMatriculados(active)
       res.status(200).json(list)
     }
   } catch (error) {
