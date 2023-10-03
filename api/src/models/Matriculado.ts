@@ -45,7 +45,10 @@ export default class Matriculado extends Model<InferAttributes<Matriculado>, Inf
     f_nacimiento: string
 
   @Column
-    direccion: string
+    domicilio_particular: string
+
+  @Column
+    domicilio_laboral: string
 
   @Column({
     type: DataType.DATE,

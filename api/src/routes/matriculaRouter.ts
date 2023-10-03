@@ -16,7 +16,7 @@ matriculaRouter.get('/:mp', getMatriculaHandler)
 matriculaRouter.post('/', postMatriculaHandler)
 
 matriculaRouter.put('/:mp', modifyMatriculaHandler)
-matriculaRouter.put('/reinscription/:mp', rePostMatriculaHandler)
+matriculaRouter.put('/reinstatement/:mp', rePostMatriculaHandler)
 
 matriculaRouter.delete('/:mp', deleteMatriculaHandler)
 

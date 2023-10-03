@@ -12,7 +12,8 @@ export async function postMatriculado (data: Matriculado): Promise<Matriculado> 
     telefono: data.telefono,
     correo_electronico: data.correo_electronico,
     f_nacimiento: data.f_nacimiento,
-    direccion: data.direccion,
+    domicilio_particular: data.domicilio_particular,
+    domicilio_laboral: data.domicilio_laboral,
     f_alta
   })
 }
@@ -39,7 +40,8 @@ export async function editMatriculado (data: Matriculado | datat): Promise<[affe
     telefono: data.telefono,
     correo_electronico: data.correo_electronico,
     f_nacimiento: data.f_nacimiento,
-    direccion: data.direccion,
+    domicilio_particular: data.domicilio_particular,
+    domicilio_laboral: data.domicilio_laboral,
     f_alta: data.f_alta
   },
   {
