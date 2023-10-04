@@ -1,21 +1,33 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 import Matriculado from '../models/Matriculado'
+// import Telefono from '../models/Telefono'
 import { datat } from '../types'
 
-export async function postMatriculado (data: Matriculado): Promise<Matriculado> {
+export async function postMatriculado (data: Matriculado): Promise<Matriculado | null> {
   // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
   const f_alta = data.f_alta || String(new Date())
-  return await Matriculado.create({
+  const newMat = await Matriculado.create({
     mp: data.mp,
     nombre: data.nombre,
     apellido: data.apellido,
-    telefono: data.telefono,
     correo_electronico: data.correo_electronico,
     f_nacimiento: data.f_nacimiento,
     domicilio_particular: data.domicilio_particular,
     domicilio_laboral: data.domicilio_laboral,
     f_alta
   })
+  data.tel.map(async (t) => await newMat.$create('Telefono', {
+    numero: t.numero,
+    whatsapp: t.whatsapp,
+    default: t.default
+  })
+  )
+  data.dato.map(async (d) => await newMat.$create('OtroDato', {
+    titulo: d.titulo,
+    descripcion: d.descripcion
+  })
+  )
+  return await Matriculado.findByPk(data.mp)
 }
 export async function getMatriculados (active: boolean | undefined): Promise<Matriculado[]> {
   console.log(active)
@@ -37,7 +49,6 @@ export async function editMatriculado (data: Matriculado | datat): Promise<[affe
     active: data.active, // Activa o Suspendida.
     nombre: data.nombre,
     apellido: data.apellido,
-    telefono: data.telefono,
     correo_electronico: data.correo_electronico,
     f_nacimiento: data.f_nacimiento,
     domicilio_particular: data.domicilio_particular,

@@ -4,10 +4,13 @@ import {
   Table,
   Model,
   Column,
-  BelongsToMany
+  BelongsToMany,
+  HasMany
 } from 'sequelize-typescript'
 import Cargo from './Cargo'
 import Periodo from './Periodo'
+import Telefono from './Telefono'
+import OtroDato from './OtroDato'
 
 @Table({
   tableName: 'matriculado',
@@ -25,9 +28,6 @@ export default class Matriculado extends Model<InferAttributes<Matriculado>, Inf
 
   @Column
     apellido: string
-
-  @Column
-    telefono: string
 
   @Column({
     type: DataType.STRING,
@@ -63,6 +63,12 @@ export default class Matriculado extends Model<InferAttributes<Matriculado>, Inf
     defaultValue: true
   })
     active: CreationOptional<boolean>
+
+  @HasMany(() => Telefono)
+    tel: CreationOptional<Telefono[]>
+
+  @HasMany(() => OtroDato)
+    dato: CreationOptional<OtroDato[]>
 
   @BelongsToMany(() => Cargo, () => Periodo)
     cargo: CreationOptional<Array<Cargo & { Periodo: Periodo }>>
