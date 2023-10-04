@@ -28,10 +28,11 @@ export async function postMatriculado (data: Matriculado): Promise<Matriculado |
     descripcion: d.descripcion
   })
   )
+  await newMat.save()
   return await getMatriculado(data.mp)
 }
+
 export async function getMatriculados (active: boolean | undefined): Promise<Matriculado[]> {
-  console.log(active)
   if (typeof active === 'boolean') {
     return await Matriculado.findAll({
       where: { active },
@@ -41,6 +42,7 @@ export async function getMatriculados (active: boolean | undefined): Promise<Mat
     return await Matriculado.findAll({ order: ['mp', 'ASC'] })
   } else throw new Error('Incorrect search parameter')
 }
+
 export async function getMatriculado (mp: number): Promise<any> {
   const mat = await Matriculado.findByPk(mp, {
     include: [{
@@ -52,6 +54,7 @@ export async function getMatriculado (mp: number): Promise<any> {
   console.log(mat?.toJSON())
   return mat?.toJSON()
 }
+
 export async function editMatriculado (data: Matriculado | datat): Promise<[affectedCount: number]> {
   return await Matriculado.update({
     active: data.active, // Activa o Suspendida.
