@@ -20,7 +20,8 @@ export async function postMatriculado (data: Matriculado): Promise<Matriculado |
   data.tel?.map(async (t) => await newMat.$create('tel', {
     numero: t.numero,
     whatsapp: t.whatsapp,
-    default: t.default
+    principal: t.principal,
+    descripcion: t.descripcion
   })
   )
   data.dato?.map(async (d) => await newMat.$create('dato', {

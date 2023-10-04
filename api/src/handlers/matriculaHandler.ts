@@ -10,6 +10,8 @@ import {
   reInscMatriculado
 } from '../controllers/matriculaController'
 import { datat } from '../types'
+import { addTelefonoToMat, getTelefono, replaceTelefono } from '../controllers/telefonoController'
+import { addOtroDatoToMat, getDato, replaceDato } from '../controllers/otroDatoController'
 
 export async function postMatriculaHandler (req: Request, res: Response): Promise<void> {
   const data = req.body
@@ -75,6 +77,49 @@ export async function modifyMatriculaHandler (req: Request, res: Response): Prom
     }
   }
 }
+
+export async function modifyAttachedDataHandler (req: Request, res: Response): Promise<void> {
+  const mp = Number(req.params.mp)
+  const { tel, dato } = req.body
+  const oldtel = String(req.query.tel)
+  const datoId = Number(req.query.dato)
+  try {
+    if (tel) {
+      if (oldtel) {
+        const o_tel = await getTelefono({ mp, numero: oldtel })
+        Object.keys(o_tel).forEach((att) => {
+          Object.keys(tel).includes(att) && (o_tel[att] = tel[att])
+        })
+        const modify = await replaceTelefono({ mp, newtel: o_tel, oldtel })
+        console.log(modify)
+      } else {
+        const modify = await addTelefonoToMat({ mp, newtel: tel })
+        console.log(modify)
+      }
+    }
+    if (dato) {
+      if (datoId) {
+        const o_dato = await getDato(datoId)
+        Object.keys(o_dato).forEach((att) => {
+          Object.keys(dato).includes(att) && (o_dato[att] = dato[att])
+        })
+        const modify = await replaceDato({ datoId, newdato: o_dato })
+        console.log(modify)
+      } else {
+        const modify = await addOtroDatoToMat({ mp, newdato: dato })
+        console.log(modify)
+      }
+    }
+    res.status(200).send('Done')
+  } catch (error) {
+    if (error instanceof Error) {
+      res.status(404).json({ err: error.message })
+    } else {
+      res.send(String(error))
+    }
+  }
+}
+
 // Un matriculado no se puede eliminar, el modelo es paranoid: true.
 // Se considera esta función para la cancelacion de matrícula:
 export async function deleteMatriculaHandler (req: Request, res: Response): Promise<void> {

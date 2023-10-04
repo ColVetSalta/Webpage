@@ -1,4 +1,4 @@
-import { InferAttributes, InferCreationAttributes } from 'sequelize'
+import { CreationOptional, InferAttributes, InferCreationAttributes } from 'sequelize'
 import {
   Table,
   Model,
@@ -21,7 +21,10 @@ export default class Telefono extends Model<InferAttributes<Telefono>, InferCrea
     whatsapp: boolean
 
   @Column
-    default: boolean
+    principal: boolean
+
+  @Column
+    descripcion: CreationOptional<string>
 
   @ForeignKey(() => Marticulado)
   @Column

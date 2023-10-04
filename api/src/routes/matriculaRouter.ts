@@ -17,6 +17,8 @@ matriculaRouter.post('/', postMatriculaHandler)
 
 matriculaRouter.put('/:mp', modifyMatriculaHandler)
 matriculaRouter.put('/reinstatement/:mp', rePostMatriculaHandler)
+matriculaRouter.put('/tel/:mp', rePostMatriculaHandler)
+matriculaRouter.put('/dato/:mp', rePostMatriculaHandler)
 
 matriculaRouter.delete('/:mp', deleteMatriculaHandler)
 
