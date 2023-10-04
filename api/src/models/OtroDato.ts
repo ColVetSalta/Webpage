@@ -22,7 +22,7 @@ export default class OtroDato extends Model<InferAttributes<OtroDato>, InferCrea
 
   @ForeignKey(() => Marticulado)
   @Column
-    mp: string
+    mp: number
 
   @BelongsTo(() => Marticulado)
     mat: Marticulado

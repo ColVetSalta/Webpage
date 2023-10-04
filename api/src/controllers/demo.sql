@@ -33,3 +33,7 @@ AND  m.mp IN (
    OR p.id IS NULL
 ORDER BY c.nombre;
 
+SELECT *
+FROM matriculado
+JOIN telefono ON  matriculado.mp = telefono.mp
+JOIN otrodato ON  matriculado.mp = otrodato.mp

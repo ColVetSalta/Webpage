@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 import Matriculado from '../models/Matriculado'
-// import Telefono from '../models/Telefono'
+import OtroDato from '../models/OtroDato'
+import Telefono from '../models/Telefono'
 import { datat } from '../types'
 
 export async function postMatriculado (data: Matriculado): Promise<Matriculado | null> {
@@ -16,18 +17,18 @@ export async function postMatriculado (data: Matriculado): Promise<Matriculado |
     domicilio_laboral: data.domicilio_laboral,
     f_alta
   })
-  data.tel.map(async (t) => await newMat.$create('Telefono', {
+  data.tel?.map(async (t) => await newMat.$create('tel', {
     numero: t.numero,
     whatsapp: t.whatsapp,
     default: t.default
   })
   )
-  data.dato.map(async (d) => await newMat.$create('OtroDato', {
+  data.dato?.map(async (d) => await newMat.$create('dato', {
     titulo: d.titulo,
     descripcion: d.descripcion
   })
   )
-  return await Matriculado.findByPk(data.mp)
+  return await getMatriculado(data.mp)
 }
 export async function getMatriculados (active: boolean | undefined): Promise<Matriculado[]> {
   console.log(active)
@@ -41,7 +42,14 @@ export async function getMatriculados (active: boolean | undefined): Promise<Mat
   } else throw new Error('Incorrect search parameter')
 }
 export async function getMatriculado (mp: number): Promise<any> {
-  const mat = await Matriculado.findByPk(mp)
+  const mat = await Matriculado.findByPk(mp, {
+    include: [{
+      model: Telefono
+    }, {
+      model: OtroDato
+    }]
+  })
+  console.log(mat?.toJSON())
   return mat?.toJSON()
 }
 export async function editMatriculado (data: Matriculado | datat): Promise<[affectedCount: number]> {
