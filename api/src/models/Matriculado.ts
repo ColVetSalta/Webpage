@@ -42,7 +42,7 @@ export default class Matriculado extends Model<InferAttributes<Matriculado>, Inf
       return new Date(this.getDataValue('f_nacimiento'))
     }
   })
-    f_nacimiento: string
+    f_nacimiento: Date
 
   @Column
     domicilio_particular: string
@@ -56,7 +56,7 @@ export default class Matriculado extends Model<InferAttributes<Matriculado>, Inf
       return new Date(this.getDataValue('f_alta'))
     }
   })
-    f_alta: CreationOptional<string>
+    f_alta: CreationOptional<Date>
 
   @Column({
     type: DataType.BOOLEAN,

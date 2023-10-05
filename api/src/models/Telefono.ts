@@ -1,10 +1,11 @@
-import { CreationOptional, InferAttributes, InferCreationAttributes } from 'sequelize'
+import { InferAttributes, InferCreationAttributes } from 'sequelize'
 import {
   Table,
   Model,
   Column,
   BelongsTo,
-  ForeignKey
+  ForeignKey,
+  AllowNull
 } from 'sequelize-typescript'
 import Marticulado from './Matriculado'
 
@@ -23,8 +24,9 @@ export default class Telefono extends Model<InferAttributes<Telefono>, InferCrea
   @Column
     principal: boolean
 
+  @AllowNull
   @Column
-    descripcion: CreationOptional<string>
+    descripcion: string
 
   @ForeignKey(() => Marticulado)
   @Column
