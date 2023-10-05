@@ -1,17 +1,42 @@
 # ROUTES:
+- [Matriculados](#matriculados)
 ## Matriculados:
-"/matriculados
+"/matriculados"
 ### Post:
-    "/"
-    -->body < datat {[key: string]: any} > = data: {
-    mp: number, PK OBLIGATORIO
-    nombre: string, OBLIGATORIO
-    apellido: string, OBLIGATORIO
-    correo_electronico: string,
-    f_nacimiento: string (mm/dd/aaaa), OBLIGATORIO
-    domicilio_particular: string, OBLIGATORIO
-    domicilio_laboral: string, OBLIGATORIO
-    f_alta: string (mm/dd/aaaa) OBLIGATORIO
-    telefono: [list]***********************hacer tabla intermedia************************
-    otrodato: [list]*************************************hacer tabla intermedia de otros datos******************************
+### "/"
+req.body `<datat {[key: string]: any}>` =
+ ```ts
+    data: {
+        mp: number, // PK OBLIGATORIO
+        nombre: string, // OBLIGATORIO
+        apellido: string, // OBLIGATORIO
+        correo_electronico: string, // Opcional
+        f_nacimiento: Date // ('mm/dd/aaaa'), OBLIGATORIO
+        domicilio_particular: string, // OBLIGATORIO
+        domicilio_laboral: string, // OBLIGATORIO
+        f_alta: Date // ('mm/dd/aaaa') Opcional
+        telefono: [
+            numero: number, // OBLIGATORIO
+            whatsapp: boolean, // OBLIGATORIO
+            principal: boolean, // OBLIGATORIO
+            descripcion: string // Opcional
+        ]// *tabla intermedia* Opcional
+        otrodato: [
+            titulo: string, // OBLIGATORIO
+            descripcion: string // OBLIGATORIO
+        ]// *tabla intermedia* Opcional 
     }
+```
+res(201) = 
+```ts
+    // mat?.toJSON()
+    create: Matriculado | null
+```
+### Get:
+### "/"
+req.body = 
+```ts
+    active: boolean
+```
+
+   

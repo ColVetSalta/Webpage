@@ -1,10 +1,12 @@
+/* eslint-disable @typescript-eslint/strict-boolean-expressions */
 /* eslint-disable @typescript-eslint/naming-convention */
+import { InferAttributes } from 'sequelize'
 import Matriculado from '../models/Matriculado'
 import OtroDato from '../models/OtroDato'
 import Telefono from '../models/Telefono'
 import { datat } from '../types'
 
-export async function postMatriculado (data: Matriculado): Promise<Matriculado | null> {
+export async function postMatriculado (data: Matriculado): Promise<InferAttributes<Matriculado, { omit: never }>> {
   // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
   const f_alta = data.f_alta || String(new Date())
   const newMat = await Matriculado.create({
@@ -44,7 +46,7 @@ export async function getMatriculados (active: boolean | undefined): Promise<Mat
   } else throw new Error('Incorrect search parameter')
 }
 
-export async function getMatriculado (mp: number): Promise<any> {
+export async function getMatriculado (mp: number): Promise<InferAttributes<Matriculado, { omit: never }>> {
   const mat = await Matriculado.findByPk(mp, {
     include: [{
       model: Telefono
@@ -53,7 +55,20 @@ export async function getMatriculado (mp: number): Promise<any> {
     }]
   })
   console.log(mat?.toJSON())
-  return mat?.toJSON()
+  if (!mat) throw new Error(`No se encontró la matrícula ${mp}`)
+  return mat.toJSON()
+}
+
+export async function getMatriculadoFull (mp: number): Promise<any> {
+  const mat = await Matriculado.findByPk(mp, {
+    include: [{
+      model: Telefono
+    }, {
+      model: OtroDato
+    }]
+  })
+  if (!mat) throw new Error(`No se encontró la matrícula ${mp}`)
+  return mat
 }
 
 export async function editMatriculado (data: Matriculado | datat): Promise<[affectedCount: number]> {

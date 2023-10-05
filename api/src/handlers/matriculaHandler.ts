@@ -7,7 +7,8 @@ import {
   getMatriculados,
   deleteMatriculado,
   postMatriculado,
-  reInscMatriculado
+  reInscMatriculado,
+  getMatriculadoFull
 } from '../controllers/matriculaController'
 import { datat } from '../types'
 import { addTelefonoToMat, getTelefono, replaceTelefono } from '../controllers/telefonoController'
@@ -62,7 +63,7 @@ export async function modifyMatriculaHandler (req: Request, res: Response): Prom
   const data: datat = req.body // falta validar datos
   const mp = req.params.mp
   try {
-    const matriculado = await getMatriculado(Number(mp))
+    const matriculado = await getMatriculadoFull(Number(mp))
     Object.keys(matriculado).forEach((att) => {
       Object.keys(data).includes(att) && (matriculado[att] = data[att])
     })

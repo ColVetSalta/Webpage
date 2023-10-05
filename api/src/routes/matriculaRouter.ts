@@ -10,10 +10,10 @@ import {
 
 const matriculaRouter = express.Router()
 
+matriculaRouter.post('/', postMatriculaHandler)
+
 matriculaRouter.get('/', getMatriculaHandler)
 matriculaRouter.get('/:mp', getMatriculaHandler)
-
-matriculaRouter.post('/', postMatriculaHandler)
 
 matriculaRouter.put('/:mp', modifyMatriculaHandler)
 matriculaRouter.put('/reinstatement/:mp', rePostMatriculaHandler)
