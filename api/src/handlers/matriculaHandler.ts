@@ -11,8 +11,8 @@ import {
   getMatriculadoFull
 } from '../controllers/matriculaController'
 import { datat } from '../types'
-import { addTelefonoToMat, getTelefono, replaceTelefono } from '../controllers/telefonoController'
-import { addOtroDatoToMat, getDato, replaceDato } from '../controllers/otroDatoController'
+import { addTelefonoToMat, deleteTelefono, getTelefono, replaceTelefono } from '../controllers/telefonoController'
+import { addOtroDatoToMat, deleteOtroDato, getDato, replaceDato } from '../controllers/otroDatoController'
 
 export async function postMatriculaHandler (req: Request, res: Response): Promise<void> {
   const data = req.body
@@ -87,12 +87,16 @@ export async function modifyAttachedDataHandler (req: Request, res: Response): P
   try {
     if (tel) {
       if (oldtel) {
-        const o_tel = await getTelefono({ mp, numero: oldtel })
-        Object.keys(o_tel).forEach((att) => {
-          Object.keys(tel).includes(att) && (o_tel[att] = tel[att])
-        })
-        const modify = await replaceTelefono({ mp, newtel: o_tel, oldtel })
-        console.log(modify)
+        if (tel === 'delete') {
+          await deleteTelefono(mp, oldtel)
+        } else {
+          const o_tel = await getTelefono({ mp, numero: oldtel })
+          Object.keys(o_tel).forEach((att) => {
+            Object.keys(tel).includes(att) && (o_tel[att] = tel[att])
+          })
+          const modify = await replaceTelefono({ mp, newtel: o_tel, oldtel })
+          console.log(modify)
+        }
       } else {
         const modify = await addTelefonoToMat({ mp, newtel: tel })
         console.log(modify)
@@ -100,12 +104,16 @@ export async function modifyAttachedDataHandler (req: Request, res: Response): P
     }
     if (dato) {
       if (datoId) {
-        const o_dato = await getDato(datoId)
-        Object.keys(o_dato).forEach((att) => {
-          Object.keys(dato).includes(att) && (o_dato[att] = dato[att])
-        })
-        const modify = await replaceDato({ datoId, newdato: o_dato })
-        console.log(modify)
+        if (dato === 'delete') {
+          await deleteOtroDato(mp, datoId)
+        } else {
+          const o_dato = await getDato(datoId)
+          Object.keys(o_dato).forEach((att) => {
+            Object.keys(dato).includes(att) && (o_dato[att] = dato[att])
+          })
+          const modify = await replaceDato({ datoId, newdato: o_dato })
+          console.log(modify)
+        }
       } else {
         const modify = await addOtroDatoToMat({ mp, newdato: dato })
         console.log(modify)
