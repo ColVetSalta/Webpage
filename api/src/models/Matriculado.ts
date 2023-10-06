@@ -5,7 +5,7 @@ import {
   Model,
   Column,
   BelongsToMany,
-  // AllowNull,
+  AllowNull,
   HasMany
 } from 'sequelize-typescript'
 import Cargo from './Cargo'
@@ -51,7 +51,7 @@ export default class Matriculado extends Model<InferAttributes<Matriculado>, Inf
   @Column
     domicilio_laboral: string
 
-  // @AllowNull(false)
+  @AllowNull(false)
   @Column({
     type: DataType.ENUM,
     values: [

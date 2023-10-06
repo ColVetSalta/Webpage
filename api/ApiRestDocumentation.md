@@ -42,11 +42,71 @@ res(201) =
 ### "/"
 req.body = 
 ```ts
-    active: boolean
+    active: boolean | undefined // Si es undefined, traerá la lista completa incluyendo activos y suspendidos (no con mp cancelada o baja definitiva).
 ```
 res(200) = 
 ```ts
     list: Matriculado[]
+```
+ejemplo:
+```json
+[
+    {
+        "f_nacimiento": "1972-07-05T03:00:00.000Z",
+        "f_alta": "2002-11-25T03:00:00.000Z",
+        "mp": 1,
+        "nombre": "Pedro",
+        "apellido": "Samanasa",
+        "correo_electronico": "pepito@gmail.com.ar",
+        "domicilio_particular": "Los Paraisos 3344 - Salta",
+        "domicilio_laboral": "Av. Reyes Católicos 225 - Salta",
+        "departamento_d_laboral": "Capital"
+    },
+    {
+        "f_nacimiento": "1986-02-07T03:00:00.000Z",
+        "f_alta": "2015-01-05T03:00:00.000Z",
+        "mp": 2,
+        "nombre": "Pedro",
+        "apellido": "Coso",
+        "correo_electronico": "hhstts@hgfdsa.ar",
+        "domicilio_particular": "la holahola 55822 - hacas",
+        "domicilio_laboral": "la holahola 55822 - hacas",
+        "departamento_d_laboral": "Oran"
+    },
+    {
+        "f_nacimiento": "1980-02-26T03:00:00.000Z",
+        "f_alta": "2005-01-05T03:00:00.000Z",
+        "mp": 3,
+        "nombre": "Alfonso",
+        "apellido": "Primero",
+        "correo_electronico": "alfi@ddeerr.ar",
+        "domicilio_particular": "Una calle N° 15- Oran",
+        "domicilio_laboral": "Otra calle N° 2258- Embarcacion",
+        "departamento_d_laboral": "San Martin"
+    },
+    {
+        "f_nacimiento": "1986-01-04T03:00:00.000Z",
+        "f_alta": "2012-04-05T03:00:00.000Z",
+        "mp": 4,
+        "nombre": "Gustavo",
+        "apellido": "Peretti",
+        "correo_electronico": "gperettig@gmail.com",
+        "domicilio_particular": "Los Teros 37 - Bario La Fidelina - San Lorenzo",
+        "domicilio_laboral": "Los Teros 37 - Bario La Fidelina - San Lorenzo",
+        "departamento_d_laboral": "Capital"
+    },
+    {
+        "f_nacimiento": "1986-06-22T03:00:00.000Z",
+        "f_alta": "2015-03-09T03:00:00.000Z",
+        "mp": 5,
+        "nombre": "Gerardo",
+        "apellido": "Ochoa",
+        "correo_electronico": "gera@gata.com",
+        "domicilio_particular": "No se acuerda 55",
+        "domicilio_laboral": "A la vuelta 78 - Salta",
+        "departamento_d_laboral": "Capital"
+    }
+]
 ```
 
 ### "/:mp"
@@ -61,38 +121,37 @@ res(200) =
 ejemplo:
 ```json
 {
-    "f_nacimiento": "1980-02-26T03:00:00.000Z",
-    "f_alta": "2005-01-05T03:00:00.000Z",
-    "mp": 2,
-    "nombre": "Alfonso",
-    "apellido": "Primero",
-    "correo_electronico": "alfi@ddeerr.ar",
-    "domicilio_particular": "Una calle N° 15- Oran",
-    "domicilio_laboral": "Otra calle N° 2258- Embarcacion",
+    "f_nacimiento": "1972-07-05T03:00:00.000Z",
+    "f_alta": "2002-11-25T03:00:00.000Z",
+    "mp": 1,
+    "nombre": "Pedro",
+    "apellido": "Samanasa",
+    "correo_electronico": "pepito@gmail.com.ar",
+    "domicilio_particular": "Los Paraisos 3344 - Salta",
+    "domicilio_laboral": "Av. Reyes Católicos 225 - Salta",
+    "departamento_d_laboral": "Capital",
     "active": true,
-    "createdAt": "2023-10-06T11:13:44.135Z",
+    "createdAt": "2023-10-06T11:46:35.763Z",
     "deletedAt": null,
     "tel": [
         {
-            "id": 3,
-            "numero": "0378-15151577",
-            "whatsapp": false,
-            "principal": false,
-            "descripcion": "de la esposa"
-        },
-        {
-            "id": 4,
-            "numero": "0387-3265436",
+            "numero": "38745588774",
             "whatsapp": true,
             "principal": true,
-            "descripcion": "no llamar"
+            "descripcion": "tel personal y laboral"
+        },
+        {
+            "numero": "38745554494",
+            "whatsapp": true,
+            "principal": false,
+            "descripcion": "Esposa (Ester Piscore)"
         }
     ],
     "dato": [
         {
-            "id": 3,
+            "id": 2,
             "titulo": "Regencia",
-            "descripcion": "Trabaja en distribuidora no se cual"
+            "descripcion": "Veterinaria Los Reyes, de Don Comué"
         }
     ]
 }

@@ -39,10 +39,11 @@ export async function getMatriculados (active: boolean | undefined): Promise<Mat
   if (typeof active === 'boolean') {
     return await Matriculado.findAll({
       where: { active },
-      order: ['mp', 'ASC']
+      attributes: { exclude: ['createdAt', 'deletedAt', 'updatedAt', 'active'] },
+      order: [['mp', 'ASC']]
     })
   } else if (active === undefined) {
-    return await Matriculado.findAll({ order: ['mp', 'ASC'] })
+    return await Matriculado.findAll({ attributes: { exclude: ['createdAt', 'deletedAt', 'updatedAt'] }, order: [['mp', 'ASC']] })
   } else throw new Error('Incorrect search parameter')
 }
 
