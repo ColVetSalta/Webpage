@@ -5,6 +5,7 @@ import {
   Model,
   Column,
   BelongsToMany,
+  // AllowNull,
   HasMany
 } from 'sequelize-typescript'
 import Cargo from './Cargo'
@@ -49,6 +50,37 @@ export default class Matriculado extends Model<InferAttributes<Matriculado>, Inf
 
   @Column
     domicilio_laboral: string
+
+  // @AllowNull(false)
+  @Column({
+    type: DataType.ENUM,
+    values: [
+      'Capital',
+      'Oran',
+      'Anta',
+      'Cerrillos',
+      'Metán',
+      'Rosario de Lerma',
+      'Rosario de la Frontera',
+      'La Candelaria',
+      'Rivadavia',
+      'Cafayate',
+      'San Martin',
+      'Güemes',
+      'Chicoana',
+      'Santa Victoria',
+      'La Viña',
+      'La Caldera',
+      'Cachi',
+      'San Carlos',
+      'Los Andes',
+      'Iruya',
+      'Molinos',
+      'Guachipas',
+      'La Poma'
+    ]
+  })
+    departamento_d_laboral: string
 
   @Column({
     type: DataType.DATE,

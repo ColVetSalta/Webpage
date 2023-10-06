@@ -1,12 +1,11 @@
 /* eslint-disable @typescript-eslint/strict-boolean-expressions */
 /* eslint-disable @typescript-eslint/naming-convention */
-import { InferAttributes } from 'sequelize'
 import Matriculado from '../models/Matriculado'
 import OtroDato from '../models/OtroDato'
 import Telefono from '../models/Telefono'
-import { datat } from '../types'
+import { MatriculadoJSON, datat } from '../types'
 
-export async function postMatriculado (data: Matriculado): Promise<InferAttributes<Matriculado, { omit: never }>> {
+export async function postMatriculado (data: Matriculado): Promise<MatriculadoJSON> {
   // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
   const f_alta = data.f_alta || String(new Date())
   const newMat = await Matriculado.create({
@@ -17,6 +16,7 @@ export async function postMatriculado (data: Matriculado): Promise<InferAttribut
     f_nacimiento: data.f_nacimiento,
     domicilio_particular: data.domicilio_particular,
     domicilio_laboral: data.domicilio_laboral,
+    departamento_d_laboral: data.departamento_d_laboral,
     f_alta
   })
   data.tel?.map(async (t) => await newMat.$create('tel', {
@@ -46,12 +46,15 @@ export async function getMatriculados (active: boolean | undefined): Promise<Mat
   } else throw new Error('Incorrect search parameter')
 }
 
-export async function getMatriculado (mp: number): Promise<InferAttributes<Matriculado, { omit: never }>> {
+export async function getMatriculado (mp: number): Promise<MatriculadoJSON> {
   const mat = await Matriculado.findByPk(mp, {
+    attributes: { exclude: ['updatedAt'] },
     include: [{
-      model: Telefono
+      model: Telefono,
+      attributes: { exclude: ['id', 'deletedAt', 'createdAt', 'updatedAt', 'mp'] }
     }, {
-      model: OtroDato
+      model: OtroDato,
+      attributes: { exclude: ['deletedAt', 'createdAt', 'updatedAt', 'mp'] }
     }]
   })
   console.log(mat?.toJSON())
@@ -80,6 +83,7 @@ export async function editMatriculado (data: Matriculado | datat): Promise<[affe
     f_nacimiento: data.f_nacimiento,
     domicilio_particular: data.domicilio_particular,
     domicilio_laboral: data.domicilio_laboral,
+    departamento_d_laboral: data.departamento_d_laboral,
     f_alta: data.f_alta
   },
   {

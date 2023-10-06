@@ -2,13 +2,13 @@
 /* eslint-disable @typescript-eslint/strict-boolean-expressions */
 import { Request, Response } from 'express'
 import {
-  editMatriculado,
+  // editMatriculado,
   getMatriculado,
   getMatriculados,
   deleteMatriculado,
   postMatriculado,
   reInscMatriculado,
-  getMatriculadoFull
+  editMatriculado
 } from '../controllers/matriculaController'
 import { datat } from '../types'
 import { addTelefonoToMat, deleteTelefono, getTelefono, replaceTelefono } from '../controllers/telefonoController'
@@ -63,7 +63,7 @@ export async function modifyMatriculaHandler (req: Request, res: Response): Prom
   const data: datat = req.body // falta validar datos
   const mp = req.params.mp
   try {
-    const matriculado = await getMatriculadoFull(Number(mp))
+    const matriculado = await getMatriculado(Number(mp))
     Object.keys(matriculado).forEach((att) => {
       Object.keys(data).includes(att) && (matriculado[att] = data[att])
     })

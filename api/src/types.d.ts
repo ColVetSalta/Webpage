@@ -83,3 +83,26 @@ export interface News {
   date: string
 }
 export interface datat {[key: string]: any}
+
+export interface MatriculadoJSON {
+  mp: number // PK OBLIGATORIO
+  nombre: string // OBLIGATORIO
+  apellido: string // OBLIGATORIO
+  correo_electronico: string // Opcional
+  f_nacimiento: Date // ('mm/dd/aaaa'), OBLIGATORIO
+  domicilio_particular: string // OBLIGATORIO
+  domicilio_laboral: string // OBLIGATORIO
+  departamento_d_laboral: string // OBLIGATORIO
+  f_alta: Date // ('mm/dd/aaaa') Opcional
+  [key: string]: any
+  telefono?: [{
+    numero: string // ('numero') OBLIGATORIO
+    whatsapp: boolean // OBLIGATORIO
+    principal: boolean // OBLIGATORIO
+    descripcion: string // Opcional
+  }]// *tabla intermedia* Opcional
+  otrodato?: [{
+    titulo: string // OBLIGATORIO
+    descripcion: string // OBLIGATORIO
+  }]
+}

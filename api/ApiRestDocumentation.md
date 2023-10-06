@@ -19,6 +19,7 @@ req.body `<datat {[key: string]: any}>` =
         f_nacimiento: Date // ('mm/dd/aaaa'), OBLIGATORIO
         domicilio_particular: string, // OBLIGATORIO
         domicilio_laboral: string, // OBLIGATORIO
+        departamento_d_laboral: string // OBLIGATORIO
         f_alta: Date // ('mm/dd/aaaa') Opcional
         telefono: [{
             numero: string, // ('numero') OBLIGATORIO
@@ -60,60 +61,38 @@ res(200) =
 ejemplo:
 ```json
 {
-    "f_nacimiento": "1985-07-05T03:00:00.000Z",
+    "f_nacimiento": "1980-02-26T03:00:00.000Z",
     "f_alta": "2005-01-05T03:00:00.000Z",
-    "mp": 1,
-    "nombre": "Gustavo",
-    "apellido": "Peretti",
-    "correo_electronico": "gpjuytt@hgfdsa.ar",
-    "domicilio_particular": "la gjhghgfdhg 22 - afearg",
-    "domicilio_laboral": "data.domicilio_laboral",
+    "mp": 2,
+    "nombre": "Alfonso",
+    "apellido": "Primero",
+    "correo_electronico": "alfi@ddeerr.ar",
+    "domicilio_particular": "Una calle N° 15- Oran",
+    "domicilio_laboral": "Otra calle N° 2258- Embarcacion",
     "active": true,
-    "createdAt": "2023-10-05T12:59:16.967Z",
-    "updatedAt": "2023-10-05T12:59:16.967Z",
+    "createdAt": "2023-10-06T11:13:44.135Z",
     "deletedAt": null,
     "tel": [
         {
-            "id": 1,
-            "numero": "0378-651549",
+            "id": 3,
+            "numero": "0378-15151577",
             "whatsapp": false,
-            "principal": true,
-            "descripcion": "personal",
-            "mp": 1,
-            "createdAt": "2023-10-05T12:59:17.977Z",
-            "updatedAt": "2023-10-05T12:59:17.977Z",
-            "deletedAt": null
+            "principal": false,
+            "descripcion": "de la esposa"
         },
         {
-            "id": 2,
-            "numero": "0387-22558899",
+            "id": 4,
+            "numero": "0387-3265436",
             "whatsapp": true,
-            "principal": false,
-            "descripcion": null,
-            "mp": 1,
-            "createdAt": "2023-10-05T12:59:17.977Z",
-            "updatedAt": "2023-10-05T12:59:17.977Z",
-            "deletedAt": null
+            "principal": true,
+            "descripcion": "no llamar"
         }
     ],
     "dato": [
         {
-            "id": 1,
-            "titulo": "especialidad",
-            "descripcion": "domador de burro",
-            "mp": 1,
-            "createdAt": "2023-10-05T12:59:17.978Z",
-            "updatedAt": "2023-10-05T12:59:17.978Z",
-            "deletedAt": null
-        },
-        {
-            "id": 2,
-            "titulo": "Antecedente",
-            "descripcion": "Expediente 01/23, le pega a las vacas",
-            "mp": 1,
-            "createdAt": "2023-10-05T12:59:17.979Z",
-            "updatedAt": "2023-10-05T12:59:17.979Z",
-            "deletedAt": null
+            "id": 3,
+            "titulo": "Regencia",
+            "descripcion": "Trabaja en distribuidora no se cual"
         }
     ]
 }
@@ -212,7 +191,7 @@ req.query =
 ```
 req.body =
   ```ts
-  tel: { // (datos de reemplazo) Solo incluir el/los concepto/s modificado/s para reemplazar
+  dato: { // (datos de reemplazo) Solo incluir el/los concepto/s modificado/s para reemplazar
             titulo: string,
             descripcion: string 
         }
