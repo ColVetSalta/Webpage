@@ -3,6 +3,7 @@ import Cargo from '../models/Cargo'
 import Matriculado from '../models/Matriculado'
 import Organismo from '../models/Organismo'
 import { format } from 'date-fns'
+import Periodo from '../models/Periodo'
 
 export async function postCargo ({
   nombre,
@@ -21,7 +22,9 @@ export async function addCargoToOrg ({ orgid, cargo }: { orgid: string, cargo: s
   return orgAdded
 }
 
-export async function addCargoToMat ({ mp, cargo, orgid, fecha_inicio, fecha_final }: { mp: number, cargo: string, orgid: string, fecha_inicio: string, fecha_final: string }): Promise<any> {
+export async function addCargoToMat ({ mp, cargo, orgid, fecha_inicio, fecha_final }: { mp: number, cargo: string, orgid: string, fecha_inicio: string, fecha_final: string }): Promise<Array<(Cargo & {
+  Periodo: Periodo
+})>> {
   const fechaIFormateada = format(new Date(fecha_inicio), "yyyy-MM-dd'T'HH:mm:ss.SSSxxx")
   const fechaFFormateada = format(new Date(fecha_final), "yyyy-MM-dd'T'HH:mm:ss.SSSxxx")
   const mat = await Matriculado.findByPk(mp)

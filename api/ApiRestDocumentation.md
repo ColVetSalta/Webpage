@@ -311,12 +311,42 @@ res(200) =
 ```
 ejemplo:
 ```json
+{
+    "Mesa Directiva": [
+        {
+            "cargo": "Presidente",
+            "mp": 2,
+            "nombre": "Pedro",
+            "apellido": "Coso",
+            "fecha_inicio": "2021-12-10T03:00:00.000Z",
+            "fecha_final": "2024-12-10T03:00:00.000Z"
+        },
+        {
+            "cargo": "Secretario",
+            "mp": 1,
+            "nombre": "Pedro",
+            "apellido": "Samanasa",
+            "fecha_inicio": "2021-12-10T03:00:00.000Z",
+            "fecha_final": "2024-12-10T03:00:00.000Z"
+        },
+        {
+            "cargo": "Tesorero",
+            "mp": 3,
+            "nombre": "Alfonso",
+            "apellido": "Primero",
+            "fecha_inicio": "2021-12-10T03:00:00.000Z",
+            "fecha_final": "2024-12-10T03:00:00.000Z"
+        }
+    ]
+}
 
 ```
 ## PUT/organismo:
 ### "/edit/:id"
 Con esta ruta se modifica el nombre del organismo, o se le agregan cargos.
+
 req.param = `id: string`
+
 req.body = { nombre, cargo }
  ```ts
     { 
@@ -330,9 +360,58 @@ res(200) =
     [x: string]: Organismo[];
 }
 ```
+Ejemplo:
+
+Send:
+```json
+{
+    "cargo": "Vicepresidente"
+}
+```
+Response:
+```json
+{
+    "Mesa Directiva": [
+        {
+            "cargo": "Presidente",
+            "mp": 2,
+            "nombre": "Pedro",
+            "apellido": "Coso",
+            "fecha_inicio": "2021-12-10T03:00:00.000Z",
+            "fecha_final": "2024-12-10T03:00:00.000Z"
+        },
+        {
+            "cargo": "Secretario",
+            "mp": 1,
+            "nombre": "Pedro",
+            "apellido": "Samanasa",
+            "fecha_inicio": "2021-12-10T03:00:00.000Z",
+            "fecha_final": "2024-12-10T03:00:00.000Z"
+        },
+        {
+            "cargo": "Tesorera",
+            "mp": 3,
+            "nombre": "Alfonso",
+            "apellido": "Primero",
+            "fecha_inicio": "2021-12-10T03:00:00.000Z",
+            "fecha_final": "2024-12-10T03:00:00.000Z"
+        },
+        {
+            "cargo": "Vicepresidente",
+            "mp": null,
+            "nombre": null,
+            "apellido": null,
+            "fecha_inicio": null,
+            "fecha_final": null
+        }
+    ]
+}
+```
 ### "/:id/cargo/:charge"
 Con esta ruta se asigna un cargo del organismo a un matriculado.
+
 req.param = ` id: string, charge: string`
+
 req.body = 
 ```ts 
   { 
@@ -346,6 +425,29 @@ res(201) =
 ```ts
     cargo: Cargo.toJSON // type any
 ``` 
+ejemplo:
+```json
+[
+    {
+        "id": 3,
+        "nombre": "Tesorera",
+        "orgid": "Mesa Directiva",
+        "createdAt": "2023-10-25T17:40:48.903Z",
+        "updatedAt": "2023-10-25T17:40:48.914Z",
+        "deletedAt": null,
+        "Periodo": {
+            "fecha_inicio": "2021-12-10T03:00:00.000Z",
+            "fecha_final": "2024-12-10T03:00:00.000Z",
+            "id": 3,
+            "mp": 3,
+            "cargoid": 3,
+            "createdAt": "2023-10-25T17:53:54.406Z",
+            "updatedAt": "2023-10-25T17:53:54.406Z",
+            "deletedAt": null
+        }
+    }
+]
+```
 
 ## DELETE/organismo:
 ### "/:org"
