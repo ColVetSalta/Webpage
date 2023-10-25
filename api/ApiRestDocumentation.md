@@ -1,13 +1,18 @@
 # ROUTES:
 - [Matriculados](#matriculados)
-    - [Post](#post)
-    - [Get](#get)
-    - [Put](#put)
-    - [Delete](#delete)
+    - [Post](#postmatriculado) 
+    - [Get](#getmatriculado) 
+    - [Put](#putmatriculado) 
+    - [Delete](#deletematriculado) 
+- [Organismos](#organismos)
+    - [Post](#postorganismo)
+    - [Get](#getorganismo)
+    - [Put](#putorganismo)
+    - [Delete](#deleteorganismo)
 
 # Matriculados:
-"/matriculados"
-## Post:
+<sub>"/matriculado"</sub>
+## POST/matriculado:
 ### "/"
 req.body `<datat {[key: string]: any}>` =
  ```ts
@@ -36,9 +41,9 @@ req.body `<datat {[key: string]: any}>` =
 res(201) = 
 ```ts
     // nuevo mat.toJSON()
-    create: InferAttributes<Matriculado, { omit: never }> // idem get/:mp
+    create: MatriculadoJSON // idem get/:mp
 ```
-## Get:
+## GET/matriculado:
 ### "/"
 req.body = 
 ```ts
@@ -116,7 +121,7 @@ req.body = null
 res(200) = 
 ```ts
     // mat.toJSON()
-    create: InferAttributes<Matriculado, { omit: never }>
+    create: MatriculadoJSON
 ```
 ejemplo:
 ```json
@@ -156,7 +161,7 @@ ejemplo:
     ]
 }
 ```
-## Put:
+## PUT/matriculado:
 ### "/:mp"
 En esta ruta solo se modifican los datos únicos (no `tel` ni `dato`).
 Para la Suspensión/Rehabilitación de la matricula usar "active" t/f.
@@ -178,10 +183,10 @@ req.body `<datat {[key: string]: any}>` =
 res(200) = 
 ```ts
     // modificado mat.toJSON()
-    create: InferAttributes<Matriculado, { omit: never }> // idem get/:mp
+    create: : MatriculadoJSON // idem get/:mp
 ```
 ### "/reinstatement/:mp"
-Esta ruta es para reinscripción de una matricula cancelada (deleted).
+Esta ruta es para reinscripción de una matricula "cancelada" (deleted).
 
 req.param = `mp: number`
 req.body = null
@@ -189,7 +194,7 @@ req.body = null
 res(201) = 
 ```ts
     // mat.toJSON()
-    create: InferAttributes<Matriculado, { omit: never }>
+    create: : MatriculadoJSON
 ``` 
 ### "/modify/:mp"
 Ruta de modificacion de tablas de datos anexos (telefono y otros datos)
@@ -266,3 +271,82 @@ req.body =
   ```
 
 Dato de color, si se completan los requisitos de tel y dato, se puede llegar a modificar, eliminar o agregar tanto un telefono como un dato anexo en el mismo acto. No recomendable.
+## DELETE/matriculado:
+### "/:mp"
+Esta ruta elimina (soft delete) el registro agregando la fecha a la columna deletedAt. Con esto se "cancela" la matrícula.
+# Organismos:
+<sub>"/organismo"</sub>
+## POST/organismo:
+### "/"
+req.body `data: Organismo` =
+ ```ts
+ data: {
+        nombre: string, // PK OBLIGATORIO
+ }
+ ``` 
+res(201) = 
+```ts
+    create: any // Esperable : Organismo
+```
+## GET/organismo:
+### "/"
+
+res(200) = 
+```ts
+    list: Organismos[]
+```
+### "/ ?org=`string` ?date=`mm-dd-yyyy`"
+req.query =  
+```json
+   { 
+    "org": "string",
+    "date": "mm-dd-yyyy" //opcional, si no especifica, busca la conformacion al día de la fecha de busqueda
+   }
+```
+res(200) = 
+```ts
+    objOrg: {
+    [x: string]: Organismo[];
+}
+```
+ejemplo:
+```json
+
+```
+## PUT/organismo:
+### "/edit/:id"
+Con esta ruta se modifica el nombre del organismo, o se le agregan cargos.
+req.param = `id: string`
+req.body = { nombre, cargo }
+ ```ts
+    { 
+    nombre: string, // Para modificar el nombre del organismo - OPCIONAL -
+    cargo: string // Para agregar un cargo al organismo - OPCIONAL -
+    }
+```
+res(200) = 
+```ts
+    objOrg: {
+    [x: string]: Organismo[];
+}
+```
+### "/:id/cargo/:charge"
+Con esta ruta se asigna un cargo del organismo a un matriculado.
+req.param = ` id: string, charge: string`
+req.body = 
+```ts 
+  { 
+    fecha_inicio:  "mm-dd-yyyy", 
+    fecha_final:  "mm-dd-yyyy",
+    mp: number 
+    } // todo obligatorio
+```
+
+res(201) = 
+```ts
+    cargo: Cargo.toJSON // type any
+``` 
+
+## DELETE/organismo:
+### "/:org"
+Esta ruta elimina (soft delete) el registro agregando la fecha a la columna deletedAt.

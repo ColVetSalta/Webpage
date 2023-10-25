@@ -43,9 +43,8 @@ export async function getOrganismoHandler (req: Request, res: Response): Promise
   }
 }
 export async function modifyOrganismoHandler (req: Request, res: Response): Promise<void> {
-  const { nombre, cargo, date } = req.body
-  // eslint-disable-next-line @typescript-eslint/naming-convention
-  const date_search = date || String(new Date())
+  const { nombre, cargo } = req.body
+  const dateCurr = String(new Date())
   let orgid = String(req.params.id)
   try {
     if (cargo) {
@@ -55,13 +54,13 @@ export async function modifyOrganismoHandler (req: Request, res: Response): Prom
       await editOrgName({ orgid, nombre })
       orgid = nombre
     }
-    const org = await getOrganismo(orgid, date_search)
-    res.send(org)
+    const org = await getOrganismo(orgid, dateCurr)
+    res.status(200).json(org)
   } catch (error) {
     if (error instanceof Error) {
       res.status(404).json({ err: error.message })
     } else {
-      res.send(String(error))
+      res.status(404).send(String(error))
     }
   }
 }
