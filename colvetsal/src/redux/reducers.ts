@@ -1,23 +1,25 @@
-import { createSlice, PayloadAction, Draft } from "@reduxjs/toolkit";
-import React from "react";
+import { createSlice, PayloadAction, Draft } from "@reduxjs/toolkit"
+// import React from "react"
+import { type Organismo } from '../types'
 
 export interface reduxState {
-//   ref: React.MutableRefObject<HTMLDivElement | null>;
+  organism: Organismo[]
 }
 
 const initialState: reduxState = {
+    organism: []
 //   ref: React.createRef<HTMLDivElement | null>(),
-};
+}
 
-// const refSlice = createSlice({
-//   name: "ref",
-//   initialState,
-//   reducers: {
-//     setRef: (state: Draft<reduxState>, action: PayloadAction<React.MutableRefObject<HTMLDivElement | null>>) => {
-//       state.ref = action.payload;
-//     },
-//   },
-// });
+const orgSlice = createSlice({
+  name: "org",
+  initialState,
+  reducers: {
+    getOrganism: (state: Draft<reduxState>, action: PayloadAction<Organismo[]>) => {
+      state.organism = action.payload;
+    },
+  },
+});
 
 // export const { setRef } = refSlice.actions;
-// export default refSlice.reducer;
+export default orgSlice.reducer;

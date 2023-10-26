@@ -8,6 +8,12 @@ export interface Navigation {
   url?: string;
 }
 //To present Authorities
+/*"cargo": "Presidente",
+            "mp": 2,
+            "nombre": "Pedro",
+            "apellido": "Coso",
+            "fecha_inicio": "2021-12-10T03:00:00.000Z",
+            "fecha_final": "2024-12-10T03:00:00.000Z" */
 export interface Role {
   nombre: string;
   telefono: string;
