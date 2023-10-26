@@ -8,16 +8,15 @@ export interface Navigation {
   url?: string;
 }
 //To present Authorities
-/*"cargo": "Presidente",
-            "mp": 2,
-            "nombre": "Pedro",
-            "apellido": "Coso",
-            "fecha_inicio": "2021-12-10T03:00:00.000Z",
-            "fecha_final": "2024-12-10T03:00:00.000Z" */
 export interface Role {
-  nombre: string;
-  telefono: string;
-  correoElectronico: string;
+  cargo: string;
+  mp: number | null;
+  nombre: string | null;
+  apellido: string | null;
+  fecha_inicio: string | null;
+  fecha_final: string | null;
+  numero: string | null;
+  correo_electronico: string | null;
 }
 
 export interface Consejeros {
@@ -27,12 +26,8 @@ export interface Consejeros {
   };
   [key: string]: Role[];
 }
-export interface Organismo {
-  info: {
-    title: string;
-    type: string;
-  };
-  [key: string]: Role;
+export type Organismo = {
+  [key: string]: Role[];
 }
 
 export type ConsMy = {
@@ -40,7 +35,7 @@ export type ConsMy = {
     title: string;
     type: string;
   };
-  [key: string]: Organismo | Consejero
+  [key: string]: Organismo | Consejero;
 };
 
 // to use in function
@@ -57,23 +52,23 @@ export type RData = {
 };
 //Resoluciones
 export interface Resol {
-    [key: string | number]: {
-      fecha: string;
-      visto: string;
-      resuelve: { [key: string]: string };
-      firma: { [key: string]: string };
-      anexo: unknown;
-    };
+  [key: string | number]: {
+    fecha: string;
+    visto: string;
+    resuelve: { [key: string]: string };
+    firma: { [key: string]: string };
+    anexo: unknown;
+  };
 }
 export interface ResolAnual {
-  [key: string | number]: Resol
-  }
+  [key: string | number]: Resol;
+}
 export type ResolOrg = {
   info: {
     title: string;
     type: string;
   };
-  [ket: string]: ResolAnual
+  [ket: string]: ResolAnual;
 };
 
 export type Inst = {
