@@ -37,3 +37,20 @@ SELECT *
 FROM matriculado
 JOIN telefono ON  matriculado.mp = telefono.mp
 JOIN otrodato ON  matriculado.mp = otrodato.mp
+
+SELECT c.nombre AS cargo, m.mp, m.nombre, m.apellido, p.fecha_inicio, p.fecha_final, t.numero, t.principal
+    FROM cargo c
+    LEFT JOIN periodo p ON c.id = p.cargoid
+    LEFT JOIN matriculado m ON p.mp = m.mp
+    LEFT JOIN telefono t ON m.mp = t.mp
+    WHERE c.orgid = 'Mesa Directiva'
+    AND t.principal = true
+    AND  m.mp IN (
+      SELECT m.mp
+      FROM matriculado AS m
+      JOIN periodo AS p ON  m.mp = p.mp
+      LEFT JOIN telefono AS t ON m.mp = t.mp
+      WHERE (p.fecha_inicio <= '2021-12-10T03:00:00.000Z'
+      AND p.fecha_final >= '2024-12-10T03:00:00.000Z'))
+      OR p.id IS NULL 
+    ORDER BY c.nombre;

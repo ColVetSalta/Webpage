@@ -17,18 +17,23 @@ export async function getOrganismos (): Promise<Organismo[]> {
 export async function getOrganismo (name: string, date: string): Promise<any> {
   const currentDate = format(new Date(date), "yyyy-MM-dd'T'HH:mm:ss.SSSxxx")
   const org = await sequelize.query(
-    `SELECT c.nombre AS cargo, m.mp, m.nombre, m.apellido, p.fecha_inicio, p.fecha_final
+    `SELECT c.nombre AS cargo, m.mp, m.nombre, m.apellido, p.fecha_inicio, p.fecha_final, t.numero, m.correo_electronico
     FROM cargo c
     LEFT JOIN periodo p ON c.id = p.cargoid
     LEFT JOIN matriculado m ON p.mp = m.mp
+    LEFT JOIN telefono t ON m.mp = t.mp
     WHERE c.orgid = '${name}'
+    AND t.principal = true
     AND  m.mp IN (
       SELECT m.mp
       FROM matriculado AS m
       JOIN periodo AS p ON  m.mp = p.mp
+      JOIN telefono AS t ON m.mp = t.mp
       WHERE (p.fecha_inicio <= '${currentDate.toString()}'
-      AND p.fecha_final >= '${currentDate.toString()}'))
-      OR p.id IS NULL ORDER BY c.nombre;`, {
+      AND p.fecha_final >= '${currentDate.toString()}')
+      AND t.principal = true)
+      OR p.id IS NULL 
+    ORDER BY c.nombre;`, {
       nest: true,
       model: Organismo
     })
