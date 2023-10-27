@@ -11,7 +11,10 @@ export default function NavMenu({ name, items }: Menutype): JSX.Element {
             marginBlockStart={'1em'}
         >
             {items ? items.map((item) => {
-                return <MenuItem as={Link} to={'sc/'+ name.toLowerCase() + '_' + item.url}>
+                return <MenuItem
+                    key={item.subindexTitle}
+                    as={Link}
+                    to={'sc/' + name.toLowerCase() + '_' + item.url}>
                     {item.subindexTitle}
                 </MenuItem>;
             }) : null}

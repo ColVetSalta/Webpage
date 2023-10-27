@@ -1,11 +1,12 @@
 import React from 'react'
-import { type RData } from '../../../types'
+import { type Role } from '../../../types'
 
-export default function RoleData ({ title, name, tel, email }: RData): React.JSX.Element {
+export default function RoleData ({ r }: {r: Role}): React.JSX.Element {
+    console.log(r)
     return <div>
-            <h4>{title}</h4>
-            <h5>{name}</h5>
-            <h6>Telefono: {tel}</h6>
-            <h6>e-mail: {email}</h6>
+            <h4>{r.cargo}</h4>
+            <h5>{r.nombre+' '+r.apellido}</h5>
+            <h6>Telefono: {r.numero}</h6>
+            <h6>e-mail: {r.correo_electronico}</h6>         
         </div>
 }

@@ -19,23 +19,12 @@ export interface Role {
   correo_electronico: string | null;
 }
 
-export interface Consejeros {
-  info: {
-    title: string;
-    type: string;
-  };
-  [key: string]: Role[];
-}
 export type Organismo = {
   [key: string]: Role[];
 }
 
 export type ConsMy = {
-  info: {
-    title: string;
-    type: string;
-  };
-  [key: string]: Organismo | Consejero;
+  [key: string]: Organismo;
 };
 
 // to use in function

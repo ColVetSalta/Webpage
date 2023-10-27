@@ -33,7 +33,7 @@ export default function NavBar(): JSX.Element {
     >
       {impList ? impList.map((list) => {
         if (list.subindex) {
-          return <ListItem>
+          return <ListItem key={list.indexTitle}>
             <NavMenu name={list.indexTitle} items={list.subindex} />
           </ListItem>;
         }
