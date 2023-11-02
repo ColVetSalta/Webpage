@@ -1,8 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit'
-import rootReducer from './reducers'
+import orgReducer from './orgSlice'
 
 const store = configureStore({
-  reducer: rootReducer,
+  reducer: {
+    org: orgReducer
+  },
 })
 
 
