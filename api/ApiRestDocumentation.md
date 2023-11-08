@@ -291,10 +291,39 @@ res(201) =
 ## GET/organismo:
 ### "/"
 
-res(200) = 
-```ts
-    list: Organismos[]
-```
+> **req = empty**
+>
+>res(200) = 
+>```ts
+>    list: Organismos[] // Solamente { [{ nombre, timeStamp }],
+>```
+>ejemplo:
+>```json
+>[
+>    {
+>        "nombre": "Mesa Directiva",
+>        "createdAt": "2023-09-16T16:07:25.285Z",
+>        "updatedAt": "2023-09-16T16:07:25.285Z",
+>        "deletedAt": null
+>    },
+>    {
+>        "nombre": "Tribunal de Etica",
+>        "createdAt": "2023-09-16T16:08:19.065Z",
+>        "updatedAt": "2023-09-16T16:08:19.065Z",
+>        "deletedAt": null
+>    }
+>]
+>```
+
+> **req.body =** 
+>```ts
+>    full: true // booleasn | undefined. (Solo para caso true)
+>```
+>res(200) = 
+>```ts
+>    list: Organismos[] // Con la información completa de cada org, IDEM get de un organismo individual
+>```
+
 ### "/ ?org=`string` ?date=`mm-dd-yyyy`"
 req.query =  
 ```json

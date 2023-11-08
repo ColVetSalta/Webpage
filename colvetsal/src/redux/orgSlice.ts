@@ -1,12 +1,12 @@
-import { createSlice, PayloadAction, Draft } from "@reduxjs/toolkit"
+import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 // import React from "react"
 import { type Organismo } from '../types'
 
-export interface reduxState {
+export interface orgSliceState {
   organism: Organismo[]
 }
 
-const initialState: reduxState = {
+const initialState: orgSliceState = {
     organism: [
       {'Mesa Directiva': [
       // {
@@ -58,7 +58,7 @@ const orgSlice = createSlice({
   name: "org",
   initialState,
   reducers: {
-    getOrganism: (state: Draft<reduxState>, action: PayloadAction<Organismo[]>) => {
+    getOrganism: (state, action: PayloadAction<Organismo[]>) => {
       state.organism = action.payload;
     },
   },

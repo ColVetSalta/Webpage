@@ -16,9 +16,11 @@ function App() {
   const dispatch = useAppDispatch();
 
   React.useEffect(()=>{
-    axios.get('/organismo?org=Mesa Directiva')
-    .then((data)=> console.log(data))
-    .then((data)=> {dispatch(getOrganism(data as unknown as Organismo[]))})
+    axios.get<Organismo[]>('/organismo?org=Mesa Directiva')
+    .then((data)=> {
+      console.log(data)
+      dispatch(getOrganism(data.data))
+    })
   // eslint-disable-next-line react-hooks/exhaustive-deps
   },[])
 
