@@ -315,14 +315,75 @@ res(201) =
 >]
 >```
 
-> **req.body =** 
+### "/ ?full=`true`
+> **req.query =** 
 >```ts
->    full: true // booleasn | undefined. (Solo para caso true)
+>    full: 'true' // string (Solo para caso true) no se puede mandar booleano por query
 >```
 >res(200) = 
 >```ts
->    list: Organismos[] // Con la información completa de cada org, IDEM get de un organismo individual
+>    list: {Organismos[]} // Con la información completa de cada org, IDEM get de un organismo individual
 >```
+>ejemplo:
+>```json
+>{
+>    "Mesa Directiva": [
+>       {
+>            "cargo": "Presidente",
+>            "mp": 2,
+>            "nombre": "Pedro",
+>            "apellido": "Coso",
+>            "fecha_inicio": "2021-12-10T03:00:00.000Z",
+>            "fecha_final": "2024-12-10T03:00:00.000Z",
+>            "numero": "0378564447",
+>            "correo_electronico": "hhstts@hgfdsa.ar"
+>        },
+>        {
+>            "cargo": "Secretario",
+>            "mp": 1,
+>            "nombre": "Pedro",
+>            "apellido": "Samanasa",
+>            "fecha_inicio": "2021-12-10T03:00:00.000Z",
+>            "fecha_final": "2024-12-10T03:00:00.000Z",
+>            "numero": "38745588774",
+>            "correo_electronico": "pepito@gmail.com.ar"
+>        },
+>        {
+>            "cargo": "Tesorera",
+>            "mp": 3,
+>            "nombre": "Alfonso",
+>            "apellido": "Primero",
+>            "fecha_inicio": "2021-12-10T03:00:00.000Z",
+>            "fecha_final": "2024-12-10T03:00:00.000Z",
+>            "numero": "0387-3265436",
+>            "correo_electronico": "alfi@ddeerr.ar"
+>        },
+>        {
+>            "cargo": "Vicepresidente",
+>            "mp": null,
+>            "nombre": null,
+>            "apellido": null,
+>            "fecha_inicio": null,
+>            "fecha_final": null,
+>            "numero": null,
+>            "correo_electronico": null
+>        }
+>    ],
+>    "Tribunal de Etica": [
+>        {
+>            "cargo": "Miembro 01",
+>            "mp": 5,
+>            "nombre": "Gerardo",
+>            "apellido": "Ochoa",
+>            "fecha_inicio": "2021-12-10T03:00:00.000Z",
+>            "fecha_final": "2024-12-10T03:00:00.000Z",
+>            "numero": "0376879457",
+>            "correo_electronico": "gera@gata.com"
+>        }
+>   ]
+>}
+>```
+
 
 ### "/ ?org=`string` ?date=`mm-dd-yyyy`"
 req.query =  

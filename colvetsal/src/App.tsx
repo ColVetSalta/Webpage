@@ -16,7 +16,7 @@ function App() {
   const dispatch = useAppDispatch();
 
   React.useEffect(()=>{
-    axios.get<Organismo[]>('/organismo?org=Mesa Directiva')
+    axios.get<Organismo>('/organismo?full=true')
     .then((data)=> {
       console.log(data)
       dispatch(getOrganism(data.data))

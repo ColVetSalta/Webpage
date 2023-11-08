@@ -9,7 +9,6 @@ import {
   getOrganismosList
 } from '../controllers/organismoController'
 import { addCargoToOrg } from '../controllers/cargoController'
-import { OrgObject } from './assets/ObjectCreator'
 
 export async function postOrganismoHandler (req: Request, res: Response): Promise<void> {
   const data = req.body
@@ -26,25 +25,26 @@ export async function postOrganismoHandler (req: Request, res: Response): Promis
 }
 
 export async function getOrganismoHandler (req: Request, res: Response): Promise<void> {
-  const { org, date } = req.query
-  const { full } = req.body
+  const { org, date, full } = req.query
+  console.log(full)
   const dateCurr = date || new Date()
   try {
     if (org) {
       const organism = await getOrganismo(String(org), String(dateCurr))
       res.status(200).json(organism)
-    } else if (full) {
+    } else if (full === 'true') {
       const list = await getOrganismosList()
-      const fullList = await OrgObject(list, dateCurr)
-      console.log(fullList, 'TS')
-      // let fullList = {}
-      // await Promise.all(
-      //   list.map((or) => {
-      //     console.log(or.nombre)
-      //     fullList = { ...getOrganismo(or.nombre, dateCurr as string) }
-      //     console.log(fullList)
-      //   })
-      // )
+      // const fullList = await OrgObject(list, dateCurr)
+      // console.log(fullList, 'TS')
+      const fullList = {}
+      await Promise.all(
+        // eslint-disable-next-line array-callback-return
+        list.map(async (or) => {
+          console.log(or.nombre)
+          Object.assign(fullList, await getOrganismo(or.nombre, String(dateCurr)))
+          console.log(fullList)
+        })
+      )
       res.status(200).json(fullList)
     } else {
       const list = await getOrganismosList()

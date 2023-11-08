@@ -8,11 +8,11 @@ export default function Presentation({ motive }: { motive: string }): JSX.Elemen
             const divitions: string[] = Object.keys(organism);
 
             return <div className={p.cont}>
+                        <h3>{subind}</h3>
                 {
                     divitions ? divitions.map((d) => {
                         const h = organism[d as keyof typeof organism]                  
                         return <div>
-                        <h3>{subind}</h3>
                             <h3>{d}</h3>
                             {h ? h.map((r)=> <RoleData r={r} />) : null}                            
                         </div>
