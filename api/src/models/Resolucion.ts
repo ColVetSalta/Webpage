@@ -33,13 +33,19 @@ export default class Resolucion extends Model<InferAttributes<Resolucion>, Infer
   })
     fecha: string
 
-  @Column
+  @Column({
+    type: DataType.TEXT
+  })
     visto: string
 
-  @Column
+  @Column({
+    type: DataType.TEXT
+  })
     considerando: string
 
-  @Column
+  @Column({
+    type: DataType.TEXT
+  })
     resuelve: string
 
   @ForeignKey(() => Organismo)

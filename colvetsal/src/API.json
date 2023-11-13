@@ -3,8 +3,8 @@
     {
         "cargo":"Presidente",
         "mp":2,
-        "nombre":"Pedro",
-        "apellido":"Coso",
+        "nombre":"José Rolando",
+        "apellido":"Blanco",
         "fecha_inicio":"2021-12-10T03:00:00.000Z",
         "fecha_final":"2024-12-10T03:00:00.000Z",
         "numero":"0378564447",
@@ -13,8 +13,8 @@
     {
         "cargo":"Secretario",
         "mp":1,
-        "nombre":"Pedro",
-        "apellido":"Samanasa",
+        "nombre":"Francisco Javier",
+        "apellido":"Salomon",
         "fecha_inicio":"2021-12-10T03:00:00.000Z",
         "fecha_final":"2024-12-10T03:00:00.000Z",
         "numero":"38745588774",

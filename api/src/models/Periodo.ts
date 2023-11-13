@@ -7,7 +7,7 @@ import {
   BelongsToMany,
   DataType
 } from 'sequelize-typescript'
-import Marticulado from './Matriculado'
+import Matriculado from './Matriculado'
 import Cargo from './Cargo'
 import Resolucion from './Resolucion'
 import Firma from './Firma'
@@ -40,7 +40,7 @@ export default class Periodo extends Model<InferAttributes<Periodo>, InferCreati
   })
     fecha_final: Date
 
-  @ForeignKey(() => Marticulado)
+  @ForeignKey(() => Matriculado)
   @Column
     mp: number
 

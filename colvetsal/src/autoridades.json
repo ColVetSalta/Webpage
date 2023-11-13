@@ -1,0 +1,278 @@
+{
+    "Mesa Directiva": [
+        {
+            "cargo": "presidente",
+            "mp": 167,
+            "nombre": "José Rolando",
+            "apellido": "Blanco",
+            "fecha_inicio": "2021-10-12T03:00:00.000Z",
+            "fecha_final": "2024-10-12T03:00:00.000Z",
+            "numero": "4011184",
+            "correo_electronico": "kchorrosvet@hotmail.com"
+        },
+        {
+            "cargo": "secretario",
+            "mp": 454,
+            "nombre": "Gustavo (h)",
+            "apellido": "Peretti",
+            "fecha_inicio": "2021-10-12T03:00:00.000Z",
+            "fecha_final": "2024-10-12T03:00:00.000Z",
+            "numero": "4011327",
+            "correo_electronico": "gperettig@gmail.com"
+        },
+        {
+            "cargo": "tesorera",
+            "mp": 211,
+            "nombre": "María Cecilia",
+            "apellido": "Vieta",
+            "fecha_inicio": "2021-10-12T03:00:00.000Z",
+            "fecha_final": "2024-10-12T03:00:00.000Z",
+            "numero": "4291217",
+            "correo_electronico": "**********************"
+        },
+        {
+            "cargo": "vicepresidente",
+            "mp": 244,
+            "nombre": "Francisco Javier",
+            "apellido": "Salomon",
+            "fecha_inicio": "2021-10-12T03:00:00.000Z",
+            "fecha_final": "2024-10-12T03:00:00.000Z",
+            "numero": "154043320",
+            "correo_electronico": "fjsaguilera@gmail.com"
+        },
+        {
+            "cargo": "vocal",
+            "mp": 132,
+            "nombre": "Gustavo Ernesto",
+            "apellido": "Dada",
+            "fecha_inicio": "2021-10-12T03:00:00.000Z",
+            "fecha_final": "2024-10-12T03:00:00.000Z",
+            "numero": "4292679",
+            "correo_electronico": "gustavodada@ymail.com"
+        },
+        {
+            "cargo": "vocalSuplente1",
+            "mp": 224,
+            "nombre": "Rodrigo Javier",
+            "apellido": "Saavedra",
+            "fecha_inicio": "2021-10-12T03:00:00.000Z",
+            "fecha_final": "2024-10-12T03:00:00.000Z",
+            "numero": "156845310",
+            "correo_electronico": "rjsaavedra77@hotmail.com"
+        },
+        {
+            "cargo": "vocalSuplente2",
+            "mp": 501,
+            "nombre": "Agustin ",
+            "apellido": "Abeya",
+            "fecha_inicio": "2021-10-12T03:00:00.000Z",
+            "fecha_final": "2024-10-12T03:00:00.000Z",
+            "numero": "3876420656",
+            "correo_electronico": "agustinabeya@gmail.com"
+        }
+    ],
+    "Tribunal de Etica": [
+        {
+            "cargo": "Miembro1",
+            "mp": 150,
+            "nombre": "Silvia Patricia",
+            "apellido": "Cardozo",
+            "fecha_inicio": "2021-10-12T03:00:00.000Z",
+            "fecha_final": "2024-10-12T03:00:00.000Z",
+            "numero": "4312359",
+            "correo_electronico": "silvia_salta@hotmail.com"
+        },
+        {
+            "cargo": "Miembro2",
+            "mp": 137,
+            "nombre": "Miguel René",
+            "apellido": "Cedolini",
+            "fecha_inicio": "2021-10-12T03:00:00.000Z",
+            "fecha_final": "2024-10-12T03:00:00.000Z",
+            "numero": "422755",
+            "correo_electronico": "***********************"
+        },
+        {
+            "cargo": "Miembro3",
+            "mp": 265,
+            "nombre": "Sebastian ",
+            "apellido": "Galli",
+            "fecha_inicio": "2021-10-12T03:00:00.000Z",
+            "fecha_final": "2024-10-12T03:00:00.000Z",
+            "numero": "154102835",
+            "correo_electronico": "sgalli@live.com.ar"
+        }
+    ],
+    "zona1": [
+        {
+            "cargo": "0",
+            "mp": 289,
+            "nombre": "Rodrigo Alfredo",
+            "apellido": "Avila Segura",
+            "fecha_inicio": "2021-10-12T03:00:00.000Z",
+            "fecha_final": "2024-10-12T03:00:00.000Z",
+            "numero": "479819",
+            "correo_electronico": "rodaseg@gmail.com"
+        }
+    ],
+    "zona2": [
+        {
+            "cargo": "0",
+            "mp": 436,
+            "nombre": "Amadeo ",
+            "apellido": "Arena",
+            "fecha_inicio": "2021-10-12T03:00:00.000Z",
+            "fecha_final": "2024-10-12T03:00:00.000Z",
+            "numero": "undefined",
+            "correo_electronico": "amadeoarena@hotmail.com"
+        },
+        {
+            "cargo": "1",
+            "mp": 506,
+            "nombre": "Noelia Belen",
+            "apellido": "Laporta",
+            "fecha_inicio": "2021-10-12T03:00:00.000Z",
+            "fecha_final": "2024-10-12T03:00:00.000Z",
+            "numero": "3878591595",
+            "correo_electronico": "belen.laporta@gmail.com"
+        }
+    ],
+    "zona3": [
+        {
+            "cargo": "0",
+            "mp": 341,
+            "nombre": "Cristina B.",
+            "apellido": "Rosseto",
+            "fecha_inicio": "2021-10-12T03:00:00.000Z",
+            "fecha_final": "2024-10-12T03:00:00.000Z",
+            "numero": "undefined",
+            "correo_electronico": "rosetto.cristina@inta.gob.ar"
+        },
+        {
+            "cargo": "1",
+            "mp": 413,
+            "nombre": "Juan Manuel",
+            "apellido": "Correa Iramain",
+            "fecha_inicio": "2021-10-12T03:00:00.000Z",
+            "fecha_final": "2024-10-12T03:00:00.000Z",
+            "numero": "03877-15442498",
+            "correo_electronico": "duquerot@hotmail.com"
+        },
+        {
+            "cargo": "2",
+            "mp": 113,
+            "nombre": "Sebastián",
+            "apellido": "Diez",
+            "fecha_inicio": "2021-10-12T03:00:00.000Z",
+            "fecha_final": "2024-10-12T03:00:00.000Z",
+            "numero": "3877493162",
+            "correo_electronico": "**********************"
+        }
+    ],
+    "zona4": [
+        {
+            "cargo": "0",
+            "mp": 277,
+            "nombre": "Valeria Giovana",
+            "apellido": "Elizaldes",
+            "fecha_inicio": "2021-10-12T03:00:00.000Z",
+            "fecha_final": "2024-10-12T03:00:00.000Z",
+            "numero": "4251976",
+            "correo_electronico": "puppysvett@gmail.com"
+        },
+        {
+            "cargo": "1",
+            "mp": 332,
+            "nombre": "Maria Cecilia",
+            "apellido": "Villacorta",
+            "fecha_inicio": "2021-10-12T03:00:00.000Z",
+            "fecha_final": "2024-10-12T03:00:00.000Z",
+            "numero": "3874687654",
+            "correo_electronico": "mariacecilia_22@hotmail.com"
+        },
+        {
+            "cargo": "2",
+            "mp": 431,
+            "nombre": "Josefina ",
+            "apellido": "Soni",
+            "fecha_inicio": "2021-10-12T03:00:00.000Z",
+            "fecha_final": "2024-10-12T03:00:00.000Z",
+            "numero": "undefined",
+            "correo_electronico": "tetusoni@hotmail.com"
+        },
+        {
+            "cargo": "3",
+            "mp": 139,
+            "nombre": "Guillermo Jorge",
+            "apellido": "Cayo",
+            "fecha_inicio": "2021-10-12T03:00:00.000Z",
+            "fecha_final": "2024-10-12T03:00:00.000Z",
+            "numero": "4396380",
+            "correo_electronico": "guillermocayo70@gmail.com"
+        },
+        {
+            "cargo": "4",
+            "mp": 86,
+            "nombre": "Alfredo Daniel",
+            "apellido": "Freytes",
+            "fecha_inicio": "2021-10-12T03:00:00.000Z",
+            "fecha_final": "2024-10-12T03:00:00.000Z",
+            "numero": "4313925",
+            "correo_electronico": "*********************"
+        },
+        {
+            "cargo": "5",
+            "mp": 481,
+            "nombre": "Maria Noel",
+            "apellido": "Burgos Zamudio",
+            "fecha_inicio": "2021-10-12T03:00:00.000Z",
+            "fecha_final": "2024-10-12T03:00:00.000Z",
+            "numero": "4963628",
+            "correo_electronico": "noni_salta@hotmail.com"
+        }
+    ],
+    "zona5": [
+        {
+            "cargo": "0",
+            "mp": 185,
+            "nombre": "José Javier ",
+            "apellido": "López Lopez ",
+            "fecha_inicio": "2021-10-12T03:00:00.000Z",
+            "fecha_final": "2024-10-12T03:00:00.000Z",
+            "numero": "3876482590",
+            "correo_electronico": "jjlopezlopez@hotmail.com"
+        }
+    ],
+    "zona6": [
+        {
+            "cargo": "0",
+            "mp": 510,
+            "nombre": "Miguel Alfonso",
+            "apellido": "Castiella",
+            "fecha_inicio": "2021-10-12T03:00:00.000Z",
+            "fecha_final": "2024-10-12T03:00:00.000Z",
+            "numero": "4902414",
+            "correo_electronico": "macauni@hotmail.com"
+        },
+        {
+            "cargo": "1",
+            "mp": 173,
+            "nombre": "Marcelo Alejandro",
+            "apellido": "Rada",
+            "fecha_inicio": "2021-10-12T03:00:00.000Z",
+            "fecha_final": "2024-10-12T03:00:00.000Z",
+            "numero": "156856052",
+            "correo_electronico": "marceloradaf@yahoo.com.ar"
+        },
+        {
+            "cargo": "2",
+            "mp": 500,
+            "nombre": "Luis Gabriel",
+            "apellido": "Saravia",
+            "fecha_inicio": "2021-10-12T03:00:00.000Z",
+            "fecha_final": "2024-10-12T03:00:00.000Z",
+            "numero": "undefined",
+            "correo_electronico": "mvlsaravia40@gmail.com"
+        }
+    ]
+}

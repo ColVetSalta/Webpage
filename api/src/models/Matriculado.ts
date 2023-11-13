@@ -32,8 +32,7 @@ export default class Matriculado extends Model<InferAttributes<Matriculado>, Inf
 
   @Column({
     type: DataType.STRING,
-    allowNull: true,
-    unique: true
+    allowNull: true
   })
     correo_electronico: string
 
@@ -102,6 +101,14 @@ export default class Matriculado extends Model<InferAttributes<Matriculado>, Inf
   @HasMany(() => OtroDato)
     dato: CreationOptional<OtroDato[]>
 
-  @BelongsToMany(() => Cargo, () => Periodo)
-    cargo: CreationOptional<Array<Cargo & { Periodo: Periodo }>>
+  @BelongsToMany(() => Cargo, () => Periodo, 'mp', 'cargoid')
+    cargos: CreationOptional<Array<Cargo & { Periodo: Periodo }>>
+
+  static associate (models: any): void {
+    this.belongsToMany(models.Cargo, {
+      through: models.Periodo,
+      foreignKey: 'mp',
+      otherKey: 'cargoid'
+    })
+  }
 }

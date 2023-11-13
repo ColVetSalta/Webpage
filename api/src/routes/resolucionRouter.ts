@@ -8,9 +8,9 @@ import {
 } from '../handlers/resolucionHandler'
 const resolucionRouter = express.Router()
 
-resolucionRouter.get('/', getResolucionHandler)
-
 resolucionRouter.post('/', postResolucionHandler)
+
+resolucionRouter.get('/:resolucion', getResolucionHandler)
 
 resolucionRouter.put('/', modifyResolucionHandler)
 resolucionRouter.put('/:id', modifyResolucionHandler)

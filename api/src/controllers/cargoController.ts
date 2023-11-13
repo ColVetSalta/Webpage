@@ -27,6 +27,7 @@ export async function addCargoToMat ({ mp, cargo, orgid, fecha_inicio, fecha_fin
 })>> {
   const fechaIFormateada = format(new Date(fecha_inicio), "yyyy-MM-dd'T'HH:mm:ss.SSSxxx")
   const fechaFFormateada = format(new Date(fecha_final), "yyyy-MM-dd'T'HH:mm:ss.SSSxxx")
+  // const per = await Periodo.find
   const mat = await Matriculado.findByPk(mp)
   const car = await Cargo.findOne({
     where: {
@@ -36,13 +37,13 @@ export async function addCargoToMat ({ mp, cargo, orgid, fecha_inicio, fecha_fin
   })
   if (car === null) throw new Error(`No se encuentra el cargo de ${cargo} para el organismo ${orgid}`)
   if (mat === null) throw new Error(`No se encuentra disponible la matrícula N° ${mp}`)
-  await mat?.$add('cargo', car, {
+  await mat?.$add('cargos', car, {
     through: {
       fecha_inicio: fechaIFormateada,
       fecha_final: fechaFFormateada
     }
   })
-  const matriculaAdded = await mat?.$get('cargo')
+  const matriculaAdded = await mat?.$get('cargos')
   return matriculaAdded
 }
 

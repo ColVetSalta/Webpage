@@ -7,8 +7,10 @@ import {
   deleteOrganismoHandler
 } from '../handlers/organismoHandler'
 import { newCargoToMatriculaHandler } from '../handlers/cargoHandler'
+import { DefaultOrganismoCreate } from '../services/authServices'
 const organismoRouter = express.Router()
 
+organismoRouter.post('/fill', DefaultOrganismoCreate)
 organismoRouter.post('/', postOrganismoHandler)
 
 organismoRouter.get('/', getOrganismoHandler)

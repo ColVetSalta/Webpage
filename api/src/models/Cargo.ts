@@ -7,7 +7,7 @@ import {
   BelongsTo,
   ForeignKey
 } from 'sequelize-typescript'
-import Marticulado from './Matriculado'
+import Matriculado from './Matriculado'
 import Periodo from './Periodo'
 import Organismo from './Organismo'
 
@@ -27,6 +27,14 @@ export default class Cargo extends Model<InferAttributes<Cargo>, InferCreationAt
   @BelongsTo(() => Organismo)
     org: CreationOptional<Organismo>
 
-  @BelongsToMany(() => Marticulado, () => Periodo)
-    mp: CreationOptional<Marticulado[]>
+  @BelongsToMany(() => Matriculado, () => Periodo, 'cargoid', 'mp')
+    matriculados: CreationOptional<Array<Matriculado & { Periodo: Periodo }>>
+
+  static associate (models: any): void {
+    this.belongsToMany(models.Matriculado, {
+      through: models.Periodo,
+      foreignKey: 'cargoid',
+      otherKey: 'mp'
+    })
+  }
 }

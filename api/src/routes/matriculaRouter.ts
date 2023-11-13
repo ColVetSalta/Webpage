@@ -8,9 +8,11 @@ import {
   rePostMatriculaHandler,
   modifyAttachedDataHandler
 } from '../handlers/matriculaHandler'
+import { DefaultMatriculaList } from '../services/authServices'
 
 const matriculaRouter = express.Router()
 
+matriculaRouter.post('/fill', DefaultMatriculaList)
 matriculaRouter.post('/', postMatriculaHandler)
 
 matriculaRouter.get('/', getMatriculaHandler)

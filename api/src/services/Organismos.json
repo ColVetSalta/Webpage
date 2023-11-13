@@ -1,0 +1,169 @@
+{
+      "Mesa Directiva": {
+        "presidente": {
+          "fecha_inicio":  "10/12/21", 
+          "fecha_final":  "10/12/24",
+          "mp": 167 
+        },
+        "vicepresidente": {
+          "fecha_inicio":  "10/12/21", 
+          "fecha_final":  "10/12/24",
+          "mp": 244 
+        },
+        "secretario": {
+          "fecha_inicio":  "10/12/21", 
+          "fecha_final":  "10/12/24",
+          "mp": 454 
+        },
+        "tesorera": {
+          "fecha_inicio":  "10/12/21", 
+          "fecha_final":  "10/12/24",
+          "mp": 211 
+        },
+        "vocal": {
+          "fecha_inicio":  "10/12/21", 
+          "fecha_final":  "10/12/24",
+          "mp": 132 
+        },
+        "vocalSuplente1": {
+          "fecha_inicio":  "10/12/21", 
+          "fecha_final":  "10/12/24",
+          "mp": 224 
+        },
+        "vocalSuplente2": {
+          "fecha_inicio":  "10/12/21", 
+          "fecha_final":  "10/12/24",
+          "mp": 501 
+        }
+      },
+      "Tribunal de Etica": {
+        "Miembro1": {
+          "nombre": "Silvia Cardozo",
+          "fecha_inicio":  "10/12/21", 
+          "fecha_final":  "10/12/24",
+          "mp": 150 
+        },
+        "Miembro2": {
+          "nombre": "Miguel Cedolini",
+          "fecha_inicio":  "10/12/21", 
+          "fecha_final":  "10/12/24",
+          "mp": 137 
+        },
+        "Miembro3": {
+          "nombre": "Sebastian Galli",
+          "fecha_inicio":  "10/12/21", 
+          "fecha_final":  "10/12/24",
+          "mp": 265 
+        }
+      },
+      "consejeros": {
+        "zona1": [
+          {
+            "nombre": "Rodrigo Avila Segura",
+            "fecha_inicio":  "10/12/21", 
+            "fecha_final":  "10/12/24",
+            "mp": 289 
+          }
+        ],
+        "zona2": [
+          {
+            "nombre": "Amadeo Arena",
+            "fecha_inicio":  "10/12/21", 
+            "fecha_final":  "10/12/24",
+            "mp": 436 
+          },
+          {
+            "nombre": "Belen Laporta",
+            "fecha_inicio":  "10/12/21", 
+            "fecha_final":  "10/12/24",
+            "mp": 506 
+          }
+        ],
+        "zona3": [
+          {
+            "nombre": "Cristina Rosseto",
+            "fecha_inicio":  "10/12/21", 
+            "fecha_final":  "10/12/24",
+            "mp": 341 
+          },
+          {
+            "nombre": "Juan Correa Iramain",
+            "fecha_inicio":  "10/12/21", 
+            "fecha_final":  "10/12/24",
+            "mp": 413 
+          },
+          {
+            "nombre": "Sebastian Diez",
+            "fecha_inicio":  "10/12/21", 
+            "fecha_final":  "10/12/24",
+            "mp": 113 
+          }
+        ],
+        "zona4": [
+          {
+            "nombre": "Valeria Elizaldes",
+            "fecha_inicio":  "10/12/21", 
+            "fecha_final":  "10/12/24",
+            "mp": 277 
+          },
+          {
+            "nombre": "Cecilia Villacorta",
+            "fecha_inicio":  "10/12/21", 
+            "fecha_final":  "10/12/24",
+            "mp": 332 
+          },
+          {
+            "nombre": "Josefina Soni",
+            "fecha_inicio":  "10/12/21", 
+            "fecha_final":  "10/12/24",
+            "mp": 431 
+          },
+          {
+            "nombre": "Guillermo Cayo",
+            "fecha_inicio":  "10/12/21", 
+            "fecha_final":  "10/12/24",
+            "mp": 139 
+          },
+          {
+            "nombre": "Daniel Freites",
+            "fecha_inicio":  "10/12/21", 
+            "fecha_final":  "10/12/24",
+            "mp": 86 
+          },
+          {
+            "nombre": "María Noel Burgos Zamudio",
+            "fecha_inicio":  "10/12/21", 
+            "fecha_final":  "10/12/24",
+            "mp": 481 
+          }
+        ],
+        "zona5": [
+          {
+            "nombre": "Javier Lopez Lopez",
+            "fecha_inicio":  "10/12/21", 
+            "fecha_final":  "10/12/24",
+            "mp": 185 
+          }
+        ],
+        "zona6": [
+          {
+            "nombre": "Miguel Castiella",
+            "fecha_inicio":  "10/12/21", 
+            "fecha_final":  "10/12/24",
+            "mp": 510 
+          },
+          {
+            "nombre": "Marcelo Rada",
+            "fecha_inicio":  "10/12/21", 
+            "fecha_final":  "10/12/24",
+            "mp": 173 
+          },
+          {
+            "nombre": "Luis Saravia",
+            "fecha_inicio":  "10/12/21", 
+            "fecha_final":  "10/12/24",
+            "mp": 500 
+          }
+        ]
+      }
+}
