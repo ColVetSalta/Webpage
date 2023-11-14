@@ -105,7 +105,6 @@ export async function DefaultOrganismoCreate (
   res: Response
 ): Promise<void> {
   // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
-  // const info = OrgInfo as ListOrgs
   try {
     // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
     const Creation = async (neworg: Organismo, info: ListOrgs | { [cargo: string]: DataCargo[] }) => {

@@ -29,9 +29,9 @@ export default function ResolutionDetail(): React.JSX.Element {
             <h1>{r.orgid}</h1>
             <h1>{r.titulo}</h1>
             <h3>{r.fecha}</h3>
-            <span><h3>Visto: </h3><p>{r.visto}</p></span>
-            <span><h3>Considerando: </h3><p>{r.considerando}</p></span>
-            <span><h3>Resuelve: </h3><p>{r.resuelve}</p></span>
+            <span><h3>Visto: </h3><p dangerouslySetInnerHTML={{ __html: r.visto}}/></span>
+            <span><h3>Considerando: </h3><p dangerouslySetInnerHTML={{ __html: r.considerando}}/></span>
+            <span><h3>Resuelve: </h3><p dangerouslySetInnerHTML={{ __html: r.resuelve}}/></span>
             <span>
                 <h3>Firma: </h3>
                 <ul>{

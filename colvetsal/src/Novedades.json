@@ -5,7 +5,8 @@
     "title": "Try1",
     "summary": "Este sería el texto corto que describe de que se trata la noticia",
     "fullText": "Aca corresponde redactar de manera más completa toda la información disponible sobre el tema. </br>Tratando de explayarse completamente. </br> Sería logico que este texto tenga marcadores html para separar parrafos, subrayar y resalrar",
-    "date": "30/08/23"
+    "date": "30/08/23",
+    "url": ""
   },
   {
     "image": null,
@@ -13,7 +14,8 @@
     "title": "Try2",
     "summary": "Este sería el texto corto que describe de que se trata la noticia",
     "fullText": "Aca corresponde redactar de manera más completa toda la información disponible sobre el tema. </br>Tratando de explayarse completamente. </br> Sería logico que este texto tenga marcadores html para separar parrafos, subrayar y resalrar",
-    "date": "30/08/23"
+    "date": "30/08/23",
+    "url": ""
   },
   {
     "image": "vite.svg",
@@ -21,7 +23,8 @@
     "title": "Try3",
     "summary": "Este sería el texto corto que describe de que se trata la noticia",
     "fullText": "Aca corresponde redactar de manera más completa toda la información disponible sobre el tema. </br>Tratando de explayarse completamente. </br> Sería logico que este texto tenga marcadores html para separar parrafos, subrayar y resalrar",
-    "date": "30/08/23"
+    "date": "30/08/23",
+    "url": ""
   },
   {
     "image": "vite.svg",
@@ -37,7 +40,8 @@
     "title": "Try5",
     "summary": "Este sería el texto corto que describe de que se trata la noticia",
     "fullText": "Aca corresponde redactar de manera más completa toda la información disponible sobre el tema. </br>Tratando de explayarse completamente. </br> Sería logico que este texto tenga marcadores html para separar parrafos, subrayar y resalrar",
-    "date": "30/08/23"
+    "date": "30/08/23",
+    "url": ""
   },
   {
     "image": "vite.svg",
@@ -45,7 +49,8 @@
     "title": "Try6",
     "summary": "Este sería el texto corto que describe de que se trata la noticia",
     "fullText": "Aca corresponde redactar de manera más completa toda la información disponible sobre el tema. </br>Tratando de explayarse completamente. </br> Sería logico que este texto tenga marcadores html para separar parrafos, subrayar y resalrar",
-    "date": "30/08/23"
+    "date": "30/08/23",
+    "url": ""
   },
   {
     "image": "vite.svg",
@@ -53,7 +58,8 @@
     "title": "Try7",
     "summary": "Este sería el texto corto que describe de que se trata la noticia",
     "fullText": "Aca corresponde redactar de manera más completa toda la información disponible sobre el tema. </br>Tratando de explayarse completamente. </br> Sería logico que este texto tenga marcadores html para separar parrafos, subrayar y resalrar",
-    "date": "30/08/23"
+    "date": "30/08/23",
+    "url": ""
   },
   {
     "image": "vite.svg",
@@ -61,6 +67,7 @@
     "title": "Try8",
     "summary": "Este sería el texto corto que describe de que se trata la noticia",
     "fullText": "Aca corresponde redactar de manera más completa toda la información disponible sobre el tema. </br>Tratando de explayarse completamente. </br> Sería logico que este texto tenga marcadores html para separar parrafos, subrayar y resalrar",
-    "date": "30/08/23"
+    "date": "30/08/23",
+    "url": ""
   }
 ]
