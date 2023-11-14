@@ -14,7 +14,8 @@ export default function NavMenu({ name, items }: Menutype): JSX.Element {
                 return <MenuItem
                     key={item.subindexTitle}
                     as={Link}
-                    to={'sc/' + name.toLowerCase() + '_' + item.url}>
+                    to={'sc/' + name.toLowerCase() + '_' + item.url}
+                    >
                     {item.subindexTitle}
                 </MenuItem>;
             }) : null}

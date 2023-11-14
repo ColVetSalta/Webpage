@@ -25,16 +25,16 @@ export async function postResolucionHandler (req: Request, res: Response): Promi
 }
 export async function getResolucionHandler (req: Request, res: Response): Promise<void> {
   const resolution = req.params.resolucion
-  const { year, number } = req.body
+  const { year, number } = req.query
   try {
     if (resolution) {
       const organism = await getResolucionById(Number(resolution))
       res.status(200).json(organism)
     } else if (year && number) {
-      const organismList = await getResolucionByYrNm(year, number)
+      const organismList = await getResolucionByYrNm(Number(year), Number(number))
       res.status(200).json(organismList)
     } else if (year) {
-      const organismList = await getResolucionByYear(year)
+      const organismList = await getResolucionByYear(Number(year))
       res.status(200).json(organismList)
     } else {
       const list = await getResolucions()

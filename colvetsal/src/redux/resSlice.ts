@@ -3,11 +3,11 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 import { type Resol } from '../types'
 
 export interface resSliceState {
-  resoluciones: Resol
+  resoluciones: Resol[]
 }
 
 const initialState: resSliceState = {
-  resoluciones: {
+  resoluciones: [{
     fecha: "",
     num: 0,
     year: 0,
@@ -16,7 +16,7 @@ const initialState: resSliceState = {
     resuelve: "",
     orgid: "",
     firmas: []
-  }
+  }]
 //   ref: React.createRef<HTMLDivElement | null>(),
 }
 
@@ -24,7 +24,7 @@ const resSlice = createSlice({
   name: "res",
   initialState,
   reducers: {
-    getResoluciones: (state, action: PayloadAction<Resol>) => {
+    getResoluciones: (state, action: PayloadAction<Resol[]>) => {
       state.resoluciones = action.payload;
     },
   },

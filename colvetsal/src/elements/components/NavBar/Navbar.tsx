@@ -38,7 +38,7 @@ export default function NavBar(): JSX.Element {
           </ListItem>;
         }
         else if (list.url) {
-          return <ListItem>
+          return <ListItem key={list.url}>
             <Link to={list.url} className={nb.links}>{list.indexTitle}</Link>
           </ListItem>;
         } else {

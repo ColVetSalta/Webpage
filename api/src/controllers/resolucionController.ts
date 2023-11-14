@@ -41,7 +41,9 @@ export async function postResolucion ({
 }
 
 export async function getResolucions (): Promise<Resolucion[]> {
-  return await Resolucion.findAll()
+  return await Resolucion.findAll({
+    attributes: ['id', 'year', 'num']
+  })
 }
 export async function getResolucionByYear (year: number): Promise<any> {
   const list = await Resolucion.findAll({
