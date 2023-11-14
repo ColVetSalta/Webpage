@@ -2,10 +2,12 @@
 import { Request, Response } from 'express'
 import {
   editResolucion,
-  getResolucion,
+  getResolucionById,
   getResolucions,
   deleteResolucion,
-  postResolucion
+  postResolucion,
+  getResolucionByYear,
+  getResolucionByYrNm
 } from '../controllers/resolucionController'
 
 export async function postResolucionHandler (req: Request, res: Response): Promise<void> {
@@ -23,10 +25,17 @@ export async function postResolucionHandler (req: Request, res: Response): Promi
 }
 export async function getResolucionHandler (req: Request, res: Response): Promise<void> {
   const resolution = req.params.resolucion
+  const { year, number } = req.body
   try {
     if (resolution) {
-      const organism = await getResolucion(Number(resolution))
+      const organism = await getResolucionById(Number(resolution))
       res.status(200).json(organism)
+    } else if (year) {
+      const organismList = await getResolucionByYear(year)
+      res.status(200).json(organismList)
+    } else if (year && number) {
+      const organismList = await getResolucionByYrNm(year, number)
+      res.status(200).json(organismList)
     } else {
       const list = await getResolucions()
       res.status(200).json(list)
@@ -43,12 +52,12 @@ export async function modifyResolucionHandler (req: Request, res: Response): Pro
   const data = req.body
   const id = req.params.id
   try {
-    const resolution = await getResolucion(Number(id))
+    const resolution = await getResolucionById(Number(id))
     Object.keys(resolution).forEach((att) => {
       Object.keys(data).includes(att) && (resolution[att] = data[att])
     })
     await editResolucion(data)
-    const modify = await getResolucion(Number(id))
+    const modify = await getResolucionById(Number(id))
     res.send(modify)
   } catch (error) {
     if (error instanceof Error) {
