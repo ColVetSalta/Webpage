@@ -1,23 +1,23 @@
 /* eslint-disable @typescript-eslint/no-misused-promises */
-import express from 'express'
+import express from "express";
 import {
   getOrganismoHandler,
   modifyOrganismoHandler,
   postOrganismoHandler,
-  deleteOrganismoHandler
-} from '../handlers/organismoHandler'
-import { newCargoToMatriculaHandler } from '../handlers/cargoHandler'
-import { DefaultOrganismoCreate } from '../services/authServices'
-const organismoRouter = express.Router()
+  deleteOrganismoHandler,
+} from "../handlers/organismoHandler";
+import { newCargoToMatriculaHandler } from "../handlers/cargoHandler";
+import { DefaultOrganismoCreate } from "../services/apiServices";
+const organismoRouter = express.Router();
 
-organismoRouter.post('/fill', DefaultOrganismoCreate)
-organismoRouter.post('/', postOrganismoHandler)
+organismoRouter.post("/fill", DefaultOrganismoCreate);
+organismoRouter.post("/", postOrganismoHandler);
 
-organismoRouter.get('/', getOrganismoHandler)
+organismoRouter.get("/", getOrganismoHandler);
 
-organismoRouter.put('/edit/:id', modifyOrganismoHandler)// modify org name or add a cargo to the org.
-organismoRouter.put('/:id/cargo/:charge', newCargoToMatriculaHandler)// assign a mp to a cargo and findorcreate a period.
+organismoRouter.put("/edit/:id", modifyOrganismoHandler); // modify org name or add a cargo to the org.
+organismoRouter.put("/:id/cargo/:charge", newCargoToMatriculaHandler); // assign a mp to a cargo and findorcreate a period.
 
-organismoRouter.delete('/:org', deleteOrganismoHandler)
+organismoRouter.delete("/:org", deleteOrganismoHandler);
 
-export default organismoRouter
+export default organismoRouter;

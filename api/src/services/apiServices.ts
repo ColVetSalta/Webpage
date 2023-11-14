@@ -115,9 +115,9 @@ export async function DefaultOrganismoCreate (
       if (Array.isArray(detail)) {
         for (let i = 0; detail.length > i; i++) {
           await neworg
-            .$add('miembros', await postCargo({ nombre: String(i), orgid }))
+            .$add('miembros', await postCargo({ nombre: String(i + 1), orgid }))
             .then(async () => {
-              const cargo = String(i)
+              const cargo = String(i + 1)
               await addCargoToMat({
                 mp: detail[i].mp,
                 cargo,
