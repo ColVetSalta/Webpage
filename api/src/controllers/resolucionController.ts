@@ -15,6 +15,7 @@ export async function postResolucion ({
   num,
   year,
   fecha,
+  titulo,
   visto,
   considerando,
   resuelve,
@@ -28,6 +29,7 @@ export async function postResolucion ({
   const newRes = await Resolucion.create({
     num,
     year,
+    titulo,
     fecha,
     visto,
     considerando,
