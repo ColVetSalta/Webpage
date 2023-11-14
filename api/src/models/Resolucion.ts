@@ -18,6 +18,7 @@ import Organismo from './Organismo'
   paranoid: true
 })
 export default class Resolucion extends Model<InferAttributes<Resolucion>, InferCreationAttributes<Resolucion>> {
+  [x: string]: any
   @Column
     num: number
 

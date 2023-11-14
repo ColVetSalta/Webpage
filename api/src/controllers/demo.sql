@@ -57,5 +57,9 @@ SELECT c.nombre AS cargo, m.mp, m.nombre, m.apellido, p.fecha_inicio, p.fecha_fi
 
     SELECT r.num, r.year, r.fecha, r.visto, r.considerando, r.resuelve, r.orgid, p.mp, m.nombre, m.apellido, c.nombre AS cargo
     FROM resolucion r
-    JOIN (SELECT p.mp, m.nombre, m.apellido, c.nombre AS cargo
-    FROM )
+    JOIN firma f ON r.id = f.resid
+    JOIN periodo p ON f.perid = p.id
+    JOIN matriculado m ON p.mp = m.mp
+    JOIN cargo c ON p.cargoid = c.id
+    WHERE r.id = '${id}'
+
