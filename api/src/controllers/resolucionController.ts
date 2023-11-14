@@ -81,7 +81,7 @@ export async function getResolucionById (id: number): Promise<any> {
   // })
   // return res?.toJSON()
   const res = await sequelize.query(
-    `SELECT r.num, r.year, r.fecha, r.visto, r.considerando, r.resuelve, r.orgid, p.mp, m.nombre, m.apellido, c.nombre AS cargo
+    `SELECT r.num, r.year, r.fecha, r.titulo, r.visto, r.considerando, r.resuelve, r.orgid, p.mp, m.nombre, m.apellido, c.nombre AS cargo
     FROM resolucion r
     JOIN firma f ON r.id = f.resid
     JOIN periodo p ON f.perid = p.id
@@ -108,6 +108,7 @@ export async function getResolucionById (id: number): Promise<any> {
     fecha: res[0].fecha,
     num: res[0].num,
     year: res[0].year,
+    titulo: res[0].titulo,
     visto: res[0].visto,
     considerando: res[0].considerando,
     resuelve: res[0].resuelve,
@@ -116,11 +117,12 @@ export async function getResolucionById (id: number): Promise<any> {
   }
   return objectRes
 }
-export async function editResolucion (data: Resolucion): Promise<[affectedCount: number]> {
+export async function editResolucion (data: Resolucion, id: number): Promise<[affectedCount: number]> {
   return await Resolucion.update({
     year: data.year,
     fecha: data.fecha,
     num: data.num,
+    titulo: data.titulo,
     visto: data.visto,
     considerando: data.considerando,
     resuelve: data.resuelve,
@@ -130,7 +132,7 @@ export async function editResolucion (data: Resolucion): Promise<[affectedCount:
   },
   {
     where: {
-      id: data.id
+      id
     }
   })
 }

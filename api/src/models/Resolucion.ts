@@ -34,6 +34,9 @@ export default class Resolucion extends Model<InferAttributes<Resolucion>, Infer
   })
     fecha: string
 
+  @Column
+    titulo: string
+
   @Column({
     type: DataType.TEXT
   })

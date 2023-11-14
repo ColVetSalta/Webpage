@@ -50,14 +50,16 @@ export async function getResolucionHandler (req: Request, res: Response): Promis
 }
 export async function modifyResolucionHandler (req: Request, res: Response): Promise<void> {
   const data = req.body
-  const id = req.params.id
+  const id = Number(req.params.id)
   try {
-    const resolution = await getResolucionById(Number(id))
+    console.log('inicio: ', data)
+    const resolution = await getResolucionById(id)
     Object.keys(resolution).forEach((att) => {
       Object.keys(data).includes(att) && (resolution[att] = data[att])
     })
-    await editResolucion(data)
-    const modify = await getResolucionById(Number(id))
+    console.log('retocada: ', data)
+    await editResolucion(data, id)
+    const modify = await getResolucionById(id)
     res.send(modify)
   } catch (error) {
     if (error instanceof Error) {
