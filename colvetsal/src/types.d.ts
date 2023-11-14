@@ -41,13 +41,19 @@ export type RData = {
 };
 //Resoluciones
 export interface Resol {
-  [key: string | number]: {
-    fecha: string;
-    visto: string;
-    resuelve: { [key: string]: string };
-    firma: { [key: string]: string };
-    anexo: unknown;
-  };
+  fecha: string
+num: number
+year: number
+visto:string
+considerando: string
+resuelve: string
+orgid: string
+firmas: {
+  mp: number
+  nombre: string
+  apellido: string
+  cargo: string
+}[]
 }
 export interface ResolAnual {
   [key: string | number]: Resol;

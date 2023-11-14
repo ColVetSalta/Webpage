@@ -107,6 +107,7 @@ export async function getResolucionById (id: number): Promise<any> {
     num: res[0].num,
     year: res[0].year,
     visto: res[0].visto,
+    considerando: res[0].considerando,
     resuelve: res[0].resuelve,
     orgid: res[0].orgid,
     firmas

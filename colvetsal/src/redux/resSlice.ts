@@ -1,13 +1,22 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 // import React from "react"
-import { type ResolAnual } from '../types'
+import { type Resol } from '../types'
 
 export interface resSliceState {
-  resoluciones: ResolAnual
+  resoluciones: Resol
 }
 
 const initialState: resSliceState = {
-  resoluciones: {}
+  resoluciones: {
+    fecha: "",
+    num: 0,
+    year: 0,
+    visto: "",
+    considerando: "",
+    resuelve: "",
+    orgid: "",
+    firmas: []
+  }
 //   ref: React.createRef<HTMLDivElement | null>(),
 }
 
@@ -15,7 +24,7 @@ const resSlice = createSlice({
   name: "res",
   initialState,
   reducers: {
-    getResoluciones: (state, action: PayloadAction<ResolAnual>) => {
+    getResoluciones: (state, action: PayloadAction<Resol>) => {
       state.resoluciones = action.payload;
     },
   },
