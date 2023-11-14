@@ -3,7 +3,8 @@ import {
   DataType,
   Table,
   Model,
-  Column
+  Column,
+  AllowNull
 } from 'sequelize-typescript'
 
 @Table({
@@ -12,6 +13,7 @@ import {
   paranoid: true
 })
 export default class Novedad extends Model<InferAttributes<Novedad>, InferCreationAttributes<Novedad>> {
+  @AllowNull(false)
   @Column
     title: string
 
@@ -20,6 +22,13 @@ export default class Novedad extends Model<InferAttributes<Novedad>, InferCreati
 
   @Column
     alt: string
+
+  @AllowNull(false)
+  @Column({
+    type: DataType.ENUM,
+    values: ['NOTICIAS', 'ARTICULOS', 'CURSOS', 'EVENTOS', 'ANUNCIOS', 'TRABAJO']
+  })
+    categoria: string
 
   @Column
     summary: string

@@ -1,32 +1,36 @@
 [
   {
-    "image": null,
-    "alt": "Texto Alternativo a la imagen",
-    "title": "Try1",
+    "categoria": "TRABAJO",
+    "image": "https://scontent.fsla4-1.fna.fbcdn.net/v/t39.30808-6/400537238_729862009182719_3709102013911195249_n.jpg?stp=dst-jpg_s720x720&_nc_cat=111&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeHKhsSXlSYmixiuigo_bnfNK1Gk9hbZoGYrUaT2FtmgZgB6peK_k9zUZ6KrsUh-p_A&_nc_ohc=upDw3TWuDvsAX8RoaNw&_nc_ht=scontent.fsla4-1.fna&oh=00_AfDi1B2cMfrjgVSmhV6OwAKvdYFiPMjGJ-3mLHqPg1FxYA&oe=655989FA",
+    "alt": "Busqueda laboral - S. Mazza ",
+    "title": "Director Tecnico para Fabrica de Alimentos en S. Mazza",
+    "summary": "El trabajo consiste en realizar informes y visitas periódicas según normativa vigente",
+    "fullText": "El trabajo consiste en realizar informes y visitas periódicas según normativa vigente. Comunicarse al telefono: 3875864110",
+    "date": "11/09/2023",
+    "url": "https://www.facebook.com/ColegiodeMedicosVeterinariosdeSalta/posts/pfbid0mYqaTH6XPiM4wJhWoPBfXzFGVRYHDNtQruVjS48mnM4bgdpVaPQjVCiWZsFGc3m9l"
+  },
+  {
+    "categoria": "NOTICIAS",
+    "image": "https://scontent.fsla4-1.fna.fbcdn.net/v/t39.30808-6/400642951_729859999182920_7370045595594634414_n.jpg?stp=dst-jpg_p180x540&_nc_cat=106&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeET9sQCdVZKEdzVnhFWp0rzumQ3MXvergK6ZDcxe96uAgP4FoxgKdKCrc8SuLuilUc&_nc_ohc=vdv1D_rW9bQAX-NXYhA&_nc_ht=scontent.fsla4-1.fna&oh=00_AfCXU7Oy_C6OSYp8AoF9NgGzq98o-Jz2p8EiGK5-kUs3uA&oe=6557A98C",
+    "alt": "Asamblea informativa consultiva",
+    "title": "Asamblea informativa consultiva -Regencias- 11-2023",
     "summary": "Este sería el texto corto que describe de que se trata la noticia",
     "fullText": "Aca corresponde redactar de manera más completa toda la información disponible sobre el tema. </br>Tratando de explayarse completamente. </br> Sería logico que este texto tenga marcadores html para separar parrafos, subrayar y resalrar",
     "date": "30/08/23",
-    "url": ""
+    "url": "https://www.facebook.com/ColegiodeMedicosVeterinariosdeSalta/posts/pfbid037PN9PvgxVeSCMuNX5nNPuEAmeeWX1vUUQy4pFCNmkgD9ri4kHKmsvHxb1uzG1gfDl"
   },
   {
-    "image": null,
-    "alt": "Texto Alternativo a la imagen",
-    "title": "Try2",
-    "summary": "Este sería el texto corto que describe de que se trata la noticia",
-    "fullText": "Aca corresponde redactar de manera más completa toda la información disponible sobre el tema. </br>Tratando de explayarse completamente. </br> Sería logico que este texto tenga marcadores html para separar parrafos, subrayar y resalrar",
-    "date": "30/08/23",
-    "url": ""
-  },
-  {
+    "categoria": "NOTICIAS",
     "image": "vite.svg",
     "alt": "Texto Alternativo a la imagen",
     "title": "Try3",
     "summary": "Este sería el texto corto que describe de que se trata la noticia",
     "fullText": "Aca corresponde redactar de manera más completa toda la información disponible sobre el tema. </br>Tratando de explayarse completamente. </br> Sería logico que este texto tenga marcadores html para separar parrafos, subrayar y resalrar",
     "date": "30/08/23",
-    "url": ""
+    "url": "https://www.facebook.com/ColegiodeMedicosVeterinariosdeSalta/posts/pfbid02aALMnKZRBYd5EaBg3SpJDJf2Pr8uL6WJHvqCMyUK32sE1ej7F3Z92aMVGJD5HzWal"
   },
   {
+    "categoria": "NOTICIAS",
     "image": "vite.svg",
     "alt": "Texto Alternativo a la imagen",
     "title": "Try4",
@@ -35,15 +39,17 @@
     "date": "30/08/23"
   },
   {
+    "categoria": "CURSOS",
     "image": null,
     "alt": "Texto Alternativo a la imagen",
     "title": "Try5",
     "summary": "Este sería el texto corto que describe de que se trata la noticia",
     "fullText": "Aca corresponde redactar de manera más completa toda la información disponible sobre el tema. </br>Tratando de explayarse completamente. </br> Sería logico que este texto tenga marcadores html para separar parrafos, subrayar y resalrar",
     "date": "30/08/23",
-    "url": ""
+    "url": "https://www.facebook.com/ColegiodeMedicosVeterinariosdeSalta/posts/pfbid02PpE1GfHqnkuGLQPXLNkU5RiHuYPLTKFFqpEznEHgtwSUHFL9AKgBShrKu1RpmLvKl"
   },
   {
+    "categoria": "EVENTOS",
     "image": "vite.svg",
     "alt": "Texto Alternativo a la imagen",
     "title": "Try6",
@@ -53,6 +59,7 @@
     "url": ""
   },
   {
+    "categoria": "CURSOS",
     "image": "vite.svg",
     "alt": "Texto Alternativo a la imagen",
     "title": "Try7",
@@ -62,6 +69,7 @@
     "url": ""
   },
   {
+    "categoria": "EVENTOS",
     "image": "vite.svg",
     "alt": "Texto Alternativo a la imagen",
     "title": "Try8",

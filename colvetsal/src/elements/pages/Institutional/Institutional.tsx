@@ -5,7 +5,10 @@ import { useParams } from 'react-router-dom'
 
 export default function Institutional (): JSX.Element {
     const { motive } = useParams()
-    return <Grid className={i.Cont}>
+    return <Grid 
+    className={i.Cont}
+    margin={'15dvh 5dvw 10dvh 5dvw'}
+    >
 <h1>Institucional</h1>
 {motive && <Presentation motive={motive}/>}
     </Grid>
