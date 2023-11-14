@@ -43,26 +43,26 @@ export async function postResolucion ({
 export async function getResolucions (): Promise<Resolucion[]> {
   return await Resolucion.findAll()
 }
-export async function getResolucionByYear (year: string): Promise<any> {
+export async function getResolucionByYear (year: number): Promise<any> {
   const list = await Resolucion.findAll({
     where: {
       year
     },
     attributes: ['id']
   })
-  const response = list.map(async (id) => await getResolucionById(Number(id)))
-  return response
+  const response = Promise.all(list.map(async (r) => await getResolucionById(r.dataValues.id)))
+  return await response
 }
-export async function getResolucionByYrNm (year: string, number: number): Promise<any> {
+export async function getResolucionByYrNm (year: number, number: number): Promise<any> {
   const res = await Resolucion.findOne({
     where: {
       year,
-      numero: number
+      num: number
     },
     attributes: ['id']
   })
   if (res === null) throw new Error(`No se ha encontrado la resolucion ${number} del ${year}`)
-  return await getResolucionById(res.id)
+  return await getResolucionById(Number(res.id))
 }
 
 export async function getResolucionById (id: number): Promise<any> {

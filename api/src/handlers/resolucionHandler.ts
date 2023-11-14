@@ -30,11 +30,11 @@ export async function getResolucionHandler (req: Request, res: Response): Promis
     if (resolution) {
       const organism = await getResolucionById(Number(resolution))
       res.status(200).json(organism)
-    } else if (year) {
-      const organismList = await getResolucionByYear(year)
-      res.status(200).json(organismList)
     } else if (year && number) {
       const organismList = await getResolucionByYrNm(year, number)
+      res.status(200).json(organismList)
+    } else if (year) {
+      const organismList = await getResolucionByYear(year)
       res.status(200).json(organismList)
     } else {
       const list = await getResolucions()

@@ -11,6 +11,7 @@ const resolucionRouter = express.Router()
 resolucionRouter.post('/', postResolucionHandler)
 
 resolucionRouter.get('/:resolucion', getResolucionHandler)
+resolucionRouter.get('/', getResolucionHandler)
 
 resolucionRouter.put('/', modifyResolucionHandler)
 resolucionRouter.put('/:id', modifyResolucionHandler)
