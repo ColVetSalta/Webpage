@@ -9,17 +9,21 @@ import {
 } from "@chakra-ui/react";
 import { NavMenu } from "../..";
 import navList from "../../../Navegacion.json";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { type Navigation } from '../../../types';
 
 export default function NavBar(): JSX.Element {
   const impList: Navigation[] = navList;
   return <nav className={nb.Cont}>
     <Flex>
+    <NavLink
+      to={'/home'}
+      >
       <Image
         boxSize={"4.2em"}
         src={ColvetLogo}
         alt="ColVet" />
+        </NavLink>
       <Text
         width={'30dvw'}
         fontSize={'1.4em'}
