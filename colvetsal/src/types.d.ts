@@ -41,9 +41,11 @@ export type RData = {
 };
 //Resoluciones
 export interface Resol {
+  id: number
   fecha: string
 num: number
 year: number
+titulo: string
 visto:string
 considerando: string
 resuelve: string

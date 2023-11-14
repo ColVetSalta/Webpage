@@ -7,6 +7,8 @@ import axios from 'axios';
 import React from 'react';
 import { getOrganism } from '../../../redux/orgSlice';
 import { getResoluciones } from '../../../redux/resSlice';
+import { Link as ChakLink} from '@chakra-ui/react';
+import { Link } from 'react-router-dom';
 
 export interface DefPres {
     [x: string]: [{
@@ -45,27 +47,19 @@ export default function Presentation({ motive }: { motive: string }): JSX.Elemen
     }
 
     if (subind === 'RESOLUCIONES') {
-        return <div>
-            { resoluciones?.map((r) => <div>
-            <h2>{r.num} / {r.year}</h2>
-            <h1>{r.orgid}</h1>
-            <h3>{r.fecha}</h3>
-            <span><h3>Visto: </h3><p>{r.visto}</p></span>
-            <span><h3>Considerando: </h3><p>{r.considerando}</p></span>
-            <span><h3>Resuelve: </h3><p>{r.resuelve}</p></span>
-            <span>
-                <h3>Firma: </h3>
-                <ul>{
-                r.firmas?.map((f) => {
-                    return <li key={f.mp}>
-                        <h4>{f.nombre} {f.apellido}</h4>
-                        <h5>{f.cargo}</h5>
-                    </li>
-                })
-            }
+        return <ul>
+            {resoluciones?.map((r) =>{
+                console.log(r.titulo)
+                return <li 
+            key={r.id}
+            >
+                <ChakLink
+                as={Link}
+                to={`/res/detail/${r.id}`}>
+                 <h2>{r.num} / {r.year} - {r.titulo}</h2>
+                </ChakLink>                
+            </li>})}
             </ul>
-            </span>
-        </div>)}</div>
     } else if (subind === 'AUTORIDADES') {
         stateSelect = organism
         const divitions: string[] = Object.keys(stateSelect);

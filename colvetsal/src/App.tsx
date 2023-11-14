@@ -10,6 +10,7 @@ import React, { Suspense } from "react";
 const Institutional = React.lazy(() => import('./elements/pages/Institutional/Institutional'))
 const Home = React.lazy(() => import('./elements/pages/Home/Home'))
 const Landing = React.lazy(() => import('./elements/pages/Landing/Landing'))
+const ResolutionDetail = React.lazy(() => import('./elements/pages/ResolutionDetail/ResolutionDetail'))
 
 function App() {
   const location = useLocation();
@@ -33,6 +34,7 @@ function App() {
         <Route path="/" element={<Landing />} />
         <Route path="/home" element={<Home />} />
         <Route path="/sc/:motive" element={<Institutional />} />
+        <Route path="/res/detail/:id" element={<ResolutionDetail />} />
 
       </Routes>
       {location.pathname !== '/' &&

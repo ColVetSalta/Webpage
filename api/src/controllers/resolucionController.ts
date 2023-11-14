@@ -42,7 +42,7 @@ export async function postResolucion ({
 
 export async function getResolucions (): Promise<Resolucion[]> {
   return await Resolucion.findAll({
-    attributes: ['id', 'year', 'num']
+    attributes: ['id', 'num', 'year', 'titulo']
   })
 }
 export async function getResolucionByYear (year: number): Promise<any> {
@@ -81,7 +81,7 @@ export async function getResolucionById (id: number): Promise<any> {
   // })
   // return res?.toJSON()
   const res = await sequelize.query(
-    `SELECT r.num, r.year, r.fecha, r.titulo, r.visto, r.considerando, r.resuelve, r.orgid, p.mp, m.nombre, m.apellido, c.nombre AS cargo
+    `SELECT r.id, r.num, r.year, r.fecha, r.titulo, r.visto, r.considerando, r.resuelve, r.orgid, p.mp, m.nombre, m.apellido, c.nombre AS cargo
     FROM resolucion r
     JOIN firma f ON r.id = f.resid
     JOIN periodo p ON f.perid = p.id
@@ -105,6 +105,7 @@ export async function getResolucionById (id: number): Promise<any> {
     }
   })
   const objectRes = {
+    id: res[0].id,
     fecha: res[0].fecha,
     num: res[0].num,
     year: res[0].year,
