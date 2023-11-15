@@ -82,10 +82,13 @@ export type Menutype = {
 };
 //Novedades
 export type News = {
+  id: number;
+  categoria: 'NOTICIAS' | 'ARTICULOS' | 'CURSOS' | 'EVENTOS' | 'ANUNCIOS' | 'TRABAJO' | 'BOLETIN';
   image: string | null;
   alt: string | null;
   title: string;
-  summary: string;
-  fullText: string;
-  date: string;
+  summary: string | null;
+  fulltext: string | null;
+  date: string | null;
+  url: string | null
 };
