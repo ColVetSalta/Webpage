@@ -8,7 +8,7 @@ import NovedadesDetail from "./elements/pages/NovedadesDetail/NovedadesDetail";
 // import { getOrganism } from "./redux/orgSlice";
 // import { Organismo } from "./types";
 
-const Institutional = React.lazy(() => import('./elements/pages/Institutional/Institutional'))
+const Section = React.lazy(() => import('./elements/pages/Section/Section'))
 const Home = React.lazy(() => import('./elements/pages/Home/Home'))
 const Landing = React.lazy(() => import('./elements/pages/Landing/Landing'))
 const ResolutionDetail = React.lazy(() => import('./elements/pages/ResolutionDetail/ResolutionDetail'))
@@ -34,7 +34,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Landing />} />
         <Route path="/home" element={<Home />} />
-        <Route path="/sc/:motive" element={<Institutional />} />
+        <Route path="/sc/:motive" element={<Section />} />
         <Route path="/res/detail/:id" element={<ResolutionDetail />} />
         <Route path="/news/detail/:id" element={<NovedadesDetail />} />
 
