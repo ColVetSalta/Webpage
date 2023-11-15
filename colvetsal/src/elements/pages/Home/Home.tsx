@@ -3,6 +3,6 @@ import { Novedades } from "../..";
 
  export default function Home(): JSX.Element {
 	return <Container>		
-	<Novedades/>
+	<Novedades motive='home'/>
 	</Container>
 }

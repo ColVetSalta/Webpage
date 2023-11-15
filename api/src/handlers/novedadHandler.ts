@@ -25,6 +25,7 @@ export async function postNovedadHandler (req: Request, res: Response): Promise<
 
 export async function getNovedadHandler (req: Request, res: Response): Promise<void> {
   const id = req.params.id
+  const data = req.query
   const { destacado } = req.query
   const outstanding = (destacado === 'true')
   try {
@@ -33,6 +34,9 @@ export async function getNovedadHandler (req: Request, res: Response): Promise<v
       res.status(200).json(periodo)
     } else if (destacado) {
       const list = await getNovedadBy({ destacado: outstanding })
+      res.status(200).json(list)
+    } else if (data !== null) {
+      const list = await getNovedadBy(data)
       res.status(200).json(list)
     } else {
       const list = await getNovedads()

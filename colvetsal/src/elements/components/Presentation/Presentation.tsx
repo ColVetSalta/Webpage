@@ -18,17 +18,16 @@ export interface DefPres {
 }
 
 export default function Presentation({ motive }: { motive: string }): JSX.Element {
-    const subind: string = motive.split('_')[1].toUpperCase();
     const dispatch = useAppDispatch()
 
     React.useEffect(() => {
-        if (subind === 'AUTORIDADES')
+        if (motive === 'AUTORIDADES')
             axios.get<Organismo>('/organismo?full=true')
                 .then((data) => {
                     console.log(data)
                     dispatch(getOrganism(data.data))
                 })
-        if (subind === 'RESOLUCIONES') {
+        if (motive === 'RESOLUCIONES') {
             axios.get<Resol[]>('/resoluciones')
                 .then((data) => {
                     console.log(data)
@@ -36,7 +35,7 @@ export default function Presentation({ motive }: { motive: string }): JSX.Elemen
                 })
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [subind])
+    }, [motive])
 
     const { organism } = useAppSelector((state) => state.org)
     const { resoluciones } = useAppSelector((state) => state.res)
@@ -46,7 +45,7 @@ export default function Presentation({ motive }: { motive: string }): JSX.Elemen
         }]
     }
 
-    if (subind === 'RESOLUCIONES') {
+    if (motive === 'RESOLUCIONES') {
         return <ul>
             {resoluciones?.map((r) =>{
                 console.log(r.titulo)
@@ -60,12 +59,12 @@ export default function Presentation({ motive }: { motive: string }): JSX.Elemen
                 </ChakLink>                
             </li>})}
             </ul>
-    } else if (subind === 'AUTORIDADES') {
+    } else if (motive === 'AUTORIDADES') {
         stateSelect = organism
         const divitions: string[] = Object.keys(stateSelect);
 
         return <div className={p.cont}>
-            <h3>{subind}</h3>
+            <h3>{motive}</h3>
             <h3>Consejo Mayor: </h3>
             {
                 divitions ? divitions.map((d) => {

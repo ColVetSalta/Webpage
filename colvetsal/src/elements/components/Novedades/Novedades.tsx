@@ -8,18 +8,23 @@ import { getNews } from '../../../redux/newsSlice';
 import { Link as ChakLink } from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
 
-export default function Novedades(): JSX.Element {
+export default function Novedades({ motive }: { motive: string }): JSX.Element {
     const dispatch = useAppDispatch()
     useEffect(() => {
-        axios.get<News[]>('/novedades')
-            .then((data) => dispatch(getNews(data.data)))
-    }), []
+        if (motive === 'home') {
+            axios.get<News[]>('/novedades?destacado=true')
+                .then((data) => dispatch(getNews(data.data)))
+        } else {
+            axios.get<News[]>(`/novedades?categoria=${motive}`)
+                .then((data) => dispatch(getNews(data.data)))
+        }
+    }), [motive]
     const { news } = useAppSelector((state) => state.news)
 
     return <Grid
         margin={'15dvh 5dvw 10dvh 5dvw'}
         templateColumns='repeat(3, 1fr)'
-        gap={25}
+        gap={35}
         opacity={'93%'}
         className={nov.Grid}
     >
@@ -27,7 +32,7 @@ export default function Novedades(): JSX.Element {
             news.map((n) => {
                 return <Card
                     background={'darkgray'}
-                    key={n.title}>
+                    key={n.id}>
                     <ChakLink
                         as={Link}
                         to={`/news/detail/${n.id}`}

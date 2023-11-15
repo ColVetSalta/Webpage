@@ -91,7 +91,7 @@ export type News = {
   fulltext: string | null;
   date: string | null;
   url: string | null;
-  destacado: boolean
+  destacado: boolean;
   resaltar: boolean
 
 };
