@@ -8,7 +8,7 @@ export default function NavMenu({ name, items }: Menutype): JSX.Element {
         <MenuButton>{name}</MenuButton>
         <MenuList
             bgColor={'rgb(0, 0, 0, 0.68)'}
-            marginBlockStart={'1em'}
+            marginBlockStart={'3.5dvh'}
         >
             {items ? items.map((item) => {
                 return <MenuItem

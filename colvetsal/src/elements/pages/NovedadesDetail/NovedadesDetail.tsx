@@ -31,7 +31,7 @@ export default function NovedadesDetail(): React.JSX.Element {
         margin={'15dvh 5dvw 10dvh 5dvw'}
         display={'column'}
         justify={'space-evenly'}
-        fontFamily={'times-new-roman'}
+        // fontFamily={'times-new-roman'}
     >
             <h2>{n.categoria}</h2>
             <h1>{n.title}</h1>

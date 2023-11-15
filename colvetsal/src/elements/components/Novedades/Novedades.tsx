@@ -19,7 +19,7 @@ export default function Novedades(): JSX.Element {
     return <Grid
         margin={'15dvh 5dvw 10dvh 5dvw'}
         templateColumns='repeat(3, 1fr)'
-        gap={4}
+        gap={25}
         opacity={'93%'}
         className={nov.Grid}
     >
