@@ -85,7 +85,7 @@ export type News = {
   id: number;
   categoria: 'NOTICIAS' | 'ARTICULOS' | 'CURSOS' | 'EVENTOS' | 'ANUNCIOS' | 'TRABAJO' | 'BOLETIN';
   image: string | null;
-  alt: string | null;
+  alt: string | undefined;
   title: string;
   summary: string | null;
   fulltext: string | null;
