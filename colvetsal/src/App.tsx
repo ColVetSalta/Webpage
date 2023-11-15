@@ -2,6 +2,7 @@ import { Route, Routes, useLocation } from "react-router-dom";
 import { Footer, NavBar } from "./elements/index";
 import './App.css'
 import React, { Suspense } from "react";
+import NovedadesDetail from "./elements/pages/NovedadesDetail/NovedadesDetail";
 // import { useAppDispatch } from "./redux/hooks";
 // import axios from "axios";
 // import { getOrganism } from "./redux/orgSlice";
@@ -35,6 +36,7 @@ function App() {
         <Route path="/home" element={<Home />} />
         <Route path="/sc/:motive" element={<Institutional />} />
         <Route path="/res/detail/:id" element={<ResolutionDetail />} />
+        <Route path="/news/detail/:id" element={<NovedadesDetail />} />
 
       </Routes>
       {location.pathname !== '/' &&

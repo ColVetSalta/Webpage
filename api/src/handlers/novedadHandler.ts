@@ -23,7 +23,7 @@ export async function postNovedadHandler (req: Request, res: Response): Promise<
 }
 
 export async function getNovedadHandler (req: Request, res: Response): Promise<void> {
-  const id = req.params.Novedad
+  const id = req.params.id
   try {
     if (id) {
       const periodo = await getNovedadById(Number(id))
