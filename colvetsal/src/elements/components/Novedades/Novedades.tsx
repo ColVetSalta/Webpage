@@ -1,5 +1,5 @@
 import nov from './Novedades.module.css';
-import { Card, Grid, Image, Heading, Text, Flex } from '@chakra-ui/react';
+import { Card, Grid, Heading, Text, Flex } from '@chakra-ui/react';
 import { useAppDispatch, useAppSelector } from '../../../redux/hooks';
 import { useEffect } from 'react';
 import axios from 'axios';
@@ -33,10 +33,10 @@ export default function Novedades(): JSX.Element {
                         to={`/news/detail/${n.id}`}
                     >
                         <Flex>
-                            <Image
+                            {/* <Image
                                 boxSize={'7em'}
                                 src={n.image || 'noticia.png'}
-                                alt={n.alt} />
+                                alt={n.alt} /> */}
                             <Heading>{n.title}</Heading>
                         </Flex>
                         <Text>{n.summary}</Text>

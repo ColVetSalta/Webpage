@@ -10,8 +10,10 @@ export async function postNovedad ({
   summary,
   fulltext,
   date,
-  url
-}: Novedad): Promise<any> {
+  url,
+  destacado,
+  resaltar
+}: Novedad): Promise<Novedad> {
   return await Novedad.create({
     categoria,
     image,
@@ -20,7 +22,9 @@ export async function postNovedad ({
     summary,
     fulltext,
     date,
-    url
+    url,
+    destacado,
+    resaltar
   })
 }
 
@@ -33,6 +37,12 @@ export async function getNovedadById (id: number): Promise<any> {
   return news?.toJSON()
 }
 
+export async function getNovedadBy (data: { [x: string]: any }): Promise<any> {
+  return await Novedad.findAll({
+    where: data
+  })
+}
+
 export async function editNovedad (data: Novedad, id: number): Promise<[affectedCount: number]> {
   return await Novedad.update({
     categoria: data.categoria,
@@ -42,7 +52,9 @@ export async function editNovedad (data: Novedad, id: number): Promise<[affected
     summary: data.summary,
     fulltext: data.fulltext,
     date: data.date,
-    url: data.url
+    url: data.url,
+    destacado: data.destacado,
+    resaltar: data.resaltar
   },
   {
     where: {

@@ -5,7 +5,8 @@ import {
   getNovedadById,
   getNovedads,
   deleteNovedad,
-  postNovedad
+  postNovedad,
+  getNovedadBy
 } from '../controllers/novedadController'
 
 export async function postNovedadHandler (req: Request, res: Response): Promise<void> {
@@ -24,10 +25,15 @@ export async function postNovedadHandler (req: Request, res: Response): Promise<
 
 export async function getNovedadHandler (req: Request, res: Response): Promise<void> {
   const id = req.params.id
+  const { destacado } = req.query
+  const outstanding = (destacado === 'true')
   try {
     if (id) {
       const periodo = await getNovedadById(Number(id))
       res.status(200).json(periodo)
+    } else if (destacado) {
+      const list = await getNovedadBy({ destacado: outstanding })
+      res.status(200).json(list)
     } else {
       const list = await getNovedads()
       res.status(200).json(list)

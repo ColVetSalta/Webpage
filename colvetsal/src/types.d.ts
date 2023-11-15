@@ -90,5 +90,8 @@ export type News = {
   summary: string | null;
   fulltext: string | null;
   date: string | null;
-  url: string | null
+  url: string | null;
+  destacado: boolean
+  resaltar: boolean
+
 };

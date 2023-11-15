@@ -52,4 +52,10 @@ export default class Novedad extends Model<InferAttributes<Novedad>, InferCreati
     type: DataType.TEXT
   })
     url: string
+
+  @Column
+    destacado: boolean
+
+  @Column
+    resaltar: boolean
 }
