@@ -3,8 +3,11 @@ import { Request, Response } from 'express'
 import Matriculado from '../models/Matriculado'
 import ListaMatricula from './Matriculados.json'
 import OrgInfo from './Organismos.json'
+import NovedadesList from './Novedades.json'
 import Organismo from '../models/Organismo'
 import { addCargoToMat, postCargo } from '../controllers/cargoController'
+import { postNovedad } from '../controllers/novedadController'
+import Novedad from '../models/Novedad'
 
 export interface ListaMatriculados {
   mp: number
@@ -164,6 +167,23 @@ export async function DefaultOrganismoCreate (
       }
     }
     res.status(201).send('Lista de Autoridades cargada')
+  } catch (error) {
+    if (error instanceof Error) {
+      res.status(404).json({ err: error.message })
+    } else {
+      res.send(String(error))
+    }
+  }
+}
+
+export async function DefaultNovedadList (
+  _req: Request,
+  res: Response
+): Promise<void> {
+  try {
+    const newsList = NovedadesList as Novedad[]
+    newsList?.map(async (data) => await postNovedad(data))
+    res.status(201).send('Lista provisoria de Novedades cargada')
   } catch (error) {
     if (error instanceof Error) {
       res.status(404).json({ err: error.message })

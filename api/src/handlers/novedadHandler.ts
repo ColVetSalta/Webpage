@@ -43,12 +43,14 @@ export async function getNovedadHandler (req: Request, res: Response): Promise<v
 export async function modifyNovedadHandler (req: Request, res: Response): Promise<void> {
   const data = req.body
   const id = req.params.id
+  console.log(id)
   try {
     const periodo = await getNovedadById(Number(id))
     Object.keys(periodo).forEach((att) => {
       Object.keys(data).includes(att) && (periodo[att] = data[att])
     })
-    await editNovedad(data)
+    console.log(data)
+    await editNovedad(data, Number(id))
     const modify = await getNovedadById(Number(id))
     res.send(modify)
   } catch (error) {
@@ -71,4 +73,6 @@ export async function deleteNovedadHandler (req: Request, res: Response): Promis
       res.send(String(error))
     }
   }
+}
+export async function rePostNovedadHandler (_req: Request, _res: Response): Promise<void> {
 }

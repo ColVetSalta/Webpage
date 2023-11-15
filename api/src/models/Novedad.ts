@@ -17,7 +17,9 @@ export default class Novedad extends Model<InferAttributes<Novedad>, InferCreati
   @Column
     title: string
 
-  @Column
+  @Column({
+    type: DataType.TEXT
+  })
     image: string
 
   @Column
@@ -26,7 +28,7 @@ export default class Novedad extends Model<InferAttributes<Novedad>, InferCreati
   @AllowNull(false)
   @Column({
     type: DataType.ENUM,
-    values: ['NOTICIAS', 'ARTICULOS', 'CURSOS', 'EVENTOS', 'ANUNCIOS', 'TRABAJO']
+    values: ['NOTICIAS', 'ARTICULOS', 'CURSOS', 'EVENTOS', 'ANUNCIOS', 'TRABAJO', 'BOLETIN']
   })
     categoria: string
 
@@ -41,11 +43,13 @@ export default class Novedad extends Model<InferAttributes<Novedad>, InferCreati
   @Column({
     type: DataType.DATE,
     get () {
-      return new Date(this.getDataValue('fecha'))
+      return new Date(this.getDataValue('date'))
     }
   })
     date: string
 
-  @Column
+  @Column({
+    type: DataType.TEXT
+  })
     url: string
 }

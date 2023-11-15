@@ -1,0 +1,71 @@
+[
+  {
+    "categoria": "NOTICIAS",
+    "image": "https://scontent.fsla4-1.fna.fbcdn.net/v/t39.30808-6/400642951_729859999182920_7370045595594634414_n.jpg?stp=dst-jpg_p180x540&_nc_cat=106&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeET9sQCdVZKEdzVnhFWp0rzumQ3MXvergK6ZDcxe96uAgP4FoxgKdKCrc8SuLuilUc&_nc_ohc=vdv1D_rW9bQAX-NXYhA&_nc_ht=scontent.fsla4-1.fna&oh=00_AfCXU7Oy_C6OSYp8AoF9NgGzq98o-Jz2p8EiGK5-kUs3uA&oe=6557A98C",
+    "alt": "Asamblea informativa consultiva",
+    "title": "Asamblea informativa consultiva -Regencias- 11-2023",
+    "summary": "Este sería el texto corto que describe de que se trata la noticia",
+    "fulltext": "Aca corresponde redactar de manera más completa toda la información disponible sobre el tema. </br>Tratando de explayarse completamente. </br> Sería logico que este texto tenga marcadores html para separar parrafos, subrayar y resalrar",
+    "date": "08/30/23",
+    "url": "https://www.facebook.com/ColegiodeMedicosVeterinariosdeSalta/posts/pfbid037PN9PvgxVeSCMuNX5nNPuEAmeeWX1vUUQy4pFCNmkgD9ri4kHKmsvHxb1uzG1gfDl"
+  },
+  {
+    "categoria": "NOTICIAS",
+    "image": "vite.svg",
+    "alt": "Texto Alternativo a la imagen",
+    "title": "Try3",
+    "summary": "Este sería el texto corto que describe de que se trata la noticia",
+    "fulltext": "Aca corresponde redactar de manera más completa toda la información disponible sobre el tema. </br>Tratando de explayarse completamente. </br> Sería logico que este texto tenga marcadores html para separar parrafos, subrayar y resalrar",
+    "date": "07/15/23",
+    "url": "https://www.facebook.com/ColegiodeMedicosVeterinariosdeSalta/posts/pfbid02aALMnKZRBYd5EaBg3SpJDJf2Pr8uL6WJHvqCMyUK32sE1ej7F3Z92aMVGJD5HzWal"
+  },
+  {
+    "categoria": "NOTICIAS",
+    "image": "vite.svg",
+    "alt": "Texto Alternativo a la imagen",
+    "title": "Try4",
+    "summary": "Este sería el texto corto que describe de que se trata la noticia",
+    "fulltext": "Aca corresponde redactar de manera más completa toda la información disponible sobre el tema. </br>Tratando de explayarse completamente. </br> Sería logico que este texto tenga marcadores html para separar parrafos, subrayar y resalrar",
+    "date": "03/20/23"
+  },
+  {
+    "categoria": "CURSOS",
+    "image": null,
+    "alt": "Texto Alternativo a la imagen",
+    "title": "Try5",
+    "summary": "Este sería el texto corto que describe de que se trata la noticia",
+    "fulltext": "Aca corresponde redactar de manera más completa toda la información disponible sobre el tema. </br>Tratando de explayarse completamente. </br> Sería logico que este texto tenga marcadores html para separar parrafos, subrayar y resalrar",
+    "date": "10/05/23",
+    "url": "https://www.facebook.com/ColegiodeMedicosVeterinariosdeSalta/posts/pfbid02PpE1GfHqnkuGLQPXLNkU5RiHuYPLTKFFqpEznEHgtwSUHFL9AKgBShrKu1RpmLvKl"
+  },
+  {
+    "categoria": "EVENTOS",
+    "image": "vite.svg",
+    "alt": "Texto Alternativo a la imagen",
+    "title": "Try6",
+    "summary": "Este sería el texto corto que describe de que se trata la noticia",
+    "fulltext": "Aca corresponde redactar de manera más completa toda la información disponible sobre el tema. </br>Tratando de explayarse completamente. </br> Sería logico que este texto tenga marcadores html para separar parrafos, subrayar y resalrar",
+    "date": "10/30/23",
+    "url": ""
+  },
+  {
+    "categoria": "CURSOS",
+    "image": "vite.svg",
+    "alt": "Texto Alternativo a la imagen",
+    "title": "Try7",
+    "summary": "Este sería el texto corto que describe de que se trata la noticia",
+    "fulltext": "Aca corresponde redactar de manera más completa toda la información disponible sobre el tema. </br>Tratando de explayarse completamente. </br> Sería logico que este texto tenga marcadores html para separar parrafos, subrayar y resalrar",
+    "date": "11/8/23",
+    "url": ""
+  },
+  {
+    "categoria": "EVENTOS",
+    "image": "vite.svg",
+    "alt": "Texto Alternativo a la imagen",
+    "title": "Try8",
+    "summary": "Este sería el texto corto que describe de que se trata la noticia",
+    "fulltext": "Aca corresponde redactar de manera más completa toda la información disponible sobre el tema. </br>Tratando de explayarse completamente. </br> Sería logico que este texto tenga marcadores html para separar parrafos, subrayar y resalrar",
+    "date": "11/02/23",
+    "url": ""
+  }
+]

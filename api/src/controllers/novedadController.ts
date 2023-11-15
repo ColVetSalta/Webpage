@@ -3,6 +3,7 @@
 import Novedad from '../models/Novedad'
 
 export async function postNovedad ({
+  categoria,
   image,
   alt,
   title,
@@ -12,6 +13,7 @@ export async function postNovedad ({
   url
 }: Novedad): Promise<any> {
   return await Novedad.create({
+    categoria,
     image,
     alt,
     title,
@@ -27,22 +29,24 @@ export async function getNovedads (): Promise<Novedad[]> {
 }
 
 export async function getNovedadById (id: number): Promise<any> {
-  const charge = await Novedad.findOne({
-    where: { id }
-  })
-  return charge?.toJSON()
+  const news = await Novedad.findByPk(id)
+  return news?.toJSON()
 }
 
-export async function editNovedad (data: Novedad): Promise<[affectedCount: number]> {
+export async function editNovedad (data: Novedad, id: number): Promise<[affectedCount: number]> {
   return await Novedad.update({
-    // fecha_inicio: data.fecha_inicio,
-    // fecha_final: data.fecha_final,
-    // mp: data.mp,
-    // cargoid: data.cargoid
+    categoria: data.categoria,
+    image: data.image,
+    alt: data.alt,
+    title: data.title,
+    summary: data.summary,
+    fulltext: data.fulltext,
+    date: data.date,
+    url: data.url
   },
   {
     where: {
-      id: data.id
+      id
     }
   })
 }
