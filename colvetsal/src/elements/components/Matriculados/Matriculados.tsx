@@ -1,11 +1,9 @@
 import m from './Matriculados.module.css';
-import { Card, Grid, Heading, Text, Flex } from '@chakra-ui/react';
+import { Card, Grid, Heading, Flex, Container } from '@chakra-ui/react';
 import { useAppDispatch, useAppSelector } from '../../../redux/hooks';
 import { useEffect } from 'react';
 import axios from 'axios';
 import { Matriculado } from '../../../types';
-import { Link as ChakLink } from '@chakra-ui/react';
-import { Link } from 'react-router-dom';
 import { getMats } from '../../../redux/matSlice';
 
 export default function Matriculados({ motive }: { motive: string }): JSX.Element {
@@ -28,30 +26,25 @@ export default function Matriculados({ motive }: { motive: string }): JSX.Elemen
         gap={5}
         opacity={'93%'}
         className={m.Grid}
+        fontFamily={'garamond'}
     >
-        {matriculados ?
+        {(matriculados && motive === 'ACTIVOS') ?
             matriculados.map((n) => {
-                // const tel = n.telefono?.find((t)=>t.principal === true)
                 return <Card
                     background={'darkgray'}
                     key={n.mp}>
-                    <ChakLink
-                        as={Link}
-                        to={`/news/detail/${n.mp}`}
-                    >
-                        <Flex>
-                            {/* <Image
-                                boxSize={'7em'}
-                                src={n.image || 'noticia.png'}
-                                alt={n.alt} /> */}
-                            <Heading as='h1'>Dr/a: {n.nombre} {n.apellido}</Heading>
-                            <Heading as='h2'>M.P.: {n.mp}</Heading>
+                        <Flex
+                        display={'column'}
+                        >
+                            <Heading as='h3'>Dr/a: {n.nombre} {n.apellido}</Heading>
+                            <Heading as='h4'>M.P.: {n.mp}</Heading>
                         </Flex>
-                        {/* <Text>Telefono :{tel?.numero}</Text> */}
-                        <Text>Email :{n.correo_electronico}</Text>
-                    </ChakLink>
                 </Card>;
-            }) :
-            <h3>No se encontraron novedades</h3>}
+            }) : <Container
+            gridColumn={2}>
+                <h1>PROXIMAMENTE</h1>
+            <h3>Estamos trabajando para presentar este espacio en un futuro</h3>
+            </Container>
+            }
     </Grid>;
 }
