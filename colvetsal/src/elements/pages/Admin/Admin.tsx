@@ -1,20 +1,15 @@
 import navList from "../../../Navegacion.json";
 import { 
-    Modal,
-    ModalOverlay,
-    ModalContent,
-    ModalHeader,
-    ModalFooter,
-    ModalBody,
-    ModalCloseButton,
     Button,
     Container,
     Flex, Grid,
     GridItem,
     Heading, 
     Box,
-    useDisclosure} from "@chakra-ui/react";
+    useDisclosure
+} from "@chakra-ui/react";
 import { Navigation } from "../../../types";
+import FormModal from "../../components/FormModal/FormModal";
 
 export default function Admin(): JSX.Element {
     const impList: Navigation[] = navList;
@@ -32,28 +27,11 @@ export default function Admin(): JSX.Element {
                     return <Box>
                         <Button onClick={onOpen}>
                     {section.subindexTitle}
-                        </Button>
-                        
-                        <Modal isOpen={isOpen} onClose={onClose}>
-                        <ModalOverlay />
-                        <ModalContent>
-                          <ModalHeader>{section.subindexTitle}</ModalHeader>
-                          <ModalCloseButton />
-                          <ModalBody>
-                            Formulario
-                          </ModalBody>
-                
-                          <ModalFooter>
-                            <Button colorScheme='blue' mr={3} onClick={onClose}>
-                              Enviar
-                            </Button>
-                            <Button variant='ghost' onClick={onClose}>Cancelar</Button>
-                          </ModalFooter>
-                        </ModalContent>
-                      </Modal>
+                        </Button>                        
+                        <FormModal isOpen={isOpen} onClose={onClose} section={section}/>
                       </Box>}) : null
                 }
-                        </GridItem>
+                        </GridItem >
 
                 }) : 
                 <Container
