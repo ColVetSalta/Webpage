@@ -88,7 +88,7 @@ export interface MatriculadoJSON {
   mp: number // PK OBLIGATORIO
   nombre: string // OBLIGATORIO
   apellido: string // OBLIGATORIO
-  correo_electronico: string // Opcional
+  correo_electronico: string | null// Opcional
   f_nacimiento: Date // ('mm/dd/aaaa'), OBLIGATORIO
   domicilio_particular: string // OBLIGATORIO
   domicilio_laboral: string // OBLIGATORIO
@@ -99,7 +99,7 @@ export interface MatriculadoJSON {
     numero: string // ('numero') OBLIGATORIO
     whatsapp: boolean // OBLIGATORIO
     principal: boolean // OBLIGATORIO
-    descripcion: string // Opcional
+    descripcion: string | null// Opcional
   }]// *tabla intermedia* Opcional
   otrodato?: [{
     titulo: string // OBLIGATORIO

@@ -42,13 +42,14 @@ export async function rePostMatriculaHandler (req: Request, res: Response): Prom
 }
 export async function getMatriculaHandler (req: Request, res: Response): Promise<void> {
   const mp = req.params.mp
-  const { active } = req.body
+  const { active } = req.query
+  const condition = (active === 'true')
   try {
     if (mp) {
       const matriculado = await getMatriculado(Number(mp))
       res.status(200).json(matriculado)
     } else {
-      const list = await getMatriculados(active)
+      const list = await getMatriculados(condition)
       res.status(200).json(list)
     }
   } catch (error) {

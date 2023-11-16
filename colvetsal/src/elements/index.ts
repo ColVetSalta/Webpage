@@ -7,6 +7,9 @@ import NavMenu from "./components/NavMenu/NavMenu";
 import Presentation from "./components/Presentation/Presentation";
 import Section from "./pages/Section/Section";
 import RoleData from "./components/Presentation/RoleData";
+import Matriculados from "./components/Matriculados/Matriculados";
+import NovedadesDetail from "./pages/NovedadesDetail/NovedadesDetail";
+import ResolutionDetail from "./pages/ResolutionDetail/ResolutionDetail";
 
 export {
   NavBar,
@@ -18,4 +21,7 @@ export {
   Presentation,
   Section,
   RoleData,
+  Matriculados,
+  NovedadesDetail,
+  ResolutionDetail
 };

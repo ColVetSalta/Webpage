@@ -2,13 +2,15 @@ import { configureStore } from '@reduxjs/toolkit'
 import orgReducer from './orgSlice'
 import resReducer from './resSlice'
 import newsReducer from './newsSlice'
+import matReducer from './matSlice'
 
 
 const store = configureStore({
   reducer: {
     org: orgReducer,
     res: resReducer,
-    news: newsReducer
+    news: newsReducer,
+    mat: matReducer
   },
 })
 

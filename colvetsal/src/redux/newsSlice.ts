@@ -17,7 +17,9 @@ const initialState: novedadSliceState = {
       summary: "",
       fulltext: "",
       date: "",
-      url: ""
+      url: "",
+      destacado: false,
+      resaltar: false
   }],
   currentNew: {
     id: 0,
@@ -28,13 +30,15 @@ const initialState: novedadSliceState = {
     summary: "",
     fulltext: "",
     date: "",
-    url: ""
+    url: "",
+    destacado: false,
+    resaltar: false
 }
 //   ref: React.createRef<HTMLDivElement | null>(),
 }
 
 const novedadSlice = createSlice({
-  name: "novedad",
+  name: "news",
   initialState,
   reducers: {
     getNews: (state, action: PayloadAction<News[]>) => {
