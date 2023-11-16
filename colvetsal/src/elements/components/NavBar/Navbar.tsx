@@ -28,6 +28,7 @@ export default function NavBar(): JSX.Element {
         width={'30dvw'}
         fontSize={'1.4em'}
         margin={0}
+        color={'#547590'}
       >Colegio de Médicos Veterinarios de Salta</Text>
     </Flex>
     <List

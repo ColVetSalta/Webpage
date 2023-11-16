@@ -1,5 +1,5 @@
 import nov from './Novedades.module.css';
-import { Card, Grid, Heading, Text, Flex } from '@chakra-ui/react';
+import { Card, Grid, Heading, Text } from '@chakra-ui/react';
 import { useAppDispatch, useAppSelector } from '../../../redux/hooks';
 import { useEffect } from 'react';
 import axios from 'axios';
@@ -22,31 +22,29 @@ export default function Novedades({ motive }: { motive: string }): JSX.Element {
     const { news } = useAppSelector((state) => state.news)
 
     return <Grid
-        margin={'15dvh 5dvw 10dvh 5dvw'}
+        className={nov.Grid}
         templateColumns='repeat(3, 1fr)'
         gap={35}
         opacity={'93%'}
-        className={nov.Grid}
     >
         {news ?
             news.map((n) => {
-                return <Card
-                    background={'darkgray'}
-                    key={n.id}>
-                    <ChakLink
+                return <ChakLink
                         as={Link}
                         to={`/news/detail/${n.id}`}
                     >
-                        <Flex>
+                        <Card
+                    background={'darkgray'}
+                    key={n.id}>
+                    
                             {/* <Image
                                 boxSize={'7em'}
                                 src={n.image || 'noticia.png'}
                                 alt={n.alt} /> */}
                             <Heading>{n.title}</Heading>
-                        </Flex>
                         <Text>{n.summary}</Text>
-                    </ChakLink>
-                </Card>;
+                </Card>
+                    </ChakLink>;
             }) :
             <h3>No se encontraron novedades</h3>}
     </Grid>;
