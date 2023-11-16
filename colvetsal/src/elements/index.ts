@@ -10,6 +10,7 @@ import RoleData from "./components/Presentation/RoleData";
 import Matriculados from "./components/Matriculados/Matriculados";
 import NovedadesDetail from "./pages/NovedadesDetail/NovedadesDetail";
 import ResolutionDetail from "./pages/ResolutionDetail/ResolutionDetail";
+import Admin from "./pages/Admin/Admin";
 
 export {
   NavBar,
@@ -23,5 +24,6 @@ export {
   RoleData,
   Matriculados,
   NovedadesDetail,
-  ResolutionDetail
+  ResolutionDetail,
+  Admin
 };

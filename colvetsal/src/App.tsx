@@ -1,5 +1,5 @@
 import { Route, Routes, useLocation } from "react-router-dom";
-import { Footer, NavBar } from "./elements/index";
+import { Admin, Footer, NavBar } from "./elements/index";
 import './App.css'
 import React, { Suspense } from "react";
 import NovedadesDetail from "./elements/pages/NovedadesDetail/NovedadesDetail";
@@ -37,7 +37,7 @@ function App() {
         <Route path="/sc/:motive" element={<Section />} />
         <Route path="/res/detail/:id" element={<ResolutionDetail />} />
         <Route path="/news/detail/:id" element={<NovedadesDetail />} />
-
+        <Route path="/admin/:id" element={<Admin />} />
       </Routes>
       {location.pathname !== '/' &&
         <Footer />
