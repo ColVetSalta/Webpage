@@ -1,11 +1,8 @@
 import navList from "../../../Navegacion.json";
 import {
-    Button,
-    Flex,
+    Grid,
+    GridItem,
     Heading,
-    ListItem,
-    UnorderedList,
-    useDisclosure
 } from "@chakra-ui/react";
 import { Navigation } from "../../../types";
 import FormModal from "../../components/FormModal/FormModal";
@@ -13,14 +10,15 @@ import FormModal from "../../components/FormModal/FormModal";
 export default function Admin(): JSX.Element {
     const impList: Navigation[] = navList;
     return (
-        <Flex
+        <Grid
+        templateColumns='repeat(3, 1fr)'
             marginBlockStart={'15dvh'}>
-            <UnorderedList>
                 {
                     impList ?
                         impList.map((list) => {
-                            return <ListItem
-                                key={list.indexTitle}>
+                            return <GridItem
+                                key={list.indexTitle}
+                                >
                                 <Heading>{list.indexTitle}</Heading>
                                 {list.subindex ?
                                     list.subindex.map((section) => {
@@ -28,13 +26,11 @@ export default function Admin(): JSX.Element {
                                     }) :
                                     <div></div>
                                 }
-                            </ListItem>
+                            </GridItem>
                         }) :
                         <div></div>
                         }
-                            
-            </UnorderedList>
 
-        </Flex>
+        </Grid>
     )
 }

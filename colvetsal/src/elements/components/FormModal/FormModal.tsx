@@ -22,15 +22,24 @@ export default function FormModal({ section }: FormModalType): JSX.Element {
     const { isOpen, onOpen, onClose } = useDisclosure()
 
     return <Box
-    key={section.subindexTitle}>
-        <Button onClick={onOpen}>
+        key={section.subindexTitle}>
+        <Button onClick={onOpen} margin={'5dvh 0 5dvh 0'}>
             {section.subindexTitle}
         </Button>
 
-        <Modal isOpen={isOpen} onClose={onClose}>
-            <ModalOverlay />
+        <Modal isCentered isOpen={isOpen} onClose={onClose}>
+            <ModalOverlay
+                bg='none'
+                backdropFilter='auto'
+                backdropInvert='80%'
+                backdropBlur='2px'
+            />
             <ModalContent
-             marginBlockStart={'15dvh'} >
+                marginBlockStart={'15dvh'}
+                bg='white'
+                width={'80dvw'}
+                height={'80dvh'}
+            >
                 <ModalHeader>{section.subindexTitle}</ModalHeader>
                 <ModalCloseButton />
                 <ModalBody>
