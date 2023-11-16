@@ -7,7 +7,7 @@ import axios from 'axios';
 import React from 'react';
 import { getOrganism } from '../../../redux/orgSlice';
 import { getResoluciones } from '../../../redux/resSlice';
-import { Link as ChakLink} from '@chakra-ui/react';
+import { Link as ChakLink, Flex, ListItem, UnorderedList, Heading, Box} from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
 
 export interface DefPres {
@@ -46,10 +46,12 @@ export default function Presentation({ motive }: { motive: string }): JSX.Elemen
     }
 
     if (motive === 'RESOLUCIONES') {
-        return <ul>
+        return <UnorderedList
+        fontFamily={'garamond'}
+        >
             {resoluciones?.map((r) =>{
                 console.log(r.titulo)
-                return <li 
+                return <ListItem 
             key={r.id}
             >
                 <ChakLink
@@ -57,37 +59,46 @@ export default function Presentation({ motive }: { motive: string }): JSX.Elemen
                 to={`/res/detail/${r.id}`}>
                  <h2>{r.num} / {r.year} - {r.titulo}</h2>
                 </ChakLink>                
-            </li>})}
-            </ul>
+            </ListItem>})}
+            </UnorderedList>
     } else if (motive === 'AUTORIDADES') {
         stateSelect = organism
         const divitions: string[] = Object.keys(stateSelect);
 
-        return <div className={p.cont}>
-            <h3>{motive}</h3>
-            <h3>Consejo Mayor: </h3>
+        return <Flex 
+        className={p.cont}
+        flexDirection={'column'}
+        >
+            <Heading as='h2'>Consejo Mayor: </Heading>
             {
                 divitions ? divitions.map((d) => {
                     const h = stateSelect[d as keyof typeof stateSelect]
-                    return <div>
-                        <h3>{d}</h3>
+                    return <Flex
+                    flexDirection={'column'}
+                    >
+            <Heading as='h3'>{d}</Heading >
+            <Flex
+                    flexDirection={'row'}
+        justifyContent={'space-evenly'}
+        >
                         {h ? h.map((r) => <RoleData r={r} />) : null}
-                    </div>
+                    </Flex>
+                    </Flex>
                 }) : null
             }
-        </div>
+        </Flex>
     } else {
         const divitions: string[] = Object.keys(stateSelect);
-        return <div>
+        return <Box>
             {
                 divitions ? divitions.map((d) => {
                     const h = stateSelect[d as keyof typeof stateSelect]
-                    return <div>
-                        <h3>{d}</h3>
+                    return <Box>
+                        <Heading as='h4'>{d}</Heading >
                         {h ? h.map((r) => <RoleData r={r} />) : null}
-                    </div>
+                    </Box>
                 }) : null
             }
-        </div>
+        </Box>
     }
 }

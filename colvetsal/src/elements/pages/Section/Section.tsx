@@ -12,7 +12,7 @@ export default function Section (): JSX.Element {
     margin={'15dvh 5dvw 10dvh 5dvw'}
     >
 <Heading as='h1'>{ind[0].toUpperCase()+ind.slice(1)}</Heading>
-<Heading as='h2'>{subind}</Heading>
+<Heading as='h3'>{subind}</Heading>
 {ind === 'institucional' && <Presentation motive={subind}/>}
 {ind === 'novedades' && <Novedades motive={subind}/>}
 {ind === 'matriculados' && <Matriculados motive={subind}/>}
