@@ -37,7 +37,7 @@ function App() {
         <Route path="/sc/:motive" element={<Section />} />
         <Route path="/res/detail/:id" element={<ResolutionDetail />} />
         <Route path="/news/detail/:id" element={<NovedadesDetail />} />
-        <Route path="/admin/:id" element={<Admin />} />
+        <Route path="/admin" element={<Admin />} />
       </Routes>
       {location.pathname !== '/' &&
         <Footer />
