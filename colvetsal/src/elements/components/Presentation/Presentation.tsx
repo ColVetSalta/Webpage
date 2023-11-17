@@ -7,8 +7,9 @@ import axios from 'axios';
 import React from 'react';
 import { getOrganism } from '../../../redux/orgSlice';
 import { getResoluciones } from '../../../redux/resSlice';
-import { Link as ChakLink, Flex, ListItem, UnorderedList, Heading, Box} from '@chakra-ui/react';
+import { Link as ChakLink, Flex, ListItem, UnorderedList, Heading, Box, Spinner} from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
+import { Loading } from '../Loading/Loading';
 
 export interface DefPres {
     [x: string]: [{
@@ -49,7 +50,8 @@ export default function Presentation({ motive }: { motive: string }): JSX.Elemen
         return <UnorderedList
         fontFamily={'garamond'}
         >
-            {resoluciones?.map((r) =>{
+            {resoluciones.length > 0 ? 
+            resoluciones?.map((r) =>{
                 console.log(r.titulo)
                 return <ListItem 
             key={r.id}
@@ -59,7 +61,8 @@ export default function Presentation({ motive }: { motive: string }): JSX.Elemen
                 to={`/res/detail/${r.id}`}>
                  <h2>{r.num} / {r.year} - {r.titulo}</h2>
                 </ChakLink>                
-            </ListItem>})}
+            </ListItem>}) :
+            <Loading/> }
             </UnorderedList>
     } else if (motive === 'AUTORIDADES') {
         stateSelect = organism
@@ -71,7 +74,7 @@ export default function Presentation({ motive }: { motive: string }): JSX.Elemen
         >
             <Heading as='h2'>Consejo Mayor: </Heading>
             {
-                divitions ? divitions.map((d) => {
+                divitions.length > 0 ? divitions.map((d) => {
                     const h = stateSelect[d as keyof typeof stateSelect]
                     return <Flex
                     flexDirection={'column'}
@@ -81,23 +84,29 @@ export default function Presentation({ motive }: { motive: string }): JSX.Elemen
                     flexDirection={'row'}
         justifyContent={'space-evenly'}
         >
-                        {h ? h.map((r) => <RoleData r={r} />) : null}
+                        {h.length > 0 ? h.map((r) => <RoleData r={r} />) : <Loading />}
                     </Flex>
                     </Flex>
-                }) : null
+                }) : <Spinner
+                thickness='4px'
+                speed='0.65s'
+                emptyColor='gray.200'
+                color='blue.500'
+                size='xl'
+              />
             }
         </Flex>
     } else {
         const divitions: string[] = Object.keys(stateSelect);
         return <Box>
             {
-                divitions ? divitions.map((d) => {
+                divitions.length > 0 ? divitions.map((d) => {
                     const h = stateSelect[d as keyof typeof stateSelect]
                     return <Box>
                         <Heading as='h4'>{d}</Heading >
                         {h ? h.map((r) => <RoleData r={r} />) : null}
                     </Box>
-                }) : null
+                }) : <Loading />
             }
         </Box>
     }

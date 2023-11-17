@@ -8,15 +8,44 @@ export interface Navigation {
   url?: string;
 }
 //To present Authorities
-export interface Role {
+export interface DatosMinimos {  
+  mp: number;
+  nombre: string;
+  apellido: string;
+}
+export interface Role extends DatosMinimos {
   cargo: string;
-  mp: number | null;
-  nombre: string | null;
-  apellido: string | null;
   fecha_inicio: string | null;
   fecha_final: string | null;
   numero: string | null;
   correo_electronico: string | null;
+}
+
+export interface Matriculado extends DatosMinimos  {
+  mp: number; // PK OBLIGATORIO
+  nombre: string; // OBLIGATORIO
+  apellido: string; // OBLIGATORIO
+  correo_electronico: string; // Opcional
+  f_nacimiento: Date; // ('mm/dd/aaaa'), OBLIGATORIO
+  domicilio_particular: string; // OBLIGATORIO
+  domicilio_laboral: string; // OBLIGATORIO
+  departamento_d_laboral: string; // OBLIGATORIO
+  f_alta: Date; // ('mm/dd/aaaa') Opcional
+  active: boolean;
+  telefono?: [
+    {
+      numero: string; // ('numero') OBLIGATORIO
+      whatsapp: boolean; // OBLIGATORIO
+      principal: boolean; // OBLIGATORIO
+      descripcion: string; // Opcional
+    }
+  ]; // *tabla intermedia* Opcional
+  otrodato?: [
+    {
+      titulo: string; // OBLIGATORIO
+      descripcion: string; // OBLIGATORIO
+    }
+  ];
 }
 
 export type Organismo = {
@@ -101,30 +130,3 @@ export type News = {
   destacado: boolean;
   resaltar: boolean;
 };
-
-export interface Matriculado {
-  mp: number; // PK OBLIGATORIO
-  nombre: string; // OBLIGATORIO
-  apellido: string; // OBLIGATORIO
-  correo_electronico: string; // Opcional
-  f_nacimiento: Date; // ('mm/dd/aaaa'), OBLIGATORIO
-  domicilio_particular: string; // OBLIGATORIO
-  domicilio_laboral: string; // OBLIGATORIO
-  departamento_d_laboral: string; // OBLIGATORIO
-  f_alta: Date; // ('mm/dd/aaaa') Opcional
-  active: boolean;
-  telefono?: [
-    {
-      numero: string; // ('numero') OBLIGATORIO
-      whatsapp: boolean; // OBLIGATORIO
-      principal: boolean; // OBLIGATORIO
-      descripcion: string; // Opcional
-    }
-  ]; // *tabla intermedia* Opcional
-  otrodato?: [
-    {
-      titulo: string; // OBLIGATORIO
-      descripcion: string; // OBLIGATORIO
-    }
-  ];
-}

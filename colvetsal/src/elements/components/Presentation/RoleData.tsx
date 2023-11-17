@@ -1,17 +1,21 @@
 import React from 'react'
-import { type Role } from '../../../types'
-import { Flex, Heading } from '@chakra-ui/react'
+import { DatosMinimos, Role } from '../../../types'
+import { Box, Heading, Text } from '@chakra-ui/react'
+import { Loading } from '../Loading/Loading'
+import PresentCard from '../PresentCard/PresentCard'
 
 export default function RoleData({ r }: { r: Role | { pendiente: string } }): React.JSX.Element {
     if ('cargo' in r) {
-        return <Flex
-        flexDirection={'column'}>
-            <Heading as='h4'>{r.cargo}</Heading>
-            <Heading as='h5'>{r.nombre + ' ' + r.apellido}</Heading>
-            <Heading as='h5'>M.P.: {r.mp}</Heading>
-            {/* <h6>Telefono: {r.numero}</h6> */}
-            {/* <h6>e-mail: {r.correo_electronico}</h6> */}
-        </Flex>
+    if (r.mp === 0) return <Loading/>
+    const mat: DatosMinimos = { 
+        mp: r.mp,
+        nombre: r.nombre,
+        apellido: r.apellido
+    }
+        return <Box>
+            { Number(r.cargo) ? <Text><b>Delegado: {r.cargo}</b></Text> : <Heading as='h6' size='xs'>{r.cargo[0].toUpperCase() + r.cargo.slice(1)}</Heading>}
+            <PresentCard n={mat} />
+            </Box>
     } else if ('pendiente' in r) {
         return <div>
             <h3>{r.pendiente}</h3>

@@ -1,5 +1,5 @@
 import nov from './Novedades.module.css';
-import { Card, Grid, Heading, Text } from '@chakra-ui/react';
+import { Card, Flex, Grid, Heading, Text } from '@chakra-ui/react';
 import { useAppDispatch, useAppSelector } from '../../../redux/hooks';
 import { useEffect } from 'react';
 import axios from 'axios';
@@ -7,9 +7,12 @@ import { News } from '../../../types';
 import { getNews } from '../../../redux/newsSlice';
 import { Link as ChakLink } from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
+import { Loading } from '../Loading/Loading';
 
 export default function Novedades({ motive }: { motive: string }): JSX.Element {
     const dispatch = useAppDispatch()
+    const { news } = useAppSelector((state) => state.news)
+
     useEffect(() => {
         if (motive === 'home') {
             axios.get<News[]>('/novedades?destacado=true')
@@ -18,9 +21,9 @@ export default function Novedades({ motive }: { motive: string }): JSX.Element {
             axios.get<News[]>(`/novedades?categoria=${motive}`)
                 .then((data) => dispatch(getNews(data.data)))
         }
-    }), [motive]
-    const { news } = useAppSelector((state) => state.news)
+    }, [dispatch, motive])
 
+    if( news[0].id === 0) return <Flex margin={'30dvh 0 30dvh 0'} justifyContent={'center'} align={'center'}><Loading/></Flex>
     return <Grid
         className={nov.Grid}
         templateColumns='repeat(3, 1fr)'
@@ -32,6 +35,7 @@ export default function Novedades({ motive }: { motive: string }): JSX.Element {
                 return <ChakLink
                         as={Link}
                         to={`/news/detail/${n.id}`}
+                        key={n.id}
                     >
                         <Card
                     background={'darkgray'}
