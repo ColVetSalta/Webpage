@@ -22,16 +22,16 @@ export default function Novedades({ motive }: { motive: string }): JSX.Element {
                 .then((data) => dispatch(getNews(data.data)))
         }
     }, [dispatch, motive])
+    if(news.length === 0) return <h3>No se encontraron novedades</h3>
 
-    if( news[0].id === 0) return <Flex margin={'30dvh 0 30dvh 0'} justifyContent={'center'} align={'center'}><Loading/></Flex>
+    if(news[0].id === 0) return <Flex margin={'30dvh 0 30dvh 0'} justifyContent={'center'} align={'center'}><Loading/></Flex>
     return <Grid
         className={nov.Grid}
         templateColumns='repeat(3, 1fr)'
         gap={35}
         opacity={'93%'}
     >
-        {news ?
-            news.map((n) => {
+        {news.map((n) => {
                 return <ChakLink
                         as={Link}
                         to={`/news/detail/${n.id}`}
@@ -49,7 +49,6 @@ export default function Novedades({ motive }: { motive: string }): JSX.Element {
                         <Text>{n.summary}</Text>
                 </Card>
                     </ChakLink>;
-            }) :
-            <h3>No se encontraron novedades</h3>}
+            })}
     </Grid>;
 }
