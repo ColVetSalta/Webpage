@@ -10,6 +10,7 @@ import {
     useDisclosure,
     Box,
 } from "@chakra-ui/react";
+import PostingForms from "../PostingForms/PostingForms";
 
 export type FormModalType = {
     section: {
@@ -43,7 +44,7 @@ export default function FormModal({ section }: FormModalType): JSX.Element {
                 <ModalHeader>{section.subindexTitle}</ModalHeader>
                 <ModalCloseButton />
                 <ModalBody>
-                    Formulario
+                    <PostingForms />
                 </ModalBody>
 
                 <ModalFooter>
