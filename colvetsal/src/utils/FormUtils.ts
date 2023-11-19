@@ -1,6 +1,6 @@
 import { KeyboardEvent } from "react";
 
-export function nextFocus(e: KeyboardEvent<HTMLDivElement>) {
+export function nextFocus(e: KeyboardEvent<HTMLDivElement | HTMLTextAreaElement>) {
     const inputs = document?.querySelectorAll('.input')          
         if (e?.key == "Enter") {
             const actual = parseInt(

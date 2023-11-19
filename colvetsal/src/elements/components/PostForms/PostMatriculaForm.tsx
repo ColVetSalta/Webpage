@@ -1,7 +1,7 @@
 import { Button, FormControl, FormHelperText, FormLabel, Input } from "@chakra-ui/react";
 import { nextFocus } from "../../../utils/FormUtils";
 
-export default function PostingMatForm(): JSX.Element {
+export default function PostMatriculaForm(): JSX.Element {
 
     return <FormControl
         overflowY={'scroll'}

@@ -10,8 +10,9 @@ import {
     useDisclosure,
     Box,
 } from "@chakra-ui/react";
-import PostingForms from "../PostingMatForm/PostingMatForm";
+import PostMatriculaForm from "../PostForms/PostMatriculaForm";
 import { useRef } from "react";
+import PostResolutionForm from "../PostForms/PostResolutionForm";
 
 export type FormModalType = {
     section: {
@@ -22,21 +23,26 @@ export type FormModalType = {
 
 export default function FormModal({ section }: FormModalType): JSX.Element {
     const { isOpen, onOpen, onClose } = useDisclosure()
-    
-  const btnRef = useRef(null)
+
+    const btnRef = useRef(null)
+
+    function HandleForm() {
+        if (section.subindexTitle === 'ACTIVOS') return <PostMatriculaForm />
+        if (section.subindexTitle === 'RESOLUCIONES') return <PostResolutionForm />
+        }
 
     return <Box>
         <Button onClick={onOpen} margin={'5dvh 0 5dvh 0'}>
             {section.subindexTitle}
         </Button>
 
-        <Modal 
-        isCentered 
-        isOpen={isOpen} 
-        onClose={onClose}  
-        finalFocusRef={btnRef}   
-        size={'xl'}   
-        scrollBehavior={'outside'}
+        <Modal
+            isCentered
+            isOpen={isOpen}
+            onClose={onClose}
+            finalFocusRef={btnRef}
+            size={'xl'}
+            scrollBehavior={'outside'}
         >
             <ModalOverlay
                 bg='none'
@@ -53,7 +59,7 @@ export default function FormModal({ section }: FormModalType): JSX.Element {
                 <ModalHeader>{section.subindexTitle}</ModalHeader>
                 <ModalCloseButton />
                 <ModalBody>
-                    <PostingForms />
+                    {HandleForm()}
                 </ModalBody>
 
                 <ModalFooter>
