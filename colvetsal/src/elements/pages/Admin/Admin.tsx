@@ -22,7 +22,7 @@ export default function Admin(): JSX.Element {
                                 <Heading>{list.indexTitle}</Heading>
                                 {list.subindex ?
                                     list.subindex.map((section) => {
-                                        return <FormModal section={section}/>
+        return <div key={section.subindexTitle}><FormModal section={section}/></div>
                                     }) :
                                     <div></div>
                                 }

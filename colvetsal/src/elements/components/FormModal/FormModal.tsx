@@ -10,7 +10,8 @@ import {
     useDisclosure,
     Box,
 } from "@chakra-ui/react";
-import PostingForms from "../PostingForms/PostingForms";
+import PostingForms from "../PostingMatForm/PostingMatForm";
+import { useRef } from "react";
 
 export type FormModalType = {
     section: {
@@ -21,14 +22,22 @@ export type FormModalType = {
 
 export default function FormModal({ section }: FormModalType): JSX.Element {
     const { isOpen, onOpen, onClose } = useDisclosure()
+    
+  const btnRef = useRef(null)
 
-    return <Box
-        key={section.subindexTitle}>
+    return <Box>
         <Button onClick={onOpen} margin={'5dvh 0 5dvh 0'}>
             {section.subindexTitle}
         </Button>
 
-        <Modal isCentered isOpen={isOpen} onClose={onClose}>
+        <Modal 
+        isCentered 
+        isOpen={isOpen} 
+        onClose={onClose}  
+        finalFocusRef={btnRef}   
+        size={'xl'}   
+        scrollBehavior={'outside'}
+        >
             <ModalOverlay
                 bg='none'
                 backdropFilter='auto'
