@@ -1,10 +1,59 @@
-import { Button, FormControl, FormHelperText, FormLabel, Input, Menu, MenuButton, MenuItem, MenuItemOption, MenuList, MenuOptionGroup, Textarea } from "@chakra-ui/react";
+import {
+    Button,
+    Checkbox,
+    CheckboxGroup,
+    FormControl,
+    FormHelperText,
+    FormLabel,
+    Input,
+    ListItem,
+    Menu,
+    MenuButton,
+    MenuItem,
+    MenuList,
+    Modal,
+    ModalBody,
+    ModalCloseButton,
+    ModalContent,
+    ModalFooter,
+    ModalHeader,
+    ModalOverlay,
+    Stack,
+    Text,
+    Textarea,
+    UnorderedList,
+    useDisclosure
+} from "@chakra-ui/react";
 import { nextFocus } from "../../../utils/FormUtils";
 import { ChevronDownIcon } from "@chakra-ui/icons";
+import { Loading } from "../Loading/Loading";
+import { ChangeEvent, useState } from "react";
 
 export default function PostResolutionForm(): JSX.Element {
+    const { isOpen, onOpen, onClose } = useDisclosure()
+    const members = ['Presidente', 'Secretario', 'Tesorera', 'Vicepresidente', 'Vocal', 'Vocal Suplente 1', 'Vocal Suplente 2']
+    // eslint-disable-next-line no-constant-condition
+    const memberInitialSate = members.reduce((o, key) => ({ ...o, [key]: false }), {})
+    const [signatures, setSignatures] = useState<{ [key: string]: boolean }>(memberInitialSate)
 
     const year = new Date().getFullYear()
+
+    const handleChekboxSubmit = (e: ChangeEvent<HTMLInputElement>) => {
+        const target = e.target
+        setSignatures({
+            ...signatures,
+            [target?.value]: target?.checked
+        })
+    };
+    const setDefaultcheckboxValue = ()=>{
+        const list: string[] = ['']
+        for (const key in signatures) {
+            if (Object.prototype.hasOwnProperty.call(signatures, key)) {
+                signatures[key] && list.push(key)  
+            }
+        }
+        return list
+    }
 
     return <FormControl
         padding={'1dvh 1dvw 1dvh 1dvw'}
@@ -13,7 +62,7 @@ export default function PostResolutionForm(): JSX.Element {
         maxHeight={'50dvh'}
         id="Form"
     >
-    <FormLabel>Organismo:</FormLabel>
+        <FormLabel>Organismo:</FormLabel>
         <Menu>
             <MenuButton as={Button} rightIcon={<ChevronDownIcon />}>
                 Seleccione un Organismo
@@ -25,30 +74,6 @@ export default function PostResolutionForm(): JSX.Element {
                 </MenuList>}
         </Menu>
         <FormHelperText>Organismo Seleccionado</FormHelperText> <FormLabel>Firmas</FormLabel>
-        <Menu closeOnSelect={false}>
-            <MenuButton
-                as={Button}
-                rightIcon={<ChevronDownIcon/>}
-                >
-                Seleccione los miembros Firmantes
-            </MenuButton>{
-                <MenuList 
-                >
-                    <MenuOptionGroup 
-                    title='Integrantes' 
-                    type='checkbox'
-                    id='signatures'
-                    >
-                        <MenuItemOption value='Presidente' >Presidente</MenuItemOption >
-                        <MenuItemOption value='Secretario' >Secretario</MenuItemOption >
-                        <MenuItemOption value='Vicepresidente' >Vicepresidente</MenuItemOption >
-                        <MenuItemOption value='Tesorera' >Tesorera</MenuItemOption >
-                        <MenuItemOption value='Vocal' >Vocal</MenuItemOption >
-                        <MenuItemOption value='VocalSuplente' >VocalSuplente</MenuItemOption >
-                    </MenuOptionGroup>
-                </MenuList>}
-        </Menu>
-        <FormHelperText>Firmantes Seleccionados</FormHelperText>
         <FormLabel>Número:</FormLabel>
         <Input
             className="input"
@@ -102,6 +127,52 @@ export default function PostResolutionForm(): JSX.Element {
             id="input7"
             placeholder="Resuelve"
         />
-       
-    </FormControl>
+        <Button onClick={onOpen}>
+            Seleccione los miembros Firmantes
+        </Button>
+        <Modal isOpen={isOpen} onClose={onClose}>
+            <ModalOverlay />
+            <ModalContent>
+                <ModalHeader>Seleccione los miembros Firmantes</ModalHeader>
+                <ModalCloseButton />
+                <ModalBody pb={6}>
+                    <CheckboxGroup
+                    defaultValue={setDefaultcheckboxValue()}
+                    >
+                        <Stack
+                            spacing={[1, 5]}
+                            direction={['column', 'row']}
+                            wrap={'wrap'}
+                        > {
+                                members ?
+                                    members.map((m) => {
+                                        return <Checkbox
+                                            key={m}
+                                            name="signatures"
+                                            checked={signatures[m as keyof typeof signatures]}
+                                            value={m}
+                                            onChange={handleChekboxSubmit}
+                                        > {
+                                                m
+                                            } </Checkbox>
+                                    }) :
+                                    <Loading />
+                            }
+                        </Stack>
+                    </CheckboxGroup>
+                    <UnorderedList>
+                        {members ? members.map((s) => <>{signatures[s] ? <ListItem>{s}</ListItem> : null} </>) : null}
+                    </UnorderedList>
+                </ModalBody>
+                <ModalFooter>
+                    <Button colorScheme='blue' mr={3}>
+                        Aceptar
+                    </Button>
+                </ModalFooter>
+            </ModalContent>
+        </Modal>
+        <FormHelperText>Firmantes Seleccionados
+            {members ? members.map((s) => <Text>{signatures[s] ? s : null}</Text>) : null}
+        </FormHelperText>
+    </FormControl >
 }
