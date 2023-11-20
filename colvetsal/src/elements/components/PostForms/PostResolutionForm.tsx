@@ -26,7 +26,7 @@ import {
 } from "@chakra-ui/react";
 import { nextFocus } from "../../../utils/FormUtils";
 import { ChevronDownIcon } from "@chakra-ui/icons";
-import { Loading } from "../Loading/Loading";
+import { Loading } from "../Loading";
 import { ChangeEvent, useState } from "react";
 
 export default function PostResolutionForm(): JSX.Element {
@@ -45,11 +45,11 @@ export default function PostResolutionForm(): JSX.Element {
             [target?.value]: target?.checked
         })
     };
-    const setDefaultcheckboxValue = ()=>{
+    const setDefaultcheckboxValue = () => {
         const list: string[] = ['']
         for (const key in signatures) {
             if (Object.prototype.hasOwnProperty.call(signatures, key)) {
-                signatures[key] && list.push(key)  
+                signatures[key] && list.push(key)
             }
         }
         return list
@@ -73,7 +73,7 @@ export default function PostResolutionForm(): JSX.Element {
                     <MenuItem>Tribunal de Etica</MenuItem>
                 </MenuList>}
         </Menu>
-        <FormHelperText>Organismo Seleccionado</FormHelperText> <FormLabel>Firmas</FormLabel>
+        <FormHelperText>Organismo Seleccionado</FormHelperText>
         <FormLabel>Número:</FormLabel>
         <Input
             className="input"
@@ -127,6 +127,7 @@ export default function PostResolutionForm(): JSX.Element {
             id="input7"
             placeholder="Resuelve"
         />
+        <FormLabel>Firmas</FormLabel>
         <Button onClick={onOpen}>
             Seleccione los miembros Firmantes
         </Button>
@@ -137,7 +138,7 @@ export default function PostResolutionForm(): JSX.Element {
                 <ModalCloseButton />
                 <ModalBody pb={6}>
                     <CheckboxGroup
-                    defaultValue={setDefaultcheckboxValue()}
+                        defaultValue={setDefaultcheckboxValue()}
                     >
                         <Stack
                             spacing={[1, 5]}

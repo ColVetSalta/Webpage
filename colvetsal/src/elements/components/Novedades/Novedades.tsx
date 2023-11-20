@@ -7,7 +7,7 @@ import { News } from '../../../types';
 import { getNews } from '../../../redux/newsSlice';
 import { Link as ChakLink } from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
-import { Loading } from '../Loading/Loading';
+import { Loading } from '../Loading';
 
 export default function Novedades({ motive }: { motive: string }): JSX.Element {
     const dispatch = useAppDispatch()
@@ -22,9 +22,9 @@ export default function Novedades({ motive }: { motive: string }): JSX.Element {
                 .then((data) => dispatch(getNews(data.data)))
         }
     }, [dispatch, motive])
-    if(news.length === 0) return <h3>No se encontraron novedades</h3>
+    if (news.length === 0) return <h3>No se encontraron novedades</h3>
 
-    if(news[0].id === 0) return <Flex margin={'30dvh 0 30dvh 0'} justifyContent={'center'} align={'center'}><Loading/></Flex>
+    if (news[0].id === 0) return <Flex margin={'30dvh 0 30dvh 0'} justifyContent={'center'} align={'center'}><Loading /></Flex>
     return <Grid
         className={nov.Grid}
         templateColumns='repeat(3, 1fr)'
@@ -32,23 +32,23 @@ export default function Novedades({ motive }: { motive: string }): JSX.Element {
         opacity={'93%'}
     >
         {news.map((n) => {
-                return <ChakLink
-                        as={Link}
-                        to={`/news/detail/${n.id}`}
-                        key={n.id}
-                    >
-                        <Card
+            return <ChakLink
+                as={Link}
+                to={`/news/detail/${n.id}`}
+                key={n.id}
+            >
+                <Card
                     background={'darkgray'}
                     key={n.id}>
-                    
-                            {/* <Image
+
+                    {/* <Image
                                 boxSize={'7em'}
                                 src={n.image || 'noticia.png'}
                                 alt={n.alt} /> */}
-                            <Heading>{n.title}</Heading>
-                        <Text>{n.summary}</Text>
+                    <Heading>{n.title}</Heading>
+                    <Text>{n.summary}</Text>
                 </Card>
-                    </ChakLink>;
-            })}
+            </ChakLink>;
+        })}
     </Grid>;
 }

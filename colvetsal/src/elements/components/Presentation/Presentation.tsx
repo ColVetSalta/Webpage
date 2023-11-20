@@ -7,9 +7,9 @@ import axios from 'axios';
 import React from 'react';
 import { getOrganism } from '../../../redux/orgSlice';
 import { getResoluciones } from '../../../redux/resSlice';
-import { Link as ChakLink, Flex, ListItem, UnorderedList, Heading, Box, Spinner} from '@chakra-ui/react';
+import { Link as ChakLink, Flex, ListItem, UnorderedList, Heading, Box, Spinner } from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
-import { Loading } from '../Loading/Loading';
+import { Loading } from '../Loading';
 
 export interface DefPres {
     [x: string]: [{
@@ -48,52 +48,53 @@ export default function Presentation({ motive }: { motive: string }): JSX.Elemen
 
     if (motive === 'RESOLUCIONES') {
         return <UnorderedList
-        fontFamily={'garamond'}
+            fontFamily={'garamond'}
         >
-            {resoluciones.length > 0 ? 
-            resoluciones?.map((r) =>{
-                console.log(r.titulo)
-                return <ListItem 
-            key={r.id}
-            >
-                <ChakLink
-                as={Link}
-                to={`/res/detail/${r.id}`}>
-                 <h2>{r.num} / {r.year} - {r.titulo}</h2>
-                </ChakLink>                
-            </ListItem>}) :
-            <Loading/> }
-            </UnorderedList>
+            {resoluciones.length > 0 ?
+                resoluciones?.map((r) => {
+                    console.log(r.titulo)
+                    return <ListItem
+                        key={r.id}
+                    >
+                        <ChakLink
+                            as={Link}
+                            to={`/res/detail/${r.id}`}>
+                            <h2>{r.num} / {r.year} - {r.titulo}</h2>
+                        </ChakLink>
+                    </ListItem>
+                }) :
+                <Loading />}
+        </UnorderedList>
     } else if (motive === 'AUTORIDADES') {
         stateSelect = organism
         const divitions: string[] = Object.keys(stateSelect);
 
-        return <Flex 
-        className={p.cont}
-        flexDirection={'column'}
+        return <Flex
+            className={p.cont}
+            flexDirection={'column'}
         >
             <Heading as='h2'>Consejo Mayor: </Heading>
             {
                 divitions.length > 0 ? divitions.map((d) => {
                     const h = stateSelect[d as keyof typeof stateSelect]
                     return <Flex
-                    flexDirection={'column'}
+                        flexDirection={'column'}
                     >
-            <Heading as='h3'>{d}</Heading >
-            <Flex
-                    flexDirection={'row'}
-        justifyContent={'space-evenly'}
-        >
-                        {h.length > 0 ? h.map((r) => <RoleData r={r} />) : <Loading />}
-                    </Flex>
+                        <Heading as='h3'>{d}</Heading >
+                        <Flex
+                            flexDirection={'row'}
+                            justifyContent={'space-evenly'}
+                        >
+                            {h.length > 0 ? h.map((r) => <RoleData r={r} />) : <Loading />}
+                        </Flex>
                     </Flex>
                 }) : <Spinner
-                thickness='4px'
-                speed='0.65s'
-                emptyColor='gray.200'
-                color='blue.500'
-                size='xl'
-              />
+                    thickness='4px'
+                    speed='0.65s'
+                    emptyColor='gray.200'
+                    color='blue.500'
+                    size='xl'
+                />
             }
         </Flex>
     } else {
