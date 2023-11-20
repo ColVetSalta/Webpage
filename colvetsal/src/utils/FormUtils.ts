@@ -12,3 +12,13 @@ export function nextFocus(e: KeyboardEvent<HTMLDivElement | HTMLTextAreaElement>
             }
           }
         }
+
+      export const setDefaultcheckboxValue = (signatures: { [key: string]: boolean }) => {
+          const list: string[] = ['']
+          for (const key in signatures) {
+              if (Object.prototype.hasOwnProperty.call(signatures, key)) {
+                  signatures[key] && list.push(key)
+              }
+          }
+          return list
+      }

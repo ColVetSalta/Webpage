@@ -1,4 +1,3 @@
-import m from './Matriculados.module.css';
 import { Grid, Container, } from '@chakra-ui/react';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { useEffect } from 'react';
@@ -27,7 +26,6 @@ export default function Matriculados({ motive }: { motive: string }): JSX.Elemen
         templateColumns='repeat(3, 1fr)'
         gap={5}
         opacity={'93%'}
-        className={m.Grid}
     >
         {(matriculados && motive === 'ACTIVOS') ?
             matriculados[0].mp !== 0 ?

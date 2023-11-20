@@ -1,36 +1,21 @@
 import {
     Button,
-    Checkbox,
-    CheckboxGroup,
     FormControl,
     FormHelperText,
     FormLabel,
     Input,
-    ListItem,
     Menu,
     MenuButton,
     MenuItem,
     MenuList,
-    Modal,
-    ModalBody,
-    ModalCloseButton,
-    ModalContent,
-    ModalFooter,
-    ModalHeader,
-    ModalOverlay,
-    Stack,
     Text,
-    Textarea,
-    UnorderedList,
-    useDisclosure
-} from "@chakra-ui/react";
+    Textarea} from "@chakra-ui/react";
 import { nextFocus } from "../../../utils/FormUtils";
 import { ChevronDownIcon } from "@chakra-ui/icons";
-import { Loading } from "../Loading";
-import { ChangeEvent, useState } from "react";
+import { useState } from "react";
+import SignaturesModal from "./SignaturesModal";
 
 export default function PostResolutionForm(): JSX.Element {
-    const { isOpen, onOpen, onClose } = useDisclosure()
     const members = ['Presidente', 'Secretario', 'Tesorera', 'Vicepresidente', 'Vocal', 'Vocal Suplente 1', 'Vocal Suplente 2']
     // eslint-disable-next-line no-constant-condition
     const memberInitialSate = members.reduce((o, key) => ({ ...o, [key]: false }), {})
@@ -38,22 +23,6 @@ export default function PostResolutionForm(): JSX.Element {
 
     const year = new Date().getFullYear()
 
-    const handleChekboxSubmit = (e: ChangeEvent<HTMLInputElement>) => {
-        const target = e.target
-        setSignatures({
-            ...signatures,
-            [target?.value]: target?.checked
-        })
-    };
-    const setDefaultcheckboxValue = () => {
-        const list: string[] = ['']
-        for (const key in signatures) {
-            if (Object.prototype.hasOwnProperty.call(signatures, key)) {
-                signatures[key] && list.push(key)
-            }
-        }
-        return list
-    }
 
     return <FormControl
         padding={'1dvh 1dvw 1dvh 1dvw'}
@@ -128,50 +97,11 @@ export default function PostResolutionForm(): JSX.Element {
             placeholder="Resuelve"
         />
         <FormLabel>Firmas</FormLabel>
-        <Button onClick={onOpen}>
-            Seleccione los miembros Firmantes
-        </Button>
-        <Modal isOpen={isOpen} onClose={onClose}>
-            <ModalOverlay />
-            <ModalContent>
-                <ModalHeader>Seleccione los miembros Firmantes</ModalHeader>
-                <ModalCloseButton />
-                <ModalBody pb={6}>
-                    <CheckboxGroup
-                        defaultValue={setDefaultcheckboxValue()}
-                    >
-                        <Stack
-                            spacing={[1, 5]}
-                            direction={['column', 'row']}
-                            wrap={'wrap'}
-                        > {
-                                members ?
-                                    members.map((m) => {
-                                        return <Checkbox
-                                            key={m}
-                                            name="signatures"
-                                            checked={signatures[m as keyof typeof signatures]}
-                                            value={m}
-                                            onChange={handleChekboxSubmit}
-                                        > {
-                                                m
-                                            } </Checkbox>
-                                    }) :
-                                    <Loading />
-                            }
-                        </Stack>
-                    </CheckboxGroup>
-                    <UnorderedList>
-                        {members ? members.map((s) => <>{signatures[s] ? <ListItem>{s}</ListItem> : null} </>) : null}
-                    </UnorderedList>
-                </ModalBody>
-                <ModalFooter>
-                    <Button colorScheme='blue' mr={3}>
-                        Aceptar
-                    </Button>
-                </ModalFooter>
-            </ModalContent>
-        </Modal>
+        <SignaturesModal
+        members={members}
+        signatures={signatures}
+        setSignatures={setSignatures}
+        />
         <FormHelperText>Firmantes Seleccionados
             {members ? members.map((s) => <Text>{signatures[s] ? s : null}</Text>) : null}
         </FormHelperText>
