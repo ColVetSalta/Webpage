@@ -8,6 +8,7 @@ import { Navigation } from "../../../types";
 import FormModal from "../../components/FormModal";
 
 export default function Admin(): JSX.Element {
+    // const actionList = ['NOVEDADES', 'AUTORIDADES', 'RESOLUCIONES', 'MATRICULADOS', 'NORMATIVA', 'HISTORIA']
     const impList: Navigation[] = navList;
     return (
         <Grid
@@ -16,6 +17,12 @@ export default function Admin(): JSX.Element {
             {
                 impList ?
                     impList.map((list) => {
+                        if (list.indexTitle === 'NOVEDADES') return <GridItem> <FormModal section={
+                            {
+                                subindexTitle: list.indexTitle,
+                                url: ''
+                            }
+                        } /></GridItem>
                         return <GridItem
                             key={list.indexTitle}
                         >

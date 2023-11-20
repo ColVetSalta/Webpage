@@ -13,6 +13,7 @@ import {
 import PostMatriculaForm from "./PostForms/PostMatriculaForm";
 import { useRef } from "react";
 import PostResolutionForm from "./PostForms/PostResolutionForm";
+import PostNewsForm from "./PostForms/PostNewsForm";
 
 export type FormModalType = {
     section: {
@@ -29,6 +30,7 @@ export default function FormModal({ section }: FormModalType): JSX.Element {
     function HandleForm() {
         if (section.subindexTitle === 'ACTIVOS') return <PostMatriculaForm />
         if (section.subindexTitle === 'RESOLUCIONES') return <PostResolutionForm />
+        if (section.subindexTitle === 'NOVEDADES') return <PostNewsForm />
     }
 
     return <Box>
