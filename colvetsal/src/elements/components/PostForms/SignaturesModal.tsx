@@ -53,7 +53,7 @@ export default function SignaturesModal({members, signatures, setSignatures}: {m
                     </UnorderedList>
                 </ModalBody>
                 <ModalFooter>
-                    <Button colorScheme='blue' mr={3}>
+                    <Button colorScheme='blue' mr={3} onClick={onClose}>
                         Aceptar
                     </Button>
                 </ModalFooter>
