@@ -2,7 +2,7 @@ import React from 'react'
 import { DatosMinimos, Role } from '../../../types'
 import { Box, Heading, Text } from '@chakra-ui/react'
 import { Loading } from '../Loading'
-import PresentCard from '../../PresentCard'
+import PresentCard from '../PresentCard'
 
 export default function RoleData({ r }: { r: Role | { pendiente: string } }): React.JSX.Element {
     if ('cargo' in r) {

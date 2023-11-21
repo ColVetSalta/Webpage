@@ -5,7 +5,7 @@ import axios from 'axios';
 import { Matriculado } from '../../types';
 import { getMats } from '../../redux/matSlice';
 import { Loading } from './Loading';
-import PresentCard from '../PresentCard';
+import PresentCard from './PresentCard';
 import NotAbaliable from './NotAbaliable';
 
 export default function Matriculados({ motive }: { motive: string }): JSX.Element {
@@ -22,7 +22,7 @@ export default function Matriculados({ motive }: { motive: string }): JSX.Elemen
     }), [motive]
     const { matriculados } = useAppSelector((state) => state.mat)
 
-    if(motive !== 'ACTIVOS') return <NotAbaliable />
+    if (motive !== 'ACTIVOS') return <NotAbaliable />
 
     return <Grid
         margin={'15dvh 5dvw 10dvh 5dvw'}
@@ -31,9 +31,9 @@ export default function Matriculados({ motive }: { motive: string }): JSX.Elemen
         opacity={'93%'}
     >
         {matriculados[0].mp !== 0 ?
-                matriculados.map((n) => {
-                    return <PresentCard n={n} />
-                }) : <Loading />
-            }
-            </Grid>;
+            matriculados.map((n) => {
+                return <PresentCard n={n} />
+            }) : <Loading />
+        }
+    </Grid>;
 }

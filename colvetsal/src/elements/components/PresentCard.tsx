@@ -1,5 +1,5 @@
 import { Card, Flex, Text } from "@chakra-ui/react";
-import { DatosMinimos } from "../types";
+import { DatosMinimos } from "../../types";
 
 export default function PresentCard({ n }: { n: DatosMinimos }): JSX.Element {
     return <Card
