@@ -12,13 +12,6 @@ import { Link } from 'react-router-dom';
 import { Loading } from '../Loading';
 import NotAbaliable from '../NotAbaliable';
 
-export interface DefPres {
-    [x: string]: [{
-        pendiente: string
-    }
-    ]
-}
-
 export default function Presentation({ motive }: { motive: string }): JSX.Element {
     const dispatch = useAppDispatch()
 
@@ -41,11 +34,6 @@ export default function Presentation({ motive }: { motive: string }): JSX.Elemen
 
     const { organism } = useAppSelector((state) => state.org)
     const { resoluciones } = useAppSelector((state) => state.res)
-    let stateSelect: Organismo | DefPres = {
-        'PROXIMAMENTE': [{
-            pendiente: 'Estamos trabajando para presentar este espacio en un futuro'
-        }]
-    }
 
     if (motive === 'RESOLUCIONES') {
         return <UnorderedList
@@ -67,8 +55,7 @@ export default function Presentation({ motive }: { motive: string }): JSX.Elemen
                 <Loading />}
         </UnorderedList>
     } else if (motive === 'AUTORIDADES') {
-        stateSelect = organism
-        const divitions: string[] = Object.keys(stateSelect);
+        const divitions: string[] = Object.keys(organism);
 
         return <Flex
             className={p.cont}
@@ -77,7 +64,7 @@ export default function Presentation({ motive }: { motive: string }): JSX.Elemen
             <Heading as='h2'>Consejo Mayor: </Heading>
             {
                 divitions.length > 0 ? divitions.map((d) => {
-                    const h = stateSelect[d as keyof typeof stateSelect]
+                    const h = organism[d as keyof typeof organism]
                     return <Flex
                         flexDirection={'column'}
                     >

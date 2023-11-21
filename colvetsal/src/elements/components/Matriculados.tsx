@@ -1,4 +1,4 @@
-import { Grid, Container, } from '@chakra-ui/react';
+import { Grid } from '@chakra-ui/react';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { useEffect } from 'react';
 import axios from 'axios';
@@ -6,6 +6,7 @@ import { Matriculado } from '../../types';
 import { getMats } from '../../redux/matSlice';
 import { Loading } from './Loading';
 import PresentCard from '../PresentCard';
+import NotAbaliable from './NotAbaliable';
 
 export default function Matriculados({ motive }: { motive: string }): JSX.Element {
     const dispatch = useAppDispatch()
@@ -21,21 +22,18 @@ export default function Matriculados({ motive }: { motive: string }): JSX.Elemen
     }), [motive]
     const { matriculados } = useAppSelector((state) => state.mat)
 
+    if(motive !== 'ACTIVOS') return <NotAbaliable />
+
     return <Grid
         margin={'15dvh 5dvw 10dvh 5dvw'}
         templateColumns='repeat(3, 1fr)'
         gap={5}
         opacity={'93%'}
     >
-        {(matriculados && motive === 'ACTIVOS') ?
-            matriculados[0].mp !== 0 ?
+        {matriculados[0].mp !== 0 ?
                 matriculados.map((n) => {
                     return <PresentCard n={n} />
-                }) : <Loading /> : <Container
-                    gridColumn={2}>
-                <h1>PROXIMAMENTE</h1>
-                <h3>Estamos trabajando para presentar este espacio en un futuro</h3>
-            </Container>
-        }
-    </Grid>;
+                }) : <Loading />
+            }
+            </Grid>;
 }
