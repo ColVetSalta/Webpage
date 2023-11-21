@@ -23,10 +23,6 @@ export default function PostMatriculaForm(): JSX.Element {
             principal: false,
             descripcion: '',
         }],
-        otrodato: [{
-            titulo: '',
-            descripcion: '',
-        }]
     })
 
     function HandleChange(e: ChangeEvent<HTMLInputElement>) {
@@ -150,7 +146,6 @@ console.log(registered);
         setRegistered={setRegistered}
         />
         <FormLabel>Información Adicional:</FormLabel>
-        <PostAdditionalDataForm/>
-        <FormHelperText>otrodato</FormHelperText>
+        <PostAdditionalDataForm registered={registered} setRegistered={setRegistered}/>
     </FormControl>
 }

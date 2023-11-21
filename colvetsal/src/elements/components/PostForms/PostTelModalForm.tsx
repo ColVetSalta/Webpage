@@ -17,13 +17,9 @@ import {
     useDisclosure
 } from "@chakra-ui/react";
 import { nextFocus, setDefaultcheckboxValue } from "../../../utils/FormUtils";
-import { Matriculado, Telefono } from "../../../types";
+import { IPostTelModalForm, Telefono } from "../../../types";
 import { ChangeEvent, useState } from "react";
 
-export interface IPostTelModalForm {
-    registered: Matriculado;
-    setRegistered: React.Dispatch<React.SetStateAction<Matriculado>>
-}
 
 export default function PostTelModalForm(
     { registered, setRegistered }: IPostTelModalForm
@@ -64,12 +60,7 @@ export default function PostTelModalForm(
                 })
             }
         }
-        setTel({
-            numero: '',
-            whatsapp: false,
-            principal: false,
-            descripcion: ''
-        })
+        setTel(emptyTel)
     }
 
     console.log(tel)

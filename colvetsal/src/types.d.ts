@@ -27,6 +27,10 @@ export interface Telefono {
   principal: boolean; // OBLIGATORIO
   descripcion: string; // Opcional
 }
+export interface AdditionalData {
+  'titulo': string; // OBLIGATORIO
+  'descripcion': string; // OBLIGATORIO
+}
 export interface Matriculado extends DatosMinimos  {
   correo_electronico: string; // Opcional
   f_nacimiento: Date; // ('mm/dd/aaaa'), OBLIGATORIO
@@ -36,12 +40,7 @@ export interface Matriculado extends DatosMinimos  {
   f_alta: Date; // ('mm/dd/aaaa') Opcional
   active: boolean;
   telefono: Telefono[]; // *tabla intermedia* Opcional
-  otrodato?: [
-    {
-      titulo: string; // OBLIGATORIO
-      descripcion: string; // OBLIGATORIO
-    }
-  ];
+  otrodato?: AdditionalData[];
 }
 
 export type Organismo = {
@@ -126,3 +125,8 @@ export type News = {
   destacado: boolean;
   resaltar: boolean;
 };
+
+export interface IPostTelModalForm {
+  registered: Matriculado;
+  setRegistered: React.Dispatch<React.SetStateAction<Matriculado>>
+}
