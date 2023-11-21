@@ -14,6 +14,7 @@ import PostMatriculaForm from "./PostForms/PostMatriculaForm";
 import { useRef } from "react";
 import PostResolutionForm from "./PostForms/PostResolutionForm";
 import PostNewsForm from "./PostForms/PostNewsForm";
+import NotAbaliable from "./NotAbaliable";
 
 export type FormModalType = {
     section: {
@@ -31,9 +32,9 @@ export default function FormModal( {section}: {section : string}): JSX.Element {
         if (section === 'MATRICULADOS') return <PostMatriculaForm />
         if (section === 'RESOLUCIONES') return <PostResolutionForm />
         if (section === 'NOVEDADES') return <PostNewsForm />
-        if (section === 'NORMATIVA') return <PostResolutionForm />
-        if (section === 'HISTORIA') return <PostNewsForm />
-        if (section === 'AUTORIDADES') return <PostNewsForm />
+        if (section === 'NORMATIVA') return <NotAbaliable />
+        if (section === 'HISTORIA') return <NotAbaliable />
+        if (section === 'AUTORIDADES') return <NotAbaliable />
 
 
     }
