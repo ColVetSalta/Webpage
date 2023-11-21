@@ -1,7 +1,9 @@
-import { Button, FormControl, FormHelperText, FormLabel, Input } from "@chakra-ui/react";
+import { FormControl, FormHelperText, FormLabel, Input } from "@chakra-ui/react";
 import { nextFocus } from "../../../utils/FormUtils";
 import { ChangeEvent, useState } from "react";
 import { Matriculado } from "../../../types";
+import PostTelModalForm from "./PostTelModalForm";
+import PostAdditionalDataForm from "./PostAdditionalDataForm";
 
 export default function PostMatriculaForm(): JSX.Element {
     const [registered, setRegistered] = useState<Matriculado>({
@@ -143,11 +145,12 @@ console.log(registered);
             onChange={HandleChange}
         />
         <FormLabel>Agregar al menos un telefono</FormLabel>
-        <Button
-        >Añadir nuevo Telefono</Button>
+        <PostTelModalForm 
+        // registered={registered} 
+        // setRegistered={setRegistered}
+        />
         <FormLabel>Información Adicional:</FormLabel>
-        <Button
-        >Añadir Información</Button>
+        <PostAdditionalDataForm/>
         <FormHelperText>otrodato</FormHelperText>
     </FormControl>
 }

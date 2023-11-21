@@ -21,10 +21,13 @@ export interface Role extends DatosMinimos {
   correo_electronico: string | null;
 }
 
+export interface Telefono {
+  numero: string; // ('numero') OBLIGATORIO
+  whatsapp: boolean; // OBLIGATORIO
+  principal: boolean; // OBLIGATORIO
+  descripcion: string; // Opcional
+}
 export interface Matriculado extends DatosMinimos  {
-  mp: number; // PK OBLIGATORIO
-  nombre: string; // OBLIGATORIO
-  apellido: string; // OBLIGATORIO
   correo_electronico: string; // Opcional
   f_nacimiento: Date; // ('mm/dd/aaaa'), OBLIGATORIO
   domicilio_particular: string; // OBLIGATORIO
@@ -32,14 +35,7 @@ export interface Matriculado extends DatosMinimos  {
   departamento_d_laboral: string; // OBLIGATORIO
   f_alta: Date; // ('mm/dd/aaaa') Opcional
   active: boolean;
-  telefono?: [
-    {
-      numero: string; // ('numero') OBLIGATORIO
-      whatsapp: boolean; // OBLIGATORIO
-      principal: boolean; // OBLIGATORIO
-      descripcion: string; // Opcional
-    }
-  ]; // *tabla intermedia* Opcional
+  telefono?: Telefono[]; // *tabla intermedia* Opcional
   otrodato?: [
     {
       titulo: string; // OBLIGATORIO
