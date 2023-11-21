@@ -1,41 +1,27 @@
-import navList from "../../../Navegacion.json";
 import {
     Grid,
     GridItem,
-    Heading,
 } from "@chakra-ui/react";
-import { Navigation } from "../../../types";
 import FormModal from "../../components/FormModal";
+import { Loading } from "../../components/Loading";
 
 export default function Admin(): JSX.Element {
-    // const actionList = ['NOVEDADES', 'AUTORIDADES', 'RESOLUCIONES', 'MATRICULADOS', 'NORMATIVA', 'HISTORIA']
-    const impList: Navigation[] = navList;
+    const actionList = ['NOVEDADES', 'AUTORIDADES', 'RESOLUCIONES', 'MATRICULADOS', 'NORMATIVA', 'HISTORIA']
+
     return (
         <Grid
             templateColumns='repeat(3, 1fr)'
             marginBlockStart={'15dvh'}>
             {
-                impList ?
-                    impList.map((list) => {
-                        if (list.indexTitle === 'NOVEDADES') return <GridItem> <FormModal section={
-                            {
-                                subindexTitle: list.indexTitle,
-                                url: ''
-                            }
-                        } /></GridItem>
+                actionList ?
+                    actionList.map((item) => {
                         return <GridItem
-                            key={list.indexTitle}
+                            key={item}
                         >
-                            <Heading>{list.indexTitle}</Heading>
-                            {list.subindex ?
-                                list.subindex.map((section) => {
-                                    return <div key={section.subindexTitle}><FormModal section={section} /></div>
-                                }) :
-                                <div></div>
-                            }
+                            <FormModal section={item} />
                         </GridItem>
                     }) :
-                    <div></div>
+                    <Loading/>
             }
 
         </Grid>

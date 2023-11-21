@@ -7,9 +7,10 @@ import axios from 'axios';
 import React from 'react';
 import { getOrganism } from '../../../redux/orgSlice';
 import { getResoluciones } from '../../../redux/resSlice';
-import { Link as ChakLink, Flex, ListItem, UnorderedList, Heading, Box, Spinner } from '@chakra-ui/react';
+import { Link as ChakLink, Flex, ListItem, UnorderedList, Heading } from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
 import { Loading } from '../Loading';
+import NotAbaliable from '../NotAbaliable';
 
 export interface DefPres {
     [x: string]: [{
@@ -88,27 +89,10 @@ export default function Presentation({ motive }: { motive: string }): JSX.Elemen
                             {h.length > 0 ? h.map((r) => <RoleData r={r} />) : <Loading />}
                         </Flex>
                     </Flex>
-                }) : <Spinner
-                    thickness='4px'
-                    speed='0.65s'
-                    emptyColor='gray.200'
-                    color='blue.500'
-                    size='xl'
-                />
+                }) :  <Loading />
             }
         </Flex>
     } else {
-        const divitions: string[] = Object.keys(stateSelect);
-        return <Box>
-            {
-                divitions.length > 0 ? divitions.map((d) => {
-                    const h = stateSelect[d as keyof typeof stateSelect]
-                    return <Box>
-                        <Heading as='h4'>{d}</Heading >
-                        {h ? h.map((r) => <RoleData r={r} />) : null}
-                    </Box>
-                }) : <Loading />
-            }
-        </Box>
+        return <NotAbaliable />
     }
 }

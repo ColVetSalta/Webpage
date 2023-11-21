@@ -16,27 +16,18 @@ export default function NovedadesDetail(): React.JSX.Element {
                 console.log(data)
                 dispatch(getCurrentNew(data.data))
             })
-    }),[id]
-    
+    }),[id]    
     const { currentNew } = useAppSelector((state) => state.news)
-    const n: News | { pendiente: string } = currentNew.id !== 0 ? currentNew : { pendiente: 'Estamos trabajando para presentar este espacio en un futuro' }
-    if ('pendiente' in n) {
-    return <Flex
-        margin={'15dvh 5dvw 10dvh 5dvw'}
-    >
-        <h3>{n.pendiente}</h3>
-    </Flex>
-    }
     return <Flex
         margin={'15dvh 5dvw 10dvh 5dvw'}
         display={'column'}
         justify={'space-evenly'}
         // fontFamily={'times-new-roman'}
     >
-            <h2>{n.categoria}</h2>
-            <h1>{n.title}</h1>
-            <h3>{n.date}</h3>
-            {n.fulltext ? <Text align={'justify'}><p dangerouslySetInnerHTML={{ __html: n.fulltext}}/></Text > : null}
-            {n.image ? <Image src={n.image} alt={n.alt}/> : null}
+            <h2>{currentNew?.categoria}</h2>
+            <h1>{currentNew?.title}</h1>
+            <h3>{currentNew?.date}</h3>
+            {currentNew?.fulltext ? <Text align={'justify'}><p dangerouslySetInnerHTML={{ __html: currentNew?.fulltext}}/></Text > : null}
+            {currentNew?.image ? <Image src={currentNew?.image} alt={currentNew?.alt}/> : null}
         </Flex>
 }

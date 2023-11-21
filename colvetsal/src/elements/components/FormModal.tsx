@@ -22,20 +22,25 @@ export type FormModalType = {
     }
 }
 
-export default function FormModal({ section }: FormModalType): JSX.Element {
+export default function FormModal( {section}: {section : string}): JSX.Element {
     const { isOpen, onOpen, onClose } = useDisclosure()
 
     const btnRef = useRef(null)
 
     function HandleForm() {
-        if (section.subindexTitle === 'ACTIVOS') return <PostMatriculaForm />
-        if (section.subindexTitle === 'RESOLUCIONES') return <PostResolutionForm />
-        if (section.subindexTitle === 'NOVEDADES') return <PostNewsForm />
+        if (section === 'MATRICULADOS') return <PostMatriculaForm />
+        if (section === 'RESOLUCIONES') return <PostResolutionForm />
+        if (section === 'NOVEDADES') return <PostNewsForm />
+        if (section === 'NORMATIVA') return <PostResolutionForm />
+        if (section === 'HISTORIA') return <PostNewsForm />
+        if (section === 'AUTORIDADES') return <PostNewsForm />
+
+
     }
 
     return <Box>
         <Button onClick={onOpen} margin={'5dvh 0 5dvh 0'}>
-            {section.subindexTitle}
+            {section}
         </Button>
 
         <Modal
@@ -58,7 +63,7 @@ export default function FormModal({ section }: FormModalType): JSX.Element {
                 width={'80dvw'}
                 height={'80dvh'}
             >
-                <ModalHeader>{section.subindexTitle}</ModalHeader>
+                <ModalHeader>{section}</ModalHeader>
                 <ModalCloseButton />
                 <ModalBody>
                     {HandleForm()}
