@@ -22,11 +22,12 @@ export default function Novedades({ motive }: { motive: string }): JSX.Element {
                 .then((data) => dispatch(getNews(data.data)))
         }
     }, [dispatch, motive])
-    if (news.length === 0) return <Heading 
-    as='h4' 
-    fontFamily={'garamond'}    
-    marginBlockStart={'12dvh'}
-    marginBlockEnd={'12dvh'}>No se encontraron novedades</Heading>
+    if (news.length === 0) return <Heading
+        as='h4'
+        fontFamily={'garamond'}
+        marginBlockStart={'12dvh'}
+        marginBlockEnd={'12dvh'}
+    >No se encontraron novedades</Heading>
 
     if (news[0].id === 0) return <Flex margin={'30dvh 0 30dvh 0'} justifyContent={'center'} align={'center'}><Loading /></Flex>
     return <Grid
