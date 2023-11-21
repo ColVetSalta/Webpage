@@ -17,40 +17,63 @@ import {
     useDisclosure
 } from "@chakra-ui/react";
 import { nextFocus, setDefaultcheckboxValue } from "../../../utils/FormUtils";
-import { Telefono } from "../../../types";
+import { Matriculado, Telefono } from "../../../types";
 import { ChangeEvent, useState } from "react";
 
-// export interface IPostTelModalForm {
-//     registered: Matriculado;
-//     setRegistered: React.Dispatch<React.SetStateAction<Matriculado>>
-// }
+export interface IPostTelModalForm {
+    registered: Matriculado;
+    setRegistered: React.Dispatch<React.SetStateAction<Matriculado>>
+}
 
 export default function PostTelModalForm(
-    // { registered, setRegistered }: IPostTelModalForm
-    ): JSX.Element {
-    const [tel, setTel] = useState<Telefono>({
+    { registered, setRegistered }: IPostTelModalForm
+): JSX.Element {
+    const emptyTel = {
         numero: '',
         whatsapp: false,
         principal: false,
         descripcion: ''
-    })
+    }
+    const [tel, setTel] = useState<Telefono>(emptyTel)
     const { isOpen, onOpen, onClose } = useDisclosure()
     function HandleChange(e: ChangeEvent<HTMLInputElement>) {
-    console.log(e.target.checked)    
-    if(e.target.name === 'check'){
-        setTel({
-            ...tel,
-            [e.target.value]: e.target.checked
-        })
-    } else if(e.target.value){
-        setTel({
-            ...tel,
-            [e.target.name]: e.target.value
-        })
-    }
+        if (e.target.name === 'check') {
+            setTel({
+                ...tel,
+                [e.target.value]: e.target.checked
+            })
+        } else if (e.target.value) {
+            setTel({
+                ...tel,
+                [e.target.name]: e.target.value
+            })
+        }
     }
 
-    console.log(tel)    
+    function HandleAccept() {
+        if (tel.numero !== '') {
+            if (registered.telefono[0].numero === '') {
+                setRegistered({
+                    ...registered,
+                    telefono: [tel]
+                })
+            } else {
+                setRegistered({
+                    ...registered,
+                    telefono: [...registered.telefono, tel]
+                })
+            }
+        }
+        setTel({
+            numero: '',
+            whatsapp: false,
+            principal: false,
+            descripcion: ''
+        })
+    }
+
+    console.log(tel)
+    console.log(registered)
 
     return <Box>
         <Button onClick={onOpen} margin={'5dvh 0 5dvh 0'}>Añadir nuevo Telefono</Button>
@@ -99,7 +122,8 @@ export default function PostTelModalForm(
                             <CheckboxGroup
                                 defaultValue={setDefaultcheckboxValue({
                                     principal: tel.principal,
-                                    whatsapp: tel.whatsapp})}
+                                    whatsapp: tel.whatsapp
+                                })}
                             >
                                 <Checkbox
                                     className="input"
@@ -123,10 +147,13 @@ export default function PostTelModalForm(
                 </ModalBody>
 
                 <ModalFooter>
-                    <Button colorScheme='blue' mr={3} onClick={onClose}>
-                        Close
+                    <Button colorScheme='blue' mr={3} onClick={() => { HandleAccept(); onClose() }}>
+                        Aceptar
                     </Button>
-                    <Button variant='ghost'>Secondary Action</Button>
+                    <Button colorScheme='blue' mr={3} onClick={HandleAccept}>
+                        Aceptar y Agregar otro
+                    </Button>
+                    <Button variant='ghost' onClick={() => { setTel(emptyTel); onClose() }}>Cancelar</Button>
                 </ModalFooter>
             </ModalContent>
         </Modal>

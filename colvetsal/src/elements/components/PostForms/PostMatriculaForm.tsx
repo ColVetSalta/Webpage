@@ -146,8 +146,8 @@ console.log(registered);
         />
         <FormLabel>Agregar al menos un telefono</FormLabel>
         <PostTelModalForm 
-        // registered={registered} 
-        // setRegistered={setRegistered}
+        registered={registered} 
+        setRegistered={setRegistered}
         />
         <FormLabel>Información Adicional:</FormLabel>
         <PostAdditionalDataForm/>

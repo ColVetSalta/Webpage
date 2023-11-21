@@ -35,7 +35,7 @@ export interface Matriculado extends DatosMinimos  {
   departamento_d_laboral: string; // OBLIGATORIO
   f_alta: Date; // ('mm/dd/aaaa') Opcional
   active: boolean;
-  telefono?: Telefono[]; // *tabla intermedia* Opcional
+  telefono: Telefono[]; // *tabla intermedia* Opcional
   otrodato?: [
     {
       titulo: string; // OBLIGATORIO
