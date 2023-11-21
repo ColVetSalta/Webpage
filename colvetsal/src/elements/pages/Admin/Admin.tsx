@@ -10,6 +10,7 @@ export default function Admin(): JSX.Element {
 
     return (
         <Grid
+        minHeight={'55dvh'}
             templateColumns='repeat(3, 1fr)'
             marginBlockStart={'15dvh'}>
             {
