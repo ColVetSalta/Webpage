@@ -38,9 +38,10 @@ export default function PostMatriculaForm({registered, setRegistered}: IPostMatr
         'La Poma']
 
     function HandleChange(e: ChangeEvent<HTMLInputElement>) {
+
         setRegistered({
             ...registered,
-            [e.target.name]: e.target.value
+            [e.target.name as keyof typeof registered]: e.target.value
         })
     }
 

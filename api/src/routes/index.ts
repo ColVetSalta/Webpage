@@ -11,6 +11,8 @@ router.use('/matriculado', matriculaRouter)
 router.use('/organismo', organismoRouter)
 router.use('/resoluciones', resolucionRouter)
 router.use('/novedades', novedadRouter)
+// router.use('/normativa', normativaRouter)
+// router.use('/historia', historiaRouter)
 // router.use('/periodo', PeriodoRouter)
 
 export default router

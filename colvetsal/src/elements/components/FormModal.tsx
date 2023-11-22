@@ -11,11 +11,11 @@ import {
     Box,
 } from "@chakra-ui/react";
 import PostMatriculaForm from "./PostForms/PostMatriculaForm";
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import PostResolutionForm from "./PostForms/PostResolutionForm";
 import PostNewsForm from "./PostForms/PostNewsForm";
 import NotAbaliable from "./NotAbaliable";
-import axios from "axios";
+import { useCurrentState } from "../../utils/CustomHooks";
 import { Matriculado } from "../../types";
 
 export type FormModalType = {
@@ -27,35 +27,16 @@ export type FormModalType = {
 
 export default function FormModal({ section }: { section: string }): JSX.Element {
     const { isOpen, onOpen, onClose } = useDisclosure()
-    const [registered, setRegistered] = useState<Matriculado>({
-        mp: 0,
-        nombre: '',
-        apellido: '',
-        correo_electronico: '',
-        f_nacimiento: new Date(),
-        domicilio_particular: '',
-        domicilio_laboral: '',
-        departamento_d_laboral: '',
-        f_alta: new Date(),
-        active: false,
-        telefono: [{
-            numero: '',
-            whatsapp: false,
-            principal: false,
-            descripcion: '',
-        }],
-    })
+    const searchHook = isOpen ? section : ''
+    const { currentState, setCurrentState, HandleSubmit } = useCurrentState(searchHook)
 
     const btnRef = useRef(null)
 
-    async function HandleSubmit() {
-        setRegistered({...registered, active: true})
-        await axios.post('/matriculado', registered)
-            .then((res) => alert(`Nuevo Matriculado: ${res.data.nombre} ${res.data.apellido} registrado correctamente con la matrícula N°: ${res.data.mp}`))
-    }
-
     function HandleForm() {
-        if (section === 'MATRICULADOS') return <PostMatriculaForm registered={registered} setRegistered={setRegistered} />
+        if (section === 'MATRICULADO') return <PostMatriculaForm 
+        registered={currentState as Matriculado} 
+        setRegistered={setCurrentState as React.Dispatch<React.SetStateAction<Matriculado>>} 
+        />
         if (section === 'RESOLUCIONES') return <PostResolutionForm />
         if (section === 'NOVEDADES') return <PostNewsForm />
         if (section === 'NORMATIVA') return <NotAbaliable />

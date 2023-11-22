@@ -1,0 +1,18 @@
+{
+"mp": 0,
+"nombre": "",
+"apellido": "",
+"correo_electronico": "",
+"f_nacimiento": "2023-11-22T20:03:10.059Z",
+"domicilio_particular": "",
+"domicilio_laboral": "",
+"departamento_d_laboral": "",
+"f_alta": "2023-11-22T20:03:10.059Z",
+"active": false,
+"telefono": [{
+    "numero": "",
+    "whatsapp": false,
+    "principal": false,
+    "descripcion": ""
+}]
+}

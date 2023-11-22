@@ -6,7 +6,7 @@ import FormModal from "../../components/FormModal";
 import { Loading } from "../../components/Loading";
 
 export default function Admin(): JSX.Element {
-    const actionList = ['NOVEDADES', 'AUTORIDADES', 'RESOLUCIONES', 'MATRICULADOS', 'NORMATIVA', 'HISTORIA']
+    const actionList = ['NOVEDADES', 'ORGANISMO', 'RESOLUCIONES', 'MATRICULADO', 'NORMATIVA', 'HISTORIA']
 
     return (
         <Grid
