@@ -62,10 +62,7 @@ export default function PostTelModalForm(
         }
         setTel(emptyTel)
     }
-
-    console.log(tel)
-    console.log(registered)
-
+    
     return <Box>
         <Button onClick={onOpen} margin={'5dvh 0 5dvh 0'}>Añadir nuevo Telefono</Button>
         <Modal

@@ -1,9 +1,10 @@
-import { FormControl, FormHelperText, FormLabel, Input } from "@chakra-ui/react";
+import { Button, FormControl, FormHelperText, FormLabel, Input, Menu, MenuButton, MenuItem, MenuList } from "@chakra-ui/react";
 import { nextFocus } from "../../../utils/FormUtils";
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, useState, MouseEvent } from "react";
 import { Matriculado } from "../../../types";
 import PostTelModalForm from "./PostTelModalForm";
 import PostAdditionalDataForm from "./PostAdditionalDataForm";
+import { ChevronDownIcon } from "@chakra-ui/icons";
 
 export default function PostMatriculaForm(): JSX.Element {
     const [registered, setRegistered] = useState<Matriculado>({
@@ -25,13 +26,57 @@ export default function PostMatriculaForm(): JSX.Element {
         }],
     })
 
+    const departamentos = [
+        'Capital',
+        'Oran',
+        'Anta',
+        'Cerrillos',
+        'Metán',
+        'Rosario de Lerma',
+        'Rosario de la Frontera',
+        'La Candelaria',
+        'Rivadavia',
+        'Cafayate',
+        'San Martin',
+        'Güemes',
+        'Chicoana',
+        'Santa Victoria',
+        'La Viña',
+        'La Caldera',
+        'Cachi',
+        'San Carlos',
+        'Los Andes',
+        'Iruya',
+        'Molinos',
+        'Guachipas',
+        'La Poma']
+
     function HandleChange(e: ChangeEvent<HTMLInputElement>) {
         setRegistered({
             ...registered,
             [e.target.name]: e.target.value
         })
     }
-console.log(registered);
+
+    function HandleDeptoSelect(e: MouseEvent<HTMLButtonElement>) {
+        setRegistered({
+            ...registered,
+            departamento_d_laboral: e.currentTarget.name
+        })
+    }
+
+    function HandleFocus(e: ChangeEvent<HTMLInputElement>) {
+        e.target.select()
+    }
+
+    function CopyAddress () {
+        setRegistered({
+            ...registered,
+            domicilio_laboral: registered.domicilio_particular
+        })
+    }
+    console.log(registered);
+
 
     return <FormControl
         overflowY={'scroll'}
@@ -50,6 +95,7 @@ console.log(registered);
             name='mp'
             value={registered.mp}
             onChange={HandleChange}
+            onFocus={HandleFocus}
         />
         <FormLabel>Nombre:</FormLabel>
         <Input
@@ -89,7 +135,7 @@ console.log(registered);
         <Input
             className="input"
             id="input5"
-            placeholder="Select Date and Time"
+            placeholder="Seleccione la Fecha o escriba en formato dd/mm/aaaa"
             onKeyDown={(e) => nextFocus(e)}
             type='date'
             name='f_nacimiento'
@@ -99,7 +145,7 @@ console.log(registered);
         <Input
             className="input"
             id="input6"
-            placeholder="Select Date and Time"
+            placeholder="'Calle - número - localidad' o 'Barrio - Lote - Localidad'"
             onKeyDown={(e) => nextFocus(e)}
             type='text'
             name='domicilio_particular'
@@ -108,10 +154,11 @@ console.log(registered);
         />
         <FormHelperText>Domicilio de residencia</FormHelperText>
         <FormLabel>Domicilio Laboral:</FormLabel>
+        <Button onClick={()=>{CopyAddress()}}>Mismo Domicilio</Button>
         <Input
             className="input"
             id="input7"
-            placeholder="Select Date and Time"
+            placeholder="'Calle - número - localidad' o 'Barrio - Lote - Localidad'"
             onKeyDown={(e) => nextFocus(e)}
             type='text'
             name='domicilio_laboral'
@@ -119,33 +166,43 @@ console.log(registered);
             onChange={HandleChange}
         />
         <FormLabel>Departamento de Residencia:</FormLabel>
-        <Input
+
+        <Menu>
+            <MenuButton 
+            as={Button} 
+            rightIcon={<ChevronDownIcon />}
             className="input"
             id="input8"
-            placeholder="Select Date and Time"
-            onKeyDown={(e) => nextFocus(e)}
-            type='text'
-            name='departamento_d_laboral'
-            value={registered.departamento_d_laboral}
-            onChange={HandleChange}
-        />
+            >
+                Seleccione un Organismo
+            </MenuButton>
+            <MenuList>{departamentos ? departamentos.map((d) => {
+                return <MenuItem
+                    key={d}
+                    name={d}
+                    value={registered.departamento_d_laboral}
+                    onClick={(e)=>HandleDeptoSelect(e)}>
+                        {d}</MenuItem>
+            }) : null}
+            </MenuList>
+        </Menu>
+{ registered.departamento_d_laboral === '' ? null : <FormHelperText>{registered.departamento_d_laboral}</FormHelperText> }
         <FormHelperText>Según articulo 7 de ley N° 6456 - Será considerado para zonas electorales</FormHelperText>
         <FormLabel>Fecha de Alta</FormLabel>
         <Input
             className="input"
             id="input9"
             placeholder="Select Date and Time"
-            onKeyDown={(e) => nextFocus(e)}
             type='date'
             name='f_alta'
             onChange={HandleChange}
         />
         <FormLabel>Agregar al menos un telefono</FormLabel>
-        <PostTelModalForm 
-        registered={registered} 
-        setRegistered={setRegistered}
+        <PostTelModalForm
+            registered={registered}
+            setRegistered={setRegistered}
         />
         <FormLabel>Información Adicional:</FormLabel>
-        <PostAdditionalDataForm registered={registered} setRegistered={setRegistered}/>
+        <PostAdditionalDataForm registered={registered} setRegistered={setRegistered} />
     </FormControl>
 }
