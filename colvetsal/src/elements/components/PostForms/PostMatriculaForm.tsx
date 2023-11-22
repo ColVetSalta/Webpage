@@ -1,30 +1,16 @@
 import { Button, FormControl, FormHelperText, FormLabel, Input, Menu, MenuButton, MenuItem, MenuList } from "@chakra-ui/react";
 import { nextFocus } from "../../../utils/FormUtils";
-import { ChangeEvent, useState, MouseEvent } from "react";
-import { Matriculado } from "../../../types";
+import { ChangeEvent, MouseEvent } from "react";
 import PostTelModalForm from "./PostTelModalForm";
 import PostAdditionalDataForm from "./PostAdditionalDataForm";
 import { ChevronDownIcon } from "@chakra-ui/icons";
+import { Matriculado } from "../../../types";
 
-export default function PostMatriculaForm(): JSX.Element {
-    const [registered, setRegistered] = useState<Matriculado>({
-        mp: 0,
-        nombre: '',
-        apellido: '',
-        correo_electronico: '',
-        f_nacimiento: new Date(),
-        domicilio_particular: '',
-        domicilio_laboral: '',
-        departamento_d_laboral: '',
-        f_alta: new Date(),
-        active: false,
-        telefono: [{
-            numero: '',
-            whatsapp: false,
-            principal: false,
-            descripcion: '',
-        }],
-    })
+export interface IPostMatriculaForm {
+    registered: Matriculado
+    setRegistered: React.Dispatch<React.SetStateAction<Matriculado>>
+}
+export default function PostMatriculaForm({registered, setRegistered}: IPostMatriculaForm): JSX.Element {
 
     const departamentos = [
         'Capital',
@@ -77,12 +63,10 @@ export default function PostMatriculaForm(): JSX.Element {
     }
     console.log(registered);
 
-
     return <FormControl
         overflowY={'scroll'}
         overflowX={'auto'}
         maxHeight={'50dvh'}
-        id="Form"
     >
 
         <FormLabel>M.P:</FormLabel>
