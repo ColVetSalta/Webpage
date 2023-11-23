@@ -1,6 +1,7 @@
-import axios, { AxiosResponse } from "axios";
+import axios from "axios";
 import { useState, useEffect } from "react";
 import { Matriculado, News, Organismo, Resol } from "../types";
+import { FormAlert } from "./FormUtils";
 
 export type Res =  Matriculado | Resol | Organismo | News | Record<string, never>;
 
@@ -18,21 +19,11 @@ export function useCurrentState(section: string): IuseCurrentState {
       setCurrentState(data);
     });
   }, [section]);
+
   const route = section.toLocaleLowerCase();
-  async function HandleSubmit() {
-    // let message = 'Ha ocurrido un error, intentelo nuevamente más tarde'
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    let Alert = (res: AxiosResponse<any, any>) => alert(res);
-    if (route === "matriculado") {
-      setCurrentState({ ...currentState, active: true });
-      Alert = (res: {
-        data: { nombre: string; apellido: string; mp: number };
-      }) =>
-        alert(
-          `Nuevo Matriculado: ${res.data.nombre} ${res.data.apellido} registrado correctamente con la matrícula N°: ${res.data.mp}`
-        );
-    }
-    await axios.post(`/${route}`, currentState).then((res) => Alert(res));
+
+  async function HandleSubmit() { 
+    await axios.post(`/${route}`, currentState).then((res) => FormAlert(res, route));
   }
   return { currentState, setCurrentState, HandleSubmit };
 }

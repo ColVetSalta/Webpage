@@ -10,8 +10,7 @@ export interface IPostMatriculaForm {
     registered: Matriculado
     setRegistered: React.Dispatch<React.SetStateAction<Matriculado>>
 }
-export default function PostMatriculaForm({registered, setRegistered}: IPostMatriculaForm): JSX.Element {
-
+export default function PostMatriculaForm({ registered, setRegistered }: IPostMatriculaForm): JSX.Element {
     const departamentos = [
         'Capital',
         'Oran',
@@ -41,7 +40,8 @@ export default function PostMatriculaForm({registered, setRegistered}: IPostMatr
 
         setRegistered({
             ...registered,
-            [e.target.name as keyof typeof registered]: e.target.value
+            [e.target.name as keyof typeof registered]: e.target.value,
+            active: true
         })
     }
 
@@ -56,7 +56,7 @@ export default function PostMatriculaForm({registered, setRegistered}: IPostMatr
         e.target.select()
     }
 
-    function CopyAddress () {
+    function CopyAddress() {
         setRegistered({
             ...registered,
             domicilio_laboral: registered.domicilio_particular
@@ -139,7 +139,7 @@ export default function PostMatriculaForm({registered, setRegistered}: IPostMatr
         />
         <FormHelperText>Domicilio de residencia</FormHelperText>
         <FormLabel>Domicilio Laboral:</FormLabel>
-        <Button onClick={()=>{CopyAddress()}}>Mismo Domicilio</Button>
+        <Button onClick={() => { CopyAddress() }}>Mismo Domicilio</Button>
         <Input
             className="input"
             id="input7"
@@ -153,11 +153,11 @@ export default function PostMatriculaForm({registered, setRegistered}: IPostMatr
         <FormLabel>Departamento de Residencia:</FormLabel>
 
         <Menu>
-            <MenuButton 
-            as={Button} 
-            rightIcon={<ChevronDownIcon />}
-            className="input"
-            id="input8"
+            <MenuButton
+                as={Button}
+                rightIcon={<ChevronDownIcon />}
+                className="input"
+                id="input8"
             >
                 Seleccione un Organismo
             </MenuButton>
@@ -166,12 +166,12 @@ export default function PostMatriculaForm({registered, setRegistered}: IPostMatr
                     key={d}
                     name={d}
                     value={registered.departamento_d_laboral}
-                    onClick={(e)=>HandleDeptoSelect(e)}>
-                        {d}</MenuItem>
+                    onClick={(e) => HandleDeptoSelect(e)}>
+                    {d}</MenuItem>
             }) : null}
             </MenuList>
         </Menu>
-{ registered.departamento_d_laboral === '' ? null : <FormHelperText>{registered.departamento_d_laboral}</FormHelperText> }
+        {registered.departamento_d_laboral === '' ? null : <FormHelperText>{registered.departamento_d_laboral}</FormHelperText>}
         <FormHelperText>Según articulo 7 de ley N° 6456 - Será considerado para zonas electorales</FormHelperText>
         <FormLabel>Fecha de Alta</FormLabel>
         <Input

@@ -1,6 +1,9 @@
+import { AxiosResponse } from "axios";
 import { KeyboardEvent } from "react";
+import { Matriculado } from "../types";
 
-export function nextFocus(e: KeyboardEvent<HTMLDivElement>) {
+// Don´t change KeyboardEvent type, you don´t know if Element is going to be div or textarea
+export function nextFocus(e: KeyboardEvent<HTMLDivElement | HTMLTextAreaElement>) {
     const inputs = document?.querySelectorAll('.input')          
         if (e?.key == "Enter") {
             const actual = parseInt(
@@ -22,3 +25,12 @@ export function nextFocus(e: KeyboardEvent<HTMLDivElement>) {
           }
           return list
       }
+
+      export const FormAlert = (res: AxiosResponse<{data:{[key: string]: unknown}}>, route: string) => {
+      if (route === "matriculado") {
+        const mat = res.data as unknown as Matriculado
+          alert(
+            `Nuevo Matriculado: ${mat.nombre} ${mat.apellido} registrado correctamente con la matrícula N°: ${mat.mp}`
+          );
+      } else { alert('Registro Completado') }
+    }

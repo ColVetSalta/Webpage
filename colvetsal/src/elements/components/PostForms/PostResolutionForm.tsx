@@ -17,6 +17,7 @@ import SignaturesModal from "./SignaturesModal";
 
 export default function PostResolutionForm(): JSX.Element {
     const members = ['Presidente', 'Secretario', 'Tesorera', 'Vicepresidente', 'Vocal', 'Vocal Suplente 1', 'Vocal Suplente 2']
+    // set initial state form members Array to an Object
     // eslint-disable-next-line no-constant-condition
     const memberInitialSate = members.reduce((o, key) => ({ ...o, [key]: false }), {})
     const [signatures, setSignatures] = useState<{ [key: string]: boolean }>(memberInitialSate)
