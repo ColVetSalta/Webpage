@@ -1,9 +1,9 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { Matriculado, News, Organismo, Resol } from "../types";
+import { Matriculado, News, Organismo, ResolPost } from "../types";
 import { FormAlert } from "./FormUtils";
 
-export type Res =  Matriculado | Resol | Organismo | News | Record<string, never>;
+export type Res =  Matriculado | ResolPost | Organismo | News | Record<string, never>;
 
 export interface IuseCurrentState {
     currentState: Res,

@@ -16,7 +16,7 @@ import PostResolutionForm from "./PostForms/PostResolutionForm";
 import PostNewsForm from "./PostForms/PostNewsForm";
 import NotAbaliable from "./NotAbaliable";
 import { useCurrentState } from "../../utils/CustomHooks";
-import { Matriculado } from "../../types";
+import { Matriculado, Resol } from "../../types";
 
 export type FormModalType = {
     section: {
@@ -33,11 +33,14 @@ export default function FormModal({ section }: { section: string }): JSX.Element
     const btnRef = useRef(null)
 
     function HandleForm() {
-        if (section === 'MATRICULADO') return <PostMatriculaForm 
-        registered={currentState as Matriculado} 
-        setRegistered={setCurrentState as React.Dispatch<React.SetStateAction<Matriculado>>} 
+        if (section === 'MATRICULADO') return <PostMatriculaForm
+            registered={currentState as Matriculado}
+            setRegistered={setCurrentState as React.Dispatch<React.SetStateAction<Matriculado>>}
         />
-        if (section === 'RESOLUCIONES') return <PostResolutionForm />
+        if (section === 'RESOLUCIONES') return <PostResolutionForm
+            resolution={currentState as Resol}
+            setResolution={setCurrentState as React.Dispatch<React.SetStateAction<Resol>>}
+        />
         if (section === 'NOVEDADES') return <PostNewsForm />
         if (section === 'NORMATIVA') return <NotAbaliable />
         if (section === 'HISTORIA') return <NotAbaliable />
@@ -91,10 +94,10 @@ export default function FormModal({ section }: { section: string }): JSX.Element
                         }}>
                         Enviar
                     </Button>
-                <Button variant='ghost' onClick={onClose}>Cancelar</Button>
-            </ModalFooter>
-        </ModalContent>
-    </Modal>
+                    <Button variant='ghost' onClick={onClose}>Cancelar</Button>
+                </ModalFooter>
+            </ModalContent>
+        </Modal>
     </Box >
 
 }

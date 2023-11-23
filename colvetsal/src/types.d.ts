@@ -8,7 +8,7 @@ export interface Navigation {
   url?: string;
 }
 //To present Authorities
-export interface DatosMinimos {  
+export interface DatosMinimos {
   mp: number;
   nombre: string;
   apellido: string;
@@ -29,10 +29,10 @@ export interface Telefono {
   descripcion: string; // Opcional
 }
 export interface AdditionalData {
-  'titulo': string; // OBLIGATORIO
-  'descripcion': string; // OBLIGATORIO
+  titulo: string; // OBLIGATORIO
+  descripcion: string; // OBLIGATORIO
 }
-export interface Matriculado extends DatosMinimos  {
+export interface Matriculado extends DatosMinimos {
   correo_electronico: string; // Opcional
   f_nacimiento: Date; // ('mm/dd/aaaa'), OBLIGATORIO
   domicilio_particular: string; // OBLIGATORIO
@@ -82,6 +82,9 @@ export interface Resol {
     cargo: string;
   }[];
 }
+export interface ResolPost extends Omit<Resol, firmas> {
+  firmas: number[];
+}
 export interface ResolAnual {
   [key: string | number]: Resol;
 }
@@ -129,5 +132,5 @@ export type News = {
 
 export interface IPostTelModalForm {
   registered: Matriculado;
-  setRegistered: React.Dispatch<React.SetStateAction<Matriculado>>
+  setRegistered: React.Dispatch<React.SetStateAction<Matriculado>>;
 }
