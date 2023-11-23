@@ -19,7 +19,6 @@ export default function Admin(): JSX.Element {
   useEffect(()=>{
     axios.get<Organismo>('/organismo?full=true')
     .then((data)=> {
-      console.log(data)
       dispatch(getOrganism(data.data))
     })
   // eslint-disable-next-line react-hooks/exhaustive-deps

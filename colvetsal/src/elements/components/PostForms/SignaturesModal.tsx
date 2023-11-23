@@ -3,29 +3,40 @@ import { Loading } from "../Loading"
 import { setDefaultcheckboxValue } from "../../../utils/FormUtils"
 import { ChangeEvent } from "react";
 
-export default function SignaturesModal({members, signatures, setSignatures}: {members: string[], signatures: { [key: string]: boolean }, setSignatures: React.Dispatch<React.SetStateAction<{ [key: string]: boolean }>>}): JSX.Element {
+export interface ISignaturesModal {
+    members: (string | number)[][]
+    signatures: { [key: string]: boolean } | null
+    setSignatures: React.Dispatch<React.SetStateAction<{ [key: string]: boolean } | null>>
+    firma: number[]
+    setFirma: React.Dispatch<React.SetStateAction<number[]>>
+}
+
+export default function SignaturesModal({ members, signatures, setSignatures, firma, setFirma }: ISignaturesModal): JSX.Element {
     const { isOpen, onOpen, onClose } = useDisclosure()
-    
-    const handleChekboxSubmit = (e: ChangeEvent<HTMLInputElement>) => {
-      const target = e.target
-      setSignatures({
-          ...signatures,
-          [target?.value]: target?.checked
-      })
-  };
+
+    const handleChekboxSubmit = (e: ChangeEvent<HTMLInputElement>, periodo: number) => {
+        const target = e.target
+        setSignatures({
+            ...signatures,
+            [target?.value]: target?.checked
+        })
+    console.log('Nuevo Objeto signatures(selectas): ', signatures)
+        setFirma([...firma, periodo])
+    console.log('Nuevo Array de firmaID(Para el envío - Periodo.id[]): ', firma)
+};
 
     return <>
-    <Button onClick={onOpen}>
-    Seleccione los miembros Firmantes
-</Button>
-<Modal isOpen={isOpen} onClose={onClose}>
+        <Button onClick={onOpen}>
+            Seleccione los miembros Firmantes
+        </Button>
+        <Modal isOpen={isOpen} onClose={onClose}>
             <ModalOverlay />
             <ModalContent>
                 <ModalHeader>Seleccione los miembros Firmantes</ModalHeader>
                 <ModalCloseButton />
                 <ModalBody pb={6}>
                     <CheckboxGroup
-                        defaultValue={setDefaultcheckboxValue(signatures)}
+                        defaultValue={signatures !== null ? setDefaultcheckboxValue(signatures) : undefined}
                     >
                         <Stack
                             spacing={[1, 5]}
@@ -34,14 +45,15 @@ export default function SignaturesModal({members, signatures, setSignatures}: {m
                         > {
                                 members ?
                                     members.map((m) => {
+                                        const ind = m[0] + ' ' + m[1] + ' ' + m[3]
                                         return <Checkbox
-                                            key={m}
+                                            key={m[4]}
                                             name="signatures"
-                                            checked={signatures[m as keyof typeof signatures]}
-                                            value={m}
-                                            onChange={handleChekboxSubmit}
+                                            checked={signatures !== null && signatures[ind as keyof typeof signatures]}
+                                            value={ind}
+                                            onChange={(e)=>handleChekboxSubmit(e, m[4] as number)}
                                         > {
-                                                m
+                                                ind
                                             } </Checkbox>
                                     }) :
                                     <Loading />
@@ -49,7 +61,13 @@ export default function SignaturesModal({members, signatures, setSignatures}: {m
                         </Stack>
                     </CheckboxGroup>
                     <UnorderedList>
-                        {members ? members.map((s) => <>{signatures[s] ? <ListItem>{s}</ListItem> : null} </>) : null}
+                        {members ? members.map((s) => {
+                            const ind = s[0] + ' ' + s[1] + ' ' + s[3]
+                            return <>{(signatures && signatures[ind as keyof typeof signatures]) ?
+                                <ListItem>{ind}</ListItem> : null} </>
+                        }) :
+                            null
+                        }
                     </UnorderedList>
                 </ModalBody>
                 <ModalFooter>
@@ -59,6 +77,6 @@ export default function SignaturesModal({members, signatures, setSignatures}: {m
                 </ModalFooter>
             </ModalContent>
         </Modal>
-        </>
-    
+    </>
+
 }
