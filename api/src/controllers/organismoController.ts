@@ -19,7 +19,7 @@ export async function getOrganismo (name: string, date: string): Promise<{
 }> {
   const currentDate = format(new Date(date), "yyyy-MM-dd'T'HH:mm:ss.SSSxxx")
   const org = await sequelize.query(
-    `SELECT c.nombre AS cargo, m.mp, m.nombre, m.apellido, p.fecha_inicio, p.fecha_final, t.numero, m.correo_electronico
+    `SELECT c.nombre AS cargo, m.mp, m.nombre, m.apellido, p.id AS periodo, p.fecha_inicio, p.fecha_final, t.numero, m.correo_electronico
     FROM cargo c
     LEFT JOIN periodo p ON c.id = p.cargoid
     LEFT JOIN matriculado m ON p.mp = m.mp

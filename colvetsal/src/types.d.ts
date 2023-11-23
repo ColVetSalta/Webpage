@@ -15,6 +15,7 @@ export interface DatosMinimos {
 }
 export interface Role extends DatosMinimos {
   cargo: string;
+  periodo: number | null;
   fecha_inicio: string | null;
   fecha_final: string | null;
   numero: string | null;
