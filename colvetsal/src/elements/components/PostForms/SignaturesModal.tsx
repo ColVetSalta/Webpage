@@ -2,26 +2,35 @@ import { Modal, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, Modal
 import { Loading } from "../Loading"
 import { setDefaultcheckboxValue } from "../../../utils/FormUtils"
 import { ChangeEvent } from "react";
+import { IResolutionForm } from "./MenuOrganism";
 
-export interface ISignaturesModal {
+export interface ISignaturesModal extends IResolutionForm{
     members: (string | number)[][]
     signatures: { [key: string]: boolean } | null
     firma: number[]
     setFirma: React.Dispatch<React.SetStateAction<number[]>>
 }
 
-export default function SignaturesModal({ members, signatures, firma, setFirma }: ISignaturesModal): JSX.Element {
+export default function SignaturesModal({ members, signatures, firma, setFirma, resolution, setResolution }: ISignaturesModal): JSX.Element {
+    
     const { isOpen, onOpen, onClose } = useDisclosure()
 console.log(members);
 
-    const handleChekboxSubmit = (e: ChangeEvent<HTMLInputElement>, periodo: number) => {
+    const handleChekbox = (e: ChangeEvent<HTMLInputElement>, periodo: number) => {
         const target = e.target
         signatures && (signatures[target?.value as keyof typeof signatures] = target?.checked)
     console.log('Nuevo Objeto signatures(selectas): ', signatures)
         setFirma([...firma, periodo])
     console.log('Nuevo Array de firmaID(Para el envío - Periodo.id[]): ', firma)
 };
-
+    const handleSubmit = () => {
+        setResolution({
+            ...resolution,
+            firmas: firma
+        })
+        console.log(resolution)        
+        onClose()
+    }
     return <>
         <Button onClick={onOpen}>
             Seleccione los miembros Firmantes
@@ -48,14 +57,14 @@ console.log(members);
                                             name="signatures"
                                             checked={signatures !== null && signatures[ind as keyof typeof signatures]}
                                             value={ind}
-                                            onChange={(e)=>handleChekboxSubmit(e, m[4] as number)}
+                                            onChange={(e)=>handleChekbox(e, m[4] as number)}
                                         > {
                                                 ind
                                             } </Checkbox>
                                     }) :
                                     <Loading />
                             }
-                        </Stack>
+                        </Stack> 
                     </CheckboxGroup>
                     <UnorderedList>
                         {members ? members.map((s) => {
@@ -68,7 +77,7 @@ console.log(members);
                     </UnorderedList>
                 </ModalBody>
                 <ModalFooter>
-                    <Button colorScheme='blue' mr={3} onClick={onClose}>
+                    <Button colorScheme='blue' mr={3} onClick={handleSubmit}>
                         Aceptar
                     </Button>
                 </ModalFooter>

@@ -126,6 +126,8 @@ export default function PostResolutionForm({ resolution, setResolution, members,
                     signatures={signatures}
                     firma={firma}
                     setFirma={setFirma}
+                    resolution={resolution}
+                    setResolution={setResolution}                    
                 /> :
                 null
         }
