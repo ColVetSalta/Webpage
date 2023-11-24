@@ -82,7 +82,7 @@ export interface Resol {
     cargo: string;
   }[];
 }
-export interface ResolPost extends Omit<Resol, firmas> {
+export interface ResolPost extends Omit<Resol, 'id' | 'firmas'> {
   firmas: number[];
 }
 export interface ResolAnual {

@@ -12,11 +12,11 @@ import {
 } from "@chakra-ui/react";
 import PostMatriculaForm from "./PostForms/PostMatriculaForm";
 import { useRef } from "react";
-import PostResolutionForm from "./PostForms/PostResolutionForm";
 import PostNewsForm from "./PostForms/PostNewsForm";
 import NotAbaliable from "./NotAbaliable";
 import { useCurrentState } from "../../utils/CustomHooks";
-import { Matriculado, Resol } from "../../types";
+import { Matriculado, ResolPost } from "../../types";
+import MenuOrganism from "./PostForms/MenuOrganism";
 
 export type FormModalType = {
     section: {
@@ -37,9 +37,9 @@ export default function FormModal({ section }: { section: string }): JSX.Element
             registered={currentState as Matriculado}
             setRegistered={setCurrentState as React.Dispatch<React.SetStateAction<Matriculado>>}
         />
-        if (section === 'RESOLUCIONES') return <PostResolutionForm
-            resolution={currentState as Resol}
-            setResolution={setCurrentState as React.Dispatch<React.SetStateAction<Resol>>}
+        if (section === 'RESOLUCIONES') return <MenuOrganism
+            resolution={currentState as ResolPost}
+            setResolution={setCurrentState as React.Dispatch<React.SetStateAction<ResolPost>>}
         />
         if (section === 'NOVEDADES') return <PostNewsForm />
         if (section === 'NORMATIVA') return <NotAbaliable />

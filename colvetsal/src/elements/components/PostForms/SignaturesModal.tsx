@@ -6,20 +6,17 @@ import { ChangeEvent } from "react";
 export interface ISignaturesModal {
     members: (string | number)[][]
     signatures: { [key: string]: boolean } | null
-    setSignatures: React.Dispatch<React.SetStateAction<{ [key: string]: boolean } | null>>
     firma: number[]
     setFirma: React.Dispatch<React.SetStateAction<number[]>>
 }
 
-export default function SignaturesModal({ members, signatures, setSignatures, firma, setFirma }: ISignaturesModal): JSX.Element {
+export default function SignaturesModal({ members, signatures, firma, setFirma }: ISignaturesModal): JSX.Element {
     const { isOpen, onOpen, onClose } = useDisclosure()
+console.log(members);
 
     const handleChekboxSubmit = (e: ChangeEvent<HTMLInputElement>, periodo: number) => {
         const target = e.target
-        setSignatures({
-            ...signatures,
-            [target?.value]: target?.checked
-        })
+        signatures && (signatures[target?.value as keyof typeof signatures] = target?.checked)
     console.log('Nuevo Objeto signatures(selectas): ', signatures)
         setFirma([...firma, periodo])
     console.log('Nuevo Array de firmaID(Para el envío - Periodo.id[]): ', firma)
