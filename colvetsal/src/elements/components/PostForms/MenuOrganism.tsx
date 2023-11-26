@@ -9,25 +9,29 @@ export interface IResolutionForm {
     resolution: ResolPost
     setResolution: React.Dispatch<React.SetStateAction<ResolPost>>
 }
-
+export type Members = [string, string, string, string, number, number][]
 export default function MenuOrganism({ resolution, setResolution }: IResolutionForm): JSX.Element {
     const { organism } = useAppSelector((state) => state.org)
     const orgs = Object.keys(organism)
     const [selected, setSelected] = useState<boolean>(false)
     let org = 'Consejo Mayor'
-    const [members, setMembers] = useState<(string | number)[][]>([['']])
-    let signatures: { [key: string]: boolean } | null = null
+    const [members, setMembers] = useState<Members>([['','','','',0,0]])
+    // let signatures: { [key: string]: boolean } | null = null
 
     function HandleOrgSelect(e: MouseEvent<HTMLButtonElement>) {
         org = e.currentTarget.name
         if (org === 'Consejo Mayor') {
-            setMembers(orgs.map((o) => organism[o].map((role) => [o, role.cargo, role.nombre, role.apellido, role.periodo, role.mp])).flat())
+            setMembers(orgs.map(
+                (o): [string, string, string, string, number, number][] => organism[o].map(
+                    (role) => [o, o+role.cargo, role.nombre, role.apellido, role.periodo, role.mp]
+                    )
+                    ).flat())
         } else {
             setMembers(organism[org as keyof typeof organism].map((c) => [org, c.cargo, c.nombre, c.apellido, c.periodo, c.mp]))
         }
-        console.log('Nuevo Array de members: ', members)
-        signatures = members ? members.reduce((o, key) => ({ ...o, [key[0] + ' ' + key[1] + ' ' + key[3]]: false }), {}) : null
-        console.log('Nuevo Objeto signatures(inicial): ', signatures)
+        // console.log('Nuevo Array de members: ', members)
+        // signatures = members ? members.reduce((o, key) => ({ ...o, [key[0] + ' ' + key[1] + ' ' + key[3]]: false }), {}) : null
+        // console.log('Nuevo Objeto signatures(inicial): ', signatures)
         setResolution({
             ...resolution,
             orgid: org
@@ -64,7 +68,7 @@ export default function MenuOrganism({ resolution, setResolution }: IResolutionF
                 resolution={resolution}
                 setResolution={setResolution}
                 members={members}
-                signatures={signatures}
+                // signatures={signatures}
             /> :
             null}
     </>

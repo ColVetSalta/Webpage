@@ -9,19 +9,20 @@ import {
 import { nextFocus } from "../../../utils/FormUtils";
 import { ChangeEvent, useState } from "react";
 import SignaturesModal from "./SignaturesModal";
-import { IResolutionForm } from "./MenuOrganism";
+import { IResolutionForm, Members } from "./MenuOrganism";
 
 export interface IPostResolutionForm extends IResolutionForm {
-members: (string | number)[][]
-signatures: { [key: string]: boolean } | null
+members: Members
 }
 
-export default function PostResolutionForm({ resolution, setResolution, members, signatures }: IPostResolutionForm): JSX.Element {
+export default function PostResolutionForm({ resolution, setResolution, members }: IPostResolutionForm): JSX.Element {
     const [firma, setFirma] = useState([0])
 
     const year = new Date().getFullYear()
     // const firmas = organism.
     // })
+    const memberInitialSate: { [key: string]: boolean } = members.reduce((o, key) => ({ ...o, [key[1]]: false }), {})
+    const [signatures, setSignatures] = useState<{ [key: string]: boolean }>(memberInitialSate)
 
     function HandleChange(
         e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -123,11 +124,13 @@ export default function PostResolutionForm({ resolution, setResolution, members,
         members.length > 1 ?
                 <SignaturesModal
                     members={members}
-                    signatures={signatures}
+                    // signatures={signatures}
                     firma={firma}
                     setFirma={setFirma}
                     resolution={resolution}
-                    setResolution={setResolution}                    
+                    setResolution={setResolution}
+                    signatures={signatures} 
+                    setSignatures={setSignatures}                
                 /> :
                 null
         }

@@ -159,7 +159,7 @@ export default function PostMatriculaForm({ registered, setRegistered }: IPostMa
                 className="input"
                 id="input8"
             >
-                Seleccione un Organismo
+                Seleccione un Departemento
             </MenuButton>
             <MenuList>{departamentos ? departamentos.map((d) => {
                 return <MenuItem
