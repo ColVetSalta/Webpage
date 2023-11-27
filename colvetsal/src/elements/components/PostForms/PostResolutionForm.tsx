@@ -16,7 +16,6 @@ members: Members
 }
 
 export default function PostResolutionForm({ resolution, setResolution, members }: IPostResolutionForm): JSX.Element {
-    const [firma, setFirma] = useState([0])
 
     const year = new Date().getFullYear()
     // const firmas = organism.
@@ -30,7 +29,6 @@ export default function PostResolutionForm({ resolution, setResolution, members 
         setResolution({
             ...resolution,
             [e.target.name as keyof typeof resolution]: e.target.value,
-            firmas: firma,
         })
     }
     console.log(resolution);
@@ -124,9 +122,8 @@ export default function PostResolutionForm({ resolution, setResolution, members 
         members.length > 1 ?
                 <SignaturesModal
                     members={members}
-                    // signatures={signatures}
-                    firma={firma}
-                    setFirma={setFirma}
+                    // firma={firma}
+                    // setFirma={setFirma}
                     resolution={resolution}
                     setResolution={setResolution}
                     signatures={signatures} 

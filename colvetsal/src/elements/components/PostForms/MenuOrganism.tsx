@@ -16,7 +16,6 @@ export default function MenuOrganism({ resolution, setResolution }: IResolutionF
     const [selected, setSelected] = useState<boolean>(false)
     let org = 'Consejo Mayor'
     const [members, setMembers] = useState<Members>([['','','','',0,0]])
-    // let signatures: { [key: string]: boolean } | null = null
 
     function HandleOrgSelect(e: MouseEvent<HTMLButtonElement>) {
         org = e.currentTarget.name
@@ -29,16 +28,13 @@ export default function MenuOrganism({ resolution, setResolution }: IResolutionF
         } else {
             setMembers(organism[org as keyof typeof organism].map((c) => [org, c.cargo, c.nombre, c.apellido, c.periodo, c.mp]))
         }
-        // console.log('Nuevo Array de members: ', members)
-        // signatures = members ? members.reduce((o, key) => ({ ...o, [key[0] + ' ' + key[1] + ' ' + key[3]]: false }), {}) : null
-        // console.log('Nuevo Objeto signatures(inicial): ', signatures)
         setResolution({
             ...resolution,
             orgid: org
         })
         setSelected(true)
     }
-
+    
     return <>
         <Menu>
             <MenuButton as={Button} rightIcon={<ChevronDownIcon />}>

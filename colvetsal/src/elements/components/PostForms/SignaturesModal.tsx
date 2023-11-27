@@ -7,8 +7,8 @@ import { IResolutionForm, Members } from "./MenuOrganism";
 export interface ISignaturesModal extends IResolutionForm {
     members: Members
     // signatures: { [key: string]: boolean } | null
-    firma: number[]
-    setFirma: React.Dispatch<React.SetStateAction<number[]>>
+    // firma: number[]
+    // setFirma: React.Dispatch<React.SetStateAction<number[]>>
     signatures: { [key: string]: boolean }
     setSignatures: React.Dispatch<React.SetStateAction<{
         [key: string]: boolean;
@@ -17,72 +17,50 @@ export interface ISignaturesModal extends IResolutionForm {
 
 export default function SignaturesModal({
     members,
-    firma,
-    setFirma,
+    // firma,
+    // setFirma,
     resolution,
     setResolution,
     signatures,
     setSignatures
 }: ISignaturesModal): JSX.Element {
-    // const fillSign = members.reduce 
-
-    // const [signatures, setSignatures] = useSelect()
 
     const { isOpen, onOpen, onClose } = useDisclosure()
-    console.log(members);
 
-    const handleChekbox = (e: ChangeEvent<HTMLInputElement>) => {
-        console.log(members[0][4])        
-        const member = members?.find((v) => { 
-            console.log(v)
-            console.log(v[1])
-            console.log(e.target.value)
-            console.log(v[1] === e.target.value)
-            console.log(e.target.checked)
-            return v[1] === e.target.value })
-        console.log(member)        
-        if (member !== undefined) {
-            setSignatures({
-                ...signatures,
-                [e.target.value]: e.target.checked
-            })
-            console.log(member[4])
-            console.log(firma[0] === 0)    
-            
-            if(e.target.checked){        
-                if (firma[0] === 0) {
-                    setFirma([member[4]])
-                } else { 
-                    setFirma([...firma, member[4]])
-                }
-            } else {
-                const index = firma.indexOf(member[4])
-                setFirma(firma.splice(index, 1))
-            }
-        }
-        console.log('Nuevo Array de firmaID(Para el envío - Periodo.id[]): ', firma)
-    };
-    const handleSubmit = () => {
-        (() => {
-            for (const key in signatures) {
-                const member = members?.find((v) => { v[1] === key })
-                if (member !== undefined) {
-                    if(signatures[key]){
-                setFirma([...firma, member[4]])
-            } else {
-                const index = firma.indexOf(member[4])
-                setFirma(firma.splice(index, 1))
-
-            }   
-                     }
-            }
-        })();
-
-        setResolution({
-            ...resolution,
-            firmas: firma
+    function handleChekbox (e: ChangeEvent<HTMLInputElement>, periodoId: number) {
+        setSignatures({
+            ...signatures,
+            [e.target.value]: e.target.checked
         })
+        if (!e.target.checked) {
+            console.log('arr de firmas: ', resolution.firmas)
+            const i = resolution.firmas.indexOf(periodoId)
+            console.log('index de firmas a borrar: ', i)
+            const newFirma = resolution.firmas
+            newFirma.splice(i, 1)
+            newFirma.length === 0 && newFirma.push(0)
+            console.log(newFirma)
+            console.log('debiera borrar: ', periodoId)
+            setResolution({
+                ...resolution,
+                firmas: newFirma
+            })
+        } else if (resolution.firmas[0] === 0) {
+            setResolution({
+                ...resolution,
+                firmas: [periodoId]
+            })
+        } else {
+            setResolution({
+                ...resolution,
+                firmas: [...resolution.firmas, periodoId]
+            })
+        }
         console.log(resolution)
+        console.log('event value: ', e.target.value)
+        console.log('event cheked: ', e.target.checked)
+    }
+    const handleSubmit = () => {
         onClose()
     }
     return <>
@@ -111,7 +89,7 @@ export default function SignaturesModal({
                                             name="signatures"
                                             checked={signatures !== null && signatures[(m[0] + m[1]) as keyof typeof signatures]}
                                             value={m[1]}
-                                            onChange={(e) => handleChekbox(e)}
+                                            onChange={(e) => handleChekbox(e, m[4])}
                                         > {
                                                 ind
                                             } </Checkbox>
