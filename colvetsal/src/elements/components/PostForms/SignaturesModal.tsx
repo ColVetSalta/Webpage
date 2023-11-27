@@ -83,7 +83,7 @@ export default function SignaturesModal({
                         > {
                                 members ?
                                     members.map((m) => {
-                                        const ind = m[0] + ' ' + m[1] + ' ' + m[3]
+                                        const ind = resolution.orgid === 'Consejo Mayor' ? m[0] + ' ' + m[1] + ' ' + m[3] : m[1] + ' ' + m[3]                                        
                                         return <Checkbox
                                             key={m[4]}
                                             name="signatures"
@@ -116,5 +116,4 @@ export default function SignaturesModal({
             </ModalContent>
         </Modal >
     </>
-
 }

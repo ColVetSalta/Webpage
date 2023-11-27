@@ -30,11 +30,12 @@ export default function MenuOrganism({ resolution, setResolution }: IResolutionF
         }
         setResolution({
             ...resolution,
-            orgid: org
+            orgid: org,
+            firmas: [0]
         })
         setSelected(true)
     }
-    
+
     return <>
         <Menu>
             <MenuButton as={Button} rightIcon={<ChevronDownIcon />}>
