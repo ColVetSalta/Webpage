@@ -65,7 +65,6 @@ export default function MenuOrganism({ resolution, setResolution }: IResolutionF
                 resolution={resolution}
                 setResolution={setResolution}
                 members={members}
-                // signatures={signatures}
             /> :
             null}
     </>

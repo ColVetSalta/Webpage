@@ -33,14 +33,10 @@ export default function SignaturesModal({
             [e.target.value]: e.target.checked
         })
         if (!e.target.checked) {
-            console.log('arr de firmas: ', resolution.firmas)
             const i = resolution.firmas.indexOf(periodoId)
-            console.log('index de firmas a borrar: ', i)
             const newFirma = resolution.firmas
             newFirma.splice(i, 1)
             newFirma.length === 0 && newFirma.push(0)
-            console.log(newFirma)
-            console.log('debiera borrar: ', periodoId)
             setResolution({
                 ...resolution,
                 firmas: newFirma
@@ -56,9 +52,6 @@ export default function SignaturesModal({
                 firmas: [...resolution.firmas, periodoId]
             })
         }
-        console.log(resolution)
-        console.log('event value: ', e.target.value)
-        console.log('event cheked: ', e.target.checked)
     }
     const handleSubmit = () => {
         onClose()

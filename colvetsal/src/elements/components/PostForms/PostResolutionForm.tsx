@@ -31,10 +31,7 @@ export default function PostResolutionForm({ resolution, setResolution, members 
             [e.target.name as keyof typeof resolution]: e.target.value,
         })
     }
-    console.log(resolution);
-
-    console.log(members)
-
+    
     return <FormControl
         padding={'1dvh 1dvw 1dvh 1dvw'}
         overflowY={'scroll'}
