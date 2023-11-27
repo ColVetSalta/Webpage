@@ -3,10 +3,11 @@ import {
     FormHelperText,
     FormLabel,
     Input,
+    Stack,
     Text,
     Textarea
 } from "@chakra-ui/react";
-import { nextFocus } from "../../../utils/FormUtils";
+import { HandleInputNumFirstFocus, nextFocus } from "../../../utils/FormUtils";
 import { ChangeEvent, useState } from "react";
 import SignaturesModal from "./SignaturesModal";
 import { IResolutionForm, Members } from "./MenuOrganism";
@@ -17,9 +18,6 @@ members: Members
 
 export default function PostResolutionForm({ resolution, setResolution, members }: IPostResolutionForm): JSX.Element {
 
-    const year = new Date().getFullYear()
-    // const firmas = organism.
-    // })
     const memberInitialSate: { [key: string]: boolean } = members.reduce((o, key) => ({ ...o, [key[1]]: false }), {})
     const [signatures, setSignatures] = useState<{ [key: string]: boolean }>(memberInitialSate)
 
@@ -28,10 +26,12 @@ export default function PostResolutionForm({ resolution, setResolution, members 
     ) {
         setResolution({
             ...resolution,
+            year: new Date(resolution.fecha).getFullYear(),
             [e.target.name as keyof typeof resolution]: e.target.value,
         })
     }
-    
+console.log(resolution);
+
     return <FormControl
         padding={'1dvh 1dvw 1dvh 1dvw'}
         overflowY={'scroll'}
@@ -42,43 +42,36 @@ export default function PostResolutionForm({ resolution, setResolution, members 
         <FormLabel>Organismo:</FormLabel>
         
         <FormHelperText>Organismo Seleccionado: {resolution.orgid}</FormHelperText>
-        <FormLabel>Número:</FormLabel>
-        <Input
-            className="input"
-            id="input1"
-            placeholder="Ingrese el nuevo Número de Resolución"
-            onChange={HandleChange}
-            name="num"
-            value={resolution.num}
-            type='number'
-            onKeyDown={(e) => nextFocus(e)}
-        />
-        <FormLabel>Año:</FormLabel>
-        <Input
-            className="input"
-            id="input2"
-            name="year"
-            value={resolution.year}
-            placeholder="Escriba Nombre completo"
-            onKeyDown={(e) => nextFocus(e)}
-            onChange={HandleChange}
-            type='number'
-            defaultValue={year}
-        />
+        
         <FormLabel>Fecha:</FormLabel>
         <Input
             className="input"
-            id="input3"
+            id="input1"
             name="fecha"
             value={resolution.fecha}            
             onKeyDown={(e) => nextFocus(e)}
             onChange={HandleChange}
             type='date'
         />
+        <FormLabel>Número:</FormLabel>
+        <Stack
+        flexDirection={"row"}>
+        <Input
+        width={'8rem'}
+            className="input"
+            id="input2"
+            placeholder="Ingrese el nuevo Número de Resolución"
+            onChange={HandleChange}
+            name="num"
+            value={resolution.num}
+            type='number'
+            onKeyDown={(e) => nextFocus(e)}
+            onFocus={HandleInputNumFirstFocus}
+        /><Text> /{resolution.year}</Text></Stack>
         <FormLabel>Título:</FormLabel>
         <Input
             className="input"
-            id="input4"
+            id="input3"
             name="titulo"
             value={resolution.titulo}   
             placeholder="Título"
@@ -119,8 +112,6 @@ export default function PostResolutionForm({ resolution, setResolution, members 
         members.length > 1 ?
                 <SignaturesModal
                     members={members}
-                    // firma={firma}
-                    // setFirma={setFirma}
                     resolution={resolution}
                     setResolution={setResolution}
                     signatures={signatures} 

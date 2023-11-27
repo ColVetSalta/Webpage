@@ -27,3 +27,4 @@ export function useCurrentState(section: string): IuseCurrentState {
   }
   return { currentState, setCurrentState, HandleSubmit };
 }
+// funcion de select cuando hay un numero por default en el form

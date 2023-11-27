@@ -1,5 +1,5 @@
 import { AxiosResponse } from "axios";
-import { KeyboardEvent } from "react";
+import { ChangeEvent, KeyboardEvent } from "react";
 import { Matriculado } from "../types";
 
 // Don´t change KeyboardEvent type, you don´t know if Element is going to be div or textarea
@@ -33,4 +33,8 @@ export function nextFocus(e: KeyboardEvent<HTMLDivElement | HTMLTextAreaElement>
             `Nuevo Matriculado: ${mat.nombre} ${mat.apellido} registrado correctamente con la matrícula N°: ${mat.mp}`
           );
       } else { alert('Registro Completado') }
+    }
+
+    export function HandleInputNumFirstFocus(e: ChangeEvent<HTMLInputElement>) {
+        e.target.select()
     }

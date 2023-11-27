@@ -1,5 +1,5 @@
 import { Button, FormControl, FormHelperText, FormLabel, Input, Menu, MenuButton, MenuItem, MenuList } from "@chakra-ui/react";
-import { nextFocus } from "../../../utils/FormUtils";
+import { HandleInputNumFirstFocus, nextFocus } from "../../../utils/FormUtils";
 import { ChangeEvent, MouseEvent } from "react";
 import PostTelModalForm from "./PostTelModalForm";
 import PostAdditionalDataForm from "./PostAdditionalDataForm";
@@ -52,10 +52,6 @@ export default function PostMatriculaForm({ registered, setRegistered }: IPostMa
         })
     }
 
-    function HandleFocus(e: ChangeEvent<HTMLInputElement>) {
-        e.target.select()
-    }
-
     function CopyAddress() {
         setRegistered({
             ...registered,
@@ -80,7 +76,7 @@ export default function PostMatriculaForm({ registered, setRegistered }: IPostMa
             name='mp'
             value={registered.mp}
             onChange={HandleChange}
-            onFocus={HandleFocus}
+            onFocus={HandleInputNumFirstFocus}
         />
         <FormLabel>Nombre:</FormLabel>
         <Input
@@ -177,7 +173,7 @@ export default function PostMatriculaForm({ registered, setRegistered }: IPostMa
         <Input
             className="input"
             id="input9"
-            placeholder="Select Date and Time"
+            placeholder="Indique la fecha de alta"
             type='date'
             name='f_alta'
             onChange={HandleChange}
