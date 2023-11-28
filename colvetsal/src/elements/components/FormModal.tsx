@@ -15,7 +15,7 @@ import { useRef } from "react";
 import PostNewsForm from "./PostForms/PostNewsForm";
 import NotAbaliable from "./NotAbaliable";
 import { useCurrentState } from "../../utils/CustomHooks";
-import { Matriculado, ResolPost } from "../../types";
+import { Matriculado, News, ResolPost } from "../../types";
 import MenuOrganism from "./PostForms/PostResolutionForm/MenuOrganism";
 
 export type FormModalType = {
@@ -41,7 +41,10 @@ export default function FormModal({ section }: { section: string }): JSX.Element
             resolution={currentState as ResolPost}
             setResolution={setCurrentState as React.Dispatch<React.SetStateAction<ResolPost>>}
         />
-        if (section === 'NOVEDADES') return <PostNewsForm />
+        if (section === 'NOVEDADES') return <PostNewsForm
+            news={currentState as News}
+            setNews={setCurrentState as React.Dispatch<React.SetStateAction<News>>}
+        />
         if (section === 'NORMATIVA') return <NotAbaliable />
         if (section === 'HISTORIA') return <NotAbaliable />
         if (section === 'AUTORIDADES') return <NotAbaliable />
