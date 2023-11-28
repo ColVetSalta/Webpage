@@ -13,7 +13,6 @@ export default function NovedadesDetail(): React.JSX.Element {
     React.useEffect(() => {
         axios.get<News>(`/novedades/${id}`)
             .then((data) => {
-                console.log(data)
                 dispatch(getCurrentNew(data.data))
             })
     }),[id]    
