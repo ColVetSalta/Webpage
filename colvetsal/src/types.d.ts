@@ -7,6 +7,11 @@ export interface Navigation {
   }[];
   url?: string;
 }
+// Hook & Validate
+
+export type Res =  Matriculado | ResolPost | Organismo | News | Record<string, never>;
+export type ErrorRes =  MatriculadoError | ResolPost | Organismo | News | Record<string, never>;
+
 //To present Authorities
 export interface DatosMinimos {
   mp: number;
@@ -42,6 +47,17 @@ export interface Matriculado extends DatosMinimos {
   active: boolean;
   telefono: Telefono[]; // *tabla intermedia* Opcional
   otrodato?: AdditionalData[];
+}
+
+export interface MatriculadoError extends Omit<Matriculado, 'mp' | 'active' | 'telefono'> {
+  mp: number | string;
+  active: boolean | string;
+  telefono:[{
+    numero: string;
+    whatsapp: boolean | string;
+    principal: boolean | string;
+    descripcion: string
+  }]
 }
 
 export type Organismo = {
