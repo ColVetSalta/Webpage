@@ -1,15 +1,17 @@
 import { Button, Checkbox, CheckboxGroup, FormControl, FormHelperText, FormLabel, Input, Menu, MenuButton, MenuItem, MenuList, Textarea } from "@chakra-ui/react";
 import { ChevronDownIcon } from "@chakra-ui/icons";
-import { News } from "../../../types";
+import { Categories, News } from "../../../types";
 import { nextFocus } from "../../../utils/FormUtils";
-import { ChangeEvent } from "react";
+import { ChangeEvent, MouseEvent } from "react";
 
 export interface IPostNewsForm {
     news: News
     setNews: React.Dispatch<React.SetStateAction<News>>
 }
 
+
 export default function PostNewsForm({ news, setNews }: IPostNewsForm): JSX.Element {
+    const categories: Categories[] = ['NOTICIAS', 'ARTICULOS', 'CURSOS', 'EVENTOS', 'ANUNCIOS', 'TRABAJO', 'BOLETIN']
 
     function HandleChange(e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
         setNews({
@@ -18,6 +20,24 @@ export default function PostNewsForm({ news, setNews }: IPostNewsForm): JSX.Elem
         })
         console.log(news)
     }
+
+    function HandleCatSelect(e: MouseEvent<HTMLButtonElement>) {
+        if(categories.includes(e.currentTarget.value as Categories)){
+        setNews({
+            ...news,
+            categoria: e.currentTarget.value as Categories
+        })}
+
+    }
+
+    function handleChekbox (e: ChangeEvent<HTMLInputElement>){
+        setNews({
+            ...news,
+            [e.target.name]: e.target.checked
+        })
+
+    }
+    console.log(news);
     
     return <FormControl
         overflowY={'scroll'}
@@ -52,13 +72,16 @@ export default function PostNewsForm({ news, setNews }: IPostNewsForm): JSX.Elem
                 Seleccione una Categoría:
             </MenuButton>{
                 <MenuList>
-                    <MenuItem>NOTICIAS</MenuItem>
-                    <MenuItem>ARTICULOS</MenuItem>
-                    <MenuItem>CURSOS</MenuItem>
-                    <MenuItem>EVENTOS</MenuItem>
-                    <MenuItem>ANUNCIOS</MenuItem>
-                    <MenuItem>TRABAJO</MenuItem>
-                    <MenuItem>BOLETIN</MenuItem>
+                    {
+                    categories ? categories.map((c) => {
+                        return <MenuItem
+                            key={c}
+                            name={c}
+                            value={c}
+                            onClick={(e) => HandleCatSelect(e)}
+                        >{c}</MenuItem>
+                    }) : null
+                }
                 </MenuList>}
         </Menu>
         <FormLabel>Resumen</FormLabel>
@@ -96,9 +119,17 @@ export default function PostNewsForm({ news, setNews }: IPostNewsForm): JSX.Elem
 
         <FormLabel>Presentación</FormLabel>
         <CheckboxGroup>
-            <Checkbox>Destacado</Checkbox>
+            <Checkbox
+            name='destacado'
+            checked={news.destacado}
+            onChange={handleChekbox}
+            >Destacado</Checkbox>
             <FormHelperText>Se mostrará en página de inicio</FormHelperText>
-            <Checkbox>Resaltar</Checkbox>
+            <Checkbox
+            name='resaltar'
+            checked={news.resaltar}
+            onChange={handleChekbox}
+            >Resaltar</Checkbox>
             <FormHelperText>Se muestra como ventana extra</FormHelperText>
         </CheckboxGroup>
     </FormControl>

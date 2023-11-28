@@ -6,9 +6,6 @@ import { IResolutionForm, Members } from "./MenuOrganism";
 
 export interface ISignaturesModal extends IResolutionForm {
     members: Members
-    // signatures: { [key: string]: boolean } | null
-    // firma: number[]
-    // setFirma: React.Dispatch<React.SetStateAction<number[]>>
     signatures: { [key: string]: boolean }
     setSignatures: React.Dispatch<React.SetStateAction<{
         [key: string]: boolean;
@@ -17,8 +14,6 @@ export interface ISignaturesModal extends IResolutionForm {
 
 export default function SignaturesModal({
     members,
-    // firma,
-    // setFirma,
     resolution,
     setResolution,
     signatures,

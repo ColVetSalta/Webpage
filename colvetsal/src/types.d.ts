@@ -109,9 +109,7 @@ export type Menutype = {
   }[];
 };
 //Novedades
-export type News = {
-  id: number;
-  categoria:
+export type Categories = 
     | "NOTICIAS"
     | "ARTICULOS"
     | "CURSOS"
@@ -119,6 +117,10 @@ export type News = {
     | "ANUNCIOS"
     | "TRABAJO"
     | "BOLETIN";
+
+export type News = {
+  id: number;
+  categoria: Categories;
   image: string | null;
   alt: string | undefined;
   title: string;

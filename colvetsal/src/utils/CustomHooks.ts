@@ -19,14 +19,12 @@ export function useCurrentState(section: string): IuseCurrentState {
       setCurrentState(data);
     });
   }, [section]);
-console.log(section);
 
   const route = section.toLocaleLowerCase();
 
   async function HandleSubmit() { 
     await axios.post(`/${route}`, currentState).then((res) => FormAlert(res, route));
   }
-console.log(currentState);
 
   return { currentState, setCurrentState, HandleSubmit };
 }
