@@ -7,7 +7,7 @@ import {
     Text,
     Textarea
 } from "@chakra-ui/react";
-import { HandleInputNumFirstFocus, nextFocus } from "../../../utils/FormUtils";
+import { HandleInputNumFirstFocus, nextFocus } from "../../../../utils/FormUtils";
 import { ChangeEvent, useState } from "react";
 import SignaturesModal from "./SignaturesModal";
 import { IResolutionForm, Members } from "./MenuOrganism";

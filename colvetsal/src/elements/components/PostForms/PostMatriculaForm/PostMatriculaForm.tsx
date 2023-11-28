@@ -1,10 +1,10 @@
 import { Button, FormControl, FormHelperText, FormLabel, Input, Menu, MenuButton, MenuItem, MenuList } from "@chakra-ui/react";
-import { HandleInputNumFirstFocus, nextFocus } from "../../../utils/FormUtils";
+import { HandleInputNumFirstFocus, nextFocus } from "../../../../utils/FormUtils";
 import { ChangeEvent, MouseEvent } from "react";
 import PostTelModalForm from "./PostTelModalForm";
 import PostAdditionalDataForm from "./PostAdditionalDataForm";
 import { ChevronDownIcon } from "@chakra-ui/icons";
-import { Matriculado } from "../../../types";
+import { Matriculado } from "../../../../types";
 
 export interface IPostMatriculaForm {
     registered: Matriculado

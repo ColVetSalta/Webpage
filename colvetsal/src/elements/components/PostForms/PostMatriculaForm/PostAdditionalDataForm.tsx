@@ -14,9 +14,9 @@ import {
   ModalOverlay,
   useDisclosure
 } from "@chakra-ui/react";
-import { nextFocus } from "../../../utils/FormUtils";
+import { nextFocus } from "../../../../utils/FormUtils";
 import { ChangeEvent, useState } from "react";
-import { AdditionalData, IPostTelModalForm } from "../../../types";
+import { AdditionalData, IPostTelModalForm } from "../../../../types";
 
 
 export default function PostAdditionalDataForm({ registered, setRegistered }: IPostTelModalForm): JSX.Element {
@@ -97,13 +97,13 @@ export default function PostAdditionalDataForm({ registered, setRegistered }: IP
         </ModalBody>
 
         <ModalFooter>
-        <Button colorScheme='blue' mr={3} onClick={() => { HandleAccept(); onClose() }}>
-                        Aceptar
-                    </Button>
-                    <Button colorScheme='blue' mr={3} onClick={HandleAccept}>
-                        Aceptar y Agregar otro
-                    </Button>
-                    <Button variant='ghost' onClick={() => { setData(emptyData); onClose() }}>Cancelar</Button>
+          <Button colorScheme='blue' mr={3} onClick={() => { HandleAccept(); onClose() }}>
+            Aceptar
+          </Button>
+          <Button colorScheme='blue' mr={3} onClick={HandleAccept}>
+            Aceptar y Agregar otro
+          </Button>
+          <Button variant='ghost' onClick={() => { setData(emptyData); onClose() }}>Cancelar</Button>
         </ModalFooter>
       </ModalContent>
     </Modal>

@@ -1,6 +1,6 @@
 import { Modal, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalBody, CheckboxGroup, Stack, Checkbox, UnorderedList, ListItem, ModalFooter, Button, useDisclosure } from "@chakra-ui/react"
-import { Loading } from "../Loading"
-import { setDefaultcheckboxValue } from "../../../utils/FormUtils"
+import { Loading } from "../../Loading"
+import { setDefaultcheckboxValue } from "../../../../utils/FormUtils"
 import { ChangeEvent } from "react";
 import { IResolutionForm, Members } from "./MenuOrganism";
 

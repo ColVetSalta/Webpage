@@ -16,8 +16,8 @@ import {
     Stack,
     useDisclosure
 } from "@chakra-ui/react";
-import { nextFocus, setDefaultcheckboxValue } from "../../../utils/FormUtils";
-import { IPostTelModalForm, Telefono } from "../../../types";
+import { nextFocus, setDefaultcheckboxValue } from "../../../../utils/FormUtils";
+import { IPostTelModalForm, Telefono } from "../../../../types";
 import { ChangeEvent, useState } from "react";
 
 
@@ -62,7 +62,7 @@ export default function PostTelModalForm(
         }
         setTel(emptyTel)
     }
-    
+
     return <Box>
         <Button onClick={onOpen} margin={'5dvh 0 5dvh 0'}>Añadir nuevo Telefono</Button>
         <Modal

@@ -10,13 +10,13 @@ import {
     useDisclosure,
     Box,
 } from "@chakra-ui/react";
-import PostMatriculaForm from "./PostForms/PostMatriculaForm";
+import PostMatriculaForm from "./PostForms/PostMatriculaForm/PostMatriculaForm";
 import { useRef } from "react";
 import PostNewsForm from "./PostForms/PostNewsForm";
 import NotAbaliable from "./NotAbaliable";
 import { useCurrentState } from "../../utils/CustomHooks";
 import { Matriculado, ResolPost } from "../../types";
-import MenuOrganism from "./PostForms/MenuOrganism";
+import MenuOrganism from "./PostForms/PostResolutionForm/MenuOrganism";
 
 export type FormModalType = {
     section: {

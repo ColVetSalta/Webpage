@@ -1,8 +1,8 @@
 import { ChevronDownIcon } from "@chakra-ui/icons"
 import { Menu, MenuButton, Button, MenuList, MenuItem } from "@chakra-ui/react"
 import { MouseEvent, useState } from "react"
-import { useAppSelector } from "../../../redux/hooks"
-import { ResolPost } from "../../../types"
+import { useAppSelector } from "../../../../redux/hooks"
+import { ResolPost } from "../../../../types"
 import PostResolutionForm from "./PostResolutionForm"
 
 export interface IResolutionForm {
