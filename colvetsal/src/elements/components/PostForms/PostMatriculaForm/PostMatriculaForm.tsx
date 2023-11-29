@@ -37,7 +37,7 @@ export default function PostMatriculaForm({ registered, setRegistered }: IPostMa
         'Guachipas',
         'La Poma']
 
-        const { error, Validate } = useValidate('MATRICULADO') as {error: MatriculadoError, Validate: (input: Matriculado) => void}
+    const { error, Validate } = useValidate('MATRICULADO') as { error: MatriculadoError, Validate: (input: Matriculado) => void }
 
     function HandleChange(e: ChangeEvent<HTMLInputElement>) {
         Validate({
@@ -65,6 +65,7 @@ export default function PostMatriculaForm({ registered, setRegistered }: IPostMa
         })
     }
     console.log(registered);
+    console.log(error);
 
     return <FormControl
         overflowY={'scroll'}
@@ -84,7 +85,7 @@ export default function PostMatriculaForm({ registered, setRegistered }: IPostMa
             onChange={HandleChange}
             onFocus={HandleInputNumFirstFocus}
         />
-        <FormHelperText>{Number.isNaN(error.mp) ? error.mp : null }</FormHelperText>
+        <FormHelperText>{error.mp !== 0 ? error.mp : null}</FormHelperText>
 
         <FormLabel>Nombre:</FormLabel>
         <Input
@@ -151,7 +152,7 @@ export default function PostMatriculaForm({ registered, setRegistered }: IPostMa
         />
         <FormHelperText>Domicilio de residencia</FormHelperText>
         <FormHelperText>{error.domicilio_particular}</FormHelperText>
-        
+
         <FormLabel>Domicilio Laboral:</FormLabel>
         <Button onClick={() => { CopyAddress() }}>Mismo Domicilio</Button>
         <Input

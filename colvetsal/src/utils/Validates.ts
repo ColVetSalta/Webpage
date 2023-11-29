@@ -4,7 +4,6 @@ import { IValMatriculado, ValMatriculado } from "./ValMatriculado";
 
 export type IuseValidate = {
   error: ErrorRes;
-  // setError: React.Dispatch<React.SetStateAction<ErrorRes>>;
   Validate: (input: Res) => void;
 };
 
@@ -18,7 +17,7 @@ export function useValidate(section: string): IuseValidate {
   }, [section]);
 
   const Validate: IuseValidate["Validate"] = (input: Res) => {
-    if (section === "MATRICULADO") ValMatriculado({input, error, setError} as IValMatriculado)
+    if (section === "MATRICULADO") ValMatriculado({input, setError} as IValMatriculado)
   };
   return {
     error, 
