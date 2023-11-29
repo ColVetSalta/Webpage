@@ -4,7 +4,8 @@ import { ChangeEvent, MouseEvent } from "react";
 import PostTelModalForm from "./PostTelModalForm";
 import PostAdditionalDataForm from "./PostAdditionalDataForm";
 import { ChevronDownIcon } from "@chakra-ui/icons";
-import { Matriculado } from "../../../../types";
+import { Matriculado, MatriculadoError } from "../../../../types";
+import { useValidate } from "../../../../utils/Validates";
 
 export interface IPostMatriculaForm {
     registered: Matriculado
@@ -36,8 +37,13 @@ export default function PostMatriculaForm({ registered, setRegistered }: IPostMa
         'Guachipas',
         'La Poma']
 
-    function HandleChange(e: ChangeEvent<HTMLInputElement>) {
+        const { error, Validate } = useValidate('MATRICULADO') as {error: MatriculadoError, Validate: (input: Matriculado) => void}
 
+    function HandleChange(e: ChangeEvent<HTMLInputElement>) {
+        Validate({
+            ...registered,
+            [e.target.name as keyof typeof registered]: e.target.value,
+        })
         setRegistered({
             ...registered,
             [e.target.name as keyof typeof registered]: e.target.value,
@@ -78,6 +84,8 @@ export default function PostMatriculaForm({ registered, setRegistered }: IPostMa
             onChange={HandleChange}
             onFocus={HandleInputNumFirstFocus}
         />
+        <FormHelperText>{Number.isNaN(error.mp) ? error.mp : null }</FormHelperText>
+
         <FormLabel>Nombre:</FormLabel>
         <Input
             className="input"
@@ -89,6 +97,8 @@ export default function PostMatriculaForm({ registered, setRegistered }: IPostMa
             value={registered.nombre}
             onChange={HandleChange}
         />
+        <FormHelperText>{error.nombre}</FormHelperText>
+
         <FormLabel>Apellido:</FormLabel>
         <Input
             className="input"
@@ -100,6 +110,8 @@ export default function PostMatriculaForm({ registered, setRegistered }: IPostMa
             value={registered.apellido}
             onChange={HandleChange}
         />
+        <FormHelperText>{error.apellido}</FormHelperText>
+
         <FormLabel>Correo electrónico principal:</FormLabel>
         <Input
             className="input"
@@ -111,7 +123,9 @@ export default function PostMatriculaForm({ registered, setRegistered }: IPostMa
             value={registered.correo_electronico}
             onChange={HandleChange}
         />
+        <FormHelperText>{error.correo_electronico}</FormHelperText>
         <FormHelperText>Si tiene mas de un correo, agregar en "Informacion Adicional".</FormHelperText>
+
         <FormLabel>Fecha de nacimiento:</FormLabel>
         <Input
             className="input"
@@ -122,6 +136,8 @@ export default function PostMatriculaForm({ registered, setRegistered }: IPostMa
             name='f_nacimiento'
             onChange={HandleChange}
         />
+        <FormHelperText>{error.correo_electronico}</FormHelperText>
+
         <FormLabel>Domicilio Particular:</FormLabel>
         <Input
             className="input"
@@ -134,6 +150,8 @@ export default function PostMatriculaForm({ registered, setRegistered }: IPostMa
             onChange={HandleChange}
         />
         <FormHelperText>Domicilio de residencia</FormHelperText>
+        <FormHelperText>{error.domicilio_particular}</FormHelperText>
+        
         <FormLabel>Domicilio Laboral:</FormLabel>
         <Button onClick={() => { CopyAddress() }}>Mismo Domicilio</Button>
         <Input
@@ -146,8 +164,9 @@ export default function PostMatriculaForm({ registered, setRegistered }: IPostMa
             value={registered.domicilio_laboral}
             onChange={HandleChange}
         />
-        <FormLabel>Departamento de Residencia:</FormLabel>
+        <FormHelperText>{error.domicilio_laboral}</FormHelperText>
 
+        <FormLabel>Departamento de Residencia:</FormLabel>
         <Menu>
             <MenuButton
                 as={Button}

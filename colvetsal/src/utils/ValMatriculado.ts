@@ -24,13 +24,15 @@ export function ValMatriculado({input, error, setError}: IValMatriculado) {
       input.correo_electronico.length > 0 ||
       input.domicilio_particular.length > 0 ||
       input.domicilio_laboral.length > 0 ||
-      input.departamento_d_laboral.length > 0 ||
-      input.active
+      input.departamento_d_laboral.length > 0
     ) {
+        console.log(input.nombre.length);        
       setError({
         ...error,
         mp: "Recuerde que debe ingresar un número de Matrícula Profesional",
       });
+      console.log('recien seteado, ', error);
+      
     }
     if (input.nombre && input.nombre.length > 0) {
       setError({ ...error, nombre: "" });
@@ -39,8 +41,7 @@ export function ValMatriculado({input, error, setError}: IValMatriculado) {
       input.correo_electronico.length > 0 ||
       input.domicilio_particular.length > 0 ||
       input.domicilio_laboral.length > 0 ||
-      input.departamento_d_laboral.length > 0 ||
-      input.active
+      input.departamento_d_laboral.length > 0
     ) {
       setError({
         ...error,
@@ -53,8 +54,7 @@ export function ValMatriculado({input, error, setError}: IValMatriculado) {
       input.correo_electronico.length > 0 ||
       input.domicilio_particular.length > 0 ||
       input.domicilio_laboral.length > 0 ||
-      input.departamento_d_laboral.length > 0 ||
-      input.active
+      input.departamento_d_laboral.length > 0
     ) {
       setError({
         ...error,
@@ -73,8 +73,7 @@ export function ValMatriculado({input, error, setError}: IValMatriculado) {
     } else if (
       input.domicilio_particular.length > 0 ||
       input.domicilio_laboral.length > 0 ||
-      input.departamento_d_laboral.length > 0 ||
-      input.active
+      input.departamento_d_laboral.length > 0
     ) {
       setError({
         ...error,
@@ -85,8 +84,7 @@ export function ValMatriculado({input, error, setError}: IValMatriculado) {
       setError({ ...error, domicilio_particular: "" });
     } else if (
       input.domicilio_laboral.length > 0 ||
-      input.departamento_d_laboral.length > 0 ||
-      input.active
+      input.departamento_d_laboral.length > 0
     ) {
       setError({
         ...error,
@@ -96,12 +94,14 @@ export function ValMatriculado({input, error, setError}: IValMatriculado) {
     if (input.domicilio_laboral && input.domicilio_laboral.length > 0) {
       setError({ ...error, domicilio_laboral: "" });
     } else if (
-      input.departamento_d_laboral.length > 0 ||
-      input.active
+      input.departamento_d_laboral.length > 0
     ) {
       setError({
         ...error,
         domicilio_laboral: "Debe ingresar un domicilio laboral, recuerde que si es el mismo que el particular, puede urilizar el boton de arriba"
       });
+    }
+    if (input.departamento_d_laboral && input.departamento_d_laboral.length > 0) {
+      setError({ ...error, departamento_d_laboral: "" });
     }
 }

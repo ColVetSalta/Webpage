@@ -1,18 +1,26 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Res, ErrorRes } from "../types";
 import { IValMatriculado, ValMatriculado } from "./ValMatriculado";
 
 export type IuseValidate = {
   error: ErrorRes;
-  setError: React.Dispatch<React.SetStateAction<ErrorRes>>;
+  // setError: React.Dispatch<React.SetStateAction<ErrorRes>>;
   Validate: (input: Res) => void;
 };
 
 export function useValidate(section: string): IuseValidate {
   const [error, setError] = useState<ErrorRes>({})
+  
+  useEffect(() => {
+    if(section !== '') import(`./InitialStates/${section}.json`).then((data) => {
+      setError(data);
+    });
+  }, [section]);
 
   const Validate: IuseValidate["Validate"] = (input: Res) => {
     if (section === "MATRICULADO") ValMatriculado({input, error, setError} as IValMatriculado)
   };
-  return { error, setError, Validate };
+  return {
+    error, 
+    Validate };
 }
