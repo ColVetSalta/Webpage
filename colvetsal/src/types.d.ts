@@ -49,8 +49,10 @@ export interface Matriculado extends DatosMinimos {
   otrodato?: AdditionalData[];
 }
 
-export interface MatriculadoError extends Omit<Matriculado, 'mp' | 'active' | 'telefono'> {
+export interface MatriculadoError extends Omit<Matriculado, 'mp' | 'active' | 'telefono' | 'f_nacimiento' | 'f_alta'> {
   mp: number | string;
+  f_nacimiento: string;
+  f_alta: string;
   active: boolean | string;
   telefono:[{
     numero: string;

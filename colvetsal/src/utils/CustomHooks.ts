@@ -23,26 +23,37 @@ export function useCurrentState(section: string): IuseCurrentState {
 
   async function HandleSubmit(errorState: ErrorRes) {
     console.log(errorState);
-    let i = 0
-    for (const key in errorState) {
-      console.log(key);
-      if (Object.prototype.hasOwnProperty.call(errorState, key)) {
-        const element = errorState[key as keyof typeof errorState] as
-          | string
-          | number
-          | unknown[]
-        if(key === 'default') { /* empty */ } else if (!(element === 0 || element === "")) {
-          // if (Array.isArray(element)) {
-            // element.forEach((o)=>)
-          // }
-          i++
-          alert(
-            `Debe completar todos los campos requeridos, con el formato adecuado: (${element})`
-          );
+    const i = 0;
+    function SubmitVal(
+      errorState: { [x: string]: unknown },
+      i: number
+    ): number {
+      for (const key in errorState) {
+        console.log(key);
+        if (Object.prototype.hasOwnProperty.call(errorState, key)) {
+          const element = errorState[key as keyof typeof errorState] as
+            | unknown
+            | unknown[];
+          if (key === "default") {
+            /* empty */
+          } else if (!(element === "pass")) {
+            const info = key + ": " + element + ".";
+            i++;
+            alert(
+              `Debe completar todos los campos requeridos, con el formato adecuado: (${info})`
+            );
+          } else if (Array.isArray(element)) {
+            element.forEach((o) => SubmitVal(o, i));
+          }
         }
       }
+      return i;
     }
-    i === 0 && await axios.post(`/${route}`, currentState).then((res) => FormAlert(res, route));
+    const validate = SubmitVal(errorState as { [x: string]: unknown }, i);
+    validate === 0 &&
+      (await axios
+        .post(`/${route}`, currentState)
+        .then((res) => FormAlert(res, route)));
   }
 
   return { currentState, setCurrentState, HandleSubmit };

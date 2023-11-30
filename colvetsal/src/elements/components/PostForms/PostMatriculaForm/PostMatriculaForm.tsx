@@ -85,7 +85,7 @@ export default function PostMatriculaForm({ registered, setRegistered, error, Va
             onChange={HandleChange}
             onFocus={HandleInputNumFirstFocus}
         />
-        <FormHelperText>{error.mp !== 0 ? error.mp : null}</FormHelperText>
+        <FormHelperText>{(error.mp !== 0 && error.mp !== 'pass')? error.mp : null}</FormHelperText>
 
         <FormLabel>Nombre:</FormLabel>
         <Input
@@ -98,7 +98,7 @@ export default function PostMatriculaForm({ registered, setRegistered, error, Va
             value={registered.nombre}
             onChange={HandleChange}
         />
-        <FormHelperText>{error.nombre}</FormHelperText>
+        <FormHelperText>{error.nombre === 'pass' ? null : error.nombre}</FormHelperText>
 
         <FormLabel>Apellido:</FormLabel>
         <Input
@@ -111,7 +111,7 @@ export default function PostMatriculaForm({ registered, setRegistered, error, Va
             value={registered.apellido}
             onChange={HandleChange}
         />
-        <FormHelperText>{error.apellido}</FormHelperText>
+        <FormHelperText>{error.apellido === 'pass' ? null : error.apellido}</FormHelperText>
 
         <FormLabel>Correo electrónico principal:</FormLabel>
         <Input
@@ -124,7 +124,7 @@ export default function PostMatriculaForm({ registered, setRegistered, error, Va
             value={registered.correo_electronico}
             onChange={HandleChange}
         />
-        <FormHelperText>{error.correo_electronico}</FormHelperText>
+        <FormHelperText>{error.correo_electronico === 'pass' ? null : error.correo_electronico}</FormHelperText>
         <FormHelperText>Si tiene mas de un correo, agregar en "Informacion Adicional".</FormHelperText>
 
         <FormLabel>Fecha de nacimiento:</FormLabel>
@@ -137,7 +137,7 @@ export default function PostMatriculaForm({ registered, setRegistered, error, Va
             name='f_nacimiento'
             onChange={HandleChange}
         />
-        <FormHelperText>{error.correo_electronico}</FormHelperText>
+        <FormHelperText>{error.f_nacimiento === 'pass' ? null : error.f_nacimiento}</FormHelperText>
 
         <FormLabel>Domicilio Particular:</FormLabel>
         <Input
@@ -151,7 +151,7 @@ export default function PostMatriculaForm({ registered, setRegistered, error, Va
             onChange={HandleChange}
         />
         <FormHelperText>Domicilio de residencia</FormHelperText>
-        <FormHelperText>{error.domicilio_particular}</FormHelperText>
+        <FormHelperText>{error.domicilio_particular === 'pass' ? null : error.domicilio_particular}</FormHelperText>
 
         <FormLabel>Domicilio Laboral:</FormLabel>
         <Button onClick={() => { CopyAddress() }}>Mismo Domicilio</Button>
@@ -165,7 +165,7 @@ export default function PostMatriculaForm({ registered, setRegistered, error, Va
             value={registered.domicilio_laboral}
             onChange={HandleChange}
         />
-        <FormHelperText>{error.domicilio_laboral}</FormHelperText>
+        <FormHelperText>{error.domicilio_laboral === 'pass' ? null : error.domicilio_laboral}</FormHelperText>
 
         <FormLabel>Departamento de Residencia:</FormLabel>
         <Menu>
@@ -187,7 +187,7 @@ export default function PostMatriculaForm({ registered, setRegistered, error, Va
             }) : null}
             </MenuList>
         </Menu>
-        {registered.departamento_d_laboral === '' ? null : <FormHelperText>{registered.departamento_d_laboral}</FormHelperText>}
+        {registered.departamento_d_laboral === 'pass' ? null : <FormHelperText>{registered.departamento_d_laboral}</FormHelperText>}
         <FormHelperText>Según articulo 7 de ley N° 6456 - Será considerado para zonas electorales</FormHelperText>
         <FormLabel>Fecha de Alta</FormLabel>
         <Input
