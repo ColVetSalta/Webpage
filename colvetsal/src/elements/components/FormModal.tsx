@@ -15,8 +15,9 @@ import { useRef } from "react";
 import PostNewsForm from "./PostForms/PostNewsForm";
 import NotAbaliable from "./NotAbaliable";
 import { useCurrentState } from "../../utils/CustomHooks";
-import { Matriculado, News, ResolPost } from "../../types";
+import { Matriculado, MatriculadoError, News, ResolPost } from "../../types";
 import MenuOrganism from "./PostForms/PostResolutionForm/MenuOrganism";
+import { useValidate } from "../../utils/Validates";
 
 export type FormModalType = {
     section: {
@@ -29,6 +30,8 @@ export default function FormModal({ section }: { section: string }): JSX.Element
     const { isOpen, onOpen, onClose } = useDisclosure()
     const searchHook = isOpen ? section : ''
     const { currentState, setCurrentState, HandleSubmit } = useCurrentState(searchHook)
+    const { error, Validate } = useValidate(searchHook)
+
 
     const btnRef = useRef(null)
 
@@ -36,6 +39,9 @@ export default function FormModal({ section }: { section: string }): JSX.Element
         if (section === 'MATRICULADO') return <PostMatriculaForm
             registered={currentState as Matriculado}
             setRegistered={setCurrentState as React.Dispatch<React.SetStateAction<Matriculado>>}
+            error={error as MatriculadoError}
+            Validate={Validate as (input: Matriculado) => void  }
+            // as { error: MatriculadoError, Validate: (input: Matriculado) => void }
         />
         if (section === 'RESOLUCIONES') return <MenuOrganism
             resolution={currentState as ResolPost}
@@ -92,7 +98,7 @@ export default function FormModal({ section }: { section: string }): JSX.Element
                         mr={3}
                         type="submit"
                         onClick={() => {
-                            HandleSubmit()
+                            HandleSubmit(error)
                             onClose()
                         }}>
                         Enviar

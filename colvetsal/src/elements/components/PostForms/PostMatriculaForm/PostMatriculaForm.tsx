@@ -5,13 +5,14 @@ import PostTelModalForm from "./PostTelModalForm";
 import PostAdditionalDataForm from "./PostAdditionalDataForm";
 import { ChevronDownIcon } from "@chakra-ui/icons";
 import { Matriculado, MatriculadoError } from "../../../../types";
-import { useValidate } from "../../../../utils/Validates";
 
 export interface IPostMatriculaForm {
     registered: Matriculado
     setRegistered: React.Dispatch<React.SetStateAction<Matriculado>>
+    error: MatriculadoError
+    Validate: (input: Matriculado) => void 
 }
-export default function PostMatriculaForm({ registered, setRegistered }: IPostMatriculaForm): JSX.Element {
+export default function PostMatriculaForm({ registered, setRegistered, error, Validate }: IPostMatriculaForm): JSX.Element {
     const departamentos = [
         'Capital',
         'Oran',
@@ -37,7 +38,6 @@ export default function PostMatriculaForm({ registered, setRegistered }: IPostMa
         'Guachipas',
         'La Poma']
 
-    const { error, Validate } = useValidate('MATRICULADO') as { error: MatriculadoError, Validate: (input: Matriculado) => void }
 
     function HandleChange(e: ChangeEvent<HTMLInputElement>) {
         Validate({
