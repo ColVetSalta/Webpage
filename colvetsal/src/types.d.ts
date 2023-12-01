@@ -9,8 +9,18 @@ export interface Navigation {
 }
 // Hook & Validate
 
-export type Res =  Matriculado | ResolPost | Organismo | News | Record<string, never>;
-export type ErrorRes =  MatriculadoError | ResolPost | Organismo | News | Record<string, never>;
+export type Res =
+  | Matriculado
+  | ResolPost
+  | Organismo
+  | News
+  | Record<string, never>;
+export type ErrorRes =
+  | MatriculadoError
+  | ResolPost
+  | Organismo
+  | News
+  | Record<string, never>;
 
 //To present Authorities
 export interface DatosMinimos {
@@ -27,12 +37,21 @@ export interface Role extends DatosMinimos {
   correo_electronico: string | null;
 }
 
-export interface Telefono {
-  numero: string; // ('numero') OBLIGATORIO
+export interface TelBasics {
+  numero: string;
+  descripcion: string;
+}
+
+export interface Telefono extends TelBasics {
   whatsapp: boolean; // OBLIGATORIO
   principal: boolean; // OBLIGATORIO
-  descripcion: string; // Opcional
 }
+
+export interface TelefonoError extends TelBasics {
+  whatsapp: string | boolean;
+  principal: string | boolean;
+}
+
 export interface AdditionalData {
   titulo: string; // OBLIGATORIO
   descripcion: string; // OBLIGATORIO
@@ -49,17 +68,16 @@ export interface Matriculado extends DatosMinimos {
   otrodato?: AdditionalData[];
 }
 
-export interface MatriculadoError extends Omit<Matriculado, 'mp' | 'active' | 'telefono' | 'f_nacimiento' | 'f_alta'> {
+export interface MatriculadoError
+  extends Omit<
+    Matriculado,
+    "mp" | "active" | "telefono" | "f_nacimiento" | "f_alta"
+  > {
   mp: number | string;
   f_nacimiento: string;
   f_alta: string;
   active: boolean | string;
-  telefono:[{
-    numero: string;
-    whatsapp: boolean | string;
-    principal: boolean | string;
-    descripcion: string
-  }]
+  telefono: TelefonoError[] | string;
 }
 
 export type Organismo = {
@@ -100,7 +118,7 @@ export interface Resol {
     cargo: string;
   }[];
 }
-export interface ResolPost extends Omit<Resol, 'id' | 'firmas'> {
+export interface ResolPost extends Omit<Resol, "id" | "firmas"> {
   firmas: number[];
 }
 export interface ResolAnual {
@@ -127,14 +145,14 @@ export type Menutype = {
   }[];
 };
 //Novedades
-export type Categories = 
-    | "NOTICIAS"
-    | "ARTICULOS"
-    | "CURSOS"
-    | "EVENTOS"
-    | "ANUNCIOS"
-    | "TRABAJO"
-    | "BOLETIN";
+export type Categories =
+  | "NOTICIAS"
+  | "ARTICULOS"
+  | "CURSOS"
+  | "EVENTOS"
+  | "ANUNCIOS"
+  | "TRABAJO"
+  | "BOLETIN";
 
 export type News = {
   id: number;

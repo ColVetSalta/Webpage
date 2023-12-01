@@ -1,4 +1,5 @@
-import { Matriculado, MatriculadoError } from "../types";
+import { Matriculado, MatriculadoError, TelefonoError } from "../types";
+import ValTelephone from "./ValTelefono";
 
 export interface IValMatriculado {
   input: Matriculado;
@@ -108,5 +109,32 @@ export function ValMatriculado({ input, setError }: IValMatriculado) {
   }
   if (input.departamento_d_laboral && input.departamento_d_laboral.length > 0) {
     setError((prevError) => ({ ...prevError, departamento_d_laboral: "pass" }));
+  }
+  if (input.telefono[0].numero === "") {
+    setError((prevError) => ({
+      ...prevError,
+      telefono: "Debe ingresar al menos un número telefónico",
+    }));
+  } else {
+    setError((prevError) => ({
+      ...prevError,
+      telefono: [
+        {
+          numero: "",
+          descripcion: "",
+          principal: "",
+          whatsapp: "",
+        },
+      ],
+    }));
+    input.telefono.forEach((tn, i) => {
+      const vTel = ValTelephone(tn);
+      setError((prevError) => {
+        return {
+          ...prevError,
+          telefono: (prevError.telefono as TelefonoError[]).splice(i, 1, vTel)
+        };
+      });
+    });
   }
 }
