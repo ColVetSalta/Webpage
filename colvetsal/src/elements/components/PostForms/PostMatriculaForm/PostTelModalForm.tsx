@@ -4,6 +4,7 @@ import {
     Checkbox,
     CheckboxGroup,
     FormControl,
+    FormHelperText,
     FormLabel,
     Input,
     Modal,
@@ -17,8 +18,9 @@ import {
     useDisclosure
 } from "@chakra-ui/react";
 import { nextFocus, setDefaultcheckboxValue } from "../../../../utils/FormUtils";
-import { IPostTelModalForm, Telefono } from "../../../../types";
+import { IPostTelModalForm, Telefono, TelefonoError } from "../../../../types";
 import { ChangeEvent, useState } from "react";
+// import ValTelephone from "../../../../utils/ValTelefono";
 
 
 export default function PostTelModalForm(
@@ -31,14 +33,40 @@ export default function PostTelModalForm(
         descripcion: ''
     }
     const [tel, setTel] = useState<Telefono>(emptyTel)
+    const [vTel, setVTel] = useState<TelefonoError>(emptyTel)
     const { isOpen, onOpen, onClose } = useDisclosure()
+
+    function ValidatePhone(input: Telefono) {
+        if (input.numero.length === 0) {
+            if (input.descripcion.length > 0 || input.principal || input.whatsapp) {
+                setVTel({
+                    ...vTel,
+                    numero: "Debe ingresar el número",
+                })
+            }
+        } else {
+            setVTel({
+                ...vTel,
+                numero: "pass",
+            })
+        }
+    }
     function HandleChange(e: ChangeEvent<HTMLInputElement>) {
+        e.preventDefault()
         if (e.target.name === 'check') {
+            ValidatePhone({
+                ...tel,
+                [e.target.value]: e.target.checked
+            })
             setTel({
                 ...tel,
                 [e.target.value]: e.target.checked
             })
         } else if (e.target.value) {
+            ValidatePhone({
+                ...tel,
+                [e.target.name]: e.target.value
+            })
             setTel({
                 ...tel,
                 [e.target.name]: e.target.value
@@ -94,6 +122,9 @@ export default function PostTelModalForm(
                             value={tel.numero}
                             onChange={HandleChange}
                         />
+                        <FormHelperText>{vTel.numero === 'pass' ? null : vTel.numero}</FormHelperText>
+
+
                         <FormLabel>Descripcion:</FormLabel>
                         <Input
                             className="input"

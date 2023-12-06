@@ -1,5 +1,5 @@
-import { Matriculado, MatriculadoError, TelefonoError } from "../types";
-import ValTelephone from "./ValTelefono";
+import { Matriculado, MatriculadoError } from "../types";
+// import ValTelephone from "./ValTelefono";
 
 export interface IValMatriculado {
   input: Matriculado;
@@ -110,31 +110,49 @@ export function ValMatriculado({ input, setError }: IValMatriculado) {
   if (input.departamento_d_laboral && input.departamento_d_laboral.length > 0) {
     setError((prevError) => ({ ...prevError, departamento_d_laboral: "pass" }));
   }
-  if (input.telefono[0].numero === "") {
+  if (input.telefono.length === 0 || input.telefono[0].numero === "") {
     setError((prevError) => ({
       ...prevError,
       telefono: "Debe ingresar al menos un número telefónico",
     }));
+  } else if (input.telefono.length === 1) {
+    if (input.telefono[0].principal) {
+      setError((prevError) => ({
+        ...prevError,
+        telefono: "pass",
+      }));
+    } else {
+      setError((prevError) => ({
+        ...prevError,
+        telefono:
+          "Debe tener un telefono principal, no olvide marcar la opción",
+      }));
+    }
   } else {
-    setError((prevError) => ({
-      ...prevError,
-      telefono: [
-        {
-          numero: "",
-          descripcion: "",
-          principal: "",
-          whatsapp: "",
-        },
-      ],
-    }));
-    input.telefono.forEach((tn, i) => {
-      const vTel = ValTelephone(tn);
+    let ppal = false;
+    input.telefono.forEach((tn) => {
+      console.log(ppal)      
+      if (tn.principal) {
+        ppal
+          ? setError((prevError) => {
+              return {
+                ...prevError,
+                telefono:
+                  "No puede haber más de un telefono principal, elija uno de ellos",
+              };
+            })
+          : (ppal = true);
+      }
+    });
+      console.log('finalppal: ', ppal)      
+      if (!ppal) {
       setError((prevError) => {
         return {
           ...prevError,
-          telefono: (prevError.telefono as TelefonoError[]).splice(i, 1, vTel)
+          telefono:
+            "Debe tener un telefono principal, no olvide marcar la opción",
         };
       });
-    });
+    }
   }
 }

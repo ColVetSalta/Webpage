@@ -14,7 +14,12 @@ export default function ValTelephone(tn: Telefono) {
       ...vTel,
       numero: "Debe ingresar el número",
     });
+  } else {
+    setVTel({
+      ...vTel,
+      numero: "pass",
+    })
   }
-
+console.log(vTel);
   return vTel
 }

@@ -37,11 +37,12 @@ export function useCurrentState(section: string): IuseCurrentState {
             | unknown[];
           if (key === "default") {
             /* empty */
-          } else if (Array.isArray(element)) {
-            console.log(element);
-            element.forEach((o) => SubmitVal(o, i));
+          // } else if (Array.isArray(element)) {
+          //   console.log(element);
+          //   element.forEach((o) => SubmitVal(o, i));
           } else if (!(element === "pass")) {
             const info = key + ": " + element + ".";
+            console.log(info)            
             i++;
             alert(
               `Debe completar todos los campos requeridos, con el formato adecuado: (${info})`
