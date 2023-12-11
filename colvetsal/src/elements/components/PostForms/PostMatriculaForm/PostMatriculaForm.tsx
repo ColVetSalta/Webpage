@@ -1,16 +1,16 @@
-import { Button, FormControl, FormHelperText, FormLabel, Input, Menu, MenuButton, MenuItem, MenuList } from "@chakra-ui/react";
+import { Button, FormControl, FormHelperText, FormLabel, Input, Menu, MenuButton, MenuItem, MenuList, Table, TableContainer, Tbody, Td, Th, Thead, Tr } from "@chakra-ui/react";
 import { HandleInputNumFirstFocus, nextFocus } from "../../../../utils/FormUtils";
 import { ChangeEvent, MouseEvent } from "react";
 import PostTelModalForm from "./PostTelModalForm";
 import PostAdditionalDataForm from "./PostAdditionalDataForm";
-import { ChevronDownIcon } from "@chakra-ui/icons";
+import { ChevronDownIcon, CheckCircleIcon, NotAllowedIcon } from "@chakra-ui/icons";
 import { Matriculado, MatriculadoError } from "../../../../types";
 
 export interface IPostMatriculaForm {
     registered: Matriculado
     setRegistered: React.Dispatch<React.SetStateAction<Matriculado>>
     error: MatriculadoError
-    Validate: (input: Matriculado) => void 
+    Validate: (input: Matriculado) => void
 }
 export default function PostMatriculaForm({ registered, setRegistered, error, Validate }: IPostMatriculaForm): JSX.Element {
     const departamentos = [
@@ -85,7 +85,7 @@ export default function PostMatriculaForm({ registered, setRegistered, error, Va
             onChange={HandleChange}
             onFocus={HandleInputNumFirstFocus}
         />
-        <FormHelperText>{(error.mp !== 0 && error.mp !== 'pass')? error.mp : null}</FormHelperText>
+        <FormHelperText>{(error.mp !== 0 && error.mp !== 'pass') ? error.mp : null}</FormHelperText>
 
         <FormLabel>Nombre:</FormLabel>
         <Input
@@ -199,10 +199,39 @@ export default function PostMatriculaForm({ registered, setRegistered, error, Va
             onChange={HandleChange}
         />
         <FormLabel>Agregar al menos un telefono</FormLabel>
+        <TableContainer>
+            <Table size='sm'>
+                <Thead>
+                    <Tr>
+                        <Th>Número</Th>
+                        <Th>Descripcion</Th>
+                        <Th>whatsapp</Th>
+                    </Tr>
+                </Thead>
+                <Tbody>
+                    { registered.telefono.length > 0 ?
+                    registered.telefono.map((t)=> {
+                        console.log(registered.telefono)
+                        console.log(t)
+                    return <Tr>
+                        <Td>{t.numero}</Td>
+                        <Td>{t.descripcion}</Td>
+                        <Td>{t.whatsapp ? <CheckCircleIcon/> : <NotAllowedIcon/>}</Td>
+                    </Tr>} ):
+                    <Tr>
+                        <Td>Numero</Td>
+                        <Td>Desctrpcion (opcional)</Td>
+                        <Td>Whatsapp</Td>
+                    </Tr>}
+                </Tbody>
+            </Table>
+        </TableContainer>
+        
         <PostTelModalForm
             registered={registered}
             setRegistered={setRegistered}
         />
+
         <FormLabel>Información Adicional:</FormLabel>
         <PostAdditionalDataForm registered={registered} setRegistered={setRegistered} />
     </FormControl>
