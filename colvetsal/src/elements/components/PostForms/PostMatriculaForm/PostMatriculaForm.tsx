@@ -199,30 +199,31 @@ export default function PostMatriculaForm({ registered, setRegistered, error, Va
             onChange={HandleChange}
         />
         <FormLabel>Agregar al menos un telefono</FormLabel>
+
         <TableContainer>
             <Table size='sm'>
                 <Thead>
                     <Tr>
                         <Th>Número</Th>
-                        <Th>Descripcion</Th>
+                        <Th>Descripción</Th>
                         <Th>whatsapp</Th>
                     </Tr>
                 </Thead>
                 <Tbody>
-                    { registered.telefono.length > 0 ?
-                    registered.telefono.map((t)=> {
-                        console.log(registered.telefono)
-                        console.log(t)
-                    return <Tr>
-                        <Td>{t.numero}</Td>
-                        <Td>{t.descripcion}</Td>
-                        <Td>{t.whatsapp ? <CheckCircleIcon/> : <NotAllowedIcon/>}</Td>
-                    </Tr>} ):
+                    { registered.telefono[0].numero === '' ?
                     <Tr>
                         <Td>Numero</Td>
-                        <Td>Desctrpcion (opcional)</Td>
+                        <Td>Desctrpción (opcional)</Td>
                         <Td>Whatsapp</Td>
-                    </Tr>}
+                    </Tr> :
+                    registered.telefono.map((t)=> {
+                    return <Tr
+                    bgColor={t.principal ? 'Highlight' : "inherit"}>
+                        <Td>{t.numero}</Td>
+                        <Td>{t.descripcion}</Td>
+                        <Td>{t.whatsapp ? <CheckCircleIcon color='green'/> : <NotAllowedIcon color='red'/>}</Td>
+                    </Tr>} )
+                    }
                 </Tbody>
             </Table>
         </TableContainer>
@@ -234,5 +235,29 @@ export default function PostMatriculaForm({ registered, setRegistered, error, Va
 
         <FormLabel>Información Adicional:</FormLabel>
         <PostAdditionalDataForm registered={registered} setRegistered={setRegistered} />
+        <TableContainer>
+            <Table size='sm'>
+                <Thead>
+                    <Tr>
+                        <Th>Número</Th>
+                        <Th>Descripción</Th>
+                    </Tr>
+                </Thead>
+                <Tbody>
+                    { (registered.otrodato === undefined|| registered.otrodato[0].titulo === '' ) ?
+                    <Tr>
+                        <Td>Asunto</Td>
+                        <Td>Descrpción (opcional)</Td>
+                    </Tr> :
+                    registered.otrodato.map((od)=> {
+                    return <Tr>
+                        <Td>{od.titulo}</Td>
+                        <Td>{od.descripcion}</Td>
+                    </Tr>} )
+                    }
+                </Tbody>
+            </Table>
+        </TableContainer>
+
     </FormControl>
 }
