@@ -210,13 +210,13 @@ export default function PostMatriculaForm({ registered, setRegistered, error, Va
                     </Tr>
                 </Thead>
                 <Tbody>
-                    { registered.telefono[0].numero === '' ?
+                    {(registered.telefono !== undefined && registered.telefono[0].numero === '') ?
                     <Tr>
                         <Td>Numero</Td>
                         <Td>Desctrpción (opcional)</Td>
                         <Td>Whatsapp</Td>
                     </Tr> :
-                    registered.telefono.map((t)=> {
+                    registered.telefono?.map((t)=> {
                     return <Tr
                     bgColor={t.principal ? 'Highlight' : "inherit"}>
                         <Td>{t.numero}</Td>
@@ -244,7 +244,7 @@ export default function PostMatriculaForm({ registered, setRegistered, error, Va
                     </Tr>
                 </Thead>
                 <Tbody>
-                    { (registered.otrodato === undefined|| registered.otrodato[0].titulo === '' ) ?
+                    { (registered.otrodato === undefined || registered.otrodato[0].titulo === '' ) ?
                     <Tr>
                         <Td>Asunto</Td>
                         <Td>Descrpción (opcional)</Td>
