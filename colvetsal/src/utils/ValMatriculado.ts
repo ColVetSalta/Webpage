@@ -110,6 +110,22 @@ export function ValMatriculado({ input, setError }: IValMatriculado) {
   if (input.departamento_d_laboral && input.departamento_d_laboral.length > 0) {
     setError((prevError) => ({ ...prevError, departamento_d_laboral: "pass" }));
   }
+  if (input.f_nacimiento && new Date(input.f_nacimiento) instanceof Date) {
+    console.log('fecha de nacimiento')    
+    const inputDate = Date.parse(new Date(input.f_nacimiento).toDateString())
+    const maxDate = Date.now() - 631152000000
+    const minDate = Date.parse('01/01/1988') - 2048716800000
+  console.log('variables : ',minDate, ' - ', inputDate, ' - ', maxDate)    
+  console.log(maxDate <= inputDate || inputDate <= minDate) 
+    if(maxDate <= inputDate || inputDate <= minDate) {
+    setError((prevError) => ({ ...prevError, f_nacimiento: "Fecha fuera de rango válido, revise la Fecha de Nacimiento" }));
+    } else {
+    setError((prevError) => ({ ...prevError, f_nacimiento: "pass" }))
+    }
+  }
+  if (input.f_alta  && input.f_alta instanceof Date) {
+    setError((prevError) => ({ ...prevError, f_alta: "pass" }));
+  }
   if (input.telefono.length === 0 || input.telefono[0].numero === "") {
     setError((prevError) => ({
       ...prevError,
