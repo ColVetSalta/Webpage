@@ -40,7 +40,7 @@ export default function FormModal({ section }: { section: string }): JSX.Element
             registered={currentState as Matriculado}
             setRegistered={setCurrentState as React.Dispatch<React.SetStateAction<Matriculado>>}
             error={error as MatriculadoError}
-            Validate={Validate as (input: Matriculado) => void  }
+            Validate={Validate as (input: Matriculado) => void }
             // as { error: MatriculadoError, Validate: (input: Matriculado) => void }
         />
         if (section === 'RESOLUCIONES') return <MenuOrganism

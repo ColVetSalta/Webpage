@@ -56,7 +56,11 @@ export function useCurrentState(section: string): IuseCurrentState {
     validate === 0 &&
       (await axios
         .post(`/${route}`, currentState)
-        .then((res) => FormAlert(res, route)));
+        .then((res) => {
+          if(res.status === 201) FormAlert(res, route)
+          if(res.status === 404) FormAlert(res.data.err, route)
+        })
+      )
   }
 
   return { currentState, setCurrentState, HandleSubmit };

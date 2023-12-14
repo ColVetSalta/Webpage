@@ -24,7 +24,7 @@ import { ChangeEvent, useState } from "react";
 
 
 export default function PostTelModalForm(
-    { registered, setRegistered }: IPostTelModalForm
+    { registered, setRegistered, Validate }: IPostTelModalForm
 ): JSX.Element {
     const emptyTel = {
         numero: '',
@@ -77,11 +77,19 @@ export default function PostTelModalForm(
     function HandleAccept() {
         if (tel.numero !== '') {
             if (registered.telefono[0].numero === '') {
+                Validate({
+                    ...registered,
+                    telefono: [tel]
+                })
                 setRegistered({
                     ...registered,
                     telefono: [tel]
                 })
             } else {
+                Validate({
+                    ...registered,
+                    telefono: [...registered.telefono, tel]
+                })
                 setRegistered({
                     ...registered,
                     telefono: [...registered.telefono, tel]

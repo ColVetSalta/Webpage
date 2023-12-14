@@ -230,7 +230,8 @@ export default function PostMatriculaForm({ registered, setRegistered, error, Va
         
         <PostTelModalForm
             registered={registered}
-            setRegistered={setRegistered}
+            setRegistered={setRegistered}            
+            Validate={Validate as (input: Matriculado) => void }
         />
 
         <FormLabel>Información Adicional:</FormLabel>

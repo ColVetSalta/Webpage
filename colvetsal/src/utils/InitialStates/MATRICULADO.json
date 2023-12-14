@@ -3,11 +3,11 @@
 "nombre": "",
 "apellido": "",
 "correo_electronico": "",
-"f_nacimiento": "2023-11-22",
+"f_nacimiento": "1900-11-22",
 "domicilio_particular": "",
 "domicilio_laboral": "",
 "departamento_d_laboral": "",
-"f_alta": "2023-11-22",
+"f_alta": "1900-11-22",
 "active": false,
 "telefono": [{
     "numero": "",

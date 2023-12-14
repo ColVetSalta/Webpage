@@ -170,5 +170,6 @@ export type News = {
 
 export interface IPostTelModalForm {
   registered: Matriculado;
-  setRegistered: React.Dispatch<React.SetStateAction<Matriculado>>;
+  setRegistered: React.Dispatch<React.SetStateAction<Matriculado>>;  
+  Validate: (input: Matriculado) => void;
 }
