@@ -26,13 +26,15 @@ export function nextFocus(e: KeyboardEvent<HTMLDivElement | HTMLTextAreaElement>
           return list
       }
 
-      export const FormAlert = (res: AxiosResponse<{data:{[key: string]: unknown}}>, route: string) => {
+      export const FormAlert = (res: AxiosResponse, route: string) => {
       if (route === "matriculado") {
         const mat = res.data as unknown as Matriculado
           alert(
             `Nuevo Matriculado: ${mat.nombre} ${mat.apellido} registrado correctamente con la matrícula N°: ${mat.mp}`
-          );
-      } else { alert('Registro Completado') }
+          )
+      } else { 
+        alert('Registro Completado') 
+      }
     }
 
     export function HandleInputNumFirstFocus(e: ChangeEvent<HTMLInputElement>) {

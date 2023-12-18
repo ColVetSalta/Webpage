@@ -235,7 +235,7 @@ export default function PostMatriculaForm({ registered, setRegistered, error, Va
         />
 
         <FormLabel>Información Adicional:</FormLabel>
-        <PostAdditionalDataForm registered={registered} setRegistered={setRegistered} />
+        <PostAdditionalDataForm registered={registered} setRegistered={setRegistered} Validate={Validate}/>
         <TableContainer>
             <Table size='sm'>
                 <Thead>

@@ -57,9 +57,14 @@ export function useCurrentState(section: string): IuseCurrentState {
       (await axios
         .post(`/${route}`, currentState)
         .then((res) => {
-          if(res.status === 201) FormAlert(res, route)
-          if(res.status === 404) FormAlert(res.data.err, route)
+          FormAlert(res, route)
         })
+        .catch(
+          (error)=>{
+            console.log(error.response.data)            
+            alert(`Error: ${error.response.data.err}`)
+          }
+        )
       )
   }
 
