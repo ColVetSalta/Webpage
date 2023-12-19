@@ -9,9 +9,10 @@ export interface IPostNewsForm {
     setNews: React.Dispatch<React.SetStateAction<News>>
 }
 
+// eslint-disable-next-line react-refresh/only-export-components
+export const categories: Categories[] = ['NOTICIAS', 'ARTICULOS', 'CURSOS', 'EVENTOS', 'ANUNCIOS', 'TRABAJO', 'BOLETIN']
 
 export default function PostNewsForm({ news, setNews }: IPostNewsForm): JSX.Element {
-    const categories: Categories[] = ['NOTICIAS', 'ARTICULOS', 'CURSOS', 'EVENTOS', 'ANUNCIOS', 'TRABAJO', 'BOLETIN']
 
     function HandleChange(e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
         setNews({

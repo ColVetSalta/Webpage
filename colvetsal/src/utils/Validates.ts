@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Res, ErrorRes } from "../types";
 import { IValMatriculado, ValMatriculado } from "./ValMatriculado";
+import { IValNovedad, ValNovedad } from "./ValNovedad";
 
 export type IuseValidate = {
   error: ErrorRes;
@@ -18,6 +19,7 @@ export function useValidate(section: string): IuseValidate {
 
   const Validate: IuseValidate["Validate"] = (input: Res) => {
     if (section === "MATRICULADO") ValMatriculado({input, setError} as IValMatriculado)
+    if (section === "NOVEDADES") ValNovedad({input, setError} as IValNovedad)
   };
   return {
     error, 

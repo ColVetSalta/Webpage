@@ -1,3 +1,4 @@
+import { categories } from "../elements/components/PostForms/PostNewsForm";
 import { NewsError, News } from "../types";
 // import ValTelephone from "./ValTelefono";
 
@@ -7,31 +8,40 @@ export interface  IValNovedad {
 }
 
 export function ValNovedad({ input, setError }: IValNovedad) {
-  if ( input.id === 0 ) {
-    setError((PrevState)=> ({
-      ...PrevState,
-      id: 'En realidad no tendría que estar validando el id, eso está a cargo de postgres. Yo no pongo id'
-    }))
-  }
 //fecha
-  if ( input.date ) {
+  if ( input.date  && new Date(input.date) instanceof Date ) {
     setError((PrevState)=> ({
       ...PrevState,
-      id: 'En realidad no tendría que estar validando el id, eso está a cargo de postgres. Yo no pongo id'
+      date: 'pass'
+    }))
+  } else {   
+    setError((PrevState)=> ({
+      ...PrevState,
+      date: 'Formato de fecha erróneo'
     }))
   }
 //titular
   if ( input.title ) {
     setError((PrevState)=> ({
       ...PrevState,
-      id: 'En realidad no tendría que estar validando el id, eso está a cargo de postgres. Yo no pongo id'
+      title: 'pass'
+    }))
+  } else {   
+    setError((PrevState)=> ({
+      ...PrevState,
+      title: 'Debe agregar un Titular'
     }))
   }
 //categoría
-  if ( input.categoria ) {
+  if ( categories.includes(input.categoria) ) {
     setError((PrevState)=> ({
       ...PrevState,
-      id: 'En realidad no tendría que estar validando el id, eso está a cargo de postgres. Yo no pongo id'
+      categoria: 'pass'
+    }))
+  } else {
+    setError((PrevState)=> ({
+      ...PrevState,
+      categoria: 'Categoría inexistente'
     }))
   }
 }
