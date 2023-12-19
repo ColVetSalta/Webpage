@@ -2,7 +2,6 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { ErrorRes, Res } from "../types";
 import { FormAlert } from "./FormUtils";
-// import { useValidate } from "./Validates";
 
 export interface IuseCurrentState {
   currentState: Res;
@@ -37,9 +36,6 @@ export function useCurrentState(section: string): IuseCurrentState {
             | unknown[];
           if (key === "default") {
             /* empty */
-          // } else if (Array.isArray(element)) {
-          //   console.log(element);
-          //   element.forEach((o) => SubmitVal(o, i));
           } else if (!(element === "pass")) {
             const info = key + ": " + element + ".";
             console.log(info)            

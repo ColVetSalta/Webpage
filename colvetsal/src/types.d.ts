@@ -168,8 +168,20 @@ export type News = {
   resaltar: boolean;
 };
 
+export interface NewsError
+  extends Omit<
+    News,
+    "id" | "categoria" | "destacado" | "resaltar"
+  > {
+  id: number | string;
+  categoria: Categories | string;
+  destacado: boolean | string;
+  resaltar: boolean | string;
+}
+
 export interface IPostTelModalForm {
   registered: Matriculado;
   setRegistered: React.Dispatch<React.SetStateAction<Matriculado>>;  
   Validate: (input: Matriculado) => void;
 }
+
