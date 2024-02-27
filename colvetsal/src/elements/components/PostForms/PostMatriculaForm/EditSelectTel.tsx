@@ -5,35 +5,29 @@ import { CheckCircleIcon, NotAllowedIcon } from "@chakra-ui/icons"
 import { useState } from "react"
 
 interface EditTelType extends IPostTelModalForm {
+    i: number;
     t: Telefono
 }
 
 export default function EditSelectTel (
-    { t, registered, setRegistered, Validate }: EditTelType
+    { t, i, registered, setRegistered, Validate }: EditTelType
 ): JSX.Element {
     const { isOpen, onOpen, onClose } = useDisclosure()
     const [tel, setTel] = useState<Telefono>(t)
+
     function HandleAccept() {
         if (tel.numero !== '') {
-            if (registered.telefono[0].numero === '') {
+            const currTelArr = registered.telefono
+            currTelArr.splice(i,1,tel)
+            console.log(currTelArr);            
                 Validate({
                     ...registered,
-                    telefono: [tel]
+                    telefono: currTelArr
                 })
                 setRegistered({
                     ...registered,
-                    telefono: [tel]
+                    telefono: currTelArr
                 })
-            } else {
-                Validate({
-                    ...registered,
-                    telefono: [...registered.telefono, tel]
-                })
-                setRegistered({
-                    ...registered,
-                    telefono: [...registered.telefono, tel]
-                })
-            }
         }
     }
 return <Tr

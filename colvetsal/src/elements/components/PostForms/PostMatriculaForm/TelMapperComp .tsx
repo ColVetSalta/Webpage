@@ -12,8 +12,9 @@ export default function TelMapperComp(
                 <Td>Desctrpción (opcional)</Td>
                 <Td>Whatsapp</Td>
             </Tr> :
-            registered.telefono?.map((t) => {
+            registered.telefono?.map((t, i) => {
                 return <EditSelectTel
+                i={i}
                     t={t}
                     registered={registered}
                     setRegistered={setRegistered}
