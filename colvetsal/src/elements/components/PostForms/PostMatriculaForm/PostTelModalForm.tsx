@@ -15,26 +15,23 @@ import {
     ModalHeader,
     ModalOverlay,
     Stack,
-    useDisclosure
+    UseDisclosureProps,
 } from "@chakra-ui/react";
 import { nextFocus, setDefaultcheckboxValue } from "../../../../utils/FormUtils";
 import { IPostTelModalForm, Telefono, TelefonoError } from "../../../../types";
 import { ChangeEvent, useState } from "react";
 // import ValTelephone from "../../../../utils/ValTelefono";
 
-
+interface TelForm extends IPostTelModalForm {
+    defaultTel: Telefono;
+    disclosure: UseDisclosureProps
+}
 export default function PostTelModalForm(
-    { registered, setRegistered, Validate }: IPostTelModalForm
+    { registered, setRegistered, Validate, defaultTel, disclosure }: TelForm
 ): JSX.Element {
-    const emptyTel = {
-        numero: '',
-        whatsapp: false,
-        principal: false,
-        descripcion: ''
-    }
-    const [tel, setTel] = useState<Telefono>(emptyTel)
-    const [vTel, setVTel] = useState<TelefonoError>(emptyTel)
-    const { isOpen, onOpen, onClose } = useDisclosure()
+    const [tel, setTel] = useState<Telefono>(defaultTel)
+    const [vTel, setVTel] = useState<TelefonoError>(defaultTel)
+    const { isOpen, onClose } = disclosure
 
     function ValidatePhone(input: Telefono) {
         if (input.numero.length === 0) {
@@ -96,12 +93,11 @@ export default function PostTelModalForm(
                 })
             }
         }
-        setTel(emptyTel)
+        setTel(defaultTel)
     }
 
     return <Box>
-        <Button onClick={onOpen} margin={'5dvh 0 5dvh 0'}>Añadir nuevo Telefono</Button>
-        <Modal
+        {isOpen && onClose && <Modal
             isCentered
             isOpen={isOpen}
             onClose={onClose}
@@ -180,10 +176,11 @@ export default function PostTelModalForm(
                     <Button colorScheme='blue' mr={3} onClick={HandleAccept}>
                         Aceptar y Agregar otro
                     </Button>
-                    <Button variant='ghost' onClick={() => { setTel(emptyTel); onClose() }}>Cancelar</Button>
+                    <Button variant='ghost' onClick={() => { setTel(defaultTel); onClose() }}>Cancelar</Button>
                 </ModalFooter>
             </ModalContent>
         </Modal>
+        }
     </Box>
 
 }

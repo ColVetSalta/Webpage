@@ -1,10 +1,10 @@
 import { Button, FormControl, FormHelperText, FormLabel, Input, Menu, MenuButton, MenuItem, MenuList, Table, TableContainer, Tbody, Td, Th, Thead, Tr } from "@chakra-ui/react";
 import { HandleInputNumFirstFocus, nextFocus } from "../../../../utils/FormUtils";
 import { ChangeEvent, MouseEvent } from "react";
-import PostTelModalForm from "./PostTelModalForm";
 import PostAdditionalDataForm from "./PostAdditionalDataForm";
 import { ChevronDownIcon, CheckCircleIcon, NotAllowedIcon } from "@chakra-ui/icons";
 import { Matriculado, MatriculadoError } from "../../../../types";
+import NewTelFunctComp from "./NewTelFunctComp";
 
 export interface IPostMatriculaForm {
     registered: Matriculado
@@ -198,8 +198,8 @@ export default function PostMatriculaForm({ registered, setRegistered, error, Va
             name='f_alta'
             onChange={HandleChange}
         />
-        <FormLabel>Agregar al menos un telefono</FormLabel>
 
+        <FormLabel>Agregar al menos un telefono</FormLabel>
         <TableContainer>
             <Table size='sm'>
                 <Thead>
@@ -228,7 +228,8 @@ export default function PostMatriculaForm({ registered, setRegistered, error, Va
             </Table>
         </TableContainer>
         
-        <PostTelModalForm
+        <NewTelFunctComp
+            // children={PostTelModalForm}
             registered={registered}
             setRegistered={setRegistered}            
             Validate={Validate as (input: Matriculado) => void }
