@@ -7,13 +7,11 @@ import {
     FormHelperText,
     FormLabel,
     Input,
-    Modal,
     ModalBody,
     ModalCloseButton,
     ModalContent,
     ModalFooter,
     ModalHeader,
-    ModalOverlay,
     Stack,
     UseDisclosureProps,
 } from "@chakra-ui/react";
@@ -31,7 +29,7 @@ export default function PostTelModalForm(
 ): JSX.Element {
     const [tel, setTel] = useState<Telefono>(defaultTel)
     const [vTel, setVTel] = useState<TelefonoError>(defaultTel)
-    const { isOpen, onClose } = disclosure
+    const { onClose } = disclosure
 
     function ValidatePhone(input: Telefono) {
         if (input.numero.length === 0) {
@@ -69,6 +67,8 @@ export default function PostTelModalForm(
                 [e.target.name]: e.target.value
             })
         }
+        console.log(tel);
+        
     }
 
     function HandleAccept() {
@@ -97,17 +97,9 @@ export default function PostTelModalForm(
     }
 
     return <Box>
-        {isOpen && onClose && <Modal
-            isCentered
-            isOpen={isOpen}
-            onClose={onClose}
-            size={'xl'}
-            scrollBehavior={'outside'}
-        >
-            <ModalOverlay />
-            <ModalContent>
-                <ModalHeader>Modal Title</ModalHeader>
-                <ModalCloseButton />
+    { onClose && <ModalContent>
+        <ModalHeader>Modal Title</ModalHeader>
+        <ModalCloseButton />
                 <ModalBody>
                     <FormControl
                         overflowY={'scroll'}
@@ -169,18 +161,17 @@ export default function PostTelModalForm(
                     </FormControl>
                 </ModalBody>
 
-                <ModalFooter>
+                { tel.numero.length > 5 && <ModalFooter>
                     <Button colorScheme='blue' mr={3} onClick={() => { HandleAccept(); onClose() }}>
                         Aceptar
                     </Button>
-                    <Button colorScheme='blue' mr={3} onClick={HandleAccept}>
+                    {defaultTel.numero === '' && <Button colorScheme='blue' mr={3} onClick={HandleAccept}>
                         Aceptar y Agregar otro
-                    </Button>
+                    </Button>}
                     <Button variant='ghost' onClick={() => { setTel(defaultTel); onClose() }}>Cancelar</Button>
-                </ModalFooter>
-            </ModalContent>
-        </Modal>
-        }
+                </ModalFooter>}
+            </ModalContent> 
+            }
     </Box>
 
 }
