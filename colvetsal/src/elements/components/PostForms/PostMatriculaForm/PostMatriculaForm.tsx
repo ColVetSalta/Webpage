@@ -5,7 +5,7 @@ import PostAdditionalDataForm from "./PostAdditionalDataForm";
 import { ChevronDownIcon } from "@chakra-ui/icons";
 import { Matriculado, MatriculadoError } from "../../../../types";
 import NewTelFunctComp from "./NewTelFunctComp";
-import EditTelFunctComp from "./EditTelFunctComp ";
+import TelMapperComp from "./TelMapperComp ";
 
 export interface IPostMatriculaForm {
     registered: Matriculado
@@ -211,7 +211,7 @@ export default function PostMatriculaForm({ registered, setRegistered, error, Va
                     </Tr>
                 </Thead>
 
-                <EditTelFunctComp
+                <TelMapperComp 
                     registered={registered}
                     setRegistered={setRegistered}
                     Validate={Validate as (input: Matriculado) => void} />

@@ -1,22 +1,17 @@
-import { Button, Modal, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, Tbody, Td, Tr, useDisclosure } from "@chakra-ui/react"
+import { Button, Modal, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, Td, Tr, useDisclosure } from "@chakra-ui/react"
 import { IPostTelModalForm, Telefono } from "../../../../types"
 import PostTelModalForm from "./PostTelModalForm"
 import { CheckCircleIcon, NotAllowedIcon } from "@chakra-ui/icons"
 import { useState } from "react"
 
-export default function EditTelFunctComp(
-    { registered, setRegistered, Validate }: IPostTelModalForm
+interface EditTelType extends IPostTelModalForm {
+    t: Telefono
+}
+
+export default function EditSelectTel (
+    { t, registered, setRegistered, Validate }: EditTelType
 ): JSX.Element {
     const { isOpen, onOpen, onClose } = useDisclosure()
-return <Tbody>
-{(registered.telefono !== undefined && registered.telefono[0].numero === '') ?
-<Tr>
-    <Td>Numero</Td>
-    <Td>Desctrpción (opcional)</Td>
-    <Td>Whatsapp</Td>
-</Tr> :
-registered.telefono?.map((t)=> {
-    // eslint-disable-next-line react-hooks/rules-of-hooks
     const [tel, setTel] = useState<Telefono>(t)
     function HandleAccept() {
         if (tel.numero !== '') {
@@ -73,7 +68,5 @@ bgColor={t.principal ? 'Highlight' : "inherit"}
              </ModalContent>  
                     
         </Modal>
-        </Tr>} )
-                    }
-                </Tbody>
-}
+        </Tr>
+        }
