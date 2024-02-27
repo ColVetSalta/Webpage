@@ -2,9 +2,10 @@ import { Button, FormControl, FormHelperText, FormLabel, Input, Menu, MenuButton
 import { HandleInputNumFirstFocus, nextFocus } from "../../../../utils/FormUtils";
 import { ChangeEvent, MouseEvent } from "react";
 import PostAdditionalDataForm from "./PostAdditionalDataForm";
-import { ChevronDownIcon, CheckCircleIcon, NotAllowedIcon } from "@chakra-ui/icons";
+import { ChevronDownIcon } from "@chakra-ui/icons";
 import { Matriculado, MatriculadoError } from "../../../../types";
 import NewTelFunctComp from "./NewTelFunctComp";
+import EditTelFunctComp from "./EditTelFunctComp ";
 
 export interface IPostMatriculaForm {
     registered: Matriculado
@@ -209,34 +210,24 @@ export default function PostMatriculaForm({ registered, setRegistered, error, Va
                         <Th>whatsapp</Th>
                     </Tr>
                 </Thead>
-                <Tbody>
-                    {(registered.telefono !== undefined && registered.telefono[0].numero === '') ?
-                    <Tr>
-                        <Td>Numero</Td>
-                        <Td>Desctrpción (opcional)</Td>
-                        <Td>Whatsapp</Td>
-                    </Tr> :
-                    registered.telefono?.map((t)=> {
-                    return <Tr
-                    bgColor={t.principal ? 'Highlight' : "inherit"}>
-                        <Td>{t.numero}</Td>
-                        <Td>{t.descripcion}</Td>
-                        <Td>{t.whatsapp ? <CheckCircleIcon color='green'/> : <NotAllowedIcon color='red'/>}</Td>
-                    </Tr>} )
-                    }
-                </Tbody>
+
+                <EditTelFunctComp
+                    registered={registered}
+                    setRegistered={setRegistered}
+                    Validate={Validate as (input: Matriculado) => void} />
+
             </Table>
         </TableContainer>
-        
+
         <NewTelFunctComp
             // children={PostTelModalForm}
             registered={registered}
-            setRegistered={setRegistered}            
-            Validate={Validate as (input: Matriculado) => void }
+            setRegistered={setRegistered}
+            Validate={Validate as (input: Matriculado) => void}
         />
 
         <FormLabel>Información Adicional:</FormLabel>
-        <PostAdditionalDataForm registered={registered} setRegistered={setRegistered} Validate={Validate}/>
+        <PostAdditionalDataForm registered={registered} setRegistered={setRegistered} Validate={Validate} />
         <TableContainer>
             <Table size='sm'>
                 <Thead>
@@ -246,16 +237,17 @@ export default function PostMatriculaForm({ registered, setRegistered, error, Va
                     </Tr>
                 </Thead>
                 <Tbody>
-                    { (registered.otrodato === undefined || registered.otrodato[0].titulo === '' ) ?
-                    <Tr>
-                        <Td>Asunto</Td>
-                        <Td>Descrpción (opcional)</Td>
-                    </Tr> :
-                    registered.otrodato.map((od)=> {
-                    return <Tr>
-                        <Td>{od.titulo}</Td>
-                        <Td>{od.descripcion}</Td>
-                    </Tr>} )
+                    {(registered.otrodato === undefined || registered.otrodato[0].titulo === '') ?
+                        <Tr>
+                            <Td>Asunto</Td>
+                            <Td>Descrpción (opcional)</Td>
+                        </Tr> :
+                        registered.otrodato.map((od) => {
+                            return <Tr>
+                                <Td>{od.titulo}</Td>
+                                <Td>{od.descripcion}</Td>
+                            </Tr>
+                        })
                     }
                 </Tbody>
             </Table>

@@ -1,6 +1,4 @@
 import {
-    Box,
-    Button,
     Checkbox,
     CheckboxGroup,
     FormControl,
@@ -8,28 +6,23 @@ import {
     FormLabel,
     Input,
     ModalBody,
-    ModalCloseButton,
-    ModalContent,
-    ModalFooter,
-    ModalHeader,
     Stack,
-    UseDisclosureProps,
 } from "@chakra-ui/react";
 import { nextFocus, setDefaultcheckboxValue } from "../../../../utils/FormUtils";
-import { IPostTelModalForm, Telefono, TelefonoError } from "../../../../types";
+import { Telefono, TelefonoError } from "../../../../types";
 import { ChangeEvent, useState } from "react";
 // import ValTelephone from "../../../../utils/ValTelefono";
 
-interface TelForm extends IPostTelModalForm {
+interface TelForm {
+    tel: Telefono;
     defaultTel: Telefono;
-    disclosure: UseDisclosureProps
+    setTel: React.Dispatch<React.SetStateAction<Telefono>>
 }
 export default function PostTelModalForm(
-    { registered, setRegistered, Validate, defaultTel, disclosure }: TelForm
+    { tel, defaultTel, setTel }: TelForm
 ): JSX.Element {
-    const [tel, setTel] = useState<Telefono>(defaultTel)
+
     const [vTel, setVTel] = useState<TelefonoError>(defaultTel)
-    const { onClose } = disclosure
 
     function ValidatePhone(input: Telefono) {
         if (input.numero.length === 0) {
@@ -70,37 +63,7 @@ export default function PostTelModalForm(
         console.log(tel);
         
     }
-
-    function HandleAccept() {
-        if (tel.numero !== '') {
-            if (registered.telefono[0].numero === '') {
-                Validate({
-                    ...registered,
-                    telefono: [tel]
-                })
-                setRegistered({
-                    ...registered,
-                    telefono: [tel]
-                })
-            } else {
-                Validate({
-                    ...registered,
-                    telefono: [...registered.telefono, tel]
-                })
-                setRegistered({
-                    ...registered,
-                    telefono: [...registered.telefono, tel]
-                })
-            }
-        }
-        setTel(defaultTel)
-    }
-
-    return <Box>
-    { onClose && <ModalContent>
-        <ModalHeader>Modal Title</ModalHeader>
-        <ModalCloseButton />
-                <ModalBody>
+    return <ModalBody>
                     <FormControl
                         overflowY={'scroll'}
                         overflowX={'auto'}
@@ -119,7 +82,6 @@ export default function PostTelModalForm(
                             onChange={HandleChange}
                         />
                         <FormHelperText>{vTel.numero === 'pass' ? null : vTel.numero}</FormHelperText>
-
 
                         <FormLabel>Descripcion:</FormLabel>
                         <Input
@@ -160,18 +122,4 @@ export default function PostTelModalForm(
                         </Stack>
                     </FormControl>
                 </ModalBody>
-
-                { tel.numero.length > 5 && <ModalFooter>
-                    <Button colorScheme='blue' mr={3} onClick={() => { HandleAccept(); onClose() }}>
-                        Aceptar
-                    </Button>
-                    {defaultTel.numero === '' && <Button colorScheme='blue' mr={3} onClick={HandleAccept}>
-                        Aceptar y Agregar otro
-                    </Button>}
-                    <Button variant='ghost' onClick={() => { setTel(defaultTel); onClose() }}>Cancelar</Button>
-                </ModalFooter>}
-            </ModalContent> 
-            }
-    </Box>
-
 }

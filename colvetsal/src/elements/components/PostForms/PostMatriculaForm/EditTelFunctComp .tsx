@@ -1,19 +1,53 @@
-import { Button, Modal, ModalOverlay, useDisclosure } from "@chakra-ui/react"
-import { IPostTelModalForm, Matriculado } from "../../../../types"
+import { Button, Modal, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, Tbody, Td, Tr, useDisclosure } from "@chakra-ui/react"
+import { IPostTelModalForm, Telefono } from "../../../../types"
 import PostTelModalForm from "./PostTelModalForm"
+import { CheckCircleIcon, NotAllowedIcon } from "@chakra-ui/icons"
+import { useState } from "react"
 
 export default function EditTelFunctComp(
     { registered, setRegistered, Validate }: IPostTelModalForm
 ): JSX.Element {
-    const defaultTel = {
-        numero: '',
-        whatsapp: false,
-        principal: false,
-        descripcion: ''
-    }
     const { isOpen, onOpen, onClose } = useDisclosure()
-return <div>
-<Button onClick={onOpen} margin={'5dvh 0 5dvh 0'}>Añadir nuevo Telefono</Button>
+return <Tbody>
+{(registered.telefono !== undefined && registered.telefono[0].numero === '') ?
+<Tr>
+    <Td>Numero</Td>
+    <Td>Desctrpción (opcional)</Td>
+    <Td>Whatsapp</Td>
+</Tr> :
+registered.telefono?.map((t)=> {
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    const [tel, setTel] = useState<Telefono>(t)
+    function HandleAccept() {
+        if (tel.numero !== '') {
+            if (registered.telefono[0].numero === '') {
+                Validate({
+                    ...registered,
+                    telefono: [tel]
+                })
+                setRegistered({
+                    ...registered,
+                    telefono: [tel]
+                })
+            } else {
+                Validate({
+                    ...registered,
+                    telefono: [...registered.telefono, tel]
+                })
+                setRegistered({
+                    ...registered,
+                    telefono: [...registered.telefono, tel]
+                })
+            }
+        }
+    }
+return <Tr
+bgColor={t.principal ? 'Highlight' : "inherit"}
+    onClick={onOpen} margin={'5dvh 0 5dvh 0'}>
+    <Td>{t.numero}</Td>
+    <Td>{t.descripcion}</Td>
+    <Td>{t.whatsapp ? <CheckCircleIcon color='green'/> : <NotAllowedIcon color='red'/>}
+    </Td>
 <Modal
             isCentered
             isOpen={isOpen}
@@ -22,14 +56,24 @@ return <div>
             scrollBehavior={'outside'}
         >
         <ModalOverlay />
+        <ModalContent>
+        <ModalHeader>Editar datos Telefónicos</ModalHeader>
+        <ModalCloseButton />
     <PostTelModalForm 
-                registered={registered}
-                setRegistered={setRegistered}            
-                Validate={Validate as (input: Matriculado) => void }
-                defaultTel={defaultTel}
-                disclosure={{ isOpen, onOpen, onClose }}
+                defaultTel={t}
+                tel={tel}
+                setTel={setTel}
                     />
+                    { tel.numero.length > 5 && <ModalFooter>
+                     <Button colorScheme='blue' mr={3} onClick={() => { HandleAccept(); onClose() }}>
+                         Aceptar
+                     </Button>
+                     <Button variant='ghost' onClick={() => { setTel(t); onClose() }}>Cancelar</Button>
+                 </ModalFooter>}
+             </ModalContent>  
                     
         </Modal>
-</div>
+        </Tr>} )
+                    }
+                </Tbody>
 }
