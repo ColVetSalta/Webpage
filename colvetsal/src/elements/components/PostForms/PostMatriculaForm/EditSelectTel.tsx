@@ -3,6 +3,7 @@ import { IPostTelModalForm, Telefono } from "../../../../types"
 import PostTelModalForm from "./PostTelModalForm"
 import { CheckCircleIcon, NotAllowedIcon } from "@chakra-ui/icons"
 import { useState } from "react"
+import { AiFillDelete } from "react-icons/ai"
 
 interface EditTelType extends IPostTelModalForm {
     i: number;
@@ -32,11 +33,12 @@ export default function EditSelectTel (
     }
 return <Tr
 bgColor={t.principal ? 'Highlight' : "inherit"}
-    onClick={onOpen} margin={'5dvh 0 5dvh 0'}>
-    <Td>{t.numero}</Td>
-    <Td>{t.descripcion}</Td>
-    <Td>{t.whatsapp ? <CheckCircleIcon color='green'/> : <NotAllowedIcon color='red'/>}
+    margin={'5dvh 0 5dvh 0'}>
+    <Td onClick={onOpen} >{t.numero}</Td>
+    <Td onClick={onOpen} >{t.descripcion}</Td>
+    <Td onClick={onOpen} >{t.whatsapp ? <CheckCircleIcon color='green'/> : <NotAllowedIcon color='red'/>}
     </Td>
+    <Td onClick={onOpen}><AiFillDelete/></Td>
 <Modal
             isCentered
             isOpen={isOpen}
