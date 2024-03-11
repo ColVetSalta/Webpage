@@ -31,6 +31,27 @@ export default function EditSelectTel (
                 })
         }
     }
+    function onDelete() {
+        const currTelArr = registered.telefono
+            currTelArr.splice(i,1)
+            console.log(currTelArr);
+            if (currTelArr.length === 0) {                
+                setRegistered({
+                    ...registered,
+                    telefono: [{numero: '', whatsapp: false, principal: false, descripcion: ''}]
+                })
+            } else {
+                Validate({
+                    ...registered,
+                    telefono: currTelArr
+                })
+                setRegistered({
+                    ...registered,
+                    telefono: currTelArr
+                })
+            }   
+                
+    }
 return <Tr
 bgColor={t.principal ? 'Highlight' : "inherit"}
     margin={'5dvh 0 5dvh 0'}>
@@ -38,7 +59,7 @@ bgColor={t.principal ? 'Highlight' : "inherit"}
     <Td onClick={onOpen} >{t.descripcion}</Td>
     <Td onClick={onOpen} >{t.whatsapp ? <CheckCircleIcon color='green'/> : <NotAllowedIcon color='red'/>}
     </Td>
-    <Td onClick={onOpen}><AiFillDelete/></Td>
+    <Td onClick={onDelete}><AiFillDelete/></Td>
 <Modal
             isCentered
             isOpen={isOpen}
