@@ -1,5 +1,5 @@
 import { Button, Modal, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, useDisclosure } from "@chakra-ui/react"
-import { IPostTelModalForm, Telefono } from "../../../../types"
+import { IPostTelModalForm, Telefono } from "../../../../../types"
 import PostTelModalForm from "./PostTelModalForm"
 import { useState } from "react"
 
@@ -12,10 +12,10 @@ export default function NewTelFunctComp(
         principal: false,
         descripcion: ''
     }
-    
+
     const [tel, setTel] = useState<Telefono>(emptyTel)
     const { isOpen, onOpen, onClose } = useDisclosure()
-    
+
 
     function HandleAccept() {
         if (tel.numero !== '') {
@@ -42,25 +42,25 @@ export default function NewTelFunctComp(
         setTel(emptyTel)
     }
 
-return <div>
-<Button onClick={onOpen} margin={'5dvh 0 5dvh 0'}>Añadir nuevo Telefono</Button>
-<Modal
+    return <div>
+        <Button onClick={onOpen} margin={'5dvh 0 5dvh 0'}>Añadir nuevo Telefono</Button>
+        <Modal
             isCentered
             isOpen={isOpen}
             onClose={onClose}
             size={'xl'}
             scrollBehavior={'outside'}
         >
-        <ModalOverlay />
-        <ModalContent>
-        <ModalHeader>Añadir datos Telefónicos</ModalHeader>
-        <ModalCloseButton />
-    <PostTelModalForm            
-                defaultTel={emptyTel}
-                tel={tel}
-                setTel={setTel}
-                    />
-                   { tel.numero.length > 5 && <ModalFooter>
+            <ModalOverlay />
+            <ModalContent>
+                <ModalHeader>Añadir datos Telefónicos</ModalHeader>
+                <ModalCloseButton />
+                <PostTelModalForm
+                    defaultTel={emptyTel}
+                    tel={tel}
+                    setTel={setTel}
+                />
+                {tel.numero.length > 5 && <ModalFooter>
                     <Button colorScheme='blue' mr={3} onClick={() => { HandleAccept(); onClose() }}>
                         Aceptar
                     </Button>
@@ -69,7 +69,7 @@ return <div>
                     </Button>
                     <Button variant='ghost' onClick={() => { setTel(emptyTel); onClose() }}>Cancelar</Button>
                 </ModalFooter>}
-            </ModalContent>  
+            </ModalContent>
         </Modal>
-</div>
+    </div>
 }

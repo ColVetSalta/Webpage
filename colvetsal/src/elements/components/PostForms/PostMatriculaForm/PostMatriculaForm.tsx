@@ -1,12 +1,12 @@
 import { Button, FormControl, FormHelperText, FormLabel, Input, Menu, MenuButton, MenuItem, MenuList, Table, TableContainer, Th, Thead, Tr } from "@chakra-ui/react";
 import { HandleInputNumFirstFocus, nextFocus } from "../../../../utils/FormUtils";
 import { ChangeEvent, MouseEvent } from "react";
-import PostAdditionalDataForm from "./PostAdditionalDataForm";
+import PostAdditionalDataForm from "./OtherDataForm/PostAdditionalDataForm";
 import { ChevronDownIcon } from "@chakra-ui/icons";
 import { Matriculado, MatriculadoError } from "../../../../types";
-import NewTelFunctComp from "./NewTelFunctComp";
-import TelMapperComp from "./TelMapperComp ";
-import DataMapperComp from "./DataMapperComp";
+import NewTelFunctComp from "./TelForm/NewTelFunctComp";
+import TelMapperComp from "./TelForm/TelMapperComp ";
+import DataMapperComp from "./OtherDataForm/DataMapperComp";
 
 export interface IPostMatriculaForm {
     registered: Matriculado
@@ -220,7 +220,7 @@ export default function PostMatriculaForm({ registered, setRegistered, error, Va
                     </Tr>
                 </Thead>
 
-                <TelMapperComp 
+                <TelMapperComp
                     registered={registered}
                     setRegistered={setRegistered}
                     Validate={Validate as (input: Matriculado) => void} />
@@ -240,7 +240,7 @@ export default function PostMatriculaForm({ registered, setRegistered, error, Va
                 </Thead>
                 <DataMapperComp
                     registered={registered}
-                    />
+                />
             </Table>
         </TableContainer>
 

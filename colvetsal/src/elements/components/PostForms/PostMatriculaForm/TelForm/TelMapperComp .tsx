@@ -1,5 +1,5 @@
 import { Tbody, Td, Tr } from "@chakra-ui/react"
-import { IPostTelModalForm, Matriculado } from "../../../../types"
+import { IPostTelModalForm, Matriculado } from "../../../../../types"
 import EditSelectTel from "./EditSelectTel"
 
 export default function TelMapperComp(
@@ -14,7 +14,7 @@ export default function TelMapperComp(
             </Tr> :
             registered.telefono?.map((t, i) => {
                 return <EditSelectTel
-                i={i}
+                    i={i}
                     t={t}
                     registered={registered}
                     setRegistered={setRegistered}
@@ -22,5 +22,5 @@ export default function TelMapperComp(
                 />
             })
         }
-        </Tbody>
+    </Tbody>
 }

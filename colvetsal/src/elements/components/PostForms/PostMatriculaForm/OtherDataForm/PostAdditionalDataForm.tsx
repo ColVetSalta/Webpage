@@ -14,9 +14,9 @@ import {
   ModalOverlay,
   useDisclosure
 } from "@chakra-ui/react";
-import { nextFocus } from "../../../../utils/FormUtils";
+import { nextFocus } from "../../../../../utils/FormUtils";
 import { ChangeEvent, useState } from "react";
-import { AdditionalData, IPostTelModalForm } from "../../../../types";
+import { AdditionalData, IPostTelModalForm } from "../../../../../types";
 
 
 export default function PostAdditionalDataForm({ registered, setRegistered }: IPostTelModalForm): JSX.Element {
