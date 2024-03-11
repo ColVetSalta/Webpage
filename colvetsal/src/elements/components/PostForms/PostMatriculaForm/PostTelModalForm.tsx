@@ -87,7 +87,7 @@ export default function PostTelModalForm(
                         <Input
                             className="input"
                             id="input2"
-                            placeholder="Escriba Nombre completo"
+                            placeholder="Descripcion adicional"
                             onKeyDown={(e) => nextFocus(e)}
                             type='text'
                             name='descripcion'
