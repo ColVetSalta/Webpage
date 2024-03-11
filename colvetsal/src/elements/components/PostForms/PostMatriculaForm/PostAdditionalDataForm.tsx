@@ -114,7 +114,7 @@ export default function PostAdditionalDataForm({ registered, setRegistered }: IP
 /*
 PostMForm
 <
-FUNCTION(NewTelFuncComp)<>
+FUNCTION(NewTelFuncComp)<> PostAdditionalDataForm
 table
   <
     TH<

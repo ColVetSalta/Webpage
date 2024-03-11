@@ -1,4 +1,4 @@
-import { Button, FormControl, FormHelperText, FormLabel, Input, Menu, MenuButton, MenuItem, MenuList, Table, TableContainer, Tbody, Td, Th, Thead, Tr } from "@chakra-ui/react";
+import { Button, FormControl, FormHelperText, FormLabel, Input, Menu, MenuButton, MenuItem, MenuList, Table, TableContainer, Th, Thead, Tr } from "@chakra-ui/react";
 import { HandleInputNumFirstFocus, nextFocus } from "../../../../utils/FormUtils";
 import { ChangeEvent, MouseEvent } from "react";
 import PostAdditionalDataForm from "./PostAdditionalDataForm";
@@ -6,6 +6,7 @@ import { ChevronDownIcon } from "@chakra-ui/icons";
 import { Matriculado, MatriculadoError } from "../../../../types";
 import NewTelFunctComp from "./NewTelFunctComp";
 import TelMapperComp from "./TelMapperComp ";
+import DataMapperComp from "./DataMapperComp";
 
 export interface IPostMatriculaForm {
     registered: Matriculado
@@ -226,7 +227,7 @@ export default function PostMatriculaForm({ registered, setRegistered, error, Va
 
             </Table>
         </TableContainer>
-        
+
         <FormLabel>Información Adicional:</FormLabel>
         <PostAdditionalDataForm registered={registered} setRegistered={setRegistered} Validate={Validate} />
         <TableContainer>
@@ -237,20 +238,9 @@ export default function PostMatriculaForm({ registered, setRegistered, error, Va
                         <Th>Descripción</Th>
                     </Tr>
                 </Thead>
-                <Tbody>
-                    {(registered.otrodato === undefined || registered.otrodato[0].titulo === '') ?
-                        <Tr>
-                            <Td>Asunto</Td>
-                            <Td>Descrpción (opcional)</Td>
-                        </Tr> :
-                        registered.otrodato.map((od) => {
-                            return <Tr>
-                                <Td>{od.titulo}</Td>
-                                <Td>{od.descripcion}</Td>
-                            </Tr>
-                        })
-                    }
-                </Tbody>
+                <DataMapperComp
+                    registered={registered}
+                    />
             </Table>
         </TableContainer>
 
