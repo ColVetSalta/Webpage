@@ -110,3 +110,23 @@ export default function PostAdditionalDataForm({ registered, setRegistered }: IP
   </Box>
 
 }
+
+/*
+PostMForm
+<
+FUNCTION(NewTelFuncComp)<>
+table
+  <
+    TH<
+    Tr
+      <
+      Td..nn
+      Td..dd
+      Td..ww
+      >
+    >
+    MAPPER(TelMapperComp)<>
+  >
+>
+
+*/

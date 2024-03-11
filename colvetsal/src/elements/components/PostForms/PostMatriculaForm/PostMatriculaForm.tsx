@@ -201,6 +201,14 @@ export default function PostMatriculaForm({ registered, setRegistered, error, Va
         />
 
         <FormLabel>Agregar al menos un telefono</FormLabel>
+
+        <NewTelFunctComp
+            // children={PostTelModalForm}
+            registered={registered}
+            setRegistered={setRegistered}
+            Validate={Validate as (input: Matriculado) => void}
+        />
+
         <TableContainer>
             <Table size='sm'>
                 <Thead>
@@ -218,21 +226,14 @@ export default function PostMatriculaForm({ registered, setRegistered, error, Va
 
             </Table>
         </TableContainer>
-
-        <NewTelFunctComp
-            // children={PostTelModalForm}
-            registered={registered}
-            setRegistered={setRegistered}
-            Validate={Validate as (input: Matriculado) => void}
-        />
-
+        
         <FormLabel>Información Adicional:</FormLabel>
         <PostAdditionalDataForm registered={registered} setRegistered={setRegistered} Validate={Validate} />
         <TableContainer>
             <Table size='sm'>
                 <Thead>
                     <Tr>
-                        <Th>Número</Th>
+                        <Th>Título</Th>
                         <Th>Descripción</Th>
                     </Tr>
                 </Thead>
