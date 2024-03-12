@@ -1,69 +1,36 @@
 import {
-  Box,
-  Button,
   FormControl,
   FormHelperText,
   FormLabel,
   Input,
-  Modal,
   ModalBody,
-  ModalCloseButton,
-  ModalContent,
-  ModalFooter,
-  ModalHeader,
-  ModalOverlay,
-  useDisclosure
 } from "@chakra-ui/react";
 import { nextFocus } from "../../../../../utils/FormUtils";
-import { ChangeEvent, useState } from "react";
-import { AdditionalData, IPostTelModalForm } from "../../../../../types";
+import { ChangeEvent } from "react";
+import { AdditionalData } from "../../../../../types";
 
+interface DataForm {
+    odt: AdditionalData;
+    setData: React.Dispatch<React.SetStateAction<AdditionalData>>
+}
+/*
 
-export default function PostAdditionalDataForm({ registered, setRegistered }: IPostTelModalForm): JSX.Element {
-  const { isOpen, onOpen, onClose } = useDisclosure()
-  const emptyData = {
-    titulo: '',
-    descripcion: ''
-  }
-  const [data, setData] = useState<AdditionalData>(emptyData)
+export default function PostTelModalForm(
+    { tel, defaultTel, setTel }: TelForm
+     */
+export default function PostAdditionalDataForm({ odt, setData }: DataForm): JSX.Element {
 
+  
   function HandleChange(e: ChangeEvent<HTMLInputElement>) {
+    e.preventDefault()
     setData({
-      ...data,
+      ...odt,
       [e.target.name]: e.target.value
     })
   }
+ 
 
-  function HandleAccept() {
-    if (data.titulo !== '') {
-      if (registered.otrodato) {
-        setRegistered({
-          ...registered,
-          otrodato: [...registered.otrodato, data]
-        })
-      } else setRegistered({
-        ...registered,
-        otrodato: [data]
-      })
-    }
-    setData(emptyData)
-  }
-
-
-  return <Box>
-    <Button onClick={onOpen} margin={'5dvh 0 5dvh 0'}>Datos Adicionales</Button>
-    <Modal
-      isCentered
-      isOpen={isOpen}
-      onClose={onClose}
-      size={'xl'}
-      scrollBehavior={'outside'}
-    >
-      <ModalOverlay />
-      <ModalContent>
-        <ModalHeader>Nuevo Dato Adicional</ModalHeader>
-        <ModalCloseButton />
-        <ModalBody>
+  return <ModalBody>
           <FormControl
             overflowY={'scroll'}
             overflowX={'auto'}
@@ -78,7 +45,7 @@ export default function PostAdditionalDataForm({ registered, setRegistered }: IP
               type='text'
               onKeyDown={(e) => nextFocus(e)}
               name='titulo'
-              value={data.titulo}
+              value={odt.titulo}
               onChange={HandleChange}
             />
             <FormLabel>Descripcion:</FormLabel>
@@ -89,25 +56,12 @@ export default function PostAdditionalDataForm({ registered, setRegistered }: IP
               onKeyDown={(e) => nextFocus(e)}
               type='text'
               name='descripcion'
-              value={data.descripcion}
+              value={odt.descripcion}
               onChange={HandleChange}
             />
             <FormHelperText>Opcional: Escriba breve descripcion o dato accesorio</FormHelperText>
           </FormControl>
         </ModalBody>
-
-        <ModalFooter>
-          <Button colorScheme='blue' mr={3} onClick={() => { HandleAccept(); onClose() }}>
-            Aceptar
-          </Button>
-          <Button colorScheme='blue' mr={3} onClick={HandleAccept}>
-            Aceptar y Agregar otro
-          </Button>
-          <Button variant='ghost' onClick={() => { setData(emptyData); onClose() }}>Cancelar</Button>
-        </ModalFooter>
-      </ModalContent>
-    </Modal>
-  </Box>
 
 }
 

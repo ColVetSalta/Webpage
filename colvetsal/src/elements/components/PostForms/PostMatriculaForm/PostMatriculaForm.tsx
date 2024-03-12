@@ -240,6 +240,9 @@ export default function PostMatriculaForm({ registered, setRegistered, error, Va
                 </Thead>
                 <DataMapperComp
                     registered={registered}
+                    setRegistered= {setRegistered}
+                    Validate = {Validate} 
+
                 />
             </Table>
         </TableContainer>

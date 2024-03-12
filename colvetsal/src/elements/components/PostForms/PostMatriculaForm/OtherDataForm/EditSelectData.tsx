@@ -1,65 +1,61 @@
 import { Button, Modal, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, Td, Tr, useDisclosure } from "@chakra-ui/react"
-import { IPostTelModalForm, Telefono } from "../../../../../types"
-import PostTelModalForm from "../TelForm/PostTelModalForm"
-import { CheckCircleIcon, NotAllowedIcon } from "@chakra-ui/icons"
+import { AdditionalData, IPostTelModalForm } from "../../../../../types"
 import { useState } from "react"
 import { AiFillDelete } from "react-icons/ai"
+import PostAdditionalDataForm from "./PostAdditionalDataForm"
 
-interface EditTelType extends IPostTelModalForm {
+interface EditDataType extends IPostTelModalForm {
     i: number;
-    t: Telefono
+    od: AdditionalData
 }
 
 export default function EditSelectData(
-    { t, i, registered, setRegistered, Validate }: EditTelType
+    { od, i, registered, setRegistered, Validate }: EditDataType
 ): JSX.Element {
     const { isOpen, onOpen, onClose } = useDisclosure()
-    const [tel, setTel] = useState<Telefono>(t)
+    const [odt, setOdt] = useState<AdditionalData>(od)
 
     function HandleAccept() {
-        if (tel.numero !== '') {
-            const currTelArr = registered.telefono
-            currTelArr.splice(i, 1, tel)
-            console.log(currTelArr);
-            Validate({
-                ...registered,
-                telefono: currTelArr
-            })
-            setRegistered({
-                ...registered,
-                telefono: currTelArr
-            })
-        }
+        const currDataArr = registered.otrodato as AdditionalData[]
+        currDataArr.splice(i, 1, odt) 
+        Validate({
+            ...registered,
+            otrodato: currDataArr
+        })
+        setRegistered({
+            ...registered,
+            otrodato: currDataArr
+        })
+    
     }
+    
     function onDelete() {
-        const currTelArr = registered.telefono
-        currTelArr.splice(i, 1)
-        console.log(currTelArr);
-        if (currTelArr.length === 0) {
+        const currDataArr = registered.otrodato as AdditionalData[]
+        currDataArr.splice(i, 1)
+        console.log(currDataArr);
+        if (currDataArr.length === 0) {
             setRegistered({
                 ...registered,
-                telefono: [{ numero: '', whatsapp: false, principal: false, descripcion: '' }]
+                otrodato: [{ descripcion: '', titulo: '' }]
             })
         } else {
             Validate({
                 ...registered,
-                telefono: currTelArr
+                otrodato: currDataArr
             })
             setRegistered({
                 ...registered,
-                telefono: currTelArr
+                otrodato: currDataArr
             })
         }
 
     }
     return <Tr
-        bgColor={t.principal ? 'Highlight' : "inherit"}
         margin={'5dvh 0 5dvh 0'}>
-        <Td onClick={onOpen} >{t.numero}</Td>
-        <Td onClick={onOpen} >{t.descripcion}</Td>
-        <Td onClick={onOpen} >{t.whatsapp ? <CheckCircleIcon color='green' /> : <NotAllowedIcon color='red' />}
-        </Td>
-        <Td onClick={onDelete}><AiFillDelete /></Td>
+            
+            <Td onClick={onOpen} >{od.titulo}</Td>
+            <Td onClick={onOpen} >{od.descripcion}</Td>
+            <Td onClick={onDelete}><AiFillDelete/></Td>
         <Modal
             isCentered
             isOpen={isOpen}
@@ -71,17 +67,17 @@ export default function EditSelectData(
             <ModalContent>
                 <ModalHeader>Editar datos Telefónicos</ModalHeader>
                 <ModalCloseButton />
-                <PostTelModalForm
-                    defaultTel={t}
-                    tel={tel}
-                    setTel={setTel}
+                <PostAdditionalDataForm
+                registered = {registered}
+                setRegistered = {setRegistered}
+                Validate= {Validate}
                 />
-                {tel.numero.length > 5 && <ModalFooter>
+                <ModalFooter>
                     <Button colorScheme='blue' mr={3} onClick={() => { HandleAccept(); onClose() }}>
                         Aceptar
                     </Button>
-                    <Button variant='ghost' onClick={() => { setTel(t); onClose() }}>Cancelar</Button>
-                </ModalFooter>}
+                    <Button variant='ghost' onClick={() => { setOdt(od); onClose() }}>Cancelar</Button>
+                </ModalFooter>
             </ModalContent>
 
         </Modal>
