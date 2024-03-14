@@ -19,6 +19,7 @@ export default function PostTelModalForm(
     { tel, defaultTel, setTel }: TelForm
      */
 export default function PostAdditionalDataForm({ odt, setData }: DataForm): JSX.Element {
+console.log(odt);
 
   
   function HandleChange(e: ChangeEvent<HTMLInputElement>) {
