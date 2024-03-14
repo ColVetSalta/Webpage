@@ -68,7 +68,7 @@ export default function NewTelFunctComp(
                     <Button colorScheme='blue' mr={3} onClick={() => { HandleAccept(); onClose() }}>
                         Aceptar
                     </Button>
-                    <Button colorScheme='blue' mr={3} onClick={HandleAccept}>
+                    <Button colorScheme='blue' mr={3} onClick={() => { HandleAccept() }}>
                         Aceptar y Agregar otro
                     </Button>
                     <Button variant='ghost' onClick={() => { setTel(emptyTel); onClose() }}>Cancelar</Button>

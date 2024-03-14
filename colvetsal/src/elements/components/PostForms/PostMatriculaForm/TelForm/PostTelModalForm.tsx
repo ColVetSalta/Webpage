@@ -1,6 +1,5 @@
 import {
     Checkbox,
-    CheckboxGroup,
     FormControl,
     FormHelperText,
     FormLabel,
@@ -8,10 +7,9 @@ import {
     ModalBody,
     Stack,
 } from "@chakra-ui/react";
-import { nextFocus, setDefaultcheckboxValue } from "../../../../../utils/FormUtils";
+import { nextFocus } from "../../../../../utils/FormUtils";
 import { Telefono, TelefonoError } from "../../../../../types";
 import { ChangeEvent, useState } from "react";
-// import ValTelephone from "../../../../utils/ValTelefono";
 
 interface TelForm {
     tel: Telefono;
@@ -97,29 +95,23 @@ export default function PostTelModalForm(
             />
             <FormLabel>Opcional: Escriba breve descripcion o dato accesorio</FormLabel>
             <Stack>
-                <CheckboxGroup
-                    defaultValue={setDefaultcheckboxValue({
-                        principal: tel.principal,
-                        whatsapp: tel.whatsapp
-                    })}
-                >
-                    { !ppal && <Checkbox
+                    <Checkbox
+                    isDisabled={ppal}
                         className="input"
                         id="input3"
                         onKeyDown={(e) => nextFocus(e)}
                         name='check'
                         value='principal'
-                        checked={tel.principal}
-                        onChange={HandleChange}>Es el principal</Checkbox> }
+                        isChecked={tel.principal}
+                        onChange={HandleChange}>Es el principal</Checkbox>
                     <Checkbox
                         className="input"
                         id="input4"
                         onKeyDown={(e) => nextFocus(e)}
                         name='check'
                         value='whatsapp'
-                        checked={tel.whatsapp}
-                        onChange={HandleChange}>Tiene Whatsapp</Checkbox></CheckboxGroup>
-
+                        isChecked={tel.whatsapp}
+                        onChange={HandleChange}>Tiene Whatsapp</Checkbox>
             </Stack>
         </FormControl>
     </ModalBody>
