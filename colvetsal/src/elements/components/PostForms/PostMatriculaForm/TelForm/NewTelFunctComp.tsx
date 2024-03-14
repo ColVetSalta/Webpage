@@ -64,15 +64,15 @@ export default function NewTelFunctComp(
                     setTel={setTel}
                     ppal={ppal}
                 />
-                {tel.numero.length > 5 && <ModalFooter>
-                    <Button colorScheme='blue' mr={3} onClick={() => { HandleAccept(); onClose() }}>
+                <ModalFooter>
+                    <Button isDisabled={tel.numero.length < 3} colorScheme='blue' mr={3} onClick={() => { HandleAccept(); onClose() }}>
                         Aceptar
                     </Button>
-                    <Button colorScheme='blue' mr={3} onClick={() => { HandleAccept() }}>
+                    <Button isDisabled={tel.numero.length < 3} colorScheme='blue' mr={3} onClick={() => { HandleAccept() }}>
                         Aceptar y Agregar otro
                     </Button>
                     <Button variant='ghost' onClick={() => { setTel(emptyTel); onClose() }}>Cancelar</Button>
-                </ModalFooter>}
+                </ModalFooter>
             </ModalContent>
         </Modal>
     </div>
