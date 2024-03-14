@@ -13,11 +13,7 @@ interface DataForm {
     odt: AdditionalData;
     setData: React.Dispatch<React.SetStateAction<AdditionalData>>
 }
-/*
 
-export default function PostTelModalForm(
-    { tel, defaultTel, setTel }: TelForm
-     */
 export default function PostAdditionalDataForm({ odt, setData }: DataForm): JSX.Element {
 console.log(odt);
 
@@ -28,8 +24,7 @@ console.log(odt);
       ...odt,
       [e.target.name]: e.target.value
     })
-  }
- 
+  } 
 
   return <ModalBody>
           <FormControl

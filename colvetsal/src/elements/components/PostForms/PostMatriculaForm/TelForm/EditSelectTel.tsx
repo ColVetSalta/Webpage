@@ -50,8 +50,8 @@ export default function EditSelectTel(
                 telefono: currTelArr
             })
         }
-
     }
+    
     return <Tr
         bgColor={t.principal ? 'Highlight' : "inherit"}
         margin={'5dvh 0 5dvh 0'}>

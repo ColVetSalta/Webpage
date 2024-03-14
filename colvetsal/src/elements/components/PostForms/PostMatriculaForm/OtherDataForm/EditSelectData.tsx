@@ -18,6 +18,7 @@ export default function EditSelectData(
     function HandleAccept() {
         const currDataArr = registered.otrodato as AdditionalData[]
         currDataArr.splice(i, 1, odt) 
+        console.log(currDataArr);
         Validate({
             ...registered,
             otrodato: currDataArr
@@ -36,7 +37,7 @@ export default function EditSelectData(
         if (currDataArr.length === 0) {
             setRegistered({
                 ...registered,
-                otrodato: [{ descripcion: '', titulo: '' }]
+                otrodato: undefined
             })
         } else {
             Validate({
@@ -48,8 +49,8 @@ export default function EditSelectData(
                 otrodato: currDataArr
             })
         }
-
     }
+
     return <Tr
         margin={'5dvh 0 5dvh 0'}>
             
@@ -65,12 +66,11 @@ export default function EditSelectData(
         >
             <ModalOverlay />
             <ModalContent>
-                <ModalHeader>Editar datos Telefónicos</ModalHeader>
+                <ModalHeader>Editar Dato</ModalHeader>
                 <ModalCloseButton />
                 <PostAdditionalDataForm
-                registered = {registered}
-                setRegistered = {setRegistered}
-                Validate= {Validate}
+                    odt={odt}
+                    setData={setOdt}
                 />
                 <ModalFooter>
                     <Button colorScheme='blue' mr={3} onClick={() => { HandleAccept(); onClose() }}>

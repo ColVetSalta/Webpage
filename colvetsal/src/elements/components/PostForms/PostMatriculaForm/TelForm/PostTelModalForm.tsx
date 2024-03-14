@@ -60,11 +60,11 @@ export default function PostTelModalForm(
                 [e.target.name]: e.target.value
             })
         }
-        console.log(tel);
-
     }
+    
     return <ModalBody>
         <FormControl
+    
             overflowY={'scroll'}
             overflowX={'auto'}
             maxHeight={'50dvh'}
