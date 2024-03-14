@@ -16,6 +16,8 @@ export default function EditSelectTel(
     const { isOpen, onOpen, onClose } = useDisclosure()
     const [tel, setTel] = useState<Telefono>(t)
 
+    const ppal = t.principal ? false : registered.telefono?.map((t)=>t.principal).includes(true);
+
     function HandleAccept() {
         if (tel.numero !== '') {
             const currTelArr = registered.telefono
@@ -75,6 +77,7 @@ export default function EditSelectTel(
                     defaultTel={t}
                     tel={tel}
                     setTel={setTel}
+                    ppal={ppal}
                 />
                 {tel.numero.length > 5 && <ModalFooter>
                     <Button colorScheme='blue' mr={3} onClick={() => { HandleAccept(); onClose() }}>

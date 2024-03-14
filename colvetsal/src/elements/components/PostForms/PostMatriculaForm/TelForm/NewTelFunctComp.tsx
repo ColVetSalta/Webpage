@@ -16,6 +16,9 @@ export default function NewTelFunctComp(
     const [tel, setTel] = useState<Telefono>(emptyTel)
     const { isOpen, onOpen, onClose } = useDisclosure()
 
+    const ppal = registered.telefono?.map((t)=>t.principal).includes(true);
+    console.log(ppal);
+    
 
     function HandleAccept() {
         if (tel.numero !== '') {
@@ -59,6 +62,7 @@ export default function NewTelFunctComp(
                     defaultTel={emptyTel}
                     tel={tel}
                     setTel={setTel}
+                    ppal={ppal}
                 />
                 {tel.numero.length > 5 && <ModalFooter>
                     <Button colorScheme='blue' mr={3} onClick={() => { HandleAccept(); onClose() }}>

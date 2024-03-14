@@ -17,9 +17,10 @@ interface TelForm {
     tel: Telefono;
     defaultTel: Telefono;
     setTel: React.Dispatch<React.SetStateAction<Telefono>>
+    ppal: boolean
 }
 export default function PostTelModalForm(
-    { tel, defaultTel, setTel }: TelForm
+    { tel, defaultTel, setTel, ppal }: TelForm
 ): JSX.Element {
 
     const [vTel, setVTel] = useState<TelefonoError>(defaultTel)
@@ -102,14 +103,14 @@ export default function PostTelModalForm(
                         whatsapp: tel.whatsapp
                     })}
                 >
-                    <Checkbox
+                    { !ppal && <Checkbox
                         className="input"
                         id="input3"
                         onKeyDown={(e) => nextFocus(e)}
                         name='check'
                         value='principal'
                         checked={tel.principal}
-                        onChange={HandleChange}>Es el principal</Checkbox>
+                        onChange={HandleChange}>Es el principal</Checkbox> }
                     <Checkbox
                         className="input"
                         id="input4"

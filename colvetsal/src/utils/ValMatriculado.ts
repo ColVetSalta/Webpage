@@ -153,22 +153,22 @@ export function ValMatriculado({ input, setError }: IValMatriculado) {
       }));
     }
   } else {
-    let ppal = false;
-    input.telefono.forEach((tn) => {
-      console.log(ppal)      
-      if (tn.principal) {
-        ppal
-          ? setError((prevError) => {
-              return {
-                ...prevError,
-                telefono:
-                  "No puede haber más de un telefono principal, elija uno de ellos",
-              };
-            })
-          : (ppal = true);
-      }
-    });
-      console.log('finalppal: ', ppal)      
+    const ppal = input.telefono.map((t)=>t.principal).includes(true);
+    // input.telefono.forEach((tn) => {
+    //   console.log(ppal)      
+    //   if (tn.principal) {
+    //     ppal
+    //       ? setError((prevError) => {
+    //           return {
+    //             ...prevError,
+    //             telefono:
+    //               "No puede haber más de un telefono principal, elija uno de ellos",
+    //           };
+    //         })
+    //       : (ppal = true);
+    //   }
+    // });
+    //   console.log('finalppal: ', ppal)      
       if (!ppal) {
       setError((prevError) => {
         return {
